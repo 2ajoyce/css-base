@@ -1,0 +1,120 @@
+/* Constants */
+/* Mobile Width: 768px; */
+
+/* Box */
+.box {
+  padding: var(--padding, 1rem);
+  border: var(--border, 1px solid var(--text-color));
+}
+
+/* Center */
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Cover */
+.cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--padding, 1rem);
+}
+
+/* Cluster */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+}
+.sidebar > .main {
+  flex: 1;
+}
+.sidebar > .side {
+  flex: 0 0 var(--sidebar-width, 0);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    flex-direction: column;
+  }
+  .sidebar > .side {
+    flex: 1;
+  }
+}
+
+/* Stack */
+.stack > * + * {
+  margin-top: var(--space, 1.5rem);
+}
+
+.stack.padded {
+  padding: var(--padding, 1rem);
+}
+
+/* Switcher */
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+}
+.switcher > * {
+  flex: 1 1 calc((var(--min-width, 200px) - 100%) * 999);
+}
+
+/* Grid */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+}
+.grid > * {
+  flex: 1 1 calc((var(--min-width, 200px) - 100%) * 999);
+}
+
+/* Frame */
+.frame {
+  padding: var(--padding, 1rem);
+  border: var(--border, 1px solid #000);
+}
+
+/* Reel */
+.reel {
+  display: flex;
+  overflow-x: auto;
+  gap: var(--space, 1rem);
+}
+
+/* Imposter */
+.imposter {
+  position: absolute;
+  top: var(--top, 50%);
+  left: var(--left, 50%);
+  transform: translate(-50%, -50%);
+}
+
+/* Icon */
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--size, 2rem);
+  height: var(--size, 2rem);
+}
+
+/* Container */
+.container {
+  max-width: var(--max-width, 1200px);
+  margin: 0 auto;
+  padding: var(--padding, 1rem);
+}

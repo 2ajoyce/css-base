@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Layout Examples</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Style Guide</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="elements.html">Elements</a>
+        <a href="layout.html" class="active">Layout</a>
+        <label for="theme-select" class="right">Theme:</label>
+        <select id="theme-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="high-contrast">High Contrast</option>
+        </select>
+      </nav>
+    </header>
+    <div class="stack padded">
+      <!-- Box -->
+      <section id="box">
+        <h2><a href="#box">Box</a></h2>
+        <p>
+          The <code>.box</code> class adds padding and a border around content.
+        </p>
+        <p>
+          The style parameter <code>--padding: 1rem</code> sets the padding
+          inside the box. The default is <code>1rem</code>.
+        </p>
+
+        <div class="box" style="--padding: 1rem">
+          <p>This content is in a box.</p>
+        </div>
+      </section>
+
+      <!-- Center -->
+      <section id="center">
+        <h2><a href="#center">Center</a></h2>
+        <p>
+          The <code>.center</code> class uses flexbox to center content in a
+          vertical column
+        </p>
+
+        <div class="center" style="--space: 1rem">
+          <div class="stack" style="--space: 1rem; max-width: 20rem">
+            <div class="box">
+              <p>This is three nested divs.</p>
+              <p>
+                The first has the class <code>.center</code> to center it
+                horizontally.
+              </p>
+              <p>
+                The second has the class <code>.stack</code> to provide spacing
+                between elements.
+              </p>
+              <p>
+                The inner elements have the class <code>.box</code> to provide
+                padding and a border.
+              </p>
+            </div>
+            <div class="box">
+              <h3>Heading 3</h3>
+              <p>
+                This is some centered content. It includes a heading, a
+                paragraph, and a button.
+              </p>
+              <button>Click Me</button>
+            </div>
+            <div class="box">
+              <h3>Heading 3</h3>
+              <p>
+                This is some centered content. It includes a heading, a
+                paragraph, and a button.
+              </p>
+              <button>Click Me</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cluster -->
+      <section id="cluster">
+        <h2><a href="#cluster">Cluster</a></h2>
+        <p>
+          The <code>.cluster</code> class uses flexbox to distribute elements
+          evenly across the page.
+        </p>
+        <p>
+          The style parameter <code>--space: 1rem</code> sets the spacing
+          between elements. The default is <code>1rem</code>.
+        </p>
+        <div class="cluster" style="--space: 1rem">
+          <div class="box" style="width: 4%; min-width: 3rem">
+            Cluster item 1
+          </div>
+          <div class="box" style="width: 8%; min-width: 3rem">
+            Cluster item 2
+          </div>
+          <div class="box" style="width: 16%; min-width: 3rem">
+            Cluster item 3
+          </div>
+          <div class="box" style="width: 32%; min-width: 3rem">
+            Cluster item 4
+          </div>
+          <div class="box" style="width: 6%; min-width: 3rem">
+            Cluster item 5
+          </div>
+          <div class="box" style="width: 12%; min-width: 3rem">
+            Cluster item 6
+          </div>
+          <div class="box" style="width: 24%; min-width: 3rem">
+            Cluster item 8
+          </div>
+          <div class="box" style="width: 7%; min-width: 3rem">
+            Cluster item 7
+          </div>
+          <div class="box" style="width: 14%; min-width: 3rem">
+            Cluster item 9
+          </div>
+          <div class="box" style="width: 28%; min-width: 3rem">
+            Cluster item 10
+          </div>
+          <div class="box" style="width: 13%; min-width: 3rem">
+            Cluster item 11
+          </div>
+          <div class="box" style="width: 26%; min-width: 3rem">
+            Cluster item 12
+          </div>
+        </div>
+      </section>
+
+      <!-- Cover -->
+      <section id="cover">
+        <h2><a href="#cover">Cover Layout</a></h2>
+        <p>
+          The <code>.cover</code> class fills the viewport vertically. It is
+          useful for full-page layouts.
+        </p>
+        <p>
+          The style parameter <code>--padding: 2rem</code> sets the padding
+          inside the cover. The default is <code>1rem</code>.
+        </p>
+        <p>
+          The div in this example also has the class <code>.box</code> to make
+          the spacing more clear.
+        </p>
+        <div class="cover box" style="--padding: 2rem">
+          <h2>Cover Layout</h2>
+          <p>Fills the viewport vertically</p>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <section id="sidebar">
+        <h2><a href="#sidebar">Sidebar</a></h2>
+        <p>
+          The <code>.sidebar</code> class creates a two-column layout with a
+          main content area and a sidebar.
+        </p>
+        <p>The main content area must have the class <code>.main</code>.</p>
+        <p>The sidebar content area must have the class <code>.side</code>.</p>
+        <p>
+          The style parameter <code>--sidebar-width: 10rem</code> sets the width
+          of the sidebar. Default is <code>0</code>.
+        </p>
+        <p>
+          📱 Mobile View: The sidebar will wrap below the main content at widths
+          below
+          <code>768px</code>.
+        </p>
+
+        <div class="sidebar" style="--sidebar-width: 10rem">
+          <div class="main box">
+            <h2>Main content</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget
+              augue sagittis, feugiat sapien a, consectetur ante. Nullam finibus
+              facilisis posuere. Nunc feugiat nibh id maximus commodo. Duis
+              accumsan elit ut molestie congue. Praesent lobortis, urna eu
+              pretium placerat, augue velit fringilla urna, ac dapibus nibh mi
+              in dolor. Suspendisse tempor finibus arcu, non semper lectus
+              mattis eget.
+            </p>
+            <p>
+              Nulla ultricies venenatis dictum. Curabitur semper bibendum diam,
+              non maximus quam fringilla venenatis. Curabitur neque urna, luctus
+              et ante sed, sagittis faucibus arcu. Praesent lobortis lorem
+              velit, eget ultricies purus consequat eget. Morbi eget odio est.
+              Pellentesque dictum laoreet turpis at imperdiet.
+            </p>
+          </div>
+          <div class="side box">
+            <h5>Side content</h5>
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stack -->
+      <section id="stack">
+        <h2><a href="#stack">Stack</a></h2>
+        <p>
+          The <code>.stack</code> class adds spacing between elements. It does
+          not add a space after the last element.
+        </p>
+        <p>
+          The style parameter <code>--space: 2em</code> sets the spacing between
+          elements. The default is <code>1.5rem</code>.
+        </p>
+        <p>
+          An additional class of <code>.padded</code> can be added to include
+          padding around the stack.
+        </p>
+        <p>
+          The style parameter <code>--padding: 2em</code> sets the padding
+          around the stack. The default is <code>1rem</code>.
+        </p>
+        <p>
+          The divs in this example also have the class <code>.box</code> to make
+          the spacing more clear.
+        </p>
+
+        <div class="stack" style="--space: 2rem; --padding: 1rem">
+          <div class="box">Item 1</div>
+          <div class="box">Item 2</div>
+          <div class="box">Item 3</div>
+        </div>
+      </section>
+
+      <!-- Switcher -->
+      <section id="switcher">
+        <h2><a href="#switcher">Switcher Layout</a></h2>
+        <div class="switcher" style="--space: 1rem; --min-width: 150px">
+          <div>Switcher panel 1</div>
+          <div>Switcher panel 2</div>
+          <div>Switcher panel 3</div>
+        </div>
+      </section>
+
+      <!-- Grid -->
+      <section id="grid">
+        <h2><a href="#grid">Grid Layout</a></h2>
+        <div class="grid" style="--space: 1rem; --min-width: 150px">
+          <div>Grid item 1</div>
+          <div>Grid item 2</div>
+          <div>Grid item 3</div>
+          <div>Grid item 4</div>
+        </div>
+      </section>
+
+      <!-- Frame -->
+      <section id="frame">
+        <h2><a href="#frame">Frame Layout</a></h2>
+        <div class="frame" style="--padding: 2rem; --border: 2px solid #666">
+          <p>Frame around content</p>
+        </div>
+      </section>
+
+      <!-- Reel -->
+      <section id="reel">
+        <h2><a href="#reel">Reel Layout</a></h2>
+        <div class="reel" style="--space: 1rem">
+          <div>Reel item 1</div>
+          <div>Reel item 2</div>
+          <div>Reel item 3</div>
+          <div>Reel item 4</div>
+          <div>Reel item 5</div>
+        </div>
+      </section>
+
+      <!-- Imposter -->
+      <section
+        id="imposter"
+        style="position: relative; height: 200px; background: #f3f3f3"
+      >
+        <h2><a href="#imposter">Imposter Layout</a></h2>
+        <div class="imposter" style="--top: 30%; --left: 30%">
+          <p>Imposter content</p>
+        </div>
+      </section>
+
+      <!-- Icon -->
+      <section id="icon">
+        <h2><a href="#icon">Icon Layout</a></h2>
+        <div class="icon" style="--size: 3rem">
+          <img src="https://via.placeholder.com/64" alt="Example icon" />
+        </div>
+      </section>
+
+      <!-- Container -->
+      <section id="container">
+        <h2><a href="#container">Container Layout</a></h2>
+        <div class="container" style="--max-width: 800px">
+          <p>Container with a max-width.</p>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <p>Created by <a href="https://2ajoyce.com/">2ajoyce</a></p>
+    </footer>
+  </body>
+  <script src="theme-switcher.js"></script>
+</html>

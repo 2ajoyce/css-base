@@ -1,0 +1,319 @@
+/* 
+//////////////////////////////////////////////////////////////////////
+  Light mode and Dark mode colors are defined here
+  These constants are used for both the JS and CSS solutions             
+////////////////////////////////////////////////////////////////////// 
+*/
+:root {
+  /* Light Mode constants */
+  --light-background-color: #f4f4f4;
+  --light-secondary-background-color: #ffffff;
+  --light-unset-background-color: purple;
+  --light-text-color: #333;
+  --light-primary-color: #007bff;
+  --light-primary-color-hover: #0056b3;
+  --light-primary-color-active: #004085;
+  --light-primary-color-focus: #80bdff;
+  --light-primary-color-disabled: #cce5ff;
+  --light-primary-text-color: #f4f4f4;
+  --light-secondary-color: #e9ecef;
+  --light-secondary-color-hover: #d6d8db;
+  --light-secondary-color-active: #c6c8ca;
+  --light-secondary-color-focus: #adb5bd;
+  --light-secondary-text-color: #333;
+  --light-highlight-color: #ff0;
+  --light-highlighted-text-color: #333;
+  --light-link-color: #007bff;
+  --light-link-visited-color: #551a8b;
+  --light-link-hover-color: #0056b3;
+  --light-inline-code-background-color: #193e69;
+  --light-inline-code-text-color: #eff5fa;
+  --light-inline-code-border-color: #eff5fa;
+  --light-danger-color: #dc3545;
+  --light-danger-color-hover: #c82333;
+  --light-danger-color-active: #bd2130;
+  --light-danger-color-focus: #e4606d;
+  --light-danger-text-color: #f4f4f4;
+  --light-success-color: #28a745;
+  --light-success-color-hover: #218838;
+  --light-success-color-active: #1e7e34;
+  --light-success-color-focus: #71c784;
+  --light-success-text-color: #f4f4f4;
+  --light-warning-color: #ffc107;
+  --light-warning-color-hover: #e0a800;
+  --light-warning-color-active: #d39e00;
+  --light-warning-color-focus: #ffe08a;
+  --light-warning-text-color: #333;
+
+  /* Dark Mode constants */
+  --dark-background-color: #333;
+  --dark-secondary-background-color: #222222;
+  --dark-unset-background-color: hotpink;
+  --dark-text-color: #f4f4f4;
+  --dark-primary-color: #1e90ff;
+  --dark-primary-color-hover: #1c86ee;
+  --dark-primary-color-active: #1874cd;
+  --dark-primary-color-focus: #63b8ff;
+  --dark-primary-color-disabled: #a4d3ee;
+  --dark-primary-text-color: #f4f4f4;
+  --dark-secondary-color: #444;
+  --dark-secondary-color-hover: #555;
+  --dark-secondary-color-active: #666;
+  --dark-secondary-color-focus: #777;
+  --dark-secondary-text-color: #f4f4f4;
+  --dark-highlight-color: #ff0;
+  --dark-highlighted-text-color: #0b0b0b;
+  --dark-link-color: #1e90ff;
+  --dark-link-visited-color: #551a8b;
+  --dark-link-hover-color: #104e8b;
+  --dark-inline-code-background-color: #282c34;
+  --dark-inline-code-text-color: #61dafb;
+  --dark-inline-code-border-color: #61dafb;
+  --dark-danger-color: #ff6347;
+  --dark-danger-color-hover: #ff4500;
+  --dark-danger-color-active: #ee4000;
+  --dark-danger-color-focus: #ff7256;
+  --dark-danger-text-color: #f4f4f4;
+  --dark-success-color: #32cd32;
+  --dark-success-color-hover: #2e8b57;
+  --dark-success-color-active: #228b22;
+  --dark-success-color-focus: #7cfc00;
+  --dark-success-text-color: #f4f4f4;
+  --dark-warning-color: #ff8c00;
+  --dark-warning-color-hover: #ff7f00;
+  --dark-warning-color-active: #ff6a00;
+  --dark-warning-color-focus: #ffa500;
+  --dark-warning-text-color: #f4f4f4;
+}
+
+/* ////////////////////////////////////////////////////////////////////// */
+/* JavaScript Theme Switcher                                              */
+/* ////////////////////////////////////////////////////////////////////// */
+/* 
+  To enable theme switching using the data-theme options, you will also need to include the javascript code
+  from theme-switcher.js file in your HTML.
+
+  The constants defined above are used for the light and dark themes to avoid repetition.
+  Any additional themes can be added here as well. A high contrast theme is included as an example.
+*/
+
+/* Light Theme */
+[data-theme="light"] {
+  --background-color: var(--light-background-color);
+  --secondary-background-color: var(--light-secondary-background-color);
+  --unset-background-color: var(--light-unset-background-color);
+  --text-color: var(--light-text-color);
+  --primary-color: var(--light-primary-color);
+  --primary-color-hover: var(--light-primary-color-hover);
+  --primary-color-active: var(--light-primary-color-active);
+  --primary-color-focus: var(--light-primary-color-focus);
+  --primary-color-disabled: var(--light-primary-color-disabled);
+  --primary-text-color: var(--light-primary-text-color);
+  --secondary-color: var(--light-secondary-color);
+  --secondary-color-hover: var(--light-secondary-color-hover);
+  --secondary-color-active: var(--light-secondary-color-active);
+  --secondary-color-focus: var(--light-secondary-color-focus);
+  --secondary-text-color: var(--light-secondary-text-color);
+  --highlight-color: var(--light-highlight-color);
+  --highlighted-text-color: var(--light-highlighted-text-color);
+  --link-color: var(--light-link-color);
+  --link-visited-color: var(--light-link-visited-color);
+  --link-hover-color: var(--light-link-hover-color);
+  --inline-code-background-color: var(--light-inline-code-background-color);
+  --inline-code-text-color: var(--light-inline-code-text-color);
+  --inline-code-border-color: var(--light-inline-code-border-color);
+  --danger-color: var(--light-danger-color);
+  --danger-color-hover: var(--light-danger-color-hover);
+  --danger-color-active: var(--light-danger-color-active);
+  --danger-color-focus: var(--light-danger-color-focus);
+  --danger-text-color: var(--light-danger-text-color);
+  --success-color: var(--light-success-color);
+  --success-color-hover: var(--light-success-color-hover);
+  --success-color-active: var(--light-success-color-active);
+  --success-color-focus: var(--light-success-color-focus);
+  --success-text-color: var(--light-success-text-color);
+  --warning-color: var(--light-warning-color);
+  --warning-color-hover: var(--light-warning-color-hover);
+  --warning-color-active: var(--light-warning-color-active);
+  --warning-color-focus: var(--light-warning-color-focus);
+  --warning-text-color: var(--light-warning-text-color);
+}
+
+[data-theme="dark"] {
+  --background-color: var(--dark-background-color);
+  --secondary-background-color: var(--dark-secondary-background-color);
+  --unset-background-color: var(--dark-unset-background-color);
+  --text-color: var(--dark-text-color);
+  --primary-color: var(--dark-primary-color);
+  --primary-color-hover: var(--dark-primary-color-hover);
+  --primary-color-active: var(--dark-primary-color-active);
+  --primary-color-focus: var(--dark-primary-color-focus);
+  --primary-color-disabled: var(--dark-primary-color-disabled);
+  --primary-text-color: var(--dark-primary-text-color);
+  --secondary-color: var(--dark-secondary-color);
+  --secondary-color-hover: var(--dark-secondary-color-hover);
+  --secondary-color-active: var(--dark-secondary-color-active);
+  --secondary-color-focus: var(--dark-secondary-color-focus);
+  --secondary-text-color: var(--dark-secondary-text-color);
+  --highlight-color: var(--dark-highlight-color);
+  --highlighted-text-color: var(--dark-highlighted-text-color);
+  --link-color: var(--dark-link-color);
+  --link-visited-color: var(--dark-link-visited-color);
+  --link-hover-color: var(--dark-link-hover-color);
+  --inline-code-background-color: var(--dark-inline-code-background-color);
+  --inline-code-text-color: var(--dark-inline-code-text-color);
+  --inline-code-border-color: var(--dark-inline-code-border-color);
+  --danger-color: var(--dark-danger-color);
+  --danger-color-hover: var(--dark-danger-color-hover);
+  --danger-color-active: var(--dark-danger-color-active);
+  --danger-color-focus: var(--dark-danger-color-focus);
+  --danger-text-color: var(--dark-danger-text-color);
+  --success-color: var(--dark-success-color);
+  --success-color-hover: var(--dark-success-color-hover);
+  --success-color-active: var(--dark-success-color-active);
+  --success-color-focus: var(--dark-success-color-focus);
+  --success-text-color: var(--dark-success-text-color);
+  --warning-color: var(--dark-warning-color);
+  --warning-color-hover: var(--dark-warning-color-hover);
+  --warning-color-active: var(--dark-warning-color-active);
+  --warning-color-focus: var(--dark-warning-color-focus);
+  --warning-text-color: var(--dark-warning-text-color);
+}
+
+/* High Contrast Theme */
+[data-theme="high-contrast"] {
+  --background-color: #000;
+  --secondary-background-color: #111111;
+  --unset-background-color: lime;
+  --text-color: #fff;
+  --primary-color: #ff0;
+  --primary-color-hover: #e6e600;
+  --primary-color-active: #cccc00;
+  --primary-color-focus: #ffff99;
+  --primary-color-disabled: #999900;
+  --primary-text-color: #000;
+  --secondary-color: #222;
+  --secondary-color-hover: #333;
+  --secondary-color-active: #444;
+  --secondary-color-focus: #555;
+  --secondary-text-color: #fff;
+  --highlight-color: #ff0;
+  --highlighted-text-color: #000;
+  --link-color: #ff0;
+  --link-visited-color: #551a8b;
+  --link-hover-color: #ffa500;
+  --inline-code-background-color: #282c34;
+  --inline-code-text-color: #61dafb;
+  --inline-code-border-color: #61dafb;
+  --danger-color: #ff4500;
+  --danger-color-hover: #ff6347;
+  --danger-color-active: #ff0000;
+  --danger-color-focus: #ff7256;
+  --danger-text-color: #fff;
+  --success-color: #00ff00;
+  --success-color-hover: #32cd32;
+  --success-color-active: #228b22;
+  --success-color-focus: #7cfc00;
+  --success-text-color: #000;
+  --warning-color: #ffa500;
+  --warning-color-hover: #ff8c00;
+  --warning-color-active: #ff7f00;
+  --warning-color-focus: #ffae42;
+  --warning-text-color: #fff;
+}
+
+/* ////////////////////////////////////////////////////////////////////// */
+/* CSS Only Light and Dark Themes                                         */
+/* ////////////////////////////////////////////////////////////////////// */
+/* 
+  This will force a light and dark theme when no javascript is available.
+  This uses the constants defined above to avoid repetition.
+
+  NO CHANGES ARE NEEDED HERE UNLESS ADDING A NEW CONSTANT.
+*/
+
+/* Light Theme */
+:root {
+  --background-color: var(--light-background-color);
+  --secondary-background-color: var(--light-secondary-background-color);
+  --unset-background-color: var(--light-unset-background-color);
+  --text-color: var(--light-text-color);
+  --primary-color: var(--light-primary-color);
+  --primary-color-hover: var(--light-primary-color-hover);
+  --primary-color-active: var(--light-primary-color-active);
+  --primary-color-focus: var(--light-primary-color-focus);
+  --primary-color-disabled: var(--light-primary-color-disabled);
+  --primary-text-color: var(--light-primary-text-color);
+  --secondary-color: var(--light-secondary-color);
+  --secondary-color-hover: var(--light-secondary-color-hover);
+  --secondary-color-active: var(--light-secondary-color-active);
+  --secondary-color-focus: var(--light-secondary-color-focus);
+  --secondary-text-color: var(--light-secondary-text-color);
+  --highlight-color: var(--light-highlight-color);
+  --highlighted-text-color: var(--light-highlighted-text-color);
+  --link-color: var(--light-link-color);
+  --link-visited-color: var(--light-link-visited-color);
+  --link-hover-color: var(--light-link-hover-color);
+  --inline-code-background-color: var(--light-inline-code-background-color);
+  --inline-code-text-color: var(--light-inline-code-text-color);
+  --inline-code-border-color: var(--light-inline-code-border-color);
+  --danger-color: var(--light-danger-color);
+  --danger-color-hover: var(--light-danger-color-hover);
+  --danger-color-active: var(--light-danger-color-active);
+  --danger-color-focus: var(--light-danger-color-focus);
+  --danger-text-color: var(--light-danger-text-color);
+  --success-color: var(--light-success-color);
+  --success-color-hover: var(--light-success-color-hover);
+  --success-color-active: var(--light-success-color-active);
+  --success-color-focus: var(--light-success-color-focus);
+  --success-text-color: var(--light-success-text-color);
+  --warning-color: var(--light-warning-color);
+  --warning-color-hover: var(--light-warning-color-hover);
+  --warning-color-active: var(--light-warning-color-active);
+  --warning-color-focus: var(--light-warning-color-focus);
+  --warning-text-color: var(--light-warning-text-color);
+}
+
+/* CSS Only Dark Theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: var(--dark-background-color);
+    --secondary-background-color: var(--dark-secondary-background-color);
+    --unset-background-color: var(--dark-unset-background-color);
+    --text-color: var(--dark-text-color);
+    --primary-color: var(--dark-primary-color);
+    --primary-color-hover: var(--dark-primary-color-hover);
+    --primary-color-active: var(--dark-primary-color-active);
+    --primary-color-focus: var(--dark-primary-color-focus);
+    --primary-color-disabled: var(--dark-primary-color-disabled);
+    --primary-text-color: var(--dark-primary-text-color);
+    --secondary-color: var(--dark-secondary-color);
+    --secondary-color-hover: var(--dark-secondary-color-hover);
+    --secondary-color-active: var(--dark-secondary-color-active);
+    --secondary-color-focus: var(--dark-secondary-color-focus);
+    --secondary-text-color: var(--dark-secondary-text-color);
+    --highlight-color: var(--dark-highlight-color);
+    --highlighted-text-color: var(--dark-highlighted-text-color);
+    --link-color: var(--dark-link-color);
+    --link-visited-color: var(--dark-link-visited-color);
+    --link-hover-color: var(--dark-link-hover-color);
+    --inline-code-background-color: var(--dark-inline-code-background-color);
+    --inline-code-text-color: var(--dark-inline-code-text-color);
+    --inline-code-border-color: var(--dark-inline-code-border-color);
+    --danger-color: var(--dark-danger-color);
+    --danger-color-hover: var(--dark-danger-color-hover);
+    --danger-color-active: var(--dark-danger-color-active);
+    --danger-color-focus: var(--dark-danger-color-focus);
+    --danger-text-color: var(--dark-danger-text-color);
+    --success-color: var(--dark-success-color);
+    --success-color-hover: var(--dark-success-color-hover);
+    --success-color-active: var(--dark-success-color-active);
+    --success-color-focus: var(--dark-success-color-focus);
+    --success-text-color: var(--dark-success-text-color);
+    --warning-color: var(--dark-warning-color);
+    --warning-color-hover: var(--dark-warning-color-hover);
+    --warning-color-active: var(--dark-warning-color-active);
+    --warning-color-focus: var(--dark-warning-color-focus);
+    --warning-text-color: var(--dark-warning-text-color);
+  }
+}

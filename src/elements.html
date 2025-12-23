@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Style Guide</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Style Guide</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="elements.html" class="active">Elements</a>
+        <a href="layout.html">Layout</a>
+        <label for="theme-select" class="right">Theme:</label>
+        <select id="theme-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="high-contrast">High Contrast</option>
+        </select>
+      </nav>
+    </header>
+    <div class="stack padded" style="--space: 2rem">
+      <section id="headings">
+        <h2><a href="#headings">Headings</a></h2>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+      </section>
+      <section id="text-elements">
+        <h2><a href="#text-elements">Text Elements</a></h2>
+        <div class="stack" style="--space: 1rem">
+          <div><p>This is a paragraph.</p></div>
+          <div><strong>This is strong text.</strong></div>
+          <div><em>This is emphasized text.</em></div>
+          <div><mark>This is marked text.</mark></div>
+          <div><del>This is deleted text.</del></div>
+          <div><ins>This is inserted text.</ins></div>
+          <div><sub>This is subscript text.</sub></div>
+          <div><sup>This is superscript text.</sup></div>
+          <div>
+            <blockquote class="fit-content">
+              This is a blockquote with the class <code>.fit-content</code>.
+            </blockquote>
+          </div>
+          <div>
+            <pre class="fit-content">
+This is preformatted text.
+  It preserves whitespace and line breaks.
+  Pre-formatted text does not wrap, and is typically not mobile friendly.
+  It also has the class <code>.fit-content</code>.</pre
+            >
+          </div>
+          <div>
+            <code># This is inline code.</code>
+          </div>
+          <div>
+            <pre class="fit-content wrap">
+# For multi line code snippets use <code>pre</code> with a <code>code</code> tag inside.
+
+# This example uses the utility classes
+  - <code>.fit-content</code> to fit the code to the content width
+  - <code>.wrap</code> to wrap the code to the next line if it is too long.
+
+# It also uses the <code>code</code> specific class <code>.multiline</code> to indicate 
+# that the code is multiline.
+
+<code class="multiline fit-content">def hello_world():
+print("Hello, World!")
+
+# Call the function
+hello_world()</code></pre>
+          </div>
+        </div>
+      </section>
+      <section id="links">
+        <h2><a href="#links">Links</a></h2>
+        <div class="stack" style="--space: 1rem">
+          <div>
+            <a href="https://www.example.com">This is an example link</a>
+          </div>
+          <div>
+            <a href="https://www.example.com" class="visited"
+              >This is a visited link</a
+            >
+          </div>
+        </div>
+      </section>
+      <section id="lists">
+        <h2><a href="#lists">Lists</a></h2>
+        <div class="stack" style="--space: 2rem">
+          <div>
+            <h4>Unordered List</h4>
+            <ul>
+              <li>Unordered list item 1</li>
+              <li>Unordered list item 2</li>
+              <li>Unordered list item 3</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Ordered List</h4>
+            <ol>
+              <li>Ordered list item 1</li>
+              <li>Ordered list item 2</li>
+              <li>Ordered list item 3</li>
+            </ol>
+          </div>
+          <div>
+            <h4>Definition List</h4>
+            <dl>
+              <dt>Definition term 1</dt>
+              <dd>Definition description 1</dd>
+              <dt>Definition term 2</dt>
+              <dd>Definition description 2</dd>
+            </dl>
+          </div>
+        </div>
+      </section>
+      <section id="tables">
+        <h2><a href="#tables">Tables</a></h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Header 1</th>
+              <th>Header 2</th>
+              <th>Header 3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+            </tr>
+            <tr>
+              <td>Data 4</td>
+              <td>Data 5</td>
+              <td>Data 6</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section id="buttons">
+        <h2><a href="#buttons">Buttons</a></h2>
+        <div class="stack" style="--space: 2rem">
+          <button type="button">Default Button</button>
+          <button type="button" class="primary">Primary Button</button>
+          <button type="button" class="secondary">Secondary Button</button>
+          <button type="button" class="success">Success Button</button>
+          <button type="button" class="danger">Danger Button</button>
+          <button type="button" class="warning">Warning Button</button>
+        </div>
+      </section>
+      <section id="forms">
+        <h2><a href="#forms">Forms</a></h2>
+
+        <form class="stack" style="--space: 1rem">
+          <div>
+            <label for="text">Text Input</label>
+            <input type="text" id="text" name="text" />
+          </div>
+          <div>
+            <label for="password">Password Input</label>
+            <input type="password" id="password" name="password" />
+          </div>
+          <div>
+            <label for="email">Email Input</label>
+            <input type="email" id="email" name="email" />
+          </div>
+          <div>
+            <label for="number">Number Input</label>
+            <input type="number" id="number" name="number" />
+          </div>
+          <div>
+            <label for="textarea">Textarea</label>
+            <textarea id="textarea" name="textarea"></textarea>
+          </div>
+          <div>
+            <label for="select">Select</label>
+            <select id="select" name="select">
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select>
+          </div>
+          <div>
+            <label>Radio Buttons</label>
+            <div class="cluster">
+              <input type="radio" id="radio1" name="radio" value="1" />
+              <label for="radio1">Radio 1</label>
+            </div>
+            <div class="cluster">
+              <input type="radio" id="radio2" name="radio" value="2" />
+              <label for="radio2">Radio 2</label>
+            </div>
+          </div>
+          <div>
+            <label>Checkboxes</label>
+            <div class="cluster">
+              <input type="checkbox" id="checkbox1" name="checkbox1" />
+              <label for="checkbox1">Checkbox 1</label>
+            </div>
+            <div class="cluster">
+              <input type="checkbox" id="checkbox2" name="checkbox2" />
+              <label for="checkbox2">Checkbox 2</label>
+            </div>
+          </div>
+          <button type="submit" class="primary">Submit</button>
+        </form>
+      </section>
+      <section id="images" class="stack">
+        <h2><a href="#images">Images</a></h2>
+        <h4>Image Types</h4>
+        <div class="cluster" style="--space: 1rem">
+          <div class="stack" style="--space: 0.25em">
+            <img
+              src="public/images/placeholder_150.png"
+              alt="Placeholder Image"
+              width="150"
+            />
+            <p>PNG image</p>
+          </div>
+          <div class="stack" style="--space: 0.25em">
+            <img
+              src="public/images/placeholder_150.jpg"
+              alt="Placeholder Image"
+              width="150"
+            />
+            <p>JPEG image</p>
+          </div>
+          <div class="stack" style="--space: 0.25em">
+            <img
+              src="public/images/placeholder_150.svg"
+              alt="Placeholder Image"
+              width="150"
+            />
+            <p>SVG image</p>
+          </div>
+        </div>
+        <div>
+          <h4>Figure</h4>
+          <figure>
+            <img
+              src="public/images/placeholder_150.png"
+              alt="Placeholder Image"
+            />
+            <figcaption>Figcaption for the image.</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section>
+        <h2><a href="#media">Audio and Video</a></h2>
+        <audio controls>
+          <source src="audio.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <video controls width="250">
+          <source src="video.mp4" type="video/mp4" />
+          Your browser does not support the video element.
+        </video>
+      </section>
+      <section id="canvas">
+        <h2><a href="#canvas">Canvas</a></h2>
+        <canvas id="myCanvas"></canvas>
+      </section>
+    </div>
+    <footer>
+      <p>Created by <a href="https://2ajoyce.com/">2ajoyce</a></p>
+    </footer>
+  </body>
+  <script src="theme-switcher.js"></script>
+</html>

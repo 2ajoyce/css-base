@@ -1,0 +1,102 @@
+button {
+  padding: 0.75em 1em;
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: var(--primary-color-hover);
+}
+
+button:active {
+  background-color: var(--primary-color-active);
+  transform: scale(0.98);
+}
+
+button:focus {
+  outline: 2px solid var(--primary-color-focus);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  background-color: var(--primary-color-disabled);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Secondary button */
+button.secondary {
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
+}
+
+button.secondary:hover {
+  background-color: var(--secondary-color-hover);
+}
+
+button.secondary:active {
+  background-color: var(--secondary-color-active);
+}
+
+button.secondary:focus {
+  outline: 2px solid var(--secondary-color-focus);
+}
+
+/* Danger button */
+button.danger {
+  background-color: var(--danger-color);
+  color: var(--danger-text-color);
+}
+
+button.danger:hover {
+  background-color: var(--danger-color-hover);
+}
+
+button.danger:active {
+  background-color: var(--danger-color-active);
+}
+
+button.danger:focus {
+  outline: 2px solid var(--danger-color-focus);
+}
+
+/* Success button */
+button.success {
+  background-color: var(--success-color);
+  color: var(--success-text-color);
+}
+
+button.success:hover {
+  background-color: var(--success-color-hover);
+}
+
+button.success:active {
+  background-color: var(--success-color-active);
+}
+
+button.success:focus {
+  outline: 2px solid var(--success-color-focus);
+}
+
+/* Warning button */
+button.warning {
+  background-color: var(--warning-color);
+  color: var(--warning-text-color);
+}
+
+button.warning:hover {
+  background-color: var(--warning-color-hover);
+}
+
+button.warning:active {
+  background-color: var(--warning-color-active);
+}
+
+button.warning:focus {
+  outline: 2px solid var(--warning-color-focus);
+}

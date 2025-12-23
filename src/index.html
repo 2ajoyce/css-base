@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Style Guide Landing Page</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Style Guide</h1>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="elements.html">Elements</a>
+        <a href="layout.html">Layout</a>
+        <label for="theme-select" class="right">Theme:</label>
+        <select id="theme-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="high-contrast">High Contrast</option>
+        </select>
+      </nav>
+    </header>
+    <section>
+      The style guide is divided into two main sections:
+      <ul>
+        <li>
+          <strong>HTML Element Examples:</strong> This section showcases the
+          various HTML elements and their styles
+        </li>
+        <li>
+          <strong>Layout Examples:</strong> This section demonstrates different
+          layout patterns
+        </li>
+      </ul>
+    </section>
+    <footer>
+      <p>Created by <a href="https://2ajoyce.com/">2ajoyce</a></p>
+    </footer>
+  </body>
+  <script src="theme-switcher.js"></script>
+</html>

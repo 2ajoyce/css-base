@@ -1,0 +1,20 @@
+/* 
+ * This stylesheet adjusts individual properties across multiple elements 
+ * to customize them for specific scenarios. Each rule is tailored to 
+ * enhance the appearance, layout, or behavior of the targeted elements 
+ * to meet the desired design requirements.
+ */
+
+.fit-content {
+  width: fit-content;
+}
+
+@media (max-width: 768px) {
+  .fit-content {
+    width: auto;
+  }
+}
+
+.radius {
+  border-radius: var(--radius, 0.5rem);
+}
