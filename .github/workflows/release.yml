@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 # v4.4.0
+        id: release
+        with:
+          release-type: simple
+
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Install just
+        uses: extractions/setup-just@e33e0265a09d6d736e2ee1e0eb685ef1de4669ff # v3.0.0
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Build
+        run: just build-ci
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Upload Release Asset
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ASSET_PATH=$(ls styleguide_*.zip)
+          gh release upload ${{ steps.release.outputs.tag_name }} "$ASSET_PATH"
