@@ -6,6 +6,10 @@ Coding agents are great at CSS in isolation and bad at consistency. I'm hoping t
 
 ## Getting Started
 
+### Demo
+
+You can view the latest release at [https://2ajoyce.github.io/css-base/](https://2ajoyce.github.io/css-base/).
+
 ### Download
 
 Download the latest release from the [Releases](https://github.com/2ajoyce/css-base/releases) page. Extract the contents of the zip file into your project.
