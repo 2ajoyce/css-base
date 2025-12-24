@@ -272,6 +272,16 @@ label {
   color: var(--text-color);
 }
 
+/* A label which sits to the left of the input */
+label.left {
+  margin-right: 0.5rem;
+}
+
+/* A label which sits to the right of the input */
+label.right {
+  margin-left: 0.5rem;
+}
+
 /* If the label is for a toggle switch, center it vertically since toggles can be taller than normal checkboxes in some cases */
 input[type="checkbox"].toggle + label {
   align-self: center;
