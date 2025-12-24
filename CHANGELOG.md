@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/2ajoyce/css-base/compare/v1.1.0...v1.2.0) (2025-12-24)
+
+
+### Features
+
+* fix theme spacing on other pages. ([8eb0c53](https://github.com/2ajoyce/css-base/commit/8eb0c5309cbdda616b6eaffd17bca8b8021fc514))
+
 ## [1.1.0](https://github.com/2ajoyce/css-base/compare/v1.0.0...v1.1.0) (2025-12-24)
 
 
