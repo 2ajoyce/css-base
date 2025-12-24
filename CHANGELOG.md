@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/2ajoyce/css-base/compare/v1.0.0...v1.1.0) (2025-12-24)
+
+
+### Features
+
+* add support for toggle switches as checkboxes with class "toggle" ([97850fd](https://github.com/2ajoyce/css-base/commit/97850fd9cf5382ec3e7476c7c014849514791b47))
+* fix spacing in header theme selection and add label positioning styles ([3b72a41](https://github.com/2ajoyce/css-base/commit/3b72a4149b1dd2a99147dbe98bfcd38b1aab27d1))
+
 ## 1.0.0 (2025-12-23)
 
 
