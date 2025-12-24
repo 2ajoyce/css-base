@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/2ajoyce/css-base/compare/v1.3.0...v2.0.0) (2025-12-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* massive overhaul; finished the missing layouts, but broke some things along the way.
+
+### Features
+
+* massive overhaul; finished the missing layouts, but broke some things along the way. ([1c9f7fc](https://github.com/2ajoyce/css-base/commit/1c9f7fcf1461e188e8dcf81709e0566d211c4803))
+
 ## [1.3.0](https://github.com/2ajoyce/css-base/compare/v1.2.0...v1.3.0) (2025-12-24)
 
 
