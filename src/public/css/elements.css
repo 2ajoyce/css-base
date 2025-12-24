@@ -282,6 +282,11 @@ label.right {
   margin-left: 0.5rem;
 }
 
+/* A label which is aligned to the bottom of the input */
+label.ground {
+  align-self: end;
+}
+
 /* If the label is for a toggle switch, center it vertically since toggles can be taller than normal checkboxes in some cases */
 input[type="checkbox"].toggle + label {
   align-self: center;
