@@ -1,13 +1,55 @@
-/* Constants */
-/* Mobile Width: 768px; */
-
-/* Box */
-.box {
-  padding: var(--padding, 1rem);
-  border: var(--border, 1px solid var(--text-color));
+/* /////////////////////////////////////////////////////
+// Aspect Ratio
+//////////////////////////////////////////////////////*/
+.aspect-ratio {
+  padding: var(--aspect-ratio-padding, 0);
+  border: var(--aspect-ratio-border, 1px solid #000);
+  aspect-ratio: var(--aspect-ratio, 1 / 1);
+  background-color: var(--aspect-ratio-bg, transparent);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Center */
+.aspect-ratio > img,
+.aspect-ratio > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* /////////////////////////////////////////////////////
+// Card 
+//////////////////////////////////////////////////////*/
+.card {
+  padding: var(--card-padding, 1rem);
+  border: var(--card-border, 1px solid var(--text-color));
+}
+
+/* /////////////////////////////////////////////////////
+// Carousel
+//////////////////////////////////////////////////////*/
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: var(--carousel-gap, 1rem);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* Pad the bottom so that the scrollbar doesn't overlap the content */
+  padding-bottom: 1rem;
+}
+
+.carousel > * {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  max-width: var(--carousel-item-width, 80%);
+}
+
+/* /////////////////////////////////////////////////////
+// Center
+//////////////////////////////////////////////////////*/
 .center {
   display: flex;
   flex-direction: column;
@@ -16,105 +58,120 @@
   height: 100%;
 }
 
-/* Cover */
-.cover {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: var(--padding, 1rem);
-}
-
-/* Cluster */
-.cluster {
+/* /////////////////////////////////////////////////////
+// Columns
+//////////////////////////////////////////////////////*/
+.columns {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space, 1rem);
+  gap: var(--columns-gap, 1rem);
+}
+.columns > * {
+  flex: 1 1 calc((var(--columns-min-width, 500px) - 100%) * 999);
 }
 
-/* Sidebar */
-.sidebar {
-  display: flex;
-}
-.sidebar > .main {
-  flex: 1;
-}
-.sidebar > .side {
-  flex: 0 0 var(--sidebar-width, 0);
+/* /////////////////////////////////////////////////////
+// Container
+//////////////////////////////////////////////////////*/
+.container {
+  max-width: var(--container-max-width, 1200px);
+  margin: 0 auto;
+  padding: var(--container-padding, 1rem);
 }
 
-@media (max-width: 768px) {
-  .sidebar {
-    flex-direction: column;
-  }
-  .sidebar > .side {
-    flex: 1;
-  }
-}
-
-/* Stack */
-.stack > * + * {
-  margin-top: var(--space, 1.5rem);
-}
-
-.stack.padded {
-  padding: var(--padding, 1rem);
-}
-
-/* Switcher */
-.switcher {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space, 1rem);
-}
-.switcher > * {
-  flex: 1 1 calc((var(--min-width, 200px) - 100%) * 999);
-}
-
-/* Grid */
+/* /////////////////////////////////////////////////////
+// Grid
+//////////////////////////////////////////////////////*/
 .grid {
+  display: grid;
+  gap: var(--grid-gap, 1rem);
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(var(--grid-min-width, 200px), 100%), 1fr)
+  );
+}
+
+/* /////////////////////////////////////////////////////
+// Group
+//////////////////////////////////////////////////////*/
+.group {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space, 1rem);
-}
-.grid > * {
-  flex: 1 1 calc((var(--min-width, 200px) - 100%) * 999);
+  gap: var(--group-gap, 1rem);
 }
 
-/* Frame */
-.frame {
-  padding: var(--padding, 1rem);
-  border: var(--border, 1px solid #000);
-}
-
-/* Reel */
-.reel {
-  display: flex;
-  overflow-x: auto;
-  gap: var(--space, 1rem);
-}
-
-/* Imposter */
-.imposter {
-  position: absolute;
-  top: var(--top, 50%);
-  left: var(--left, 50%);
-  transform: translate(-50%, -50%);
-}
-
-/* Icon */
+/* /////////////////////////////////////////////////////
+// Icon
+//////////////////////////////////////////////////////*/
 .icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: var(--size, 2rem);
-  height: var(--size, 2rem);
+  width: var(--icon-width, 2rem);
+  height: var(--icon-height, 2rem);
 }
 
-/* Container */
-.container {
-  max-width: var(--max-width, 1200px);
-  margin: 0 auto;
-  padding: var(--padding, 1rem);
+/* /////////////////////////////////////////////////////
+// Overlay
+//////////////////////////////////////////////////////*/
+.overlay {
+  position: absolute;
+  top: var(--overlay-top, 50%);
+  left: var(--overlay-left, 50%);
+  transform: translate(-50%, -50%);
+
+  /* Overflow protection */
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0; /* Prevent margins from pushing the element out */
+  overflow: auto;
+}
+
+/* /////////////////////////////////////////////////////
+// Sidebar
+//////////////////////////////////////////////////////*/
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sidebar-gap, 1rem);
+}
+
+.sidebar > .side {
+  flex-basis: var(--sidebar-side-width, 20rem);
+  flex-grow: 1;
+}
+
+.sidebar > .main {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: var(--sidebar-main-min-width, 50%);
+}
+
+/* /////////////////////////////////////////////////////
+// Stack
+//////////////////////////////////////////////////////*/
+.stack {
+  display: flex;
+  flex-direction: column;
+  padding: var(--stack-padding, 0rem);
+  gap: var(--stack-space, 1.5rem);
+}
+
+/* Optional support for horizontal stack */
+.stack.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* 
+  Move the last child of the stack to the bottom or right
+  depending on the stack direction.
+*/
+.stack.split:not(.horizontal) > *:last-child {
+  margin-top: auto;
+}
+
+.stack.horizontal.split > *:last-child {
+  margin-left: auto;
 }

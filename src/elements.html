@@ -9,11 +9,11 @@
   <body>
     <header>
       <h1>Style Guide</h1>
-      <nav>
+      <nav class="stack horizontal split" style="--stack-space: 1rem">
         <a href="index.html">Home</a>
         <a href="elements.html" class="active">Elements</a>
         <a href="layout.html">Layout</a>
-        <div class="right grid" style="--space: 0rem">
+        <div class="stack horizontal" style="--stack-space: 0">
           <label for="theme-select" class="left ground">Theme:</label>
           <select id="theme-select">
             <option value="light">Light</option>
@@ -23,7 +23,7 @@
         </div>
       </nav>
     </header>
-    <div class="stack padded" style="--space: 2rem">
+    <div class="stack" style="--stack-space: 2rem; --stack-padding: 2rem">
       <section id="headings">
         <h2><a href="#headings">Headings</a></h2>
         <h1>Heading 1</h1>
@@ -35,7 +35,7 @@
       </section>
       <section id="text-elements">
         <h2><a href="#text-elements">Text Elements</a></h2>
-        <div class="stack" style="--space: 1rem">
+        <div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
           <div><p>This is a paragraph.</p></div>
           <div><strong>This is strong text.</strong></div>
           <div><em>This is emphasized text.</em></div>
@@ -81,7 +81,7 @@ hello_world()</code></pre>
       </section>
       <section id="links">
         <h2><a href="#links">Links</a></h2>
-        <div class="stack" style="--space: 1rem">
+        <div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
           <div>
             <a href="https://www.example.com">This is an example link</a>
           </div>
@@ -94,7 +94,7 @@ hello_world()</code></pre>
       </section>
       <section id="lists">
         <h2><a href="#lists">Lists</a></h2>
-        <div class="stack" style="--space: 2rem">
+        <div class="stack">
           <div>
             <h4>Unordered List</h4>
             <ul>
@@ -148,7 +148,7 @@ hello_world()</code></pre>
       </section>
       <section id="buttons">
         <h2><a href="#buttons">Buttons</a></h2>
-        <div class="stack" style="--space: 2rem">
+        <div class="stack">
           <button type="button">Default Button</button>
           <button type="button" class="primary">Primary Button</button>
           <button type="button" class="secondary">Secondary Button</button>
@@ -160,7 +160,7 @@ hello_world()</code></pre>
       <section id="forms">
         <h2><a href="#forms">Forms</a></h2>
 
-        <form class="stack" style="--space: 1rem">
+        <form class="stack" style="--stack-padding: 2rem">
           <div>
             <label for="text">Text Input</label>
             <input type="text" id="text" name="text" />
@@ -191,22 +191,22 @@ hello_world()</code></pre>
           </div>
           <div>
             <h5>Radio Buttons</h5>
-            <div class="cluster">
+            <div class="group">
               <input type="radio" id="radio1" name="radio" value="1" />
               <label for="radio1">Radio 1</label>
             </div>
-            <div class="cluster">
+            <div class="group">
               <input type="radio" id="radio2" name="radio" value="2" />
               <label for="radio2">Radio 2</label>
             </div>
           </div>
           <div>
             <h5>Checkboxes</h5>
-            <div class="cluster">
+            <div class="group">
               <input type="checkbox" id="checkbox1" name="checkbox1" />
               <label for="checkbox1">Unchecked</label>
             </div>
-            <div class="cluster">
+            <div class="group">
               <input type="checkbox" id="checkbox2" name="checkbox2" checked />
               <label for="checkbox2">Checked</label>
             </div>
@@ -214,7 +214,7 @@ hello_world()</code></pre>
           <div>
             <h5>Toggle Switches</h5>
             <p>Toggles are styled checkboxes.</p>
-            <div class="cluster">
+            <div class="group">
               <input
                 type="checkbox"
                 id="toggle1"
@@ -223,7 +223,7 @@ hello_world()</code></pre>
               />
               <label for="toggle1">Untoggled</label>
             </div>
-            <div class="cluster">
+            <div class="group">
               <input
                 type="checkbox"
                 id="toggle2"
@@ -240,8 +240,8 @@ hello_world()</code></pre>
       <section id="images" class="stack">
         <h2><a href="#images">Images</a></h2>
         <h4>Image Types</h4>
-        <div class="cluster" style="--space: 1rem">
-          <div class="stack" style="--space: 0.25em">
+        <div class="group" style="--group-gap: 1rem">
+          <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
             <img
               src="public/images/placeholder_150.png"
               alt="Placeholder Image"
@@ -249,7 +249,7 @@ hello_world()</code></pre>
             />
             <p>PNG image</p>
           </div>
-          <div class="stack" style="--space: 0.25em">
+          <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
             <img
               src="public/images/placeholder_150.jpg"
               alt="Placeholder Image"
@@ -257,13 +257,21 @@ hello_world()</code></pre>
             />
             <p>JPEG image</p>
           </div>
-          <div class="stack" style="--space: 0.25em">
+          <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
             <img
               src="public/images/placeholder_150.svg"
               alt="Placeholder Image"
               width="150"
             />
             <p>SVG image</p>
+          </div>
+          <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
+            <img
+              src="public/images/placeholder.gif"
+              alt="Placeholder Image"
+              width="150"
+            />
+            <p>GIF image</p>
           </div>
         </div>
         <div>
@@ -280,21 +288,40 @@ hello_world()</code></pre>
       <section>
         <h2><a href="#media">Audio and Video</a></h2>
         <audio controls>
-          <source src="audio.mp3" type="audio/mpeg" />
+          <source src="public/audio/placeholder.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
-        <video controls width="250">
-          <source src="video.mp4" type="video/mp4" />
+        <video controls muted width="480">
+          <source
+            src="public/videos/placeholder_16x9_480.mp4"
+            type="video/mp4"
+          />
           Your browser does not support the video element.
         </video>
       </section>
       <section id="canvas">
         <h2><a href="#canvas">Canvas</a></h2>
-        <canvas id="myCanvas"></canvas>
+        <canvas id="exampleCanvas" width="600" height="200"></canvas>
+        <script>
+          (function () {
+            const canvas = document.getElementById("exampleCanvas");
+            const ctx = canvas.getContext("2d");
+
+            // Draw a simple colorful pattern
+            for (let i = 0; i < 12; i++) {
+              for (let j = 0; j < 4; j++) {
+                ctx.fillStyle = `hsl(${i * 30}, 70%, ${50 + j * 10}%)`;
+                ctx.fillRect(i * 50, j * 50, 45, 45);
+              }
+            }
+          })();
+        </script>
       </section>
     </div>
     <footer>
-      <p>Created by <a href="https://2ajoyce.com/">2ajoyce</a></p>
+      <p>
+        Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a>
+      </p>
     </footer>
   </body>
   <script src="theme-switcher.js"></script>

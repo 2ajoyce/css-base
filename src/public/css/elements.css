@@ -13,47 +13,40 @@ body {
   min-width: 20rem;
 }
 
-div {
-  background-color: inherit;
-}
+/* There is no styling applied to div elements */
+/* div {} */
 
 h1 {
-  background-color: inherit;
   margin: 1.5rem 0 1rem;
   font-weight: bold;
   font-size: 2rem;
 }
 
 h2 {
-  background-color: inherit;
   margin: 1.25rem 0 0.75rem;
   font-weight: bold;
   font-size: 1.75rem;
 }
 
 h3 {
-  background-color: inherit;
   margin: 1rem 0 0.5rem;
   font-weight: bold;
   font-size: 1.5rem;
 }
 
 h4 {
-  background-color: inherit;
   margin: 0.75rem 0 0.25rem;
   font-weight: bold;
   font-size: 1.25rem;
 }
 
 h5 {
-  background-color: inherit;
   margin: 0.5rem 0 0;
   font-weight: bold;
   font-size: 1.1rem;
 }
 
 h6 {
-  background-color: inherit;
   margin: 0.25rem 0 0;
   font-weight: bold;
   font-size: 1rem;
@@ -61,7 +54,6 @@ h6 {
 
 p {
   font-size: 1rem;
-  background-color: inherit;
   margin: 1rem 0;
   min-width: 10rem;
 }
@@ -102,12 +94,10 @@ code.multiline {
 }
 
 strong {
-  background-color: inherit;
   font-weight: bold;
 }
 
 em {
-  background-color: inherit;
   font-style: italic;
 }
 
@@ -117,30 +107,25 @@ mark {
 }
 
 del {
-  background-color: inherit;
   text-decoration: line-through;
 }
 
 ins {
-  background-color: inherit;
   text-decoration: underline;
 }
 
 sub {
-  background-color: inherit;
   vertical-align: sub;
   font-size: smaller;
 }
 
 sup {
-  background-color: inherit;
   vertical-align: super;
   font-size: smaller;
 }
 
 /* Links */
 a {
-  background-color: inherit;
   color: var(--link-color);
   text-decoration: none;
 }
@@ -178,7 +163,6 @@ nav a:hover {
 /* Lists */
 ul,
 ol {
-  background-color: inherit;
   padding-left: 1rem;
 }
 
@@ -190,28 +174,23 @@ ol {
   list-style: decimal;
 }
 
-li {
-  background-color: inherit;
-}
+/* There is no styling applied to li elements */
+/* li {} */
 
 dl {
-  background-color: inherit;
   padding-left: 1rem;
 }
 
 dt {
-  background-color: inherit;
   font-weight: bold;
 }
 
 dd {
-  background-color: inherit;
   padding-left: 1rem;
 }
 
 /* Tables */
 table {
-  background-color: inherit;
   width: 100%;
   border-collapse: collapse;
   margin: 2rem 0;
@@ -222,7 +201,6 @@ thead {
 }
 
 th {
-  background-color: inherit;
   padding: 0.5rem;
   border-bottom: 1px solid var(--primary-color);
   border-right: 1px solid var(--secondary-color);
@@ -242,19 +220,16 @@ th:last-child {
 }
 
 td {
-  background-color: inherit;
   padding: 0.5rem;
   border: 1px solid var(--secondary-color);
   text-align: left;
 }
 
-tbody {
-  background-color: inherit;
-}
+/* There is no styling applied to tbody elements */
+/* tbody {} */
 
-tr {
-  background-color: inherit;
-}
+/* There is no styling applied to tr elements */
+/* tr {} */
 
 /* Forms */
 form {
@@ -266,7 +241,6 @@ form {
 }
 
 label {
-  background-color: inherit;
   display: block;
   font-weight: bold;
   color: var(--text-color);
@@ -295,7 +269,7 @@ input[type="checkbox"].toggle + label {
 input,
 textarea,
 select {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border: 1px solid var(--secondary-color);
   border-radius: 5px;
   width: 100%;
@@ -392,16 +366,13 @@ legend {
 img {
   max-width: 100%;
   height: auto;
-  background-color: inherit;
 }
 
 figure {
-  background-color: inherit;
   margin: 0;
 }
 
 figcaption {
-  background-color: inherit;
   font-style: italic;
   color: var(--text-color);
 }
@@ -409,16 +380,16 @@ figcaption {
 audio,
 video {
   display: block;
-  background-color: inherit;
   margin: 2rem 0;
+  max-width: 100%;
 }
 
 /* Canvas */
 canvas {
-  background-color: inherit;
   display: block;
   margin: 2rem 0;
   border: 1px solid var(--secondary-color);
+  max-width: 100%;
 }
 
 /* Section styles */
@@ -462,7 +433,6 @@ header h1 {
 header nav a {
   color: var(--text-color);
   text-decoration: none;
-  margin: 0 1rem 0 0;
 }
 
 header a:visited {
@@ -471,7 +441,6 @@ header a:visited {
 
 /* Navigation */
 nav {
-  background-color: inherit;
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;

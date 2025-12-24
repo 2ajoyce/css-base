@@ -9,11 +9,11 @@
   <body>
     <header>
       <h1>Style Guide</h1>
-      <nav>
+      <nav class="stack horizontal split" style="--stack-space: 1rem">
         <a href="index.html" class="active">Home</a>
         <a href="elements.html">Elements</a>
         <a href="layout.html">Layout</a>
-        <div class="right grid" style="--space: 0rem">
+        <div class="stack horizontal" style="--stack-space: 0">
           <label for="theme-select" class="left ground">Theme:</label>
           <select id="theme-select">
             <option value="light">Light</option>
@@ -37,7 +37,9 @@
       </ul>
     </section>
     <footer>
-      <p>Created by <a href="https://2ajoyce.com/">2ajoyce</a></p>
+      <p>
+        Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a>
+      </p>
     </footer>
   </body>
   <script src="theme-switcher.js"></script>

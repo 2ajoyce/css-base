@@ -9,11 +9,11 @@
   <body>
     <header>
       <h1>Style Guide</h1>
-      <nav>
+      <nav class="stack horizontal split" style="--stack-space: 1rem">
         <a href="index.html">Home</a>
         <a href="elements.html">Elements</a>
         <a href="layout.html" class="active">Layout</a>
-        <div class="right grid" style="--space: 0rem">
+        <div class="stack horizontal" style="--stack-space: 0">
           <label for="theme-select" class="left ground">Theme:</label>
           <select id="theme-select">
             <option value="light">Light</option>
@@ -23,20 +23,237 @@
         </div>
       </nav>
     </header>
-    <div class="stack padded">
-      <!-- Box -->
-      <section id="box">
-        <h2><a href="#box">Box</a></h2>
+    <div class="stack container" style="--stack-space: 2rem">
+      <!-- Aspect Ratio -->
+      <section id="aspect-ratio">
+        <h2><a href="#aspect-ratio">Aspect Ratio</a></h2>
         <p>
-          The <code>.box</code> class adds padding and a border around content.
+          The <code>.aspect-ratio</code> class is designed for media elements
+          like images or videos. It maintains a specific aspect ratio and
+          ensures content fits correctly.
         </p>
         <p>
-          The style parameter <code>--padding: 1rem</code> sets the padding
-          inside the box. The default is <code>1rem</code>.
+          The style parameter <code>--aspect-ratio</code> sets the aspect ratio.
+          The default is <code>1 / 1</code>.
+        </p>
+        <p>
+          The style parameter <code>--aspect-ratio-padding</code> sets the
+          padding. The default is <code>0</code>.
+        </p>
+        <p>
+          The style parameter
+          <code>--aspect-ratio-border</code> sets the border. The default is
+          <code>1px solid #000</code>.
+        </p>
+        <p>
+          The style parameter <code>--aspect-ratio-bg</code> sets the background
+          color. The default is <code>transparent</code>.
         </p>
 
-        <div class="box" style="--padding: 1rem">
-          <p>This content is in a box.</p>
+        <div class="grid">
+          <div>
+            <h5>Default</h5>
+            <div class="aspect-ratio">
+              <img src="public/images/placeholder_150.png" alt="Placeholder" />
+            </div>
+          </div>
+          <div>
+            <h5>Padded</h5>
+            <div
+              class="aspect-ratio"
+              style="
+                --aspect-ratio-padding: 1rem;
+                --aspect-ratio-bg: var(--secondary-color, #eee);
+                --aspect-ratio-border: var(--primary-color, #000) solid 1px;
+              "
+            >
+              <img src="public/images/placeholder_150.png" alt="Placeholder" />
+            </div>
+          </div>
+          <div>
+            <h5>Gif</h5>
+            <div class="aspect-ratio">
+              <img src="public/images/placeholder.gif" alt="Placeholder" />
+            </div>
+          </div>
+          <div>
+            <h5>MP4</h5>
+            <div class="aspect-ratio">
+              <video controls muted>
+                <source
+                  src="public/videos/placeholder_480.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+        <div class="grid" style="--min-width: 300px">
+          <div>
+            <h5>16:9 PNG</h5>
+            <div class="aspect-ratio" style="--aspect-ratio: 16 / 9">
+              <img src="public/images/placeholder_16x9.png" alt="Placeholder" />
+            </div>
+          </div>
+          <div>
+            <h5>16:9 MP4</h5>
+            <div class="aspect-ratio" style="--aspect-ratio: 16 / 9">
+              <video controls muted>
+                <source
+                  src="public/videos/placeholder_16x9_480.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card -->
+      <section id="card">
+        <h2><a href="#card">Card</a></h2>
+        <p>
+          The <code>.card</code> class adds padding and a border around content.
+        </p>
+        <p>
+          The style parameter <code>--card-padding</code> sets the padding
+          inside the card. The default is <code>1rem</code>.
+        </p>
+        <p>
+          The style parameter <code>--card-border</code> sets the border around
+          the card. The default is <code>1px solid #000</code>.
+        </p>
+
+        <div
+          class="card"
+          style="--card-padding: 1rem; --card-border: 1px solid #000"
+        >
+          <p>This content is in a card.</p>
+        </div>
+      </section>
+
+      <!-- Carousel -->
+      <section id="carousel">
+        <h2><a href="#carousel">Carousel</a></h2>
+        <p>
+          The <code>.carousel</code> class creates a horizontal scrolling
+          container with CSS scroll snapping.
+        </p>
+        <p>
+          The style parameter <code>--carousel-gap</code> sets the spacing
+          between elements. The default is <code>1rem</code>.
+        </p>
+        <p>
+          The style parameter <code>--carousel-item-width</code> sets the
+          maximum width of each item in the carousel. The default is
+          <code>80%</code>.
+        </p>
+        <p>
+          The divs in this example also have the class <code>.card</code> to
+          make the spacing more clear.
+        </p>
+
+        <div class="carousel" style="--carousel-gap: 1rem">
+          <div class="card">
+            <h3>Item 1</h3>
+            <p>
+              This is some content. It includes a heading, two paragraphs, and a
+              button.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget
+              augue sagittis, feugiat sapien a, consectetur ante. Nullam finibus
+              facilisis posuere. Nunc feugiat nibh id maximus commodo. Duis
+              accumsan elit ut molestie congue.
+            </p>
+            <button>Click me</button>
+          </div>
+          <div class="card">
+            <h3>Item 2</h3>
+            <p>
+              This is some content. It includes a heading, two paragraphs, and a
+              button.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget
+              augue sagittis, feugiat sapien a, consectetur ante. Nullam finibus
+              facilisis posuere. Nunc feugiat nibh id maximus commodo. Duis
+              accumsan elit ut molestie congue.
+            </p>
+            <button>Click me</button>
+          </div>
+          <div class="card">
+            <h3>Item 3</h3>
+            <p>
+              This is some content. It includes a heading, two paragraphs, and a
+              button.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget
+              augue sagittis, feugiat sapien a, consectetur ante. Nullam finibus
+              facilisis posuere. Nunc feugiat nibh id maximus commodo. Duis
+              accumsan elit ut molestie congue.
+            </p>
+            <button>Click me</button>
+          </div>
+          <div class="card">
+            <h3>Item 5</h3>
+            <p>
+              This is some content. It includes a heading, two paragraphs, and a
+              button.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget
+              augue sagittis, feugiat sapien a, consectetur ante. Nullam finibus
+              facilisis posuere. Nunc feugiat nibh id maximus commodo. Duis
+              accumsan elit ut molestie congue.
+            </p>
+            <button>Click me</button>
+          </div>
+          <div class="card">
+            <h3>Item 6</h3>
+            <p>
+              This is some content. It includes a heading, two paragraphs, and a
+              button.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget
+              augue sagittis, feugiat sapien a, consectetur ante. Nullam finibus
+              facilisis posuere. Nunc feugiat nibh id maximus commodo. Duis
+              accumsan elit ut molestie congue.
+            </p>
+            <button>Click me</button>
+          </div>
+          <div class="card">
+            <h3>Item 7</h3>
+            <p>
+              This is some content. It includes a heading, two paragraphs, and a
+              button.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget
+              augue sagittis, feugiat sapien a, consectetur ante. Nullam finibus
+              facilisis posuere. Nunc feugiat nibh id maximus commodo. Duis
+              accumsan elit ut molestie congue.
+            </p>
+            <button>Click me</button>
+          </div>
+          <div class="card">
+            <h3>Item 8</h3>
+            <p>
+              This is some content. It includes a heading, two paragraphs, and a
+              button.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget
+              augue sagittis, feugiat sapien a, consectetur ante. Nullam finibus
+              facilisis posuere. Nunc feugiat nibh id maximus commodo. Duis
+              accumsan elit ut molestie congue.
+            </p>
+            <button>Click me</button>
+          </div>
         </div>
       </section>
 
@@ -47,113 +264,235 @@
           The <code>.center</code> class uses flexbox to center content in a
           vertical column
         </p>
+        <p>
+          The divs in this example also have the class <code>.card</code> to
+          provide a better visual of the layout.
+        </p>
 
-        <div class="center" style="--space: 1rem">
-          <div class="stack" style="--space: 1rem; max-width: 20rem">
-            <div class="box">
-              <p>This is three nested divs.</p>
-              <p>
-                The first has the class <code>.center</code> to center it
-                horizontally.
-              </p>
-              <p>
-                The second has the class <code>.stack</code> to provide spacing
-                between elements.
-              </p>
-              <p>
-                The inner elements have the class <code>.box</code> to provide
-                padding and a border.
-              </p>
-            </div>
-            <div class="box">
-              <h3>Heading 3</h3>
-              <p>
-                This is some centered content. It includes a heading, a
-                paragraph, and a button.
-              </p>
-              <button>Click Me</button>
-            </div>
-            <div class="box">
-              <h3>Heading 3</h3>
-              <p>
-                This is some centered content. It includes a heading, a
-                paragraph, and a button.
-              </p>
-              <button>Click Me</button>
-            </div>
+        <div class="center card">
+          <div class="stack" style="--stack-space: 1rem">
+            <div class="card">Item 1</div>
+            <div class="card">Item 2</div>
+            <div class="card">Item 3</div>
           </div>
         </div>
       </section>
 
-      <!-- Cluster -->
-      <section id="cluster">
-        <h2><a href="#cluster">Cluster</a></h2>
+      <!-- Columns -->
+      <section id="columns">
+        <h2><a href="#columns">Columns</a></h2>
         <p>
-          The <code>.cluster</code> class uses flexbox to distribute elements
+          The <code>.columns</code> class allows elements to switch between a
+          horizontal and vertical layout based on a container width threshold.
+        </p>
+        <p>
+          While a standard responsive layout will wrap elements as the viewport
+          shrinks, <strong>columns</strong> will switch entirely from horizontal
+          to vertical without wrapping.
+        </p>
+        <p>
+          The style parameter <code>--columns-gap</code> sets the spacing
+          between elements. The default is <code>1rem</code>.
+        </p>
+        <p>
+          The style parameter <code>--columns-min-width</code> sets the
+          threshold at which the elements will switch to a vertical stack. The
+          default is <code>500px</code>.
+        </p>
+        <p>
+          The divs in this example also have the class <code>.card</code> to
+          make the spacing more clear.
+        </p>
+
+        <div
+          class="columns"
+          style="--columns-gap: 1rem; --columns-min-width: 500px"
+        >
+          <div class="card">Column panel 1</div>
+          <div class="card">Column panel 2</div>
+          <div class="card">Column panel 3</div>
+        </div>
+      </section>
+
+      <!-- Container -->
+      <section id="container">
+        <h2><a href="#container">Container</a></h2>
+        <p>
+          The <code>.container</code> class centers content horizontally and
+          sets a maximum width.
+        </p>
+        <p>
+          The style parameter <code>--container-max-width</code> sets the
+          maximum width of the container. The default is <code>1200px</code>.
+        </p>
+        <p>
+          The style parameter <code>--container-padding</code> sets the
+          horizontal padding. The default is <code>1rem</code>.
+        </p>
+
+        <div class="container card" style="--container-max-width: 800px">
+          <p>This is a container with a max-width of 800px.</p>
+        </div>
+      </section>
+
+      <!-- Grid -->
+      <section id="grid">
+        <h2><a href="#grid">Grid</a></h2>
+        <p>
+          The <code>.grid</code> class creates a responsive grid of elements
+          that wrap based on a minimum width.
+        </p>
+        <p>
+          The style parameter <code>--grid-gap</code> sets the spacing between
+          elements. The default is <code>1rem</code>.
+        </p>
+        <p>
+          The style parameter <code>--grid-min-width</code> sets the minimum
+          width of each grid item. The default is <code>200px</code>.
+        </p>
+        <p>
+          The divs in this example also have the class <code>.card</code> to
+          make the spacing more clear.
+        </p>
+
+        <div class="grid" style="--grid-gap: 1rem; --grid-min-width: 200px">
+          <div class="card">Grid item 1</div>
+          <div class="card">Grid item 2</div>
+          <div class="card">Grid item 3</div>
+          <div class="card">Grid item 4</div>
+          <div class="card">Grid item 5</div>
+          <div class="card">Grid item 6</div>
+        </div>
+      </section>
+
+      <!-- Group -->
+      <section id="group">
+        <h2><a href="#group">Group</a></h2>
+        <p>
+          The <code>.group</code> class uses flexbox to distribute elements
           evenly across the page.
         </p>
         <p>
-          The style parameter <code>--space: 1rem</code> sets the spacing
-          between elements. The default is <code>1rem</code>.
+          The style parameter <code>--group-gap</code> sets the spacing between
+          elements. The default is <code>1rem</code>.
         </p>
-        <div class="cluster" style="--space: 1rem">
-          <div class="box" style="width: 4%; min-width: 3rem">
-            Cluster item 1
+        <div class="group" style="--group-gap: 1rem">
+          <div class="card" style="width: 14ch">Group item 1</div>
+          <div class="card" style="width: 20ch">Group item 2</div>
+          <div class="card" style="width: 32ch">Group item 3</div>
+          <div class="card" style="width: 64ch">Group item 4</div>
+          <div class="card" style="width: 12ch">Group item 5</div>
+          <div class="card" style="width: 24ch">Group item 6</div>
+          <div class="card" style="width: 14ch">Group item 7</div>
+          <div class="card" style="width: 48ch">Group item 8</div>
+          <div class="card" style="width: 28ch">Group item 9</div>
+          <div class="card" style="width: 56ch">Group item 10</div>
+          <div class="card" style="width: 26ch">Group item 11</div>
+        </div>
+      </section>
+
+      <!-- Icon -->
+      <section id="icon">
+        <h2><a href="#icon">Icon</a></h2>
+        <p>
+          The <code>.icon</code> class is used to center an icon or image within
+          a fixed-size container.
+        </p>
+        <p>
+          The style parameter <code>--icon-height</code> sets height of the icon
+          container. The default is <code>2rem</code>.
+        </p>
+        <p>
+          The style parameter <code>--icon-width</code> sets width of the icon
+          container. The default is <code>2rem</code>.
+        </p>
+
+        <div class="columns">
+          <div class="stack" style="--stack-space: 0; --stack-padding: 0">
+            <h5>2 rem</h5>
+            <div
+              class="icon card"
+              style="--icon-height: 2rem; --icon-width: 2rem"
+            >
+              <img src="public/images/placeholder_150.svg" alt="Icon 2rem" />
+            </div>
           </div>
-          <div class="box" style="width: 8%; min-width: 3rem">
-            Cluster item 2
+          <div class="stack" style="--stack-space: 0; --stack-padding: 0">
+            <h5>4 rem</h5>
+            <div
+              class="icon card"
+              style="--icon-height: 4rem; --icon-width: 4rem"
+            >
+              <img src="public/images/placeholder_150.svg" alt="Icon 4rem" />
+            </div>
           </div>
-          <div class="box" style="width: 16%; min-width: 3rem">
-            Cluster item 3
-          </div>
-          <div class="box" style="width: 32%; min-width: 3rem">
-            Cluster item 4
-          </div>
-          <div class="box" style="width: 6%; min-width: 3rem">
-            Cluster item 5
-          </div>
-          <div class="box" style="width: 12%; min-width: 3rem">
-            Cluster item 6
-          </div>
-          <div class="box" style="width: 24%; min-width: 3rem">
-            Cluster item 8
-          </div>
-          <div class="box" style="width: 7%; min-width: 3rem">
-            Cluster item 7
-          </div>
-          <div class="box" style="width: 14%; min-width: 3rem">
-            Cluster item 9
-          </div>
-          <div class="box" style="width: 28%; min-width: 3rem">
-            Cluster item 10
-          </div>
-          <div class="box" style="width: 13%; min-width: 3rem">
-            Cluster item 11
-          </div>
-          <div class="box" style="width: 26%; min-width: 3rem">
-            Cluster item 12
+          <div class="stack" style="--stack-space: 0; --stack-padding: 0">
+            <h5>6 rem</h5>
+            <div
+              class="icon card"
+              style="--icon-height: 6rem; --icon-width: 6rem"
+            >
+              <img src="public/images/placeholder_150.svg" alt="Icon 6rem" />
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Cover -->
-      <section id="cover">
-        <h2><a href="#cover">Cover Layout</a></h2>
+      <!-- Overlay -->
+      <section id="overlay">
+        <h2><a href="#overlay">Overlay</a></h2>
         <p>
-          The <code>.cover</code> class fills the viewport vertically. It is
-          useful for full-page layouts.
+          The <code>.overlay</code> class positions an element absolutely within
+          its closest positioned ancestor.
         </p>
         <p>
-          The style parameter <code>--padding: 2rem</code> sets the padding
-          inside the cover. The default is <code>1rem</code>.
+          The ancestor must have
+          <code>position: relative</code> and a defined height.
         </p>
         <p>
-          The div in this example also has the class <code>.box</code> to make
-          the spacing more clear.
+          The style parameter <code>--overlay-top</code> sets the vertical
+          position. The default is <code>50%</code>.
         </p>
-        <div class="cover box" style="--padding: 2rem">
-          <h2>Cover Layout</h2>
-          <p>Fills the viewport vertically</p>
+        <p>
+          The style parameter <code>--overlay-left</code> sets the horizontal
+          position. The default is <code>50%</code>.
+        </p>
+        <p>
+          The element is centered relative to these coordinates using
+          <code>transform: translate(-50%, -50%)</code>.
+        </p>
+
+        <div class="card" style="position: relative; height: 300px">
+          <div
+            class="overlay card"
+            style="
+              --overlay-top: 50%;
+              --overlay-left: 50%;
+              background-color: var(--background-color);
+            "
+          >
+            Centered Overlay
+          </div>
+          <div
+            class="overlay card"
+            style="
+              --overlay-top: 20%;
+              --overlay-left: 20%;
+              background-color: var(--background-color);
+            "
+          >
+            Top Left
+          </div>
+          <div
+            class="overlay card"
+            style="
+              --overlay-top: 80%;
+              --overlay-left: 80%;
+              background-color: var(--background-color);
+            "
+          >
+            Bottom Right
+          </div>
         </div>
       </section>
 
@@ -167,17 +506,27 @@
         <p>The main content area must have the class <code>.main</code>.</p>
         <p>The sidebar content area must have the class <code>.side</code>.</p>
         <p>
-          The style parameter <code>--sidebar-width: 10rem</code> sets the width
-          of the sidebar. Default is <code>0</code>.
+          The style parameter <code>--sidebar-side-width</code> sets the width
+          of the sidebar. The default is <code>20rem</code>.
         </p>
         <p>
-          📱 Mobile View: The sidebar will wrap below the main content at widths
-          below
-          <code>768px</code>.
+          The style parameter <code>--sidebar-main-min-width</code> sets the
+          minimum percentage width of the main content before it wraps. The
+          default is <code>50%</code>.
+        </p>
+        <p>
+          The sidebar will automatically wrap below the main content when the
+          available space is less than the combined preferred widths, making it
+          container-agnostic.
+        </p>
+        <p>
+          The style parameter <code>--sidebar-gap</code> sets the spacing
+          between the main content and sidebar. The default is
+          <code>1rem</code>.
         </p>
 
-        <div class="sidebar" style="--sidebar-width: 10rem">
-          <div class="main box">
+        <div class="sidebar" style="--sidebar-side-width: 15rem">
+          <div class="main card">
             <h2>Main content</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget
@@ -196,7 +545,7 @@
               Pellentesque dictum laoreet turpis at imperdiet.
             </p>
           </div>
-          <div class="side box">
+          <div class="side card">
             <h5>Side content</h5>
             <ul>
               <li>Item 1</li>
@@ -211,103 +560,81 @@
       <section id="stack">
         <h2><a href="#stack">Stack</a></h2>
         <p>
-          The <code>.stack</code> class adds spacing between elements. It does
-          not add a space after the last element.
+          The <code>.stack</code> class adds spacing between elements. Stacks
+          are responsive and will wrap as the viewport shrinks.
         </p>
         <p>
-          The style parameter <code>--space: 2em</code> sets the spacing between
-          elements. The default is <code>1.5rem</code>.
+          The style parameter <code>--stack-space</code> sets the spacing
+          between elements. The default is <code>1.5rem</code>.
         </p>
         <p>
-          An additional class of <code>.padded</code> can be added to include
-          padding around the stack.
+          The style parameter <code>--stack-padding</code> sets the padding
+          around the stack. The default is <code>0rem</code>.
         </p>
         <p>
-          The style parameter <code>--padding: 2em</code> sets the padding
-          around the stack. The default is <code>1rem</code>.
+          The class <code>.horizontal</code> can be added to create a horizontal
+          stack.
         </p>
         <p>
-          The divs in this example also have the class <code>.box</code> to make
-          the spacing more clear.
+          The class <code>.split</code> can be added to push the last element to
+          the end of the stack (bottom or right depending on orientation).
         </p>
-
-        <div class="stack" style="--space: 2rem; --padding: 1rem">
-          <div class="box">Item 1</div>
-          <div class="box">Item 2</div>
-          <div class="box">Item 3</div>
-        </div>
-      </section>
-
-      <!-- Switcher -->
-      <section id="switcher">
-        <h2><a href="#switcher">Switcher Layout</a></h2>
-        <div class="switcher" style="--space: 1rem; --min-width: 150px">
-          <div>Switcher panel 1</div>
-          <div>Switcher panel 2</div>
-          <div>Switcher panel 3</div>
-        </div>
-      </section>
-
-      <!-- Grid -->
-      <section id="grid">
-        <h2><a href="#grid">Grid Layout</a></h2>
-        <div class="grid" style="--space: 1rem; --min-width: 150px">
-          <div>Grid item 1</div>
-          <div>Grid item 2</div>
-          <div>Grid item 3</div>
-          <div>Grid item 4</div>
-        </div>
-      </section>
-
-      <!-- Frame -->
-      <section id="frame">
-        <h2><a href="#frame">Frame Layout</a></h2>
-        <div class="frame" style="--padding: 2rem; --border: 2px solid #666">
-          <p>Frame around content</p>
-        </div>
-      </section>
-
-      <!-- Reel -->
-      <section id="reel">
-        <h2><a href="#reel">Reel Layout</a></h2>
-        <div class="reel" style="--space: 1rem">
-          <div>Reel item 1</div>
-          <div>Reel item 2</div>
-          <div>Reel item 3</div>
-          <div>Reel item 4</div>
-          <div>Reel item 5</div>
-        </div>
-      </section>
-
-      <!-- Imposter -->
-      <section
-        id="imposter"
-        style="position: relative; height: 200px; background: #f3f3f3"
-      >
-        <h2><a href="#imposter">Imposter Layout</a></h2>
-        <div class="imposter" style="--top: 30%; --left: 30%">
-          <p>Imposter content</p>
-        </div>
-      </section>
-
-      <!-- Icon -->
-      <section id="icon">
-        <h2><a href="#icon">Icon Layout</a></h2>
-        <div class="icon" style="--size: 3rem">
-          <img src="https://via.placeholder.com/64" alt="Example icon" />
-        </div>
-      </section>
-
-      <!-- Container -->
-      <section id="container">
-        <h2><a href="#container">Container Layout</a></h2>
-        <div class="container" style="--max-width: 800px">
-          <p>Container with a max-width.</p>
+        <p>
+          The divs in this example also have the class <code>.card</code> to
+          make the spacing more clear.
+        </p>
+        <div class="stack" style="--stack-space: 2rem; --stack-padding: 0">
+          <div>
+            <h5>Vertical Stack</h5>
+            <div class="card">
+              <div class="stack">
+                <div class="card">Item 1</div>
+                <div class="card">Item 2</div>
+                <div class="card">Item 3</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h5>Padded Stack</h5>
+            <div class="card">
+              <div class="stack" style="--stack-padding: 0 4rem">
+                <div class="card">Item 1</div>
+                <div class="card">Item 2</div>
+                <div class="card">Item 3</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h5>Horizontal Stack</h5>
+            <div class="card">
+              <div class="stack horizontal">
+                <div class="card">Item 1</div>
+                <div class="card">Item 2</div>
+                <div class="card">Item 3</div>
+                <div class="card">Item 4</div>
+                <div class="card">Item 5</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h5>Split Stack</h5>
+            <div class="card">
+              <div class="stack horizontal split">
+                <div class="card">Item 1</div>
+                <div class="card">Item 2</div>
+                <div class="card">Item 3</div>
+                <div class="card">Item 4</div>
+                <div class="card">Item 5</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
     <footer>
-      <p>Created by <a href="https://2ajoyce.com/">2ajoyce</a></p>
+      <p>
+        Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a>
+      </p>
     </footer>
   </body>
   <script src="theme-switcher.js"></script>
