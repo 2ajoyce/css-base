@@ -188,7 +188,7 @@ hello_world()</code></pre>
             </select>
           </div>
           <div>
-            <label>Radio Buttons</label>
+            <h5>Radio Buttons</h5>
             <div class="cluster">
               <input type="radio" id="radio1" name="radio" value="1" />
               <label for="radio1">Radio 1</label>
@@ -199,14 +199,37 @@ hello_world()</code></pre>
             </div>
           </div>
           <div>
-            <label>Checkboxes</label>
+            <h5>Checkboxes</h5>
             <div class="cluster">
               <input type="checkbox" id="checkbox1" name="checkbox1" />
-              <label for="checkbox1">Checkbox 1</label>
+              <label for="checkbox1">Unchecked</label>
             </div>
             <div class="cluster">
-              <input type="checkbox" id="checkbox2" name="checkbox2" />
-              <label for="checkbox2">Checkbox 2</label>
+              <input type="checkbox" id="checkbox2" name="checkbox2" checked />
+              <label for="checkbox2">Checked</label>
+            </div>
+          </div>
+          <div>
+            <h5>Toggle Switches</h5>
+            <p>Toggles are styled checkboxes.</p>
+            <div class="cluster">
+              <input
+                type="checkbox"
+                id="toggle1"
+                name="toggle1"
+                class="toggle"
+              />
+              <label for="toggle1">Untoggled</label>
+            </div>
+            <div class="cluster">
+              <input
+                type="checkbox"
+                id="toggle2"
+                name="toggle2"
+                class="toggle"
+                checked
+              />
+              <label for="toggle2">Toggled</label>
             </div>
           </div>
           <button type="submit" class="primary">Submit</button>
