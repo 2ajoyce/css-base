@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/2ajoyce/css-base/compare/v1.2.0...v1.3.0) (2025-12-24)
+
+
+### Features
+
+* add "ground" class to label to support baseline alignment ([5b77f5e](https://github.com/2ajoyce/css-base/commit/5b77f5e6012fdc5363b635ba62f1a2464ac36720))
+
 ## [1.2.0](https://github.com/2ajoyce/css-base/compare/v1.1.0...v1.2.0) (2025-12-24)
 
 
