@@ -124,6 +124,10 @@ sup {
   font-size: smaller;
 }
 
+small {
+  font-size: smaller;
+}
+
 /* Horizontal Rule */
 hr {
   border: none;
