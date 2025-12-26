@@ -25,6 +25,7 @@ to their content width, even on smaller screens */
   cursor: pointer;
 }
 
-[tabindex]:not([tabindex="-1"]):focus {
+/* role="button" elements are handled separately in buttons.css */
+[tabindex]:not([tabindex="-1"]):not([role="button"]):focus {
   outline: 2px solid var(--primary-color-focus);
 }

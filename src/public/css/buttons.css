@@ -4,9 +4,16 @@ button {
   color: var(--primary-text-color);
   border: none;
   border-radius: 3px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.08), 2px 3px 4px rgba(0, 0, 0, 0.12),
+    1px 2px 2px rgba(0, 0, 0, 0.24);
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
   font-size: 1em;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 button:hover {
@@ -15,18 +22,22 @@ button:hover {
 
 button:active {
   background-color: var(--primary-color-active);
-  transform: scale(0.98);
+  transform: translate(1px, 2px);
+  box-shadow: none;
 }
 
 button:focus {
   outline: 2px solid var(--primary-color-focus);
-  outline-offset: 2px;
 }
 
-button:disabled {
-  background-color: var(--primary-color-disabled);
-  cursor: not-allowed;
-  opacity: 0.6;
+/* Disabled buttons should not move or change color when clicked */
+button:disabled:hover,
+button:disabled:active {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  transform: none;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.08), 2px 3px 4px rgba(0, 0, 0, 0.12),
+    1px 2px 2px rgba(0, 0, 0, 0.24);
 }
 
 /* Secondary button */
@@ -47,22 +58,11 @@ button.secondary:focus {
   outline: 2px solid var(--secondary-color-focus);
 }
 
-/* Danger button */
-button.danger {
-  background-color: var(--danger-color);
-  color: var(--danger-text-color);
-}
-
-button.danger:hover {
-  background-color: var(--danger-color-hover);
-}
-
-button.danger:active {
-  background-color: var(--danger-color-active);
-}
-
-button.danger:focus {
-  outline: 2px solid var(--danger-color-focus);
+/* Disabled secondary buttons should not move or change color when clicked */
+button.secondary:disabled:hover,
+button.secondary:disabled:active {
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
 }
 
 /* Success button */
@@ -83,6 +83,38 @@ button.success:focus {
   outline: 2px solid var(--success-color-focus);
 }
 
+/* Disabled success buttons should not move or change color when clicked */
+button.success:disabled:hover,
+button.success:disabled:active {
+  background-color: var(--success-color);
+  color: var(--success-text-color);
+}
+
+/* Danger button */
+button.danger {
+  background-color: var(--danger-color);
+  color: var(--danger-text-color);
+}
+
+button.danger:hover {
+  background-color: var(--danger-color-hover);
+}
+
+button.danger:active {
+  background-color: var(--danger-color-active);
+}
+
+button.danger:focus {
+  outline: 2px solid var(--danger-color-focus);
+}
+
+/* Disabled danger buttons should not move or change color when clicked */
+button.danger:disabled:hover,
+button.danger:disabled:active {
+  background-color: var(--danger-color);
+  color: var(--danger-text-color);
+}
+
 /* Warning button */
 button.warning {
   background-color: var(--warning-color);
@@ -101,23 +133,34 @@ button.warning:focus {
   outline: 2px solid var(--warning-color-focus);
 }
 
+/* Disabled warning buttons should not move or change color when clicked */
+button.warning:disabled:hover,
+button.warning:disabled:active {
+  background-color: var(--warning-color);
+  color: var(--warning-text-color);
+}
+
 /* Non-button elements styled as buttons */
+/* Non-button elements are most like secondary buttons so we will use secondary button styles */
 [role="button"] {
   cursor: pointer;
   user-select: none;
   padding: 0.5rem 0.75rem;
-  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.08), 2px 3px 4px rgba(0, 0, 0, 0.12),
+    1px 2px 2px rgba(0, 0, 0, 0.24);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 [role="button"]:hover {
-  border: 1px solid var(--primary-color-hover);
-  border-radius: 3px;
+  background-color: var(--secondary-color-hover);
 }
+
 [role="button"]:active {
-  color: var(--primary-text-color);
-  background-color: var(--primary-color-active);
+  background-color: var(--secondary-color-active);
+  transform: translate(1px, 2px);
+  box-shadow: none;
 }
 [role="button"]:focus {
-  outline: 2px solid var(--primary-color-focus);
+  outline: 2px solid var(--secondary-color-focus);
 }
 /* Since "disabled" is only supported by inputs: <button>, <fieldset>, 
 <optgroup>, <option>, <select>, <textarea> and <input>, we will not 

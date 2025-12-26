@@ -38,17 +38,12 @@
             Sometimes elements which are not typically interactive need to have
             a pointer cursor to indicate they can be clicked or focused.
           </p>
-          <p role="button">
-            Use the <code>[role="button"]</code> attribute to indicate an
-            element is interactive and prevent text selection.
-          </p>
-          <p tabindex="0">
-            Use the <code>[tabindex]</code> attribute to make an element
-            focusable via keyboard navigation.
-          </p>
+          <button class="fit-content">This is a standard button</button>
+          <p>This is a standard <code>&lt;p&gt;</code> element.</p>
           <p role="button" tabindex="0">
-            These can be combined to make an element both clickable and
-            focusable.
+            This is a <code>&lt;p&gt;</code> with the
+            <code>role="button"</code>
+            attribute and <code>tabindex="0"</code> to make it focusable.
           </p>
         </div>
       </section>
