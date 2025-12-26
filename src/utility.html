@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Style Guide Landing Page</title>
+    <title>Style Guide</title>
     <link rel="stylesheet" href="index.css" />
   </head>
   <body class="container" style="--container-padding: 0">
@@ -13,9 +13,9 @@
         class="columns"
         style="background-color: var(--background-color); padding: 1em"
       >
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="elements.html">Elements</a>
-        <a href="utility.html">Utility</a>
+        <a href="utility.html" class="active">Utility</a>
         <a href="layout.html">Layout</a>
         <div
           class="stack horizontal"
@@ -30,19 +30,27 @@
         </div>
       </nav>
     </header>
-    <div class="stack">
-      <section>
-        The style guide is divided into two main sections:
-        <ul>
-          <li>
-            <strong>HTML Element Examples:</strong> This section showcases the
-            various HTML elements and their styles
-          </li>
-          <li>
-            <strong>Layout Examples:</strong> This section demonstrates
-            different layout patterns
-          </li>
-        </ul>
+    <div class="stack" style="--stack-space: 2rem">
+      <section id="interactive-elements">
+        <h2><a href="#interactive-elements">Interactive Elements</a></h2>
+        <div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
+          <p>
+            Sometimes elements which are not typically interactive need to have
+            a pointer cursor to indicate they can be clicked or focused.
+          </p>
+          <p role="button">
+            Use the <code>[role="button"]</code> attribute to indicate an
+            element is interactive and prevent text selection.
+          </p>
+          <p tabindex="0">
+            Use the <code>[tabindex]</code> attribute to make an element
+            focusable via keyboard navigation.
+          </p>
+          <p role="button" tabindex="0">
+            These can be combined to make an element both clickable and
+            focusable.
+          </p>
+        </div>
       </section>
     </div>
     <footer>

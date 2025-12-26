@@ -100,3 +100,27 @@ button.warning:active {
 button.warning:focus {
   outline: 2px solid var(--warning-color-focus);
 }
+
+/* Non-button elements styled as buttons */
+[role="button"] {
+  cursor: pointer;
+  user-select: none;
+  padding: 0.5rem 0.75rem;
+  transition: background-color 0.3s, transform 0.3s;
+}
+[role="button"]:hover {
+  border: 1px solid var(--primary-color-hover);
+  border-radius: 3px;
+}
+[role="button"]:active {
+  color: var(--primary-text-color);
+  background-color: var(--primary-color-active);
+}
+[role="button"]:focus {
+  outline: 2px solid var(--primary-color-focus);
+}
+/* Since "disabled" is only supported by inputs: <button>, <fieldset>, 
+<optgroup>, <option>, <select>, <textarea> and <input>, we will not 
+include a disabled style for [role="button"]. We do not want to support
+the idea of making an input a clickable element outside of their existing
+support for user interaction */

@@ -1,10 +1,10 @@
 /* 
  * This stylesheet adjusts individual properties across multiple elements 
- * to customize them for specific scenarios. Each rule is tailored to 
- * enhance the appearance, layout, or behavior of the targeted elements 
- * to meet the desired design requirements.
+ * to customize them for specific scenarios.
  */
 
+/* Add the .fit-content utility class to ensure elements adjust 
+to their content width, even on smaller screens */
 .fit-content {
   width: fit-content;
 }
@@ -15,6 +15,16 @@
   }
 }
 
+/* Add the .radius utility class to apply a standard border-radius */
 .radius {
   border-radius: var(--radius, 0.5rem);
+}
+
+/* Elements with a non-negative tabindex are focusable and provide visual feedback when focused */
+[tabindex]:not([tabindex="-1"]) {
+  cursor: pointer;
+}
+
+[tabindex]:not([tabindex="-1"]):focus {
+  outline: 2px solid var(--primary-color-focus);
 }

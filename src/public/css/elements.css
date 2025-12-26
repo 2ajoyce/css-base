@@ -475,3 +475,20 @@ footer {
   padding: 2rem;
   border-top: 1px solid var(--primary-color);
 }
+
+/* Details */
+details {
+  background-color: var(--secondary-background-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+details > summary {
+  font-weight: bold;
+  cursor: pointer;
+
+  /* Summary text should not be accidentally highlighted when clicked */
+  user-select: none;
+}
