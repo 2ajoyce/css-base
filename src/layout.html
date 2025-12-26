@@ -6,14 +6,20 @@
     <title>Layout Examples</title>
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body>
+  <body class="container" style="--container-padding: 0">
     <header>
       <h1>Style Guide</h1>
-      <nav class="stack horizontal split" style="--stack-space: 1rem">
+      <nav
+        class="columns"
+        style="background-color: var(--background-color); padding: 1em"
+      >
         <a href="index.html">Home</a>
         <a href="elements.html">Elements</a>
         <a href="layout.html" class="active">Layout</a>
-        <div class="stack horizontal" style="--stack-space: 0">
+        <div
+          class="stack horizontal"
+          style="--stack-space: 0; --stack-wrap: nowrap"
+        >
           <label for="theme-select" class="left ground">Theme:</label>
           <select id="theme-select">
             <option value="light">Light</option>
@@ -23,7 +29,7 @@
         </div>
       </nav>
     </header>
-    <div class="stack container" style="--stack-space: 2rem">
+    <div class="stack" style="--stack-space: 2rem">
       <!-- Aspect Ratio -->
       <section id="aspect-ratio">
         <h2><a href="#aspect-ratio">Aspect Ratio</a></h2>
@@ -54,7 +60,15 @@
           <div>
             <h5>Default</h5>
             <div class="aspect-ratio">
-              <img src="public/images/placeholder_150.png" alt="Placeholder" />
+              <img
+                src="public/images/placeholder_150.png"
+                srcset="
+                  public/images/placeholder_150.png  150w,
+                  public/images/placeholder.png     1024w
+                "
+                sizes="(max-width: 150px) 150px, 1024px"
+                alt="A placeholder image of a partially full wine glass sitting on a wooden table."
+              />
             </div>
           </div>
           <div>
@@ -62,18 +76,28 @@
             <div
               class="aspect-ratio"
               style="
-                --aspect-ratio-padding: 1rem;
+                --aspect-ratio-padding: 2rem;
                 --aspect-ratio-bg: var(--secondary-color, #eee);
-                --aspect-ratio-border: var(--primary-color, #000) solid 1px;
               "
             >
-              <img src="public/images/placeholder_150.png" alt="Placeholder" />
+              <img
+                src="public/images/placeholder_150.png"
+                srcset="
+                  public/images/placeholder_150.png  150w,
+                  public/images/placeholder.png     1024w
+                "
+                sizes="(max-width: 150px) 150px, 1024px"
+                alt="A placeholder image of a partially full wine glass sitting on a wooden table."
+              />
             </div>
           </div>
           <div>
             <h5>Gif</h5>
             <div class="aspect-ratio">
-              <img src="public/images/placeholder.gif" alt="Placeholder" />
+              <img
+                src="public/images/placeholder.gif"
+                alt="A placeholder image of a partially full wine glass sitting on a wooden table."
+              />
             </div>
           </div>
           <div>
@@ -81,8 +105,15 @@
             <div class="aspect-ratio">
               <video controls muted>
                 <source
+                  src="public/videos/placeholder_720.mp4"
+                  type="video/mp4"
+                  media="(min-width: 720px)"
+                  alt="A short video of a partially full wine glass sitting on a wooden table."
+                />
+                <source
                   src="public/videos/placeholder_480.mp4"
                   type="video/mp4"
+                  alt="A short video of a partially full wine glass sitting on a wooden table."
                 />
                 Your browser does not support the video tag.
               </video>
@@ -93,7 +124,10 @@
           <div>
             <h5>16:9 PNG</h5>
             <div class="aspect-ratio" style="--aspect-ratio: 16 / 9">
-              <img src="public/images/placeholder_16x9.png" alt="Placeholder" />
+              <img
+                src="public/images/placeholder_16x9.png"
+                alt="A placeholder image of a partially full wine glass sitting on a wooden table."
+              />
             </div>
           </div>
           <div>
@@ -101,8 +135,15 @@
             <div class="aspect-ratio" style="--aspect-ratio: 16 / 9">
               <video controls muted>
                 <source
+                  src="public/videos/placeholder_16x9_720.mp4"
+                  type="video/mp4"
+                  media="(min-width: 720px)"
+                  alt="A short video of a partially full wine glass sitting on a wooden table."
+                />
+                <source
                   src="public/videos/placeholder_16x9_480.mp4"
                   type="video/mp4"
+                  alt="A short video of a partially full wine glass sitting on a wooden table."
                 />
                 Your browser does not support the video tag.
               </video>
@@ -123,12 +164,15 @@
         </p>
         <p>
           The style parameter <code>--card-border</code> sets the border around
-          the card. The default is <code>1px solid #000</code>.
+          the card. The default is <code>1px solid var(--text-color)</code>.
         </p>
 
         <div
           class="card"
-          style="--card-padding: 1rem; --card-border: 1px solid #000"
+          style="
+            --card-padding: 1rem;
+            --card-border: 1px solid var(--card-border, #000);
+          "
         >
           <p>This content is in a card.</p>
         </div>
@@ -574,6 +618,10 @@
         <p>
           The class <code>.horizontal</code> can be added to create a horizontal
           stack.
+        </p>
+        <p>
+          The style parameter <code>--stack-wrap</code> can be used to control
+          wrapping in horizontal stacks. The default is <code>wrap</code>.
         </p>
         <p>
           The class <code>.split</code> can be added to push the last element to

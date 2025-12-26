@@ -6,14 +6,20 @@
     <title>Style Guide</title>
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body>
+  <body class="container" style="--container-padding: 0">
     <header>
       <h1>Style Guide</h1>
-      <nav class="stack horizontal split" style="--stack-space: 1rem">
+      <nav
+        class="columns"
+        style="background-color: var(--background-color); padding: 1em"
+      >
         <a href="index.html">Home</a>
         <a href="elements.html" class="active">Elements</a>
         <a href="layout.html">Layout</a>
-        <div class="stack horizontal" style="--stack-space: 0">
+        <div
+          class="stack horizontal"
+          style="--stack-space: 0; --stack-wrap: nowrap"
+        >
           <label for="theme-select" class="left ground">Theme:</label>
           <select id="theme-select">
             <option value="light">Light</option>
@@ -23,7 +29,7 @@
         </div>
       </nav>
     </header>
-    <div class="stack" style="--stack-space: 2rem; --stack-padding: 2rem">
+    <div class="stack" style="--stack-space: 2rem">
       <section id="headings">
         <h2><a href="#headings">Headings</a></h2>
         <h1>Heading 1</h1>
@@ -237,14 +243,14 @@ hello_world()</code></pre>
           <button type="submit" class="primary">Submit</button>
         </form>
       </section>
-      <section id="images" class="stack">
+      <section id="images">
         <h2><a href="#images">Images</a></h2>
         <h4>Image Types</h4>
         <div class="group" style="--group-gap: 1rem">
           <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
             <img
               src="public/images/placeholder_150.png"
-              alt="Placeholder Image"
+              alt="A placeholder image of a partially full wine glass sitting on a wooden table."
               width="150"
             />
             <p>PNG image</p>
@@ -252,7 +258,7 @@ hello_world()</code></pre>
           <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
             <img
               src="public/images/placeholder_150.jpg"
-              alt="Placeholder Image"
+              alt="A placeholder image of a partially full wine glass sitting on a wooden table."
               width="150"
             />
             <p>JPEG image</p>
@@ -260,7 +266,7 @@ hello_world()</code></pre>
           <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
             <img
               src="public/images/placeholder_150.svg"
-              alt="Placeholder Image"
+              alt="A placeholder image of a partially full wine glass sitting on a wooden table."
               width="150"
             />
             <p>SVG image</p>
@@ -268,7 +274,7 @@ hello_world()</code></pre>
           <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
             <img
               src="public/images/placeholder.gif"
-              alt="Placeholder Image"
+              alt="A placeholder image of a partially full wine glass sitting on a wooden table."
               width="150"
             />
             <p>GIF image</p>
@@ -279,7 +285,8 @@ hello_world()</code></pre>
           <figure>
             <img
               src="public/images/placeholder_150.png"
-              alt="Placeholder Image"
+              alt="A placeholder image of a partially full wine glass sitting on a wooden table."
+              width="150"
             />
             <figcaption>Figcaption for the image.</figcaption>
           </figure>
@@ -288,13 +295,18 @@ hello_world()</code></pre>
       <section>
         <h2><a href="#media">Audio and Video</a></h2>
         <audio controls>
-          <source src="public/audio/placeholder.mp3" type="audio/mpeg" />
+          <source
+            src="public/audio/placeholder.mp3"
+            type="audio/mpeg"
+            alt="A short audio clip of background noise in a restaurant."
+          />
           Your browser does not support the audio element.
         </audio>
         <video controls muted width="480">
           <source
             src="public/videos/placeholder_16x9_480.mp4"
             type="video/mp4"
+            alt="A short video of a partially full wine glass sitting on a wooden table."
           />
           Your browser does not support the video element.
         </video>

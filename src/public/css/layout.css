@@ -161,7 +161,7 @@
 /* Optional support for horizontal stack */
 .stack.horizontal {
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: var(--stack-wrap, wrap);
 }
 
 /* 

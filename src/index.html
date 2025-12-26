@@ -6,14 +6,20 @@
     <title>Style Guide Landing Page</title>
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body>
+  <body class="container" style="--container-padding: 0">
     <header>
       <h1>Style Guide</h1>
-      <nav class="stack horizontal split" style="--stack-space: 1rem">
+      <nav
+        class="columns"
+        style="background-color: var(--background-color); padding: 1em"
+      >
         <a href="index.html" class="active">Home</a>
         <a href="elements.html">Elements</a>
         <a href="layout.html">Layout</a>
-        <div class="stack horizontal" style="--stack-space: 0">
+        <div
+          class="stack horizontal"
+          style="--stack-space: 0; --stack-wrap: nowrap"
+        >
           <label for="theme-select" class="left ground">Theme:</label>
           <select id="theme-select">
             <option value="light">Light</option>
@@ -23,19 +29,21 @@
         </div>
       </nav>
     </header>
-    <section>
-      The style guide is divided into two main sections:
-      <ul>
-        <li>
-          <strong>HTML Element Examples:</strong> This section showcases the
-          various HTML elements and their styles
-        </li>
-        <li>
-          <strong>Layout Examples:</strong> This section demonstrates different
-          layout patterns
-        </li>
-      </ul>
-    </section>
+    <div class="stack">
+      <section>
+        The style guide is divided into two main sections:
+        <ul>
+          <li>
+            <strong>HTML Element Examples:</strong> This section showcases the
+            various HTML elements and their styles
+          </li>
+          <li>
+            <strong>Layout Examples:</strong> This section demonstrates
+            different layout patterns
+          </li>
+        </ul>
+      </section>
+    </div>
     <footer>
       <p>
         Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a>
