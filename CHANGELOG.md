@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/2ajoyce/css-base/compare/v2.0.0...v2.1.0) (2025-12-26)
+
+
+### Features
+
+* fixed a few styling bugs, added alt text to images and videos, added a --stack-wrap property to the horizontal stack layout. ([d8d60ff](https://github.com/2ajoyce/css-base/commit/d8d60ff9fa91c9bc38de2409b6d989bd102f6d40))
+
 ## [2.0.0](https://github.com/2ajoyce/css-base/compare/v1.3.0...v2.0.0) (2025-12-24)
 
 
