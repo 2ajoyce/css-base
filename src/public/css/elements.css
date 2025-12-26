@@ -124,6 +124,13 @@ sup {
   font-size: smaller;
 }
 
+/* Horizontal Rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--secondary-color);
+  margin: 1rem 0;
+}
+
 /* Links */
 a {
   color: var(--link-color);
