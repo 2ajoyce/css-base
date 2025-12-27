@@ -105,13 +105,30 @@
       <section id="breadcrumbs">
         <h2><a href="#breadcrumbs">Breadcrumbs</a></h2>
         <p>
-          Indicate the current page's location within a navigational hierarchy.
+          Breadcrumbs indicate the current page's location within a navigational
+          hierarchy.
+        </p>
+        <p>
+          A breadcrumb trail is composed of a <code>&lt;nav&gt;</code> element
+          with an ordered list(<code>&lt;ol&gt;</code>) inside.
+        </p>
+        <p>
+          Each breadcrumb is a list item(<code>&lt;li&gt;</code>) that contains
+          a link(<code>&lt;a&gt;</code>).
+        </p>
+        <p>
+          The current page is indicated with the
+          <code>aria-current="page"</code> attribute.
+        </p>
+        <p>
+          This example assumes the user is at
+          <a href="components.html#breadcrumbs">components.html#breadcrumbs</a>.
         </p>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
             <li><a href="components.html">Components</a></li>
-            <li aria-current="page"><a href="#breadcrumbs">Breadcrumbs</a></li>
+            <li aria-current="page">Breadcrumbs</li>
           </ol>
         </nav>
       </section>
