@@ -70,6 +70,8 @@
                 "
                 sizes="(max-width: 150px) 150px, 1024px"
                 alt="A placeholder image of a partially full wine glass sitting on a wooden table."
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -90,6 +92,8 @@
                 "
                 sizes="(max-width: 150px) 150px, 1024px"
                 alt="A placeholder image of a partially full wine glass sitting on a wooden table."
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -99,13 +103,15 @@
               <img
                 src="public/images/placeholder.gif"
                 alt="A placeholder image of a partially full wine glass sitting on a wooden table."
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
           <div>
             <h5>MP4</h5>
             <div class="aspect-ratio">
-              <video controls muted>
+              <video controls muted preload="metadata">
                 <source
                   src="public/videos/placeholder_720.mp4"
                   type="video/mp4"
@@ -129,13 +135,15 @@
               <img
                 src="public/images/placeholder_16x9.png"
                 alt="A placeholder image of a partially full wine glass sitting on a wooden table."
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
           <div>
             <h5>16:9 MP4</h5>
             <div class="aspect-ratio" style="--aspect-ratio: 16 / 9">
-              <video controls muted>
+              <video controls muted preload="metadata">
                 <source
                   src="public/videos/placeholder_16x9_720.mp4"
                   type="video/mp4"
@@ -464,7 +472,12 @@
               class="icon card"
               style="--icon-height: 2rem; --icon-width: 2rem"
             >
-              <img src="public/images/placeholder_150.svg" alt="Icon 2rem" />
+              <img
+                src="public/images/placeholder_150.svg"
+                alt="Icon 2rem"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
           <div class="stack" style="--stack-space: 0; --stack-padding: 0">
@@ -473,7 +486,12 @@
               class="icon card"
               style="--icon-height: 4rem; --icon-width: 4rem"
             >
-              <img src="public/images/placeholder_150.svg" alt="Icon 4rem" />
+              <img
+                src="public/images/placeholder_150.svg"
+                alt="Icon 4rem"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
           <div class="stack" style="--stack-space: 0; --stack-padding: 0">
@@ -482,7 +500,12 @@
               class="icon card"
               style="--icon-height: 6rem; --icon-width: 6rem"
             >
-              <img src="public/images/placeholder_150.svg" alt="Icon 6rem" />
+              <img
+                src="public/images/placeholder_150.svg"
+                alt="Icon 6rem"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
         </div>

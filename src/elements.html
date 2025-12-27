@@ -305,6 +305,8 @@ hello_world()</code></pre>
               src="public/images/placeholder_150.png"
               alt="A placeholder image of a partially full wine glass sitting on a wooden table."
               width="150"
+              loading="lazy"
+              decoding="async"
             />
             <p>PNG image</p>
           </div>
@@ -313,6 +315,8 @@ hello_world()</code></pre>
               src="public/images/placeholder_150.jpg"
               alt="A placeholder image of a partially full wine glass sitting on a wooden table."
               width="150"
+              loading="lazy"
+              decoding="async"
             />
             <p>JPEG image</p>
           </div>
@@ -321,6 +325,8 @@ hello_world()</code></pre>
               src="public/images/placeholder_150.svg"
               alt="A placeholder image of a partially full wine glass sitting on a wooden table."
               width="150"
+              loading="lazy"
+              decoding="async"
             />
             <p>SVG image</p>
           </div>
@@ -329,6 +335,8 @@ hello_world()</code></pre>
               src="public/images/placeholder.gif"
               alt="A placeholder image of a partially full wine glass sitting on a wooden table."
               width="150"
+              loading="lazy"
+              decoding="async"
             />
             <p>GIF image</p>
           </div>
@@ -340,6 +348,8 @@ hello_world()</code></pre>
               src="public/images/placeholder_150.png"
               alt="A placeholder image of a partially full wine glass sitting on a wooden table."
               width="150"
+              loading="lazy"
+              decoding="async"
             />
             <figcaption>Figcaption for the image.</figcaption>
           </figure>
@@ -347,7 +357,7 @@ hello_world()</code></pre>
       </section>
       <section>
         <h2><a href="#media">Audio and Video</a></h2>
-        <audio controls>
+        <audio controls preload="metadata">
           <source
             src="public/audio/placeholder.mp3"
             type="audio/mpeg"
@@ -355,7 +365,7 @@ hello_world()</code></pre>
           />
           Your browser does not support the audio element.
         </audio>
-        <video controls muted width="480">
+        <video controls muted width="480" preload="metadata">
           <source
             src="public/videos/placeholder_16x9_480.mp4"
             type="video/mp4"
