@@ -1,5 +1,26 @@
 # Changelog
 
+## [2.3.0](https://github.com/2ajoyce/css-base/compare/v2.2.0...v2.3.0) (2025-12-27)
+
+
+### Features
+
+* Add .card component extending the base .card styling with a header and footer. ([40f8aae](https://github.com/2ajoyce/css-base/commit/40f8aae94a01347079d3753942c3bee430f3447f))
+* Add badge component ([d63eb60](https://github.com/2ajoyce/css-base/commit/d63eb607c0bc515a8780430ce0c0526852da4113))
+* Add breadcrumbs component ([0a86369](https://github.com/2ajoyce/css-base/commit/0a86369f5d6fc699a9666ad4f11e869ea260bab5))
+* Fix styling bug and update breadcrumbs example to be more informative. ([5b2776d](https://github.com/2ajoyce/css-base/commit/5b2776d2b9a324ff72931026f5c47045bed3061e))
+* fix the theme switcher so that it correctly updates the background color of the root element. ([1d4d223](https://github.com/2ajoyce/css-base/commit/1d4d22316b72720e18d0efbd6b1651138207cc53))
+* improve syntax for default toast and alert. The .alert.primary class is no longer necessary. ([1d56f73](https://github.com/2ajoyce/css-base/commit/1d56f73e042998b3e603af637deb9a13bc341a6b))
+* lazy load images and videos ([239aedc](https://github.com/2ajoyce/css-base/commit/239aedcea7eaf76af20e5aebb3e384ac1cbe99f6))
+
+
+### Bug Fixes
+
+* decided I don't actually need to set a default background color given the other changes made. ([8354c45](https://github.com/2ajoyce/css-base/commit/8354c45fcf3502a74f9765659cd38cfb3a7c8331))
+* previous commit somehow left out a curly brace. No idea how that happened. ([0b72a1f](https://github.com/2ajoyce/css-base/commit/0b72a1fb9b2c579517c69a9f78d6cf3a8b4ab2fd))
+* theme switcher update had a logical bug ([6c0653c](https://github.com/2ajoyce/css-base/commit/6c0653c226bf71d387c98e331c4f6315cdfee072))
+* whitespace ([7750391](https://github.com/2ajoyce/css-base/commit/7750391d85363f384fb58e12f0be635b9a51cb42))
+
 ## [2.2.0](https://github.com/2ajoyce/css-base/compare/v2.1.0...v2.2.0) (2025-12-27)
 
 
