@@ -103,6 +103,19 @@
   color: var(--primary-color);
 }
 
+/* Breadcrumbs */
+.breadcrumbs ol {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.5rem;
+  color: var(--text-color-muted);
+}
 
 /* Toast */
 .toast {
