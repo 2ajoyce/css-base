@@ -14,10 +14,22 @@ document.addEventListener("DOMContentLoaded", function () {
 function setTheme(theme) {
   document.body.setAttribute("data-theme", theme);
   document.getElementById("theme-select").value = theme;
+
+  // Separately, set the background color of the root element
+  const root = document.documentElement;
+  if (theme === "dark") {
+    root.style.backgroundColor = getComputedStyle(root).getPropertyValue(
+      "--dark-background-color"
+    );
+  } else {
+    root.style.backgroundColor = getComputedStyle(root).getPropertyValue(
+      "--light-background-color"
+    );
+  }
 }
 
 document.getElementById("theme-select").addEventListener("change", function () {
   const selectedTheme = this.value;
-  document.body.setAttribute("data-theme", selectedTheme);
+  setTheme(selectedTheme);
   localStorage.setItem("theme", selectedTheme);
 });
