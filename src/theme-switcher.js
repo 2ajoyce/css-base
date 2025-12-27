@@ -19,8 +19,8 @@ function setTheme(theme) {
   const root = document.documentElement;
   root.style.backgroundColor = getComputedStyle(document.body).getPropertyValue(
     "--background-color"
-    );
-  }
+  );
+}
 
 document.getElementById("theme-select").addEventListener("change", function () {
   const selectedTheme = this.value;
