@@ -36,17 +36,17 @@
       <section id="alerts">
         <h2><a href="#alerts">Alerts</a></h2>
         <p>Provide contextual feedback messages for typical user actions.</p>
-        <div class="alert primary">
-          <strong>Primary:</strong> This is a neutral informative message.
+        <div class="alert">
+          <strong>Default:</strong> This is a default alert message.
         </div>
         <div class="alert success">
-          <strong>Success:</strong> Your changes have been saved.
+          <strong>Success:</strong> This is a success alert message.
         </div>
         <div class="alert warning">
-          <strong>Warning:</strong> Please check your input.
+          <strong>Warning:</strong> This is a warning alert message.
         </div>
-        <div class="alert error">
-          <strong>Error:</strong> Something went wrong.
+        <div class="alert danger">
+          <strong>Danger:</strong> This is a danger alert message.
         </div>
       </section>
 
@@ -101,8 +101,8 @@
         </p>
         <p>
           Toast notifications are considered a subset of alerts and can be
-          styled using <code>.toast</code> + <code>.alert</code> +
-          <code>.success</code>, <code>.warning</code>, or <code>.error</code>.
+          styled using <code>.toast</code> + { <code>.success</code> |
+          <code>.warning</code> | <code>.danger</code> }.
         </p>
         <div class="stack">
           <div class="group">
@@ -118,7 +118,7 @@
             </button>
           </div>
           <div class="group">
-            <div class="toast primary">
+            <div class="toast">
               <span>This is a default toast message.</span>
             </div>
             <div class="toast success">

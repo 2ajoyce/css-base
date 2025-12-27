@@ -8,10 +8,7 @@
   border-radius: 4px;
   margin-bottom: 1rem;
   border: 1px solid transparent;
-}
 
-.alert.primary,
-.toast.primary {
   background-color: var(--primary-bg-subtle);
   color: var(--primary-text-subtle);
   border-color: var(--primary-border-subtle);
@@ -31,8 +28,8 @@
   border-color: var(--warning-border-subtle);
 }
 
-.alert.error,
-.toast.error {
+.alert.danger,
+.toast.danger {
   background-color: var(--danger-bg-subtle);
   color: var(--danger-text-subtle);
   border-color: var(--danger-border-subtle);
