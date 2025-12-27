@@ -64,6 +64,46 @@
   height: 4rem;
 }
 
+/* Badge / Tag */
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+}
+
+.tag.secondary {
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
+}
+
+.tag.success {
+  background-color: var(--success-color);
+  color: var(--success-text-color);
+}
+
+.tag.warning {
+  background-color: var(--warning-color);
+  color: var(--warning-text-color);
+}
+
+.tag.danger {
+  background-color: var(--danger-color);
+  color: var(--danger-text-color);
+}
+
+.tag.outline {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+
 /* Toast */
 .toast {
   /* The .toast class inherits most of its styling from .alert
