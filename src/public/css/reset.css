@@ -102,11 +102,8 @@ section {
   display: block;
 }
 
-/* The theme switcher will override this, however if javascript is disabled, the 
-following line hardcodes it to dark since that is the less disruptive option. */
 :root {
   height: 100vh;
-  background-color: var(--dark-background-color);
 }
 
 body {
