@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.0](https://github.com/2ajoyce/css-base/compare/v2.1.0...v2.2.0) (2025-12-27)
+
+
+### Features
+
+* (WIP) Initial commit of the new components page ([3fedb51](https://github.com/2ajoyce/css-base/commit/3fedb51357695e38ce3c1329748e05e8132d986e))
+* Add &lt;hr&gt; element styling ([529a9ae](https://github.com/2ajoyce/css-base/commit/529a9aeb49067ae3435c9216919fe99d02c1538f))
+* Add support for &lt;small&gt; tag ([a98733f](https://github.com/2ajoyce/css-base/commit/a98733f86e841aa1eb56c2011f91032f54e7f7d5))
+* Add utility page, add styling for role=button and tabindex ([25dbb41](https://github.com/2ajoyce/css-base/commit/25dbb41df86154bf5c79d9e086578ae8e4228e83))
+* button styling updates ([f3f0970](https://github.com/2ajoyce/css-base/commit/f3f097091238f76f085b5b0efa18b1ae738354b1))
+* WIP add avatar to components page ([4d6625c](https://github.com/2ajoyce/css-base/commit/4d6625c5d3e70389af4806b555b392e91def4cfc))
+* WIP add tooltip to components page ([2b501b4](https://github.com/2ajoyce/css-base/commit/2b501b4ab4ce1943e32700dc31293906ee97f9e7))
+
 ## [2.1.0](https://github.com/2ajoyce/css-base/compare/v2.0.0...v2.1.0) (2025-12-26)
 
 
