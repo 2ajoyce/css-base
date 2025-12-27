@@ -38,6 +38,35 @@
   border-color: var(--danger-border-subtle);
 }
 
+/* Avatar */
+.avatar {
+  width: var(--avatar-size, 3rem);
+  height: var(--avatar-size, 3rem);
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-color);
+  vertical-align: middle;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar.small {
+  width: 2rem;
+  height: 2rem;
+}
+
+.avatar.large {
+  width: 4rem;
+  height: 4rem;
+}
+
 /* Toast */
 .toast {
   /* The .toast class inherits most of its styling from .alert

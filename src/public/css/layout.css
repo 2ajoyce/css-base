@@ -89,6 +89,7 @@
     auto-fill,
     minmax(min(var(--grid-min-width, 200px), 100%), 1fr)
   );
+  align-items: var(--grid-align-items, end);
 }
 
 /* /////////////////////////////////////////////////////
