@@ -21,7 +21,6 @@ function setTheme(theme) {
     "--background-color"
     );
   }
-}
 
 document.getElementById("theme-select").addEventListener("change", function () {
   const selectedTheme = this.value;
