@@ -17,13 +17,8 @@ function setTheme(theme) {
 
   // Separately, set the background color of the root element
   const root = document.documentElement;
-  if (theme === "dark") {
-    root.style.backgroundColor = getComputedStyle(root).getPropertyValue(
-      "--dark-background-color"
-    );
-  } else {
-    root.style.backgroundColor = getComputedStyle(root).getPropertyValue(
-      "--light-background-color"
+  root.style.backgroundColor = getComputedStyle(document.body).getPropertyValue(
+    "--background-color"
     );
   }
 }
