@@ -1,0 +1,67 @@
+/* Styles for interactive components */
+
+/* Alerts */
+/* Toasts, defined lower in the stylesheet, use the .alert styling */
+.alert,
+.toast {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+}
+
+.alert.primary,
+.toast.primary {
+  background-color: var(--primary-bg-subtle);
+  color: var(--primary-text-subtle);
+  border-color: var(--primary-border-subtle);
+}
+
+.alert.success,
+.toast.success {
+  background-color: var(--success-bg-subtle);
+  color: var(--success-text-subtle);
+  border-color: var(--success-border-subtle);
+}
+
+.alert.warning,
+.toast.warning {
+  background-color: var(--warning-bg-subtle);
+  color: var(--warning-text-subtle);
+  border-color: var(--warning-border-subtle);
+}
+
+.alert.error,
+.toast.error {
+  background-color: var(--danger-bg-subtle);
+  color: var(--danger-text-subtle);
+  border-color: var(--danger-border-subtle);
+}
+
+/* Toast */
+.toast {
+  /* The .toast class inherits most of its styling from .alert
+  higher in the stylesheet */
+
+  /* As a floating element, toasts include a box shadow */
+  box-shadow: var(--box-shadow);
+
+  /* Initially hidden */
+  display: none;
+}
+
+.toast.show {
+  display: flex;
+  animation: toast-in 0.3s ease-out;
+}
+
+@keyframes toast-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

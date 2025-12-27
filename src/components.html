@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Component Examples</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body class="container" style="--container-padding: 0">
+    <header>
+      <h1>Style Guide</h1>
+      <nav
+        class="columns"
+        style="background-color: var(--background-color); padding: 1em"
+      >
+        <a href="index.html">Home</a>
+        <a href="elements.html">Elements</a>
+        <a href="utility.html">Utility</a>
+        <a href="layout.html">Layout</a>
+        <a href="components.html" class="active">Components</a>
+        <div
+          class="stack horizontal"
+          style="--stack-space: 0; --stack-wrap: nowrap"
+        >
+          <label for="theme-select" class="left ground">Theme:</label>
+          <select id="theme-select">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="high-contrast">High Contrast</option>
+          </select>
+        </div>
+      </nav>
+    </header>
+    <div class="stack" style="--stack-space: 2rem">
+      <!-- Alerts -->
+      <section id="alerts">
+        <h2><a href="#alerts">Alerts</a></h2>
+        <p>Provide contextual feedback messages for typical user actions.</p>
+        <div class="alert primary">
+          <strong>Primary:</strong> This is a neutral informative message.
+        </div>
+        <div class="alert success">
+          <strong>Success:</strong> Your changes have been saved.
+        </div>
+        <div class="alert warning">
+          <strong>Warning:</strong> Please check your input.
+        </div>
+        <div class="alert error">
+          <strong>Error:</strong> Something went wrong.
+        </div>
+      </section>
+
+      <!-- Toast -->
+      <section id="toast">
+        <h2><a href="#toast">Toast</a></h2>
+        <p>Floating notifications that appear at the corner of the screen.</p>
+        <p>
+          Toast notifications are ephemeral messages that disappear after a
+          short duration.
+        </p>
+        <p>
+          The text content of the toast is logged to the console for debugging
+          purposes.
+        </p>
+        <p>
+          Toast notifications are considered a subset of alerts and can be
+          styled using <code>.toast</code> + <code>.alert</code> +
+          <code>.success</code>, <code>.warning</code>, or <code>.error</code>.
+        </p>
+        <div class="stack">
+          <div class="group">
+            <button onclick="showToast('.toast', 5000)">Default Toast</button>
+            <button class="success" onclick="showToast('.toast.success', 5000)">
+              Success Toast
+            </button>
+            <button class="warning" onclick="showToast('.toast.warning', 5000)">
+              Warning Toast
+            </button>
+            <button class="danger" onclick="showToast('.toast.error', 5000)">
+              Error Toast
+            </button>
+          </div>
+          <div class="group">
+            <div class="toast primary">
+              <span>This is a default toast message.</span>
+            </div>
+            <div class="toast success">
+              <span>This is a success toast message.</span>
+            </div>
+            <div class="toast warning">
+              <span>This is a warning toast message.</span>
+            </div>
+            <div class="toast error">
+              <span>This is an error toast message.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <p>
+        Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a>
+      </p>
+    </footer>
+  </body>
+  <script src="theme-switcher.js"></script>
+  <script src="public/javascript/toast.js"></script>
+</html>

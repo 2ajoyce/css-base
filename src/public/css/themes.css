@@ -5,6 +5,10 @@
 ////////////////////////////////////////////////////////////////////// 
 */
 :root {
+  /* Utility Constants */
+  --box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.08), 2px 3px 4px rgba(0, 0, 0, 0.12),
+    1px 2px 2px rgba(0, 0, 0, 0.24);
+
   /* Light Mode constants */
   --light-background-color: #f4f4f4;
   --light-secondary-background-color: #ffffff;
@@ -44,6 +48,20 @@
   --light-warning-color-active: #d39e00;
   --light-warning-color-focus: #ffe08a;
   --light-warning-text-color: #333;
+  --light-primary-bg-subtle: #e3f2fd;
+  --light-primary-text-subtle: #0d47a1;
+  --light-primary-border-subtle: #bbdefb;
+  --light-success-bg-subtle: #e8f5e9;
+  --light-success-text-subtle: #1b5e20;
+  --light-success-border-subtle: #c8e6c9;
+  --light-warning-bg-subtle: #fff8e1;
+  --light-warning-text-subtle: #ff6f00;
+  --light-warning-border-subtle: #ffecb3;
+  --light-danger-bg-subtle: #ffebee;
+  --light-danger-text-subtle: #b71c1c;
+  --light-danger-border-subtle: #ffcdd2;
+  --light-backdrop-color: rgba(0, 0, 0, 0.5);
+  --light-skeleton-highlight: rgba(255, 255, 255, 0.2);
 
   /* Dark Mode constants */
   --dark-background-color: #333;
@@ -84,6 +102,20 @@
   --dark-warning-color-active: #ff6a00;
   --dark-warning-color-focus: #ffa500;
   --dark-warning-text-color: #f4f4f4;
+  --dark-primary-bg-subtle: #003366;
+  --dark-primary-text-subtle: #cce5ff;
+  --dark-primary-border-subtle: #004080;
+  --dark-success-bg-subtle: #1b331b;
+  --dark-success-text-subtle: #d4edda;
+  --dark-success-border-subtle: #284d28;
+  --dark-warning-bg-subtle: #332b00;
+  --dark-warning-text-subtle: #fff3cd;
+  --dark-warning-border-subtle: #4d4100;
+  --dark-danger-bg-subtle: #330000;
+  --dark-danger-text-subtle: #f8d7da;
+  --dark-danger-border-subtle: #4d0000;
+  --dark-backdrop-color: rgba(0, 0, 0, 0.7);
+  --dark-skeleton-highlight: rgba(255, 255, 255, 0.1);
 }
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -137,6 +169,20 @@
   --warning-color-active: var(--light-warning-color-active);
   --warning-color-focus: var(--light-warning-color-focus);
   --warning-text-color: var(--light-warning-text-color);
+  --primary-bg-subtle: var(--light-primary-bg-subtle);
+  --primary-text-subtle: var(--light-primary-text-subtle);
+  --primary-border-subtle: var(--light-primary-border-subtle);
+  --success-bg-subtle: var(--light-success-bg-subtle);
+  --success-text-subtle: var(--light-success-text-subtle);
+  --success-border-subtle: var(--light-success-border-subtle);
+  --warning-bg-subtle: var(--light-warning-bg-subtle);
+  --warning-text-subtle: var(--light-warning-text-subtle);
+  --warning-border-subtle: var(--light-warning-border-subtle);
+  --danger-bg-subtle: var(--light-danger-bg-subtle);
+  --danger-text-subtle: var(--light-danger-text-subtle);
+  --danger-border-subtle: var(--light-danger-border-subtle);
+  --backdrop-color: var(--light-backdrop-color);
+  --skeleton-highlight: var(--light-skeleton-highlight);
 }
 
 [data-theme="dark"] {
@@ -178,6 +224,20 @@
   --warning-color-active: var(--dark-warning-color-active);
   --warning-color-focus: var(--dark-warning-color-focus);
   --warning-text-color: var(--dark-warning-text-color);
+  --primary-bg-subtle: var(--dark-primary-bg-subtle);
+  --primary-text-subtle: var(--dark-primary-text-subtle);
+  --primary-border-subtle: var(--dark-primary-border-subtle);
+  --success-bg-subtle: var(--dark-success-bg-subtle);
+  --success-text-subtle: var(--dark-success-text-subtle);
+  --success-border-subtle: var(--dark-success-border-subtle);
+  --warning-bg-subtle: var(--dark-warning-bg-subtle);
+  --warning-text-subtle: var(--dark-warning-text-subtle);
+  --warning-border-subtle: var(--dark-warning-border-subtle);
+  --danger-bg-subtle: var(--dark-danger-bg-subtle);
+  --danger-text-subtle: var(--dark-danger-text-subtle);
+  --danger-border-subtle: var(--dark-danger-border-subtle);
+  --backdrop-color: var(--dark-backdrop-color);
+  --skeleton-highlight: var(--dark-skeleton-highlight);
 }
 
 /* High Contrast Theme */
@@ -186,7 +246,7 @@
   --secondary-background-color: #111111;
   --unset-background-color: lime;
   --text-color: #fff;
-  --primary-color: #ff0;
+  --primary-color: #ff0; /* The neon blue #0ff; would be a better primary color */
   --primary-color-hover: #e6e600;
   --primary-color-active: #cccc00;
   --primary-color-focus: #ffff99;
@@ -220,6 +280,20 @@
   --warning-color-active: #ff7f00;
   --warning-color-focus: #ffae42;
   --warning-text-color: #fff;
+  --primary-bg-subtle: #000;
+  --primary-text-subtle: #0ff;
+  --primary-border-subtle: #0ff;
+  --success-bg-subtle: #000;
+  --success-text-subtle: #0f0;
+  --success-border-subtle: #0f0;
+  --warning-bg-subtle: #000;
+  --warning-text-subtle: #ff0;
+  --warning-border-subtle: #ff0;
+  --danger-bg-subtle: #000;
+  --danger-text-subtle: #f00;
+  --danger-border-subtle: #f00;
+  --backdrop-color: rgba(0, 0, 0, 0.9);
+  --skeleton-highlight: rgba(255, 255, 255, 0.3);
 }
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -272,6 +346,20 @@
   --warning-color-active: var(--light-warning-color-active);
   --warning-color-focus: var(--light-warning-color-focus);
   --warning-text-color: var(--light-warning-text-color);
+  --primary-bg-subtle: var(--light-primary-bg-subtle);
+  --primary-text-subtle: var(--light-primary-text-subtle);
+  --primary-border-subtle: var(--light-primary-border-subtle);
+  --success-bg-subtle: var(--light-success-bg-subtle);
+  --success-text-subtle: var(--light-success-text-subtle);
+  --success-border-subtle: var(--light-success-border-subtle);
+  --warning-bg-subtle: var(--light-warning-bg-subtle);
+  --warning-text-subtle: var(--light-warning-text-subtle);
+  --warning-border-subtle: var(--light-warning-border-subtle);
+  --danger-bg-subtle: var(--light-danger-bg-subtle);
+  --danger-text-subtle: var(--light-danger-text-subtle);
+  --danger-border-subtle: var(--light-danger-border-subtle);
+  --backdrop-color: var(--light-backdrop-color);
+  --skeleton-highlight: var(--light-skeleton-highlight);
 }
 
 /* CSS Only Dark Theme */
@@ -315,5 +403,19 @@
     --warning-color-active: var(--dark-warning-color-active);
     --warning-color-focus: var(--dark-warning-color-focus);
     --warning-text-color: var(--dark-warning-text-color);
+    --primary-bg-subtle: var(--dark-primary-bg-subtle);
+    --primary-text-subtle: var(--dark-primary-text-subtle);
+    --primary-border-subtle: var(--dark-primary-border-subtle);
+    --success-bg-subtle: var(--dark-success-bg-subtle);
+    --success-text-subtle: var(--dark-success-text-subtle);
+    --success-border-subtle: var(--dark-success-border-subtle);
+    --warning-bg-subtle: var(--dark-warning-bg-subtle);
+    --warning-text-subtle: var(--dark-warning-text-subtle);
+    --warning-border-subtle: var(--dark-warning-border-subtle);
+    --danger-bg-subtle: var(--dark-danger-bg-subtle);
+    --danger-text-subtle: var(--dark-danger-text-subtle);
+    --danger-border-subtle: var(--dark-danger-border-subtle);
+    --backdrop-color: var(--dark-backdrop-color);
+    --skeleton-highlight: var(--dark-skeleton-highlight);
   }
 }
