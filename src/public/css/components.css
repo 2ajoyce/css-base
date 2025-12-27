@@ -117,6 +117,20 @@
   color: var(--secondary-text-color);
 }
 
+/* Card */
+/* The base .card styling can be found in layout.css */
+
+/* Card Extensions */
+.card-header {
+  border-bottom: 1px solid var(--secondary-text-color);
+}
+
+.card-footer {
+  margin-top: 1rem;
+  border-top: 1px solid var(--secondary-text-color);
+  color: var(--secondary-text-color);
+}
+
 /* Toast */
 .toast {
   /* The .toast class inherits most of its styling from .alert
