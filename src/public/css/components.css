@@ -190,6 +190,43 @@
   background-color: var(--secondary-color);
 }
 
+/* Progress Bar */
+.progress-container {
+  width: 100%;
+  background-color: var(--secondary-color);
+  border-radius: 4px;
+  overflow: hidden;
+  height: 1.5rem;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: width 0.3s ease;
+  width: calc(var(--pb-percent, 0) * 1%);
+}
+
+.progress-bar.indeterminate {
+  width: 30%;
+  position: absolute;
+  animation: progress-indeterminate 1.5s infinite linear;
+}
+
+@keyframes progress-indeterminate {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
 
 /* Toast */
 .toast {
