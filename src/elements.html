@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -295,6 +295,26 @@ hello_world()</code></pre>
           </div>
           <button type="submit" class="primary">Submit</button>
         </form>
+      </section>
+      <section id="modal">
+        <h2><a href="#modal">Modal</a></h2>
+        <p>
+          The <code>&lt;dialog&gt;</code> element provides a native way to
+          create modal dialogs.
+        </p>
+        <button onclick="document.getElementById('demo-modal').showModal()">
+          Open Modal
+        </button>
+        <dialog id="demo-modal">
+          <h3>Modal Title</h3>
+          <p>
+            This is a native modal dialog using the
+            <code>&lt;dialog&gt;</code> element.
+          </p>
+          <button onclick="document.getElementById('demo-modal').close()">
+            Close
+          </button>
+        </dialog>
       </section>
       <section id="images">
         <h2><a href="#images">Images</a></h2>

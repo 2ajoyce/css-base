@@ -286,7 +286,9 @@ select {
   width: 100%;
   box-sizing: border-box;
   font-size: 1rem;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 
 select {
@@ -495,4 +497,17 @@ details > summary {
 
   /* Summary text should not be accidentally highlighted when clicked */
   user-select: none;
+}
+
+/* Dialog (Modal) */
+dialog {
+  border: 1px solid var(--text-color);
+  border-radius: 0.5rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+dialog::backdrop {
+  background-color: var(--backdrop-color);
+  backdrop-filter: blur(2px);
 }
