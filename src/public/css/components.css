@@ -227,6 +227,47 @@
   }
 }
 
+/* Tabs */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tab-label {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: 1px solid var(--text-color);
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  margin-right: 2px;
+  background-color: var(--secondary-color);
+}
+
+.tab-radio {
+  display: none;
+}
+
+.tab-content {
+  display: none;
+  order: 99; /* Force content to the end */
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--text-color);
+  background-color: var(--background-color);
+}
+
+/* Show content when radio is checked */
+.tab-radio:checked + .tab-label + .tab-content {
+  display: block;
+}
+
+/* Style active tab label */
+.tab-radio:checked + .tab-label {
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--background-color);
+  margin-bottom: -1px;
+  z-index: 1;
+}
 
 /* Toast */
 .toast {
