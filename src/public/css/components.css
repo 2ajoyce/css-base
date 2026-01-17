@@ -227,6 +227,77 @@
   }
 }
 
+/* Skeleton Loader */
+/* 
+   For text skeletons, use .skeleton.text.
+   For images/blocks, use .skeleton.block (or just .skeleton with helper classes).
+   For circular shapes, combine with .avatar or use .skeleton.circle.
+*/
+.skeleton {
+  background-color: var(--secondary-color);
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--skeleton-highlight),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
+  border-radius: 4px;
+  display: block;
+  /* Ensure it has some dimension if empty and not text/avatar */
+  min-height: 1em;
+}
+
+/* Skeleton variants for different content types */
+
+/* Block/Image placeholder */
+.skeleton.block {
+  width: 100%;
+  height: 150px; /* Default height for card images etc */
+}
+
+/* Circle variant */
+.skeleton.circle {
+  border-radius: 50%;
+  /* Combine with .avatar or set width/height explicitly if suitable */
+}
+
+/* Text Line variant */
+.skeleton.text {
+  height: 0.8em;
+  width: 100%;
+  margin-bottom: 0.5em;
+  /* Use a generic width for text lines if not specified */
+}
+
+.skeleton.text:last-child {
+  margin-bottom: 0;
+  width: 80%; /* Simulate end of paragraph */
+}
+
+/* Header line variant (thicker, shorter) */
+.skeleton.header {
+  height: 1.5rem;
+  width: 75%;
+  margin-bottom: 1rem;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
 /* Tabs */
 .tabs {
   display: flex;
