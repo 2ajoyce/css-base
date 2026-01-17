@@ -165,6 +165,32 @@
   display: block;
 }
 
+/* Pagination */
+.pagination {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.pagination a {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--text-color);
+  text-decoration: none;
+  color: var(--text-color);
+  border-radius: 4px;
+}
+
+.pagination a.active {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  border-color: var(--primary-color);
+}
+
+.pagination a:hover:not(.active) {
+  background-color: var(--secondary-color);
+}
+
+
 /* Toast */
 .toast {
   /* The .toast class inherits most of its styling from .alert
