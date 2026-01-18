@@ -260,11 +260,11 @@
   --secondary-background-color: #111111;
   --unset-background-color: lime;
   --text-color: #fff;
-  --primary-color: #ff0; /* The neon blue #0ff; would be a better primary color */
-  --primary-color-hover: #e6e600;
-  --primary-color-active: #cccc00;
-  --primary-color-focus: #ffff99;
-  --primary-color-disabled: #999900;
+  --primary-color: #0ff;
+  --primary-color-hover: #00e6e6;
+  --primary-color-active: #00cccc;
+  --primary-color-focus: #99ffff;
+  --primary-color-disabled: #006666;
   --primary-text-color: #000;
   --secondary-color: #222;
   --secondary-color-hover: #333;
@@ -273,7 +273,7 @@
   --secondary-text-color: #fff;
   --highlight-color: #ff0;
   --highlighted-text-color: #000;
-  --link-color: #ff0;
+  --link-color: #0ff;
   --link-visited-color: #551a8b;
   --link-hover-color: #ffa500;
   --inline-code-background-color: #282c34;
@@ -289,11 +289,11 @@
   --success-color-active: #228b22;
   --success-color-focus: #7cfc00;
   --success-text-color: #000;
-  --warning-color: #ffa500;
-  --warning-color-hover: #ff8c00;
-  --warning-color-active: #ff7f00;
-  --warning-color-focus: #ffae42;
-  --warning-text-color: #fff;
+  --warning-color: #ff0;
+  --warning-color-hover: #e6e600;
+  --warning-color-active: #cccc00;
+  --warning-color-focus: #ffff99;
+  --warning-text-color: #000;
   --primary-bg-subtle: #000;
   --primary-text-subtle: #0ff;
   --primary-border-subtle: #0ff;
