@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.1.0](https://github.com/2ajoyce/css-base/compare/v3.0.2...v3.1.0) (2026-01-18)
+
+
+### Features
+
+* Move JS utilities to base directory for inclusion in release ([03502da](https://github.com/2ajoyce/css-base/commit/03502da3f85d89e91dd91d288db7fd42a791983f))
+* Move JS utilities to base directory for inclusion in release ([7662b4e](https://github.com/2ajoyce/css-base/commit/7662b4eec569d88b2ba5f7c57203271d19a96406))
+
+
+### Bug Fixes
+
+* adjust spacing on header and footer ([307cb3b](https://github.com/2ajoyce/css-base/commit/307cb3b431d2897a1287713798a039af59b9c4cf))
+* update example llinks which were pointing to an external domain. ([ae1632d](https://github.com/2ajoyce/css-base/commit/ae1632d544acf81057c3620379e3f2eb040c02aa))
+
 ## [3.0.2](https://github.com/2ajoyce/css-base/compare/v3.0.1...v3.0.2) (2026-01-18)
 
 
