@@ -42,7 +42,7 @@
   --light-highlight-color: #ff0;
   --light-highlighted-text-color: #333;
   --light-link-color: #007bff;
-  --light-link-visited-color: #551a8b;
+  --light-link-visited-color: #7b3fb3;
   --light-link-hover-color: #0056b3;
   --light-inline-code-background-color: #193e69;
   --light-inline-code-text-color: #eff5fa;
@@ -96,7 +96,7 @@
   --dark-highlight-color: #ff0;
   --dark-highlighted-text-color: #0b0b0b;
   --dark-link-color: #1e90ff;
-  --dark-link-visited-color: #551a8b;
+  --dark-link-visited-color: #ce93d8;
   --dark-link-hover-color: #104e8b;
   --dark-inline-code-background-color: #282c34;
   --dark-inline-code-text-color: #61dafb;
@@ -274,7 +274,7 @@
   --highlight-color: #ff0;
   --highlighted-text-color: #000;
   --link-color: #0ff;
-  --link-visited-color: #551a8b;
+  --link-visited-color: #da70d6;
   --link-hover-color: #ffa500;
   --inline-code-background-color: #282c34;
   --inline-code-text-color: #61dafb;
