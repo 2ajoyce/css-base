@@ -357,7 +357,9 @@
   z-index: 1;
 }
 
-/* Toast */
+/* Toast 
+   Requires css-base/toast.js for functionality (showing/hiding)
+*/
 .toast {
   /* The .toast class inherits most of its styling from .alert
   higher in the stylesheet */
