@@ -1,5 +1,14 @@
-/* 
- * This stylesheet adjusts individual properties across multiple elements 
+/**
+ * @file utility.css
+ * @description Atomic functional classes and global behavior modifiers.
+ * @context
+ *   .fit-content (Responsive width adaptation)
+ *   .radius (Standard border-radius. vars: --radius)
+ *   [tabindex]:not(-1) (Global focus/cursor behavior)
+ */
+
+/*
+ * This stylesheet adjusts individual properties across multiple elements
  * to customize them for specific scenarios.
  */
 

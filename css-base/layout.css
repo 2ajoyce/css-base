@@ -1,3 +1,21 @@
+/**
+ * @file layout.css
+ * @description Layout primitives for responsive design.
+ * @context
+ *   .aspect-ratio (vars: --aspect-ratio, --aspect-ratio-padding, --aspect-ratio-border, --aspect-ratio-bg)
+ *   .card (vars: --card-padding, --card-border)
+ *   .carousel (vars: --carousel-gap, --carousel-item-width)
+ *   .center (Flex column center)
+ *   .columns (Flex wrap with min-width logic. vars: --columns-gap, --columns-min-width)
+ *   .container (Centered content. vars: --container-max-width, --container-padding)
+ *   .grid (CSS Grid. vars: --grid-gap, --grid-min-width, --grid-align-items)
+ *   .group (Flex wrap. vars: --group-gap)
+ *   .icon (Fixed size flex center. vars: --icon-width, --icon-height)
+ *   .overlay (Absolute center. vars: --overlay-top, --overlay-left)
+ *   .sidebar (Sidebar layout. vars: --sidebar-gap, --sidebar-side-width, --sidebar-main-min-width)
+ *   .stack (Flex column/row. vars: --stack-padding, --stack-space, --stack-wrap)
+ */
+
 /* /////////////////////////////////////////////////////
 // Aspect Ratio
 //////////////////////////////////////////////////////*/

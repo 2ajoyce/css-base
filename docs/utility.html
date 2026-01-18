@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Style Guide Landing Page</title>
-    <link rel="stylesheet" href="index.css" />
+    <title>Style Guide</title>
+    <link rel="stylesheet" href="../css-base/index.css" />
   </head>
   <body class="container" style="--container-padding: 0">
     <header>
@@ -13,9 +13,9 @@
         class="columns"
         style="background-color: var(--background-color); padding: 1em"
       >
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="elements.html">Elements</a>
-        <a href="utility.html">Utility</a>
+        <a href="utility.html" class="active">Utility</a>
         <a href="layout.html">Layout</a>
         <a href="components.html">Components</a>
         <div
@@ -31,28 +31,22 @@
         </div>
       </nav>
     </header>
-    <div class="stack">
-      <section>
-        The style guide is divided into several sections:
-        <ul>
-          <li>
-            <strong>HTML Element Examples:</strong> This section showcases the
-            various HTML elements and their styles.
-          </li>
-          <li>
-            <strong>Utility Classes:</strong> This section provides examples of
-            utility classes for common styling needs.
-          </li>
-
-          <li>
-            <strong>Layout Examples:</strong> This section demonstrates
-            different layout patterns.
-          </li>
-          <li>
-            <strong>Interactive Examples:</strong> This section provides
-            examples of common UI components.
-          </li>
-        </ul>
+    <div class="stack" style="--stack-space: 2rem">
+      <section id="interactive-elements">
+        <h2><a href="#interactive-elements">Interactive Elements</a></h2>
+        <div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
+          <p>
+            Sometimes elements which are not typically interactive need to have
+            a pointer cursor to indicate they can be clicked or focused.
+          </p>
+          <button class="fit-content">This is a standard button</button>
+          <p>This is a standard <code>&lt;p&gt;</code> element.</p>
+          <p role="button" tabindex="0">
+            This is a <code>&lt;p&gt;</code> with the
+            <code>role="button"</code>
+            attribute and <code>tabindex="0"</code> to make it focusable.
+          </p>
+        </div>
       </section>
     </div>
     <footer>

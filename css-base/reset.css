@@ -1,3 +1,15 @@
+/**
+ * @file reset.css
+ * @description Modern CSS reset / Normalization.
+ * @context
+ *   Resets margin/padding/border for ALL common elements.
+ *   Sets box-sizing to border-box globally.
+ *   Normalizes font size and family inheritance.
+ *   Sets root height to 100vh.
+ *   Removes default list styles.
+ *   Removes default outlines (be sure to add :focus styles in other files!).
+ */
+
 html,
 body,
 div,

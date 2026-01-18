@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Style Guide Landing Page</title>
+    <link rel="stylesheet" href="../css-base/index.css" />
+  </head>
+  <body class="container" style="--container-padding: 0">
+    <header>
+      <h1>CSS Base</h1>
+      <p>A lightweight, agent-friendly CSS starter kit.</p>
+      <nav
+        class="columns"
+        style="background-color: var(--background-color); padding: 1em"
+      >
+        <a href="index.html" class="active">Home</a>
+        <a href="elements.html">Elements</a>
+        <a href="utility.html">Utility</a>
+        <a href="layout.html">Layout</a>
+        <a href="components.html">Components</a>
+        <div
+          class="stack horizontal"
+          style="--stack-space: 0; --stack-wrap: nowrap"
+        >
+          <label for="theme-select" class="left ground">Theme:</label>
+          <select id="theme-select">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="high-contrast">High Contrast</option>
+          </select>
+        </div>
+      </nav>
+    </header>
+    <div class="stack">
+      <section>
+        <h2>The Philosophy</h2>
+        <p>
+          This is not a library you install and keep up to date. It is a
+          <strong>starting point</strong> (a seed).
+        </p>
+        <p>
+          Most CSS frameworks are too opinionated or too heavy. This project
+          provides 80% of what you need to start a project (Reset, Grid System,
+          Basic Components) in a flat, portable structure that you are expected
+          to modify.
+        </p>
+      </section>
+
+      <section>
+        <h2>How to Use</h2>
+        <h3>For AI Agents 🤖</h3>
+        <ol>
+          <li>Copy the <code>css-base/</code> folder to your project root.</li>
+          <li>Read <code>css-base/AGENTS.md</code> for context.</li>
+          <li>Link <code>index.css</code> in your HTML.</li>
+          <li>Modify the files directly.</li>
+        </ol>
+
+        <h3>For Humans 🧑‍💻</h3>
+        <p>
+          <a href="https://github.com/2ajoyce/css-base/releases"
+            >Download the latest release</a
+          >, drop the folder into your project, and start editing.
+        </p>
+        <p>
+          View the
+          <a href="https://github.com/2ajoyce/css-base">source code on GitHub</a
+          >.
+        </p>
+        <p>
+          Change the colors in <code>themes.css</code>, tweak the grid in
+          <code>layout.css</code>, and build your own components on top.
+        </p>
+      </section>
+
+      <section>
+        <h2>Explore the System</h2>
+        <ul>
+          <li>
+            <strong><a href="elements.html">Elements</a>:</strong>
+            Typography and form defaults.
+          </li>
+          <li>
+            <strong><a href="utility.html">Utility</a>:</strong>
+            Helper classes for spacing and visibility.
+          </li>
+
+          <li>
+            <strong><a href="layout.html">Layout</a>:</strong>
+            Primitive components for positioning (Grid, Stack, Sidebar).
+          </li>
+          <li>
+            <strong><a href="components.html">Components</a>:</strong>
+            Composite UI widgets (Toasts, Modals, Cards).
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <p>
+        Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a>
+      </p>
+    </footer>
+  </body>
+  <script src="theme-switcher.js"></script>
+</html>

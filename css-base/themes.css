@@ -1,3 +1,16 @@
+/**
+ * @file themes.css
+ * @description Design tokens and color themes.
+ * @context
+ *   :root (Defines primitives: --light-*, --dark-*)
+ *   [data-theme="light"] (Maps vars to primitives)
+ *   [data-theme="dark"]  (Maps vars to primitives)
+ *   [data-theme="high-contrast"] (Example manual theme override)
+ * @notes
+ *   - Used by theme-switcher.js
+ *   - --primary-color and --secondary-color are the most critical tokens.
+ */
+
 /* 
 //////////////////////////////////////////////////////////////////////
   Light mode and Dark mode colors are defined here
@@ -6,7 +19,8 @@
 */
 :root {
   /* Utility Constants */
-  --box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.08), 2px 3px 4px rgba(0, 0, 0, 0.12),
+  --box-shadow:
+    2px 4px 6px rgba(0, 0, 0, 0.08), 2px 3px 4px rgba(0, 0, 0, 0.12),
     1px 2px 2px rgba(0, 0, 0, 0.24);
 
   /* Light Mode constants */

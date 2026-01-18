@@ -1,0 +1,22 @@
+/**
+ * @file index.css
+ * @description Main entry point / Manifest.
+ * @context
+ *   This is the ONLY file you should link in your HTML.
+ *   Imports are ordered by specificity:
+ *     1. Reset (Normalize defaults)
+ *     2. Themes (Variables/Tokens)
+ *     3. Utility (Atomic classes)
+ *     4. Elements (Tag-base styles)
+ *     5. Buttons (Specific component)
+ *     6. Layout (Grid/Flex primitives)
+ *     7. Components (Composite widgets)
+ */
+
+@import url("reset.css");
+@import url("themes.css");
+@import url("utility.css");
+@import url("elements.css");
+@import url("buttons.css");
+@import url("layout.css");
+@import url("components.css");

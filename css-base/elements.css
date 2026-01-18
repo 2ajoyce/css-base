@@ -1,3 +1,18 @@
+/**
+ * @file elements.css
+ * @description Base styles for HTML tags.
+ * @context
+ *   body (Global text defaults)
+ *   h1-h6 (Typography)
+ *   p, blockquote, pre, code (Content blocks)
+ *   strong, em, mark, del, ins, sub, sup, small (Inline formatting)
+ *   a (Links. vars: --link-color, --link-hover-color)
+ *   ul, ol, dl (Lists)
+ *   table, th, td (Data tables)
+ *   form, label, input, textarea, select (Form controls)
+ *   details, summary (Disclosure widget)
+ */
+
 /* Base styles */
 html {
   background-color: var(--background-color);

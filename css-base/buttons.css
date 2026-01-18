@@ -1,13 +1,28 @@
+/**
+ * @file buttons.css
+ * @description Styles for button elements and roles.
+ * @context
+ *   button (Standard button. Variants: .secondary, .success, .danger, .warning)
+ *   [role="button"] (Generic clickable elements, mimics secondary style)
+ * @notes
+ *   [role="button"] may conflict with map libraries like Leaflet.
+ */
+
 button {
   padding: 0.75em 1em;
   background-color: var(--primary-color);
   color: var(--primary-text-color);
   border: none;
   border-radius: 3px;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.08), 2px 3px 4px rgba(0, 0, 0, 0.12),
+  box-shadow:
+    2px 4px 6px rgba(0, 0, 0, 0.08),
+    2px 3px 4px rgba(0, 0, 0, 0.12),
     1px 2px 2px rgba(0, 0, 0, 0.24);
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    transform 0.3s,
+    box-shadow 0.3s;
   font-size: 1em;
 }
 
@@ -36,7 +51,9 @@ button:disabled:active {
   background-color: var(--primary-color);
   color: var(--primary-text-color);
   transform: none;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.08), 2px 3px 4px rgba(0, 0, 0, 0.12),
+  box-shadow:
+    2px 4px 6px rgba(0, 0, 0, 0.08),
+    2px 3px 4px rgba(0, 0, 0, 0.12),
     1px 2px 2px rgba(0, 0, 0, 0.24);
 }
 
@@ -140,15 +157,25 @@ button.warning:disabled:active {
   color: var(--warning-text-color);
 }
 
-/* Non-button elements styled as buttons */
-/* Non-button elements are most like secondary buttons so we will use secondary button styles */
+/* 
+* Non-button elements styled as buttons
+* Non-button elements are most like secondary buttons so we will use secondary button styles
+* IMPORTANT: If the project uses a library which adds interactive UI elements such as Leaflet 
+* this set of rules will likely need to be adjusted so that they do not overwrite 
+* the styling of that element.  
+*/
 [role="button"] {
   cursor: pointer;
   user-select: none;
   padding: 0.5rem 0.75rem;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.08), 2px 3px 4px rgba(0, 0, 0, 0.12),
+  box-shadow:
+    2px 4px 6px rgba(0, 0, 0, 0.08),
+    2px 3px 4px rgba(0, 0, 0, 0.12),
     1px 2px 2px rgba(0, 0, 0, 0.24);
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 [role="button"]:hover {
   background-color: var(--secondary-color-hover);
@@ -162,8 +189,10 @@ button.warning:disabled:active {
 [role="button"]:focus {
   outline: 2px solid var(--secondary-color-focus);
 }
-/* Since "disabled" is only supported by inputs: <button>, <fieldset>, 
-<optgroup>, <option>, <select>, <textarea> and <input>, we will not 
-include a disabled style for [role="button"]. We do not want to support
-the idea of making an input a clickable element outside of their existing
-support for user interaction */
+/* 
+* Since "disabled" is only supported by inputs: <button>, <fieldset>, 
+* <optgroup>, <option>, <select>, <textarea> and <input>, we will not 
+* include a disabled style for [role="button"]. We do not want to support
+* the idea of making an input a clickable element outside of their existing
+* support for user interaction 
+*/

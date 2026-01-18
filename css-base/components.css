@@ -1,3 +1,20 @@
+/**
+ * @file components.css
+ * @description Complex composite UI components.
+ * @context
+ *   .alert, .toast (Messaging blocks. Variants: .success, .warning, .danger)
+ *   .avatar (Image container. Variants: .small, .large)
+ *   .tag (Label/Badge. Variants: .secondary, .success, .warning, .danger, .outline)
+ *   .breadcrumbs (Navigation list)
+ *   .card-header, .card-footer (Extensions for .card)
+ *   .dropdown (Hover/Focus menu. vars: --background-color, --text-color)
+ *   .pagination (Page links)
+ *   .progress-bar (Variable width bar. vars: --pb-percent)
+ *   .skeleton (Loading placeholders. Variants: .block, .circle, .text, .header)
+ *   .tooltip (CSS-only hover text)
+ *   .modal (Dialog overlay)
+ */
+
 /* Styles for interactive components */
 
 /* Alerts */
