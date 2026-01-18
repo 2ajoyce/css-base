@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/2ajoyce/css-base/compare/v3.0.0...v3.0.1) (2026-01-18)
+
+
+### Bug Fixes
+
+* no-op change to the index.html to force a redeploy of the docs ([1aff2d6](https://github.com/2ajoyce/css-base/commit/1aff2d6dfc6e5f8980015a781e10a7ca3890eba3))
+
 ## [3.0.0](https://github.com/2ajoyce/css-base/compare/v2.3.0...v3.0.0) (2026-01-18)
 
 
