@@ -260,7 +260,7 @@
   --secondary-background-color: #111111;
   --unset-background-color: lime;
   --text-color: #fff;
-  --primary-color: #0ff; /* Cyan for better contrast and clarity */
+  --primary-color: #0ff;
   --primary-color-hover: #00e6e6;
   --primary-color-active: #00cccc;
   --primary-color-focus: #99ffff;
