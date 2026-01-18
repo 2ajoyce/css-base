@@ -1,5 +1,26 @@
 # Changelog
 
+## [3.0.0](https://github.com/2ajoyce/css-base/compare/v2.3.0...v3.0.0) (2026-01-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* The project file structure has been completely reorganized. The `src/` directory has been removed. CSS files are now located in `css-base/` and legacy `public/css/` paths no longer exist.
+
+### Features
+
+* add dropdown menu component ([f144ecc](https://github.com/2ajoyce/css-base/commit/f144ecc881aafafa7f9dad2939be8231e869bf5c))
+* add modal dialog component ([810d1d6](https://github.com/2ajoyce/css-base/commit/810d1d6aa368a98bbbb2056973d17dd1feca28b0))
+* add pagination component ([2a17806](https://github.com/2ajoyce/css-base/commit/2a178065ba4a0ba8b45c0f391bff0aa5c8f0ef37))
+* add progress bar component ([6b8404f](https://github.com/2ajoyce/css-base/commit/6b8404f8c811c1093d478b26e6d5db3c5af1895a))
+* add skeleton loader component ([f6cd7f4](https://github.com/2ajoyce/css-base/commit/f6cd7f409e21fdc8c7541096a1a9a816fb84c005))
+* add tabs component ([66ef623](https://github.com/2ajoyce/css-base/commit/66ef6238da754a537b258c9a619a0fed845e4168))
+
+
+### Code Refactoring
+
+* restructure project for portability and AI-readiness ([b4e499c](https://github.com/2ajoyce/css-base/commit/b4e499cf1edae0db449d8bd81e5d18ded94bb124))
+
 ## [2.3.0](https://github.com/2ajoyce/css-base/compare/v2.2.0...v2.3.0) (2025-12-27)
 
 
