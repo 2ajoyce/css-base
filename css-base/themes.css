@@ -14,7 +14,9 @@
 /* 
 //////////////////////////////////////////////////////////////////////
   Light mode and Dark mode colors are defined here
-  These constants are used for both the JS and CSS solutions             
+  These constants are used for both the JS and CSS solutions
+  
+  The JS solution is included in css-base/theme-switcher.js
 ////////////////////////////////////////////////////////////////////// 
 */
 :root {
