@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/2ajoyce/css-base/compare/v3.0.1...v3.0.2) (2026-01-18)
+
+
+### Bug Fixes
+
+* Fix Error Toast using wrong CSS class ([9536107](https://github.com/2ajoyce/css-base/commit/9536107bf5b99af3ea64c66aa0610b467912fed5))
+
 ## [3.0.1](https://github.com/2ajoyce/css-base/compare/v3.0.0...v3.0.1) (2026-01-18)
 
 
