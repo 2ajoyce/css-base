@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/2ajoyce/css-base/compare/v3.1.0...v3.2.0) (2026-05-11)
+
+
+### Features
+
+* Add dependabot config and bump github actions ([9392703](https://github.com/2ajoyce/css-base/commit/939270367f1c989e31fcc2fc9b39b6d4fa76bc1a))
+
 ## [3.1.0](https://github.com/2ajoyce/css-base/compare/v3.0.2...v3.1.0) (2026-01-18)
 
 
