@@ -24,6 +24,10 @@ button {
     transform 0.3s,
     box-shadow 0.3s;
   font-size: 1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
 }
 
 button:disabled {
