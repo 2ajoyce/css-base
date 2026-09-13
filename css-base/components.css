@@ -7,6 +7,7 @@
  *   .tag (Label/Badge. Variants: .secondary, .success, .warning, .danger, .outline)
  *   .breadcrumbs (Navigation list)
  *   .card-header, .card-footer (Extensions for .card)
+ *   .drop-zone (Drag-and-drop file target. States: .drag-over, .invalid)
  *   .dropdown (Hover/Focus menu. vars: --background-color, --text-color)
  *   .pagination (Page links)
  *   .progress-bar (Variable width bar. vars: --pb-percent)
@@ -146,6 +147,42 @@
   margin-top: 1rem;
   border-top: 1px solid var(--secondary-text-color);
   color: var(--secondary-text-color);
+}
+
+/* Drop Zone */
+/* Requires css-base/drop-zone.js for drag-over/invalid state toggling */
+.drop-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  border: 2px dashed var(--secondary-text-color);
+  border-radius: 4px;
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.drop-zone p {
+  margin: 0;
+  pointer-events: none;
+}
+
+.drop-zone.drag-over {
+  border-color: var(--primary-color);
+  background-color: var(--primary-bg-subtle);
+  color: var(--primary-text-subtle);
+}
+
+.drop-zone.invalid {
+  border-color: var(--danger-color);
+  background-color: var(--danger-bg-subtle);
+  color: var(--danger-text-subtle);
 }
 
 /* Dropdown */
