@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/2ajoyce/css-base/compare/v3.2.0...v3.3.0) (2026-09-13)
+
+
+### Features
+
+* add drop-zone component ([#35](https://github.com/2ajoyce/css-base/issues/35)) ([ee393cf](https://github.com/2ajoyce/css-base/commit/ee393cf4d2ce6aaf73acc38d360f00810c9cde99))
+
 ## [3.2.0](https://github.com/2ajoyce/css-base/compare/v3.1.0...v3.2.0) (2026-05-11)
 
 
