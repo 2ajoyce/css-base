@@ -185,6 +185,20 @@
         </div>
       </section>
 
+      <!-- Drop Zone -->
+      <section id="drop-zone">
+        <h2><a href="#drop-zone">Drop Zone</a></h2>
+        <p>
+          A bordered target area for drag-and-drop file uploads. Use the
+          <code>.drop-zone</code> class on a container; it highlights on drag
+          over and supports click-to-browse as a fallback.
+        </p>
+        <div class="drop-zone" id="demo-drop-zone">
+          <p>Drag and drop a file here, or click to browse</p>
+        </div>
+        <p id="demo-drop-zone-result"></p>
+      </section>
+
       <!-- Dropdown -->
       <section id="dropdown">
         <h2><a href="#dropdown">Dropdown Menu</a></h2>
@@ -378,4 +392,11 @@
   </body>
   <script src="../css-base/theme-switcher.js"></script>
   <script src="../css-base/toast.js"></script>
+  <script src="../css-base/drop-zone.js"></script>
+  <script>
+    initDropZone("#demo-drop-zone", (file) => {
+      document.getElementById("demo-drop-zone-result").textContent =
+        `Selected: ${file.name}`;
+    });
+  </script>
 </html>
