@@ -82,7 +82,7 @@ Applies a standard border radius.
 
 #### Focusable elements - `[tabindex]`
 
-Elements with a non-negative tabindex get a pointer cursor and a visible focus outline. Elements with role=button are handled in buttons.css.
+Elements with a non-negative tabindex get a pointer cursor and a visible focus outline. Editable regions (contenteditable) keep the text cursor. Elements with role=button are handled in buttons.css.
 
 ### `elements.css` - Base styles for HTML tags.
 
