@@ -34,17 +34,17 @@ test("renders an item with its title, description and lists", () => {
     [
       "<!-- BEGIN GENERATED CATALOG (generated from the doc comments in each file; do not edit) -->",
       "",
-      "### `a.css` — Things.",
+      "### `a.css` - Things.",
       "",
-      "#### Tag — `.tag`",
+      "#### Tag - `.tag`",
       "",
       "Small labels.",
       "",
       "- **Variants**",
-      "  - `.success` — Green",
+      "  - `.success` - Green",
       "  - `.danger`",
       "- **Variables**",
-      "  - `--tag-size` — Size of the tag",
+      "  - `--tag-size` - Size of the tag",
       "- **Requires:** toast.js",
       "",
       "<!-- END GENERATED CATALOG -->",
@@ -73,7 +73,7 @@ test("headings fall back to the identifier when an item has no title", () => {
   );
   const out = renderCatalog([f]);
   assert.match(out, /#### `go\(now\)`\n\nStarts things\./);
-  assert.match(out, /- \*\*Parameters\*\*\n {2}- `now` — Whether to start now/);
+  assert.match(out, /- \*\*Parameters\*\*\n {2}- `now` - Whether to start now/);
 });
 
 test("@catalog list renders one line per item, without descriptions", () => {
@@ -99,7 +99,7 @@ test("@catalog list renders one line per item, without descriptions", () => {
 `,
   );
   const out = renderCatalog([f]);
-  assert.match(out, /### `elements\.css` — Tags\.\n\n- `h1, h2`\n- `label` — variants `\.left`, `\.right`; states `\.active`\n/);
+  assert.match(out, /### `elements\.css` - Tags\.\n\n- `h1, h2`\n- `label` - variants `\.left`, `\.right`; states `\.active`\n/);
   assert.doesNotMatch(out, /nobody|Left of the input/);
 });
 
@@ -134,7 +134,7 @@ test("a file with no items shows its hand-written @context and @notes", () => {
   );
   assert.match(
     renderCatalog([f]),
-    /### `reset\.css` — Resets\.\n\n- Sets box-sizing\.\n- Removes margins\.\n\n- \*\*Note:\*\* Be careful\./,
+    /### `reset\.css` - Resets\.\n\n- Sets box-sizing\.\n- Removes margins\.\n\n- \*\*Note:\*\* Be careful\./,
   );
 });
 

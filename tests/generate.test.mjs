@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { plan, sourceFiles } from "../tools/generate.mjs";
@@ -35,7 +35,10 @@ stale
 // Creates a css-base-like folder in a temp directory and returns its path.
 function makeFolder(files) {
   const dir = mkdtempSync(join(tmpdir(), "css-base-test-"));
-  for (const [name, content] of Object.entries(files)) writeFileSync(join(dir, name), content);
+  for (const [name, content] of Object.entries(files)) {
+    mkdirSync(dirname(join(dir, name)), { recursive: true });
+    writeFileSync(join(dir, name), content);
+  }
   return dir;
 }
 
@@ -163,4 +166,112 @@ test("cli: rejects an unknown mode", () => {
   assert.equal(result.status, 2);
   assert.match(result.stderr, /unknown mode "frobnicate"/);
   rmSync(dir, { recursive: true });
+});
+
+// A css folder already in sync, next to a docs folder with one page that uses
+// both tags.
+const PAGE = `<html>
+<body>
+<include-html src="partials/nav.html"></include-html>
+<css-catalog class="stack" src="../css/a.css"></css-catalog>
+</body>
+</html>
+`;
+
+const withDocs = (overrides = {}) => {
+  const root = makeFolder({
+    "css/index.css": `@import url("a.css");\n`,
+    "css/a.css": stylesheet("a.css", ".a", "Thing A."),
+    "css/AGENTS.md": AGENTS,
+    "docs/page.html": PAGE,
+    "docs/partials/nav.html": "<nav>Links</nav>\n",
+    ...overrides,
+  });
+  // Bring the css folder in sync so only docs changes are left to see.
+  const cssDir = join(root, "css");
+  for (const { path, content } of plan(cssDir)) writeFileSync(path, content);
+  return { root, cssDir, docsDir: join(root, "docs") };
+};
+
+test("docs: fills the include and css-catalog tags", () => {
+  const { root, cssDir, docsDir } = withDocs();
+  const changes = plan(cssDir, docsDir);
+  assert.deepEqual(changes.map((c) => c.name), ["docs/page.html"]);
+  const html = changes[0].content;
+  assert.match(html, /<include-html src="partials\/nav\.html">\n<nav>Links<\/nav>\n<\/include-html>/);
+  assert.match(html, /<css-catalog class="stack" src="\.\.\/css\/a\.css">\n<section id="a">/);
+  assert.match(html, /<h2><a href="#a">\.a<\/a><\/h2>\n {2}<p>Thing A\.<\/p>/);
+  assert.equal(changes[0].path, join(docsDir, "page.html"));
+  rmSync(root, { recursive: true });
+});
+
+test("docs: are left alone when no docs folder is given", () => {
+  const { root, cssDir } = withDocs();
+  assert.deepEqual(plan(cssDir), []);
+  rmSync(root, { recursive: true });
+});
+
+test("docs: are up to date once written, and follow the comments after a change", () => {
+  const { root, cssDir, docsDir } = withDocs();
+  for (const { path, content } of plan(cssDir, docsDir)) writeFileSync(path, content);
+  assert.deepEqual(plan(cssDir, docsDir), []);
+
+  writeFileSync(join(cssDir, "a.css"), stylesheet("a.css", ".a", "Changed words."));
+  const names = plan(cssDir, docsDir).map((c) => c.name);
+  assert.deepEqual(names, ["a.css", "AGENTS.md", "docs/page.html"]);
+  rmSync(root, { recursive: true });
+});
+
+test("docs: preserves CRLF line endings", () => {
+  const { root, cssDir, docsDir } = withDocs({ "docs/page.html": PAGE.replace(/\n/g, "\r\n") });
+  const [change] = plan(cssDir, docsDir);
+  assert.ok(!/(?<!\r)\n/.test(change.content), "every newline is CRLF");
+  rmSync(root, { recursive: true });
+});
+
+test("docs: a missing partial is an error naming the page and the path", () => {
+  const { root, cssDir, docsDir } = withDocs({
+    "docs/page.html": `<include-html src="partials/missing.html"></include-html>`,
+  });
+  assert.throws(() => plan(cssDir, docsDir), /page\.html: cannot read partials\/missing\.html/);
+  rmSync(root, { recursive: true });
+});
+
+test("docs: a css-catalog for a file with no documented items is an error", () => {
+  const { root, cssDir, docsDir } = withDocs({
+    "css/plain.css": "/**\n * @file plain.css\n * @description Nothing documented.\n * @context\n */\n",
+    "docs/page.html": `<css-catalog src="../css/plain.css"></css-catalog>`,
+  });
+  assert.throws(() => plan(cssDir, docsDir), /page\.html: \.\.\/css\/plain\.css has no documented items/);
+  rmSync(root, { recursive: true });
+});
+
+test("docs: an invalid comment in the source stylesheet fails with its location", () => {
+  const { root, cssDir, docsDir } = withDocs({
+    "other/bad.css": "/**\n * @file bad.css\n * @description d\n */\n/**\n * @selector .x\n */\n",
+    "docs/page.html": `<css-catalog src="../other/bad.css"></css-catalog>`,
+  });
+  assert.throws(() => plan(cssDir, docsDir), /bad\.css:5: missing @description/);
+  rmSync(root, { recursive: true });
+});
+
+test("cli: checks and writes the docs folder when it is given", () => {
+  const { root, cssDir, docsDir } = withDocs();
+  const run = (mode) =>
+    spawnSync(process.execPath, [CLI, mode, cssDir, docsDir], { encoding: "utf8" });
+
+  const stale = run("check");
+  assert.equal(stale.status, 1);
+  assert.match(stale.stderr, /out of date: docs\/page\.html/);
+
+  assert.equal(run("write").status, 0);
+  assert.match(readFileSync(join(docsDir, "page.html"), "utf8"), /<nav>Links<\/nav>/);
+  assert.equal(run("check").status, 0);
+  rmSync(root, { recursive: true });
+});
+
+test("cli: leaves docs alone when only a css folder is given", () => {
+  const { root, cssDir } = withDocs();
+  assert.equal(cli("check", cssDir).status, 0);
+  rmSync(root, { recursive: true });
 });

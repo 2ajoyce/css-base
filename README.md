@@ -53,7 +53,7 @@ Add the stylesheet to your HTML:
 This project uses `just` for release management.
 
 - `just build`: Creates a zip of `css-base` for distribution.
-- `just catalog`: Regenerates the parts of `css-base` that are built from the doc comments: the `@context` block in each file header and the catalog in `css-base/AGENTS.md`. Run it after adding or changing a component.
+- `just catalog`: Regenerates everything that is built from the doc comments: the `@context` block in each `css-base` file header, the catalog in `css-base/AGENTS.md`, and the tags in the `docs/` pages (see below). Run it after adding or changing a component or a docs page.
 - `just check`: Fails if anything generated is out of date or a doc comment is invalid. The `Check Catalog` action runs it on pull requests.
 - `just test`: Runs the tests for the scripts in `tools/`. The `Test` action runs it on pull requests.
 
@@ -83,4 +83,15 @@ Every component, element style and script function gets a doc comment above its 
 | `@requires` | Another file or element it depends on. |
 | `@example` | Markup. Repeatable; text on the tag line is a title. |
 
-The grammar is defined in `tools/doc-comments.mjs`. Files with no doc comments, such as `reset.css` and `themes.css`, keep a hand-written `@context`.
+The grammar is defined in `tools/doc-comments.mjs`.
+
+### Docs pages
+
+The pages in `docs/` are hand-written HTML with two custom tags that `just catalog` fills in. The tag stays in the file and only its contents are replaced, so running it again changes nothing:
+
+| Tag | Filled with |
+| --- | --- |
+| `<include-html src="partials/nav.html">` | The contents of that file, relative to the page. Used for the shared nav and footer. |
+| `<css-catalog src="../css-base/components.css">` | One `<section>` per doc comment in that stylesheet: title, description, variants, examples shown live and as source. Other attributes such as `class` are kept. |
+
+Tags cannot be nested. To change the nav or footer, edit `docs/partials/` and run `just catalog`. Files with no doc comments, such as `reset.css` and `themes.css`, keep a hand-written `@context`.

@@ -1,19 +1,10 @@
 // Renders the AGENTS.md catalog from parsed stylesheets.
-import { identifier } from "./doc-comments.mjs";
+import { LIST_FIELDS as LISTS, identifier } from "./doc-comments.mjs";
 
 const BEGIN =
   "<!-- BEGIN GENERATED CATALOG (generated from the doc comments in each file; do not edit) -->";
 const END = "<!-- END GENERATED CATALOG -->";
 const REGION = /<!-- BEGIN GENERATED CATALOG[^>]*-->[\s\S]*?<!-- END GENERATED CATALOG -->/;
-
-// Item fields shown as lists, in order: [label, tag].
-const LISTS = [
-  ["Variants", "variant"],
-  ["Parts", "part"],
-  ["States", "state"],
-  ["Variables", "var"],
-  ["Parameters", "param"],
-];
 
 // Keeps header text from turning into markdown emphasis or HTML tags.
 const md = (s) => s.replace(/[*<]/g, "\\$&");
@@ -27,12 +18,12 @@ const blockLines = (block) =>
 
 function renderItem(item) {
   const id = `\`${identifier(item)}\``;
-  const out = ["", `#### ${item.title ? `${md(item.title)} — ${id}` : id}`, "", md(item.description)];
+  const out = ["", `#### ${item.title ? `${md(item.title)} - ${id}` : id}`, "", md(item.description)];
   const listed = LISTS.filter(([, tag]) => item[tag]);
   if (listed.length || item.requires) out.push("");
   for (const [label, tag] of listed) {
     out.push(`- **${label}**`);
-    for (const e of item[tag]) out.push(`  - \`${e.name}\`${e.text ? ` — ${md(e.text)}` : ""}`);
+    for (const e of item[tag]) out.push(`  - \`${e.name}\`${e.text ? ` - ${md(e.text)}` : ""}`);
   }
   if (item.requires) out.push(`- **Requires:** ${md(item.requires)}`);
   return out;
@@ -43,7 +34,7 @@ function renderListItem(item) {
   const extras = LISTS.filter(([, tag]) => item[tag]).map(
     ([label, tag]) => `${label.toLowerCase()} ${item[tag].map((e) => `\`${e.name}\``).join(", ")}`,
   );
-  return `- \`${identifier(item)}\`${extras.length ? ` — ${extras.join("; ")}` : ""}`;
+  return `- \`${identifier(item)}\`${extras.length ? ` - ${extras.join("; ")}` : ""}`;
 }
 
 // A file's header can choose "@catalog list" to show items as plain selectors.
@@ -52,7 +43,7 @@ function renderFile({ name, header, items }) {
   if (!["full", "list"].includes(style)) {
     throw new Error(`${name}: @catalog must be "full" or "list", not "${style}"`);
   }
-  const out = ["", `### \`${name}\` — ${md(header.description)}`];
+  const out = ["", `### \`${name}\` - ${md(header.description)}`];
   if (items.length && style === "list") out.push("", ...items.map(renderListItem));
   else if (items.length) for (const item of items) out.push(...renderItem(item));
   else if (header.context) out.push("", ...blockLines(header.context).map((b) => `- ${md(b)}`));

@@ -25,6 +25,7 @@ catalog:
 
 check:
     node tools/catalog.mjs check
+    node tools/check-dashes.mjs
 
 test:
     node --test

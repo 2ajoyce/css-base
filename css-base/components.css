@@ -13,7 +13,7 @@
  *   .progress-bar: A filler bar inside a container that draws the track.
  *   .skeleton: Placeholder for content that is still loading.
  *   .tabs: CSS-only tabs built from radio buttons.
- *   .toast: Floating notification in the corner of the screen.
+ *   .toast: Notification message that is hidden until shown with showToast(), which removes it after a delay and logs its text to the console for debugging.
  *   .tooltip: Extra information on hover or focus.
  */
 
@@ -22,12 +22,15 @@
 /**
  * @title Alerts
  * @selector .alert
- * @description Contextual feedback messages for typical user actions.
+ * @description Contextual feedback messages for typical user actions. Without a variant, an alert uses the primary colors.
  * @variant .success Positive outcome
  * @variant .warning Needs attention
  * @variant .danger Error or destructive outcome
  * @example
- * <div class="alert success"><strong>Success:</strong> Changes saved.</div>
+ * <div class="alert"><strong>Default:</strong> This is a default alert message.</div>
+ * <div class="alert success"><strong>Success:</strong> This is a success alert message.</div>
+ * <div class="alert warning"><strong>Warning:</strong> This is a warning alert message.</div>
+ * <div class="alert danger"><strong>Danger:</strong> This is a danger alert message.</div>
  */
 /* Toasts, defined lower in the stylesheet, use the .alert styling */
 .alert,
@@ -70,8 +73,25 @@
  * @variant .small 2rem
  * @variant .large 4rem
  * @var --avatar-size Custom size. Defaults to 3rem.
- * @example
- * <div class="avatar"><img src="profile.png" alt="Profile" /></div>
+ * @example Sizes
+ * <div class="grid">
+ *   <div>
+ *     <div class="avatar small"><img src="public/images/placeholder_150.png" alt="Small Avatar" /></div>
+ *     <p>Small Avatar</p>
+ *   </div>
+ *   <div>
+ *     <div class="avatar"><img src="public/images/placeholder_150.png" alt="Default Avatar" /></div>
+ *     <p>Default Avatar</p>
+ *   </div>
+ *   <div>
+ *     <div class="avatar large"><img src="public/images/placeholder_150.png" alt="Large Avatar" /></div>
+ *     <p>Large Avatar</p>
+ *   </div>
+ * </div>
+ * @example Custom size
+ * <div class="avatar" style="--avatar-size: 5rem">
+ *   <img src="public/images/placeholder_150.png" alt="Custom size avatar" />
+ * </div>
  */
 .avatar {
   width: var(--avatar-size, 3rem);
@@ -111,9 +131,14 @@
  * @variant .danger
  * @variant .outline Transparent with a primary-color border
  * @example
- * <span class="tag">Default</span>
- * <span class="tag success">Success</span>
- * <span class="tag outline">Outline</span>
+ * <div class="stack horizontal">
+ *   <span class="tag">Default</span>
+ *   <span class="tag secondary">Secondary</span>
+ *   <span class="tag success">Success</span>
+ *   <span class="tag warning">Warning</span>
+ *   <span class="tag danger">Danger</span>
+ *   <span class="tag outline">Outline</span>
+ * </div>
  */
 .tag {
   display: inline-block;
@@ -160,8 +185,8 @@
  * @example
  * <nav class="breadcrumbs">
  *   <ol>
- *     <li><a href="/">Home</a></li>
- *     <li><a href="/components">Components</a></li>
+ *     <li><a href="index.html">Home</a></li>
+ *     <li><a href="components.html">Components</a></li>
  *     <li aria-current="page">Breadcrumbs</li>
  *   </ol>
  * </nav>
@@ -184,10 +209,22 @@
  * @selector .card-header, .card-footer
  * @description Header and footer sections for a .card. The base .card styling is in layout.css.
  * @example
- * <div class="card">
- *   <div class="card-header">Featured</div>
- *   <p>Card body</p>
- *   <div class="card-footer">Updated 3 mins ago</div>
+ * <div class="card stack" style="--stack-padding: 1rem; --stack-space: 0">
+ *   <div class="card-header">
+ *     <div class="stack horizontal split" style="--stack-padding: 0 0 0.5rem 0">
+ *       Featured Content
+ *       <span class="tag">New</span>
+ *     </div>
+ *   </div>
+ *   <div class="stack" style="--stack-space: 0; --stack-padding: 0">
+ *     <h3>Card Title</h3>
+ *     This is a general purpose card component with a header, body, and footer.
+ *   </div>
+ *   <div class="card-footer">
+ *     <div class="stack horizontal" style="--stack-padding: 0.5rem 0 0">
+ *       <small>Last updated: 3 mins ago</small>
+ *     </div>
+ *   </div>
  * </div>
  */
 .card-header {
@@ -208,9 +245,14 @@
  * @state .invalid The dropped file type was not accepted
  * @requires drop-zone.js initDropZone(selector, onFile, options)
  * @example
- * <div class="drop-zone" id="upload"><p>Drop a file here, or click to browse</p></div>
+ * <div class="drop-zone" id="upload">
+ *   <p>Drag and drop a file here, or click to browse</p>
+ * </div>
+ * <p id="upload-result"></p>
  * <script>
- *   initDropZone("#upload", (file) => console.log(file.name), { accept: [".png"] });
+ *   initDropZone("#upload", (file) => {
+ *     document.getElementById("upload-result").textContent = `Selected: ${file.name}`;
+ *   });
  * </script>
  */
 .drop-zone {
@@ -252,12 +294,16 @@
  * @selector .dropdown
  * @description CSS-only menu that opens on hover or focus.
  * @part .dropdown-menu The menu; put the links inside it
+ * @var --background-color Menu background. A theme token, set in themes.css.
+ * @var --text-color Menu link color. A theme token, set in themes.css.
  * @example
  * <div class="dropdown">
  *   <button>Sections</button>
  *   <div class="dropdown-menu card">
- *     <a href="#one">One</a>
- *     <a href="#two">Two</a>
+ *     <a href="#alerts">Alerts</a>
+ *     <a href="#avatar">Avatar</a>
+ *     <hr />
+ *     <a href="#dropdown-menu">Dropdown</a>
  *   </div>
  * </div>
  */
@@ -301,9 +347,11 @@
  * @state .active Put on the link for the current page
  * @example
  * <nav class="pagination">
- *   <a href="?page=1">1</a>
- *   <a href="?page=2" class="active">2</a>
- *   <a href="?page=3">3</a>
+ *   <a href="#dropdown-menu">&laquo; Previous</a>
+ *   <a href="#pagination">1</a>
+ *   <a href="#pagination" class="active">2</a>
+ *   <a href="#pagination">3</a>
+ *   <a href="#progress-bar">Next &raquo;</a>
  * </nav>
  */
 .pagination {
@@ -337,9 +385,13 @@
  * @part .progress-container Required wrapper around the bar
  * @variant .indeterminate Animated bar for work of unknown length
  * @var --pb-percent Percent complete, 0 to 100
- * @example
+ * @example Percent complete
  * <div class="progress-container">
  *   <div class="progress-bar" style="--pb-percent: 70">70%</div>
+ * </div>
+ * @example Indeterminate
+ * <div class="progress-container">
+ *   <div class="progress-bar indeterminate"></div>
  * </div>
  */
 .progress-container {
@@ -386,12 +438,34 @@
  * @variant .circle Circular placeholder
  * @variant .text One line of text; stack several for a paragraph
  * @variant .header Thicker, shorter heading line
- * @example
+ * @example Card loading state
  * <div class="card" aria-hidden="true">
- *   <div class="skeleton block"></div>
- *   <div class="skeleton header"></div>
- *   <div class="skeleton text"></div>
- *   <div class="skeleton text"></div>
+ *   <div class="stack" style="--stack-space: 0.75rem">
+ *     <div class="skeleton block"></div>
+ *     <div class="skeleton header"></div>
+ *     <div>
+ *       <div class="skeleton text"></div>
+ *       <div class="skeleton text"></div>
+ *       <div class="skeleton text"></div>
+ *     </div>
+ *   </div>
+ * </div>
+ * @example Profile loading state
+ * <div class="card" aria-hidden="true">
+ *   <div class="stack" style="--stack-space: 1rem">
+ *     <div class="stack horizontal" style="align-items: center">
+ *       <div class="avatar skeleton"></div>
+ *       <div style="flex: 1">
+ *         <div class="skeleton header" style="margin-bottom: 0.5rem"></div>
+ *         <div class="skeleton text"></div>
+ *       </div>
+ *     </div>
+ *     <div>
+ *       <div class="skeleton text"></div>
+ *       <div class="skeleton text"></div>
+ *       <div class="skeleton text"></div>
+ *     </div>
+ *   </div>
  * </div>
  */
 .skeleton {
@@ -470,10 +544,24 @@
  * <div class="tabs">
  *   <input type="radio" id="tab1" name="tabs" class="tab-radio" checked />
  *   <label for="tab1" class="tab-label">Tab 1</label>
- *   <div class="tab-content">First panel</div>
+ *   <div class="tab-content card">
+ *     <h3>Content for Tab 1</h3>
+ *     <p>This is the content for the first tab.</p>
+ *   </div>
+ *
  *   <input type="radio" id="tab2" name="tabs" class="tab-radio" />
  *   <label for="tab2" class="tab-label">Tab 2</label>
- *   <div class="tab-content">Second panel</div>
+ *   <div class="tab-content card">
+ *     <h3>Content for Tab 2</h3>
+ *     <p>This is the content for the second tab.</p>
+ *   </div>
+ *
+ *   <input type="radio" id="tab3" name="tabs" class="tab-radio" />
+ *   <label for="tab3" class="tab-label">Tab 3</label>
+ *   <div class="tab-content card">
+ *     <h3>Content for Tab 3</h3>
+ *     <p>This is the content for the third tab.</p>
+ *   </div>
  * </div>
  */
 .tabs {
@@ -520,15 +608,27 @@
 /**
  * @title Toast
  * @selector .toast
- * @description Floating notification in the corner of the screen. Hidden until shown, then removed after a delay. Styled like .alert.
+ * @description Notification message that is hidden until shown with showToast(), which removes it after a delay and logs its text to the console for debugging. Styled like .alert. The CSS does not position it, so place it where you want it (for example with position: fixed).
  * @variant .success
  * @variant .warning
  * @variant .danger
  * @state .show Added while the toast is visible
  * @requires toast.js showToast(selector, duration)
  * @example
- * <div class="toast success">Changes saved.</div>
- * <button onclick="showToast('.toast', 5000)">Save</button>
+ * <div class="stack">
+ *   <div class="group">
+ *     <button onclick="showToast('.toast', 5000)">Default Toast</button>
+ *     <button class="success" onclick="showToast('.toast.success', 5000)">Success Toast</button>
+ *     <button class="warning" onclick="showToast('.toast.warning', 5000)">Warning Toast</button>
+ *     <button class="danger" onclick="showToast('.toast.danger', 5000)">Error Toast</button>
+ *   </div>
+ *   <div class="group">
+ *     <div class="toast"><span>This is a default toast message.</span></div>
+ *     <div class="toast success"><span>This is a success toast message.</span></div>
+ *     <div class="toast warning"><span>This is a warning toast message.</span></div>
+ *     <div class="toast danger"><span>This is an error toast message.</span></div>
+ *   </div>
+ * </div>
  */
 .toast {
   /* The .toast class inherits most of its styling from .alert
@@ -563,9 +663,11 @@
  * @description Extra information on hover or focus. Put the tooltip text in a child element.
  * @part .tooltip-text The text shown on hover or focus
  * @example
- * <span class="tooltip" tabindex="0">word
- *   <span class="tooltip-text">This is a tooltip!</span>
- * </span>
+ * <p>
+ *   Hover over or focus on this
+ *   <span class="tooltip" tabindex="0">word<span class="tooltip-text">This is a tooltip!</span></span>
+ *   to see the tooltip.
+ * </p>
  */
 .tooltip {
   position: relative;

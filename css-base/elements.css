@@ -52,6 +52,13 @@ body {
  * @title Headings
  * @selector h1, h2, h3, h4, h5, h6
  * @description Six heading levels with decreasing size. Links inside headings keep the text color.
+ * @example
+ * <h1>Heading 1</h1>
+ * <h2>Heading 2</h2>
+ * <h3>Heading 3</h3>
+ * <h4>Heading 4</h4>
+ * <h5>Heading 5</h5>
+ * <h6>Heading 6</h6>
  */
 h1 {
   margin: 1.5rem 0 1rem;
@@ -96,8 +103,14 @@ h6 {
  * @variant pre.wrap Wrap long lines instead of scrolling
  * @variant code.multiline Show as a wrapping block
  * @example
- * <blockquote>A quotation</blockquote>
- * <p>Some <code>inline code</code></p>
+ * <p>This is a paragraph with <code>inline code</code>.</p>
+ * <blockquote>This is a blockquote.</blockquote>
+ * <pre>
+ * This is preformatted text.
+ *   It preserves whitespace and line breaks.</pre>
+ * <pre class="wrap">With the wrap class, preformatted text wraps to the next line when it is too long instead of scrolling.</pre>
+ * <code class="multiline">def hello_world():
+ *     print("Hello, World!")</code>
  */
 p {
   font-size: 1rem;
@@ -144,6 +157,17 @@ code.multiline {
  * @title Inline text
  * @selector strong, em, mark, del, ins, sub, sup, small
  * @description Inline formatting.
+ * @example
+ * <div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
+ *   <div><strong>This is strong text.</strong></div>
+ *   <div><em>This is emphasized text.</em></div>
+ *   <div><mark>This is marked text.</mark></div>
+ *   <div><del>This is deleted text.</del></div>
+ *   <div><ins>This is inserted text.</ins></div>
+ *   <div>This is <sub>subscript</sub> text.</div>
+ *   <div>This is <sup>superscript</sup> text.</div>
+ *   <div>This is <small>small</small> text.</div>
+ * </div>
  */
 strong {
   font-weight: bold;
@@ -184,6 +208,10 @@ small {
  * @title Horizontal Rule
  * @selector hr
  * @description A thin divider line.
+ * @example
+ * <p>This is a horizontal rule.</p>
+ * <hr />
+ * <p>Horizontal rules are used to separate content.</p>
  */
 hr {
   border: none;
@@ -196,6 +224,13 @@ hr {
  * @selector a
  * @description Links without an underline until hovered.
  * @variant .visited Style a link as visited
+ * @var --link-color Link color. A theme token, set in themes.css.
+ * @var --link-hover-color Link color on hover. A theme token, set in themes.css.
+ * @example
+ * <div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
+ *   <div><a href="#links">This is an example link</a></div>
+ *   <div><a href="#links" class="visited">This is a visited link</a></div>
+ * </div>
  */
 a {
   color: var(--link-color);
@@ -236,6 +271,34 @@ nav a:hover {
  * @title Lists
  * @selector ul, ol, dl
  * @description Bulleted, numbered and description lists.
+ * @example
+ * <div class="stack">
+ *   <div>
+ *     <h4>Unordered List</h4>
+ *     <ul>
+ *       <li>Unordered list item 1</li>
+ *       <li>Unordered list item 2</li>
+ *       <li>Unordered list item 3</li>
+ *     </ul>
+ *   </div>
+ *   <div>
+ *     <h4>Ordered List</h4>
+ *     <ol>
+ *       <li>Ordered list item 1</li>
+ *       <li>Ordered list item 2</li>
+ *       <li>Ordered list item 3</li>
+ *     </ol>
+ *   </div>
+ *   <div>
+ *     <h4>Definition List</h4>
+ *     <dl>
+ *       <dt>Definition term 1</dt>
+ *       <dd>Definition description 1</dd>
+ *       <dt>Definition term 2</dt>
+ *       <dd>Definition description 2</dd>
+ *     </dl>
+ *   </div>
+ * </div>
  */
 ul,
 ol {
@@ -269,6 +332,28 @@ dd {
  * @title Tables
  * @selector table, thead, th, td
  * @description Full-width tables with a shaded header row.
+ * @example
+ * <table>
+ *   <thead>
+ *     <tr>
+ *       <th>Header 1</th>
+ *       <th>Header 2</th>
+ *       <th>Header 3</th>
+ *     </tr>
+ *   </thead>
+ *   <tbody>
+ *     <tr>
+ *       <td>Data 1</td>
+ *       <td>Data 2</td>
+ *       <td>Data 3</td>
+ *     </tr>
+ *     <tr>
+ *       <td>Data 4</td>
+ *       <td>Data 5</td>
+ *       <td>Data 6</td>
+ *     </tr>
+ *   </tbody>
+ * </table>
  */
 table {
   width: 100%;
@@ -315,6 +400,60 @@ td {
  * @title Form
  * @selector form
  * @description Padded, bordered form container.
+ * @example
+ * <form class="stack" style="--stack-padding: 2rem">
+ *   <div>
+ *     <label for="text">Text Input</label>
+ *     <input type="text" id="text" name="text" />
+ *   </div>
+ *   <div>
+ *     <label for="password">Password Input</label>
+ *     <input type="password" id="password" name="password" />
+ *   </div>
+ *   <div>
+ *     <label for="email">Email Input</label>
+ *     <input type="email" id="email" name="email" />
+ *   </div>
+ *   <div>
+ *     <label for="number">Number Input</label>
+ *     <input type="number" id="number" name="number" />
+ *   </div>
+ *   <div>
+ *     <label for="textarea">Textarea</label>
+ *     <textarea id="textarea" name="textarea"></textarea>
+ *   </div>
+ *   <div>
+ *     <label for="select">Select</label>
+ *     <select id="select" name="select">
+ *       <option value="option1">Option 1</option>
+ *       <option value="option2">Option 2</option>
+ *       <option value="option3">Option 3</option>
+ *     </select>
+ *   </div>
+ *   <div>
+ *     <h5>Radio Buttons</h5>
+ *     <div class="group">
+ *       <input type="radio" id="radio1" name="radio" value="1" />
+ *       <label for="radio1">Radio 1</label>
+ *     </div>
+ *     <div class="group">
+ *       <input type="radio" id="radio2" name="radio" value="2" />
+ *       <label for="radio2">Radio 2</label>
+ *     </div>
+ *   </div>
+ *   <div>
+ *     <h5>Checkboxes</h5>
+ *     <div class="group">
+ *       <input type="checkbox" id="checkbox1" name="checkbox1" />
+ *       <label for="checkbox1">Unchecked</label>
+ *     </div>
+ *     <div class="group">
+ *       <input type="checkbox" id="checkbox2" name="checkbox2" checked />
+ *       <label for="checkbox2">Checked</label>
+ *     </div>
+ *   </div>
+ *   <button type="submit">Submit</button>
+ * </form>
  */
 form {
   background-color: var(--secondary-background-color);
@@ -331,9 +470,17 @@ form {
  * @variant .left Sit to the left of the input
  * @variant .right Sit to the right of the input
  * @variant .ground Align to the bottom of the input
- * @example
+ * @example Above the input
  * <label for="name">Name</label>
  * <input id="name" type="text" />
+ * @example Beside the input
+ * <div class="stack horizontal" style="--stack-space: 0">
+ *   <label for="theme" class="left ground">Theme:</label>
+ *   <select id="theme">
+ *     <option>Light</option>
+ *     <option>Dark</option>
+ *   </select>
+ * </div>
  */
 label {
   display: block;
@@ -403,8 +550,14 @@ input[type="checkbox"] {
  * @selector input.toggle
  * @description Renders a checkbox as a toggle switch.
  * @example
- * <input id="enabled" type="checkbox" class="toggle" />
- * <label for="enabled">Enabled</label>
+ * <div class="group">
+ *   <input type="checkbox" id="toggle1" class="toggle" />
+ *   <label for="toggle1">Untoggled</label>
+ * </div>
+ * <div class="group">
+ *   <input type="checkbox" id="toggle2" class="toggle" checked />
+ *   <label for="toggle2">Toggled</label>
+ * </div>
  */
 input[type="checkbox"].toggle {
   -webkit-appearance: none;
@@ -463,6 +616,12 @@ select:focus {
  * @title Fieldset
  * @selector fieldset, legend
  * @description Bordered group of related controls with a bold legend.
+ * @example
+ * <fieldset>
+ *   <legend>Contact</legend>
+ *   <label for="contact-email">Email</label>
+ *   <input type="email" id="contact-email" name="contact-email" />
+ * </fieldset>
  */
 fieldset {
   border: 1px solid var(--secondary-color);
@@ -480,6 +639,30 @@ legend {
  * @title Media
  * @selector img, figure, figcaption, audio, video
  * @description Responsive media that never overflows its container.
+ * @example Image types
+ * <div class="group" style="--group-gap: 1rem">
+ *   <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
+ *     <img src="public/images/placeholder_150.png" alt="Placeholder image" width="150" />
+ *     <p>PNG image</p>
+ *   </div>
+ *   <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
+ *     <img src="public/images/placeholder_150.jpg" alt="Placeholder image" width="150" />
+ *     <p>JPEG image</p>
+ *   </div>
+ *   <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
+ *     <img src="public/images/placeholder_150.svg" alt="Placeholder image" width="150" />
+ *     <p>SVG image</p>
+ *   </div>
+ *   <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
+ *     <img src="public/images/placeholder.gif" alt="Placeholder image" width="150" />
+ *     <p>GIF image</p>
+ *   </div>
+ * </div>
+ * @example Figure
+ * <figure>
+ *   <img src="public/images/placeholder_150.png" alt="Placeholder image" width="150" />
+ *   <figcaption>Figcaption for the image.</figcaption>
+ * </figure>
  */
 img {
   max-width: 100%;
@@ -506,6 +689,21 @@ video {
  * @title Canvas
  * @selector canvas
  * @description Bordered block-level canvas.
+ * @example
+ * <canvas id="exampleCanvas" width="600" height="200"></canvas>
+ * <script>
+ *   (function () {
+ *     const canvas = document.getElementById("exampleCanvas");
+ *     const ctx = canvas.getContext("2d");
+ *     // Draw a simple colorful pattern
+ *     for (let i = 0; i < 12; i++) {
+ *       for (let j = 0; j < 4; j++) {
+ *         ctx.fillStyle = `hsl(${i * 30}, 70%, ${50 + j * 10}%)`;
+ *         ctx.fillRect(i * 50, j * 50, 45, 45);
+ *       }
+ *     }
+ *   })();
+ * </script>
  */
 canvas {
   display: block;
@@ -518,6 +716,11 @@ canvas {
  * @title Section
  * @selector section
  * @description Padded, bordered content section. Its first h2 is underlined.
+ * @example
+ * <section>
+ *   <h2>Section title</h2>
+ *   <p>Content of the section.</p>
+ * </section>
  */
 section {
   padding: 2rem;
@@ -539,7 +742,11 @@ section > h2:first-of-type {
  * @example
  * <header>
  *   <h1>Site</h1>
- *   <nav><a href="/">Home</a><span class="right">Account</span></nav>
+ *   <nav style="gap: 1rem">
+ *     <a href="index.html">Home</a>
+ *     <a href="elements.html">Elements</a>
+ *     <a href="index.html" class="right">Account</a>
+ *   </nav>
  * </header>
  */
 header {
@@ -581,9 +788,9 @@ header a:visited {
  * @description Row of links that stacks on narrow screens.
  * @state a.active Underlines the link for the current page
  * @example
- * <nav>
- *   <a href="/" class="active">Home</a>
- *   <a href="/about">About</a>
+ * <nav style="gap: 1rem">
+ *   <a href="index.html">Home</a>
+ *   <a href="elements.html" class="active">Elements</a>
  * </nav>
  */
 nav {
@@ -611,6 +818,10 @@ nav select {
  * @title Footer
  * @selector footer
  * @description Page footer bar.
+ * @example
+ * <footer>
+ *   <p>Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a></p>
+ * </footer>
  */
 footer {
   background-color: var(--secondary-color);
@@ -625,8 +836,8 @@ footer {
  * @description Collapsible disclosure widget with a bold clickable summary.
  * @example
  * <details>
- *   <summary>More</summary>
- *   <p>Hidden until opened</p>
+ *   <summary>Click to expand/collapse details</summary>
+ *   <p>This is the detailed content that is revealed when the summary is clicked.</p>
  * </details>
  */
 details {
@@ -650,11 +861,12 @@ details > summary {
  * @selector dialog
  * @description Modal dialog with a blurred backdrop. Open it from script with showModal().
  * @example
- * <dialog id="confirm">
- *   <p>Are you sure?</p>
- *   <button onclick="this.closest('dialog').close()">Close</button>
+ * <button onclick="document.getElementById('demo-modal').showModal()">Open Modal</button>
+ * <dialog id="demo-modal">
+ *   <h3>Modal Title</h3>
+ *   <p>This is a native modal dialog using the &lt;dialog&gt; element.</p>
+ *   <button onclick="document.getElementById('demo-modal').close()">Close</button>
  * </dialog>
- * <button onclick="document.getElementById('confirm').showModal()">Open</button>
  */
 dialog {
   border: 1px solid var(--text-color);

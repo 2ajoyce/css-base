@@ -104,6 +104,15 @@ export function parseComment(body, where = "comment") {
   return out;
 }
 
+// Item fields that hold a list of named entries, in display order: [label, tag].
+export const LIST_FIELDS = [
+  ["Variants", "variant"],
+  ["Parts", "part"],
+  ["States", "state"],
+  ["Variables", "var"],
+  ["Parameters", "param"],
+];
+
 // What an item documents: its selector (CSS) or its function signature (JS).
 export const identifier = (item) => item.selector ?? item.function;
 

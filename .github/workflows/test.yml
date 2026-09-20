@@ -5,6 +5,7 @@ on:
     paths:
       - "tools/**"
       - "tests/**"
+      - ".claude/hooks/**"
       - ".github/workflows/test.yml"
 
 permissions:

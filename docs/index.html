@@ -10,27 +10,36 @@
     <header>
       <h1>CSS Base</h1>
       <p>A lightweight, agent-friendly CSS starter kit.</p>
-      <nav
-        class="columns"
-        style="background-color: var(--background-color); padding: 1em"
-      >
-        <a href="index.html" class="active">Home</a>
-        <a href="elements.html">Elements</a>
-        <a href="utility.html">Utility</a>
-        <a href="layout.html">Layout</a>
-        <a href="components.html">Components</a>
-        <div
-          class="stack horizontal"
-          style="--stack-space: 0; --stack-wrap: nowrap"
-        >
-          <label for="theme-select" class="left ground">Theme:</label>
-          <select id="theme-select">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="high-contrast">High Contrast</option>
-          </select>
-        </div>
-      </nav>
+      <include-html src="partials/nav.html" style="display: contents">
+<nav
+  class="columns"
+  style="background-color: var(--background-color); padding: 1em"
+>
+  <a href="index.html">Home</a>
+  <a href="elements.html">Elements</a>
+  <a href="utility.html">Utility</a>
+  <a href="layout.html">Layout</a>
+  <a href="components.html">Components</a>
+  <div class="stack horizontal" style="--stack-space: 0; --stack-wrap: nowrap">
+    <label for="theme-select" class="left ground">Theme:</label>
+    <select id="theme-select">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High Contrast</option>
+    </select>
+  </div>
+</nav>
+<script>
+  // Mark the link for the current page. Works with or without ".html".
+  (() => {
+    const bare = (name) => name.replace(/\.html$/, "");
+    const page = bare(location.pathname.split("/").pop() || "index");
+    document.querySelectorAll("header nav a").forEach((link) => {
+      if (bare(link.getAttribute("href")) === page) link.classList.add("active");
+    });
+  })();
+</script>
+</include-html>
     </header>
     <div class="stack">
       <section>
@@ -100,11 +109,11 @@
         </ul>
       </section>
     </div>
-    <footer>
-      <p>
-        Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a>
-      </p>
-    </footer>
+    <include-html src="partials/footer.html" style="display: contents">
+<footer>
+  <p>Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a></p>
+</footer>
+</include-html>
   </body>
   <script src="../css-base/theme-switcher.js"></script>
 </html>

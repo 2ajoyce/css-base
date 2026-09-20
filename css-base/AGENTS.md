@@ -48,7 +48,7 @@ Everything the library provides, in `index.css` import order. Each entry lists t
 
 <!-- BEGIN GENERATED CATALOG (generated from the doc comments in each file; do not edit) -->
 
-### `reset.css` — Modern CSS reset / Normalization.
+### `reset.css` - Modern CSS reset / Normalization.
 
 - Resets margin/padding/border for ALL common elements.
 - Sets box-sizing to border-box globally.
@@ -57,7 +57,7 @@ Everything the library provides, in `index.css` import order. Each entry lists t
 - Removes default list styles.
 - Removes default outlines (be sure to add :focus styles in other files!).
 
-### `themes.css` — Design tokens and color themes.
+### `themes.css` - Design tokens and color themes.
 
 - :root (Defines primitives: --light-\*, --dark-\*)
 - [data-theme="light"] (Maps vars to primitives)
@@ -67,316 +67,319 @@ Everything the library provides, in `index.css` import order. Each entry lists t
 - **Note:** Used by theme-switcher.js
 - **Note:** --primary-color and --secondary-color are the most critical tokens.
 
-### `utility.css` — Atomic functional classes and global behavior modifiers.
+### `utility.css` - Atomic functional classes and global behavior modifiers.
 
-#### Fit Content — `.fit-content`
+#### Fit Content - `.fit-content`
 
 Sizes an element to its content width. On screens 768px wide or narrower the width returns to auto.
 
-#### Radius — `.radius`
+#### Radius - `.radius`
 
 Applies a standard border radius.
 
 - **Variables**
-  - `--radius` — Corner radius. Defaults to 0.5rem.
+  - `--radius` - Corner radius. Defaults to 0.5rem.
 
-#### Focusable elements — `[tabindex]`
+#### Focusable elements - `[tabindex]`
 
 Elements with a non-negative tabindex get a pointer cursor and a visible focus outline. Elements with role=button are handled in buttons.css.
 
-### `elements.css` — Base styles for HTML tags.
+### `elements.css` - Base styles for HTML tags.
 
 - `html, body`
 - `h1, h2, h3, h4, h5, h6`
-- `p, blockquote, pre, code` — variants `pre.wrap`, `code.multiline`
+- `p, blockquote, pre, code` - variants `pre.wrap`, `code.multiline`
 - `strong, em, mark, del, ins, sub, sup, small`
 - `hr`
-- `a` — variants `.visited`
+- `a` - variants `.visited`; variables `--link-color`, `--link-hover-color`
 - `ul, ol, dl`
 - `table, thead, th, td`
 - `form`
-- `label` — variants `.left`, `.right`, `.ground`
+- `label` - variants `.left`, `.right`, `.ground`
 - `input, textarea, select`
 - `input.toggle`
 - `fieldset, legend`
 - `img, figure, figcaption, audio, video`
 - `canvas`
 - `section`
-- `header` — parts `.right`
-- `nav` — states `a.active`
+- `header` - parts `.right`
+- `nav` - states `a.active`
 - `footer`
 - `details, summary`
 - `dialog`
 
-### `buttons.css` — Styles for button elements and roles.
+### `buttons.css` - Styles for button elements and roles.
 
-#### Button — `button`
+#### Button - `button`
 
-Standard button with hover, active, focus and disabled states.
+Standard button with hover, active, focus and disabled states. Buttons support icons: put an svg, emoji or icon component before the label.
 
 - **Variants**
-  - `.secondary` — Muted color
+  - `.secondary` - Muted color
   - `.success`
   - `.danger`
   - `.warning`
 
-#### Button role — `[role="button"]`
+#### Button role - `[role="button"]`
 
 Makes a non-button element look and behave like a secondary button. It can conflict with libraries such as Leaflet that use role=button.
 
 - **Note:** [role="button"] may conflict with map libraries like Leaflet.
 
-### `layout.css` — Layout primitives for responsive design.
+### `layout.css` - Layout primitives for responsive design.
 
-#### Aspect Ratio — `.aspect-ratio`
+#### Aspect Ratio - `.aspect-ratio`
 
 Fixes a container to an aspect ratio and crops an image or video inside it to fill the space.
 
 - **Variables**
-  - `--aspect-ratio` — Ratio such as 16 / 9. Defaults to 1 / 1.
-  - `--aspect-ratio-padding` — Inner padding. Defaults to 0.
-  - `--aspect-ratio-border` — Border. Defaults to 1px solid #000.
-  - `--aspect-ratio-bg` — Background color. Defaults to transparent.
+  - `--aspect-ratio` - Ratio such as 16 / 9. Defaults to 1 / 1.
+  - `--aspect-ratio-padding` - Inner padding. Defaults to 0.
+  - `--aspect-ratio-border` - Border. Defaults to 1px solid #000.
+  - `--aspect-ratio-bg` - Background color. Defaults to transparent.
 
-#### Card — `.card`
+#### Card - `.card`
 
 Bordered, padded content container. Header and footer sections are in components.css.
 
 - **Variables**
-  - `--card-padding` — Inner padding. Defaults to 1rem.
-  - `--card-border` — Border. Defaults to 1px solid the text color.
+  - `--card-padding` - Inner padding. Defaults to 1rem.
+  - `--card-border` - Border. Defaults to 1px solid the text color.
 
-#### Carousel — `.carousel`
+#### Carousel - `.carousel`
 
 Horizontally scrolling row that snaps to each item.
 
 - **Variables**
-  - `--carousel-gap` — Space between items. Defaults to 1rem.
-  - `--carousel-item-width` — Maximum item width. Defaults to 80%.
+  - `--carousel-gap` - Space between items. Defaults to 1rem.
+  - `--carousel-item-width` - Maximum item width. Defaults to 80%.
 
-#### Center — `.center`
+#### Center - `.center`
 
 Centers its content horizontally and vertically. It fills the height of its parent, so the parent needs a height.
 
-#### Columns — `.columns`
+#### Columns - `.columns`
 
 Side-by-side columns that stack into one column when narrower than the minimum width.
 
 - **Variables**
-  - `--columns-gap` — Space between columns. Defaults to 1rem.
-  - `--columns-min-width` — Width below which columns stack. Defaults to 500px.
+  - `--columns-gap` - Space between columns. Defaults to 1rem.
+  - `--columns-min-width` - Width below which columns stack. Defaults to 500px.
 
-#### Container — `.container`
+#### Container - `.container`
 
 Centered page-width wrapper with padding.
 
 - **Variables**
-  - `--container-max-width` — Maximum width. Defaults to 1200px.
-  - `--container-padding` — Padding. Defaults to 1rem.
+  - `--container-max-width` - Maximum width. Defaults to 1200px.
+  - `--container-padding` - Padding. Defaults to 1rem.
 
-#### Grid — `.grid`
+#### Grid - `.grid`
 
 Responsive grid of equal columns that fills the available width, for example a grid of cards.
 
 - **Variables**
-  - `--grid-gap` — Space between cells. Defaults to 1rem.
-  - `--grid-min-width` — Minimum column width. Defaults to 200px.
-  - `--grid-align-items` — Vertical alignment of cells. Defaults to end.
+  - `--grid-gap` - Space between cells. Defaults to 1rem.
+  - `--grid-min-width` - Minimum column width. Defaults to 200px.
+  - `--grid-align-items` - Vertical alignment of cells. Defaults to end.
 
-#### Group — `.group`
+#### Group - `.group`
 
 Row of items that wraps onto new lines when it runs out of space.
 
 - **Variables**
-  - `--group-gap` — Space between items. Defaults to 1rem.
+  - `--group-gap` - Space between items. Defaults to 1rem.
 
-#### Icon — `.icon`
+#### Icon - `.icon`
 
 Fixed-size box that centers its content, for icons.
 
 - **Variables**
-  - `--icon-width` — Width. Defaults to 2rem.
-  - `--icon-height` — Height. Defaults to 2rem.
+  - `--icon-width` - Width. Defaults to 2rem.
+  - `--icon-height` - Height. Defaults to 2rem.
 
-#### Overlay — `.overlay`
+#### Overlay - `.overlay`
 
-Places an element over the center of its positioned parent, kept within the parent's bounds. The parent needs position: relative.
+Places an element over the center of its positioned parent, kept within the parent's bounds. The parent needs position: relative and a defined height.
 
 - **Variables**
-  - `--overlay-top` — Vertical position. Defaults to 50%.
-  - `--overlay-left` — Horizontal position. Defaults to 50%.
+  - `--overlay-top` - Vertical position of the element's center. Defaults to 50%.
+  - `--overlay-left` - Horizontal position of the element's center. Defaults to 50%.
 
-#### Sidebar — `.sidebar`
+#### Sidebar - `.sidebar`
 
-Main content with a side column that moves above it when space runs out.
+Main content with a side column next to it. When there is not room for both, the later column wraps below the earlier one, so put .main first to keep it on top.
 
 - **Parts**
-  - `.side` — The side column
-  - `.main` — The main content, which takes the remaining space
+  - `.side` - The side column
+  - `.main` - The main content, which takes the remaining space
 - **Variables**
-  - `--sidebar-gap` — Space between the columns. Defaults to 1rem.
-  - `--sidebar-side-width` — Preferred side column width. Defaults to 20rem.
-  - `--sidebar-main-min-width` — Width the main content needs before the sidebar wraps. Defaults to 50%.
+  - `--sidebar-gap` - Space between the columns. Defaults to 1rem.
+  - `--sidebar-side-width` - Preferred side column width. Defaults to 20rem.
+  - `--sidebar-main-min-width` - Width the main content needs before the sidebar wraps. Defaults to 50%.
 
-#### Stack — `.stack`
+#### Stack - `.stack`
 
 Vertical list of items with even spacing.
 
 - **Variants**
-  - `.horizontal` — Lay the children out in a row
-  - `.split` — Push the last child to the far end
+  - `.horizontal` - Lay the children out in a row
+  - `.split` - Push the last child to the far end
 - **Variables**
-  - `--stack-padding` — Padding. Defaults to 0rem.
-  - `--stack-space` — Space between children. Defaults to 1.5rem.
-  - `--stack-wrap` — Whether a horizontal stack wraps. Defaults to wrap.
+  - `--stack-padding` - Padding. Defaults to 0rem.
+  - `--stack-space` - Space between children. Defaults to 1.5rem.
+  - `--stack-wrap` - Whether a horizontal stack wraps. Defaults to wrap.
 
-### `components.css` — Complex composite UI components.
+### `components.css` - Complex composite UI components.
 
-#### Alerts — `.alert`
+#### Alerts - `.alert`
 
-Contextual feedback messages for typical user actions.
+Contextual feedback messages for typical user actions. Without a variant, an alert uses the primary colors.
 
 - **Variants**
-  - `.success` — Positive outcome
-  - `.warning` — Needs attention
-  - `.danger` — Error or destructive outcome
+  - `.success` - Positive outcome
+  - `.warning` - Needs attention
+  - `.danger` - Error or destructive outcome
 
-#### Avatar — `.avatar`
+#### Avatar - `.avatar`
 
 Circular profile image container.
 
 - **Variants**
-  - `.small` — 2rem
-  - `.large` — 4rem
+  - `.small` - 2rem
+  - `.large` - 4rem
 - **Variables**
-  - `--avatar-size` — Custom size. Defaults to 3rem.
+  - `--avatar-size` - Custom size. Defaults to 3rem.
 
-#### Tag — `.tag`
+#### Tag - `.tag`
 
 Small labels for status, categories, or counts.
 
 - **Variants**
-  - `.secondary` — Muted color from the secondary token
+  - `.secondary` - Muted color from the secondary token
   - `.success`
   - `.warning`
   - `.danger`
-  - `.outline` — Transparent with a primary-color border
+  - `.outline` - Transparent with a primary-color border
 
-#### Breadcrumbs — `.breadcrumbs`
+#### Breadcrumbs - `.breadcrumbs`
 
 Navigation trail showing the current page's place in a hierarchy. Put an ordered list of links inside a nav and mark the current page with aria-current.
 
-#### Card header and footer — `.card-header, .card-footer`
+#### Card header and footer - `.card-header, .card-footer`
 
 Header and footer sections for a .card. The base .card styling is in layout.css.
 
-#### Drop Zone — `.drop-zone`
+#### Drop Zone - `.drop-zone`
 
 Bordered target for drag-and-drop file uploads, with click-to-browse as a fallback.
 
 - **States**
-  - `.drag-over` — A file is being dragged over the zone
-  - `.invalid` — The dropped file type was not accepted
+  - `.drag-over` - A file is being dragged over the zone
+  - `.invalid` - The dropped file type was not accepted
 - **Requires:** drop-zone.js initDropZone(selector, onFile, options)
 
-#### Dropdown Menu — `.dropdown`
+#### Dropdown Menu - `.dropdown`
 
 CSS-only menu that opens on hover or focus.
 
 - **Parts**
-  - `.dropdown-menu` — The menu; put the links inside it
+  - `.dropdown-menu` - The menu; put the links inside it
+- **Variables**
+  - `--background-color` - Menu background. A theme token, set in themes.css.
+  - `--text-color` - Menu link color. A theme token, set in themes.css.
 
-#### Pagination — `.pagination`
+#### Pagination - `.pagination`
 
 Page links for multi-page content.
 
 - **States**
-  - `.active` — Put on the link for the current page
+  - `.active` - Put on the link for the current page
 
-#### Progress Bar — `.progress-bar`
+#### Progress Bar - `.progress-bar`
 
 A filler bar inside a container that draws the track.
 
 - **Variants**
-  - `.indeterminate` — Animated bar for work of unknown length
+  - `.indeterminate` - Animated bar for work of unknown length
 - **Parts**
-  - `.progress-container` — Required wrapper around the bar
+  - `.progress-container` - Required wrapper around the bar
 - **Variables**
-  - `--pb-percent` — Percent complete, 0 to 100
+  - `--pb-percent` - Percent complete, 0 to 100
 
-#### Skeleton Loader — `.skeleton`
+#### Skeleton Loader - `.skeleton`
 
 Placeholder for content that is still loading. Combine with .avatar for circular shapes.
 
 - **Variants**
-  - `.block` — Image or card-image placeholder
-  - `.circle` — Circular placeholder
-  - `.text` — One line of text; stack several for a paragraph
-  - `.header` — Thicker, shorter heading line
+  - `.block` - Image or card-image placeholder
+  - `.circle` - Circular placeholder
+  - `.text` - One line of text; stack several for a paragraph
+  - `.header` - Thicker, shorter heading line
 
-#### Tabs — `.tabs`
+#### Tabs - `.tabs`
 
 CSS-only tabs built from radio buttons. Repeat the three parts as siblings, in this order, sharing one radio name.
 
 - **Parts**
-  - `.tab-radio` — Hidden radio input that holds which tab is selected
-  - `.tab-label` — The clickable tab title
-  - `.tab-content` — The panel shown while its radio is checked
+  - `.tab-radio` - Hidden radio input that holds which tab is selected
+  - `.tab-label` - The clickable tab title
+  - `.tab-content` - The panel shown while its radio is checked
 
-#### Toast — `.toast`
+#### Toast - `.toast`
 
-Floating notification in the corner of the screen. Hidden until shown, then removed after a delay. Styled like .alert.
+Notification message that is hidden until shown with showToast(), which removes it after a delay and logs its text to the console for debugging. Styled like .alert. The CSS does not position it, so place it where you want it (for example with position: fixed).
 
 - **Variants**
   - `.success`
   - `.warning`
   - `.danger`
 - **States**
-  - `.show` — Added while the toast is visible
+  - `.show` - Added while the toast is visible
 - **Requires:** toast.js showToast(selector, duration)
 
-#### Tooltip — `.tooltip`
+#### Tooltip - `.tooltip`
 
 Extra information on hover or focus. Put the tooltip text in a child element.
 
 - **Parts**
-  - `.tooltip-text` — The text shown on hover or focus
+  - `.tooltip-text` - The text shown on hover or focus
 
-### `drop-zone.js` — Drag-and-drop and click-to-browse behavior for .drop-zone elements.
+### `drop-zone.js` - Drag-and-drop and click-to-browse behavior for .drop-zone elements.
 
 #### `initDropZone(selector, onFile, options)`
 
 Wires up drag-and-drop and click-to-browse on the matching .drop-zone elements. Sets .drag-over while a file is dragged over a zone and .invalid when the file type is not accepted.
 
 - **Parameters**
-  - `selector` — CSS selector for the drop zone container or containers
-  - `onFile` — Called with the accepted File
-  - `options` — Optional. options.accept lists allowed MIME types or extensions, such as ["image/png", ".pdf"].
+  - `selector` - CSS selector for the drop zone container or containers
+  - `onFile` - Called with the accepted File
+  - `options` - Optional. options.accept lists allowed MIME types or extensions, such as ["image/png", ".pdf"].
 - **Requires:** .drop-zone styles from components.css
 
-### `theme-switcher.js` — Logic for toggling light/dark/custom themes.
+### `theme-switcher.js` - Logic for toggling light/dark/custom themes.
 
 #### `setTheme(theme)`
 
-Sets the theme on the page and syncs the select. Runs on load, using the saved choice or else the system preference, and again whenever the select changes.
+Sets the data-theme attribute on the body and syncs the select. Runs on load, using the saved choice or else the system preference, and again whenever the select changes.
 
 - **Parameters**
-  - `theme` — A theme name matching a [data-theme] value in themes.css
+  - `theme` - A theme name matching a [data-theme] value in themes.css
 - **Requires:** a select element with id theme-select
 
 - **Note:** Requires a select element with id="theme-select" whose option values match the [data-theme] names in themes.css.
 - **Note:** Persists the user's choice to localStorage.
 - **Note:** Optional: copy it into the project only if dynamic theming is needed.
 
-### `toast.js` — Shows and auto-hides .toast notifications.
+### `toast.js` - Shows and auto-hides .toast notifications.
 
 #### `showToast(selector, duration)`
 
 Shows a toast, then hides it after a delay. Logs the toast text to the console for debugging.
 
 - **Parameters**
-  - `selector` — CSS selector for the toast element. Defaults to ".toast".
-  - `duration` — Milliseconds to keep the toast visible. Defaults to 5000.
+  - `selector` - CSS selector for the toast element. Defaults to ".toast".
+  - `duration` - Milliseconds to keep the toast visible. Defaults to 5000.
 - **Requires:** .toast styles from components.css
 
 <!-- END GENERATED CATALOG -->
