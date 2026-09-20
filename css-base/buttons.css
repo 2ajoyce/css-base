@@ -2,12 +2,24 @@
  * @file buttons.css
  * @description Styles for button elements and roles.
  * @context
- *   button (Standard button. Variants: .secondary, .success, .danger, .warning)
- *   [role="button"] (Generic clickable elements, mimics secondary style)
+ *   button: Standard button with hover, active, focus and disabled states.
+ *   [role="button"]: Makes a non-button element look and behave like a secondary button.
  * @notes
  *   [role="button"] may conflict with map libraries like Leaflet.
  */
 
+/**
+ * @title Button
+ * @selector button
+ * @description Standard button with hover, active, focus and disabled states.
+ * @variant .secondary Muted color
+ * @variant .success
+ * @variant .danger
+ * @variant .warning
+ * @example
+ * <button>Save</button>
+ * <button class="danger">Delete</button>
+ */
 button {
   padding: 0.75em 1em;
   background-color: var(--primary-color);
@@ -161,6 +173,13 @@ button.warning:disabled:active {
   color: var(--warning-text-color);
 }
 
+/**
+ * @title Button role
+ * @selector [role="button"]
+ * @description Makes a non-button element look and behave like a secondary button. It can conflict with libraries such as Leaflet that use role=button.
+ * @example
+ * <div role="button" tabindex="0">Click me</div>
+ */
 /* 
 * Non-button elements styled as buttons
 * Non-button elements are most like secondary buttons so we will use secondary button styles

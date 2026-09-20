@@ -2,7 +2,7 @@
  * @file theme-switcher.js
  * @description Logic for toggling light/dark/custom themes.
  * @context
- *   setTheme(theme) (Sets data-theme on body and syncs the select. Runs on load from localStorage or prefers-color-scheme, and whenever the select changes)
+ *   setTheme(theme): Sets the theme on the page and syncs the select.
  * @notes
  *   Requires a select element with id="theme-select" whose option values match the [data-theme] names in themes.css.
  *   Persists the user's choice to localStorage.
@@ -22,6 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
   setTheme(prefersDark ? "dark" : "light");
 });
 
+/**
+ * @function setTheme(theme)
+ * @description Sets the theme on the page and syncs the select. Runs on load, using the saved choice or else the system preference, and again whenever the select changes.
+ * @param theme A theme name matching a [data-theme] value in themes.css
+ * @requires a select element with id theme-select
+ */
 function setTheme(theme) {
   document.body.setAttribute("data-theme", theme);
   document.getElementById("theme-select").value = theme;

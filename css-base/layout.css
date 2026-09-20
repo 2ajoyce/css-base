@@ -2,23 +2,33 @@
  * @file layout.css
  * @description Layout primitives for responsive design.
  * @context
- *   .aspect-ratio (vars: --aspect-ratio, --aspect-ratio-padding, --aspect-ratio-border, --aspect-ratio-bg)
- *   .card (vars: --card-padding, --card-border)
- *   .carousel (vars: --carousel-gap, --carousel-item-width)
- *   .center (Flex column center)
- *   .columns (Flex wrap with min-width logic. vars: --columns-gap, --columns-min-width)
- *   .container (Centered content. vars: --container-max-width, --container-padding)
- *   .grid (CSS Grid. vars: --grid-gap, --grid-min-width, --grid-align-items)
- *   .group (Flex wrap. vars: --group-gap)
- *   .icon (Fixed size flex center. vars: --icon-width, --icon-height)
- *   .overlay (Absolute center. vars: --overlay-top, --overlay-left)
- *   .sidebar (Sidebar layout with .side and .main children. vars: --sidebar-gap, --sidebar-side-width, --sidebar-main-min-width)
- *   .stack (Flex column/row. Variants: .horizontal, .split. vars: --stack-padding, --stack-space, --stack-wrap)
+ *   .aspect-ratio: Fixes a container to an aspect ratio and crops an image or video inside it to fill the space.
+ *   .card: Bordered, padded content container.
+ *   .carousel: Horizontally scrolling row that snaps to each item.
+ *   .center: Centers its content horizontally and vertically.
+ *   .columns: Side-by-side columns that stack into one column when narrower than the minimum width.
+ *   .container: Centered page-width wrapper with padding.
+ *   .grid: Responsive grid of equal columns that fills the available width, for example a grid of cards.
+ *   .group: Row of items that wraps onto new lines when it runs out of space.
+ *   .icon: Fixed-size box that centers its content, for icons.
+ *   .overlay: Places an element over the center of its positioned parent, kept within the parent's bounds.
+ *   .sidebar: Main content with a side column that moves above it when space runs out.
+ *   .stack: Vertical list of items with even spacing.
  */
 
-/* /////////////////////////////////////////////////////
-// Aspect Ratio
-//////////////////////////////////////////////////////*/
+/**
+ * @title Aspect Ratio
+ * @selector .aspect-ratio
+ * @description Fixes a container to an aspect ratio and crops an image or video inside it to fill the space.
+ * @var --aspect-ratio Ratio such as 16 / 9. Defaults to 1 / 1.
+ * @var --aspect-ratio-padding Inner padding. Defaults to 0.
+ * @var --aspect-ratio-border Border. Defaults to 1px solid #000.
+ * @var --aspect-ratio-bg Background color. Defaults to transparent.
+ * @example
+ * <div class="aspect-ratio" style="--aspect-ratio: 16 / 9">
+ *   <img src="photo.jpg" alt="" />
+ * </div>
+ */
 .aspect-ratio {
   padding: var(--aspect-ratio-padding, 0);
   border: var(--aspect-ratio-border, 1px solid #000);
@@ -37,17 +47,33 @@
   object-fit: cover;
 }
 
-/* /////////////////////////////////////////////////////
-// Card 
-//////////////////////////////////////////////////////*/
+/**
+ * @title Card
+ * @selector .card
+ * @description Bordered, padded content container. Header and footer sections are in components.css.
+ * @var --card-padding Inner padding. Defaults to 1rem.
+ * @var --card-border Border. Defaults to 1px solid the text color.
+ * @example
+ * <div class="card"><h3>Title</h3><p>Content</p></div>
+ */
 .card {
   padding: var(--card-padding, 1rem);
   border: var(--card-border, 1px solid var(--text-color));
 }
 
-/* /////////////////////////////////////////////////////
-// Carousel
-//////////////////////////////////////////////////////*/
+/**
+ * @title Carousel
+ * @selector .carousel
+ * @description Horizontally scrolling row that snaps to each item.
+ * @var --carousel-gap Space between items. Defaults to 1rem.
+ * @var --carousel-item-width Maximum item width. Defaults to 80%.
+ * @example
+ * <div class="carousel">
+ *   <div class="card">One</div>
+ *   <div class="card">Two</div>
+ *   <div class="card">Three</div>
+ * </div>
+ */
 .carousel {
   display: flex;
   overflow-x: auto;
@@ -65,9 +91,15 @@
   max-width: var(--carousel-item-width, 80%);
 }
 
-/* /////////////////////////////////////////////////////
-// Center
-//////////////////////////////////////////////////////*/
+/**
+ * @title Center
+ * @selector .center
+ * @description Centers its content horizontally and vertically. It fills the height of its parent, so the parent needs a height.
+ * @example
+ * <div style="height: 10rem">
+ *   <div class="center"><p>Centered</p></div>
+ * </div>
+ */
 .center {
   display: flex;
   flex-direction: column;
@@ -76,9 +108,18 @@
   height: 100%;
 }
 
-/* /////////////////////////////////////////////////////
-// Columns
-//////////////////////////////////////////////////////*/
+/**
+ * @title Columns
+ * @selector .columns
+ * @description Side-by-side columns that stack into one column when narrower than the minimum width.
+ * @var --columns-gap Space between columns. Defaults to 1rem.
+ * @var --columns-min-width Width below which columns stack. Defaults to 500px.
+ * @example
+ * <div class="columns">
+ *   <div>One</div>
+ *   <div>Two</div>
+ * </div>
+ */
 .columns {
   display: flex;
   flex-wrap: wrap;
@@ -88,18 +129,35 @@
   flex: 1 1 calc((var(--columns-min-width, 500px) - 100%) * 999);
 }
 
-/* /////////////////////////////////////////////////////
-// Container
-//////////////////////////////////////////////////////*/
+/**
+ * @title Container
+ * @selector .container
+ * @description Centered page-width wrapper with padding.
+ * @var --container-max-width Maximum width. Defaults to 1200px.
+ * @var --container-padding Padding. Defaults to 1rem.
+ * @example
+ * <div class="container">Page content</div>
+ */
 .container {
   max-width: var(--container-max-width, 1200px);
   margin: 0 auto;
   padding: var(--container-padding, 1rem);
 }
 
-/* /////////////////////////////////////////////////////
-// Grid
-//////////////////////////////////////////////////////*/
+/**
+ * @title Grid
+ * @selector .grid
+ * @description Responsive grid of equal columns that fills the available width, for example a grid of cards.
+ * @var --grid-gap Space between cells. Defaults to 1rem.
+ * @var --grid-min-width Minimum column width. Defaults to 200px.
+ * @var --grid-align-items Vertical alignment of cells. Defaults to end.
+ * @example
+ * <div class="grid">
+ *   <div class="card">One</div>
+ *   <div class="card">Two</div>
+ *   <div class="card">Three</div>
+ * </div>
+ */
 .grid {
   display: grid;
   gap: var(--grid-gap, 1rem);
@@ -110,18 +168,29 @@
   align-items: var(--grid-align-items, end);
 }
 
-/* /////////////////////////////////////////////////////
-// Group
-//////////////////////////////////////////////////////*/
+/**
+ * @title Group
+ * @selector .group
+ * @description Row of items that wraps onto new lines when it runs out of space.
+ * @var --group-gap Space between items. Defaults to 1rem.
+ * @example
+ * <div class="group"><button>One</button><button>Two</button></div>
+ */
 .group {
   display: flex;
   flex-wrap: wrap;
   gap: var(--group-gap, 1rem);
 }
 
-/* /////////////////////////////////////////////////////
-// Icon
-//////////////////////////////////////////////////////*/
+/**
+ * @title Icon
+ * @selector .icon
+ * @description Fixed-size box that centers its content, for icons.
+ * @var --icon-width Width. Defaults to 2rem.
+ * @var --icon-height Height. Defaults to 2rem.
+ * @example
+ * <span class="icon"><svg>...</svg></span>
+ */
 .icon {
   display: flex;
   justify-content: center;
@@ -130,9 +199,17 @@
   height: var(--icon-height, 2rem);
 }
 
-/* /////////////////////////////////////////////////////
-// Overlay
-//////////////////////////////////////////////////////*/
+/**
+ * @title Overlay
+ * @selector .overlay
+ * @description Places an element over the center of its positioned parent, kept within the parent's bounds. The parent needs position: relative.
+ * @var --overlay-top Vertical position. Defaults to 50%.
+ * @var --overlay-left Horizontal position. Defaults to 50%.
+ * @example
+ * <div style="position: relative; height: 10rem">
+ *   <div class="overlay">On top</div>
+ * </div>
+ */
 .overlay {
   position: absolute;
   top: var(--overlay-top, 50%);
@@ -147,9 +224,21 @@
   overflow: auto;
 }
 
-/* /////////////////////////////////////////////////////
-// Sidebar
-//////////////////////////////////////////////////////*/
+/**
+ * @title Sidebar
+ * @selector .sidebar
+ * @description Main content with a side column that moves above it when space runs out.
+ * @part .side The side column
+ * @part .main The main content, which takes the remaining space
+ * @var --sidebar-gap Space between the columns. Defaults to 1rem.
+ * @var --sidebar-side-width Preferred side column width. Defaults to 20rem.
+ * @var --sidebar-main-min-width Width the main content needs before the sidebar wraps. Defaults to 50%.
+ * @example
+ * <div class="sidebar">
+ *   <nav class="side">Links</nav>
+ *   <div class="main">Content</div>
+ * </div>
+ */
 .sidebar {
   display: flex;
   flex-wrap: wrap;
@@ -167,9 +256,21 @@
   min-width: var(--sidebar-main-min-width, 50%);
 }
 
-/* /////////////////////////////////////////////////////
-// Stack
-//////////////////////////////////////////////////////*/
+/**
+ * @title Stack
+ * @selector .stack
+ * @description Vertical list of items with even spacing.
+ * @variant .horizontal Lay the children out in a row
+ * @variant .split Push the last child to the far end
+ * @var --stack-padding Padding. Defaults to 0rem.
+ * @var --stack-space Space between children. Defaults to 1.5rem.
+ * @var --stack-wrap Whether a horizontal stack wraps. Defaults to wrap.
+ * @example
+ * <div class="stack horizontal split">
+ *   <span>Left</span>
+ *   <span>Right</span>
+ * </div>
+ */
 .stack {
   display: flex;
   flex-direction: column;

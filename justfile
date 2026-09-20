@@ -21,7 +21,10 @@ build-ci:
     zip -r "$FILE_NAME" css-base/
 
 catalog:
-    node css-base/catalog.mjs write
+    node tools/catalog.mjs write
 
 check:
-    node css-base/catalog.mjs check
+    node tools/catalog.mjs check
+
+test:
+    node --test

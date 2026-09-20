@@ -21,7 +21,6 @@ If you are an AI agent initializing a project:
 css-base/
  AGENTS.md       # Context guide for you
  index.css       # Entry point (@imports others)
- catalog.mjs     # Keeps AGENTS.md in sync with the file headers (Node, no dependencies)
  reset.css       # Browser normalization
  themes.css      # Design tokens (colors, fonts)
  layout.css      # Grid, flex, stack utilities
@@ -54,5 +53,34 @@ Add the stylesheet to your HTML:
 This project uses `just` for release management.
 
 - `just build`: Creates a zip of `css-base` for distribution.
-- `just catalog`: Regenerates the component catalog in `css-base/AGENTS.md` from the header comment (`@context`) at the top of each file. Run it after adding or changing a class or function.
-- `just check`: Verifies that each header matches its file and that `AGENTS.md` is up to date. CI runs the same checks on pull requests. The script lives in `css-base/` so copied projects can run `node catalog.mjs check` too.
+- `just catalog`: Regenerates the parts of `css-base` that are built from the doc comments: the `@context` block in each file header and the catalog in `css-base/AGENTS.md`. Run it after adding or changing a component.
+- `just check`: Fails if anything generated is out of date or a doc comment is invalid. The `Check Catalog` action runs it on pull requests.
+- `just test`: Runs the tests for the scripts in `tools/`. The `Test` action runs it on pull requests.
+
+### Documenting components
+
+Every component, element style and script function gets a doc comment above its first rule. Every field is a tag, and text outside a tag is an error:
+
+```css
+/**
+ * @title Tag
+ * @selector .tag
+ * @description Small labels for status, categories, or counts.
+ * @variant .success Green
+ * @variant .outline Transparent with a primary-color border
+ * @example
+ * <span class="tag success">Success</span>
+ */
+```
+
+| Tag | Use |
+| --- | --- |
+| `@selector` / `@function` | What the comment documents (a selector in CSS, a signature in JS). One is required. |
+| `@description` | What it is for. Required. |
+| `@title` | Display name. |
+| `@catalog` | In a file header only. `list` shows the file's items in the `AGENTS.md` catalog as plain selectors, with no descriptions. Used by `elements.css`. |
+| `@variant`, `@state`, `@part`, `@var`, `@param` | A name, then an optional description. One per line, repeatable. |
+| `@requires` | Another file or element it depends on. |
+| `@example` | Markup. Repeatable; text on the tag line is a title. |
+
+The grammar is defined in `tools/doc-comments.mjs`. Files with no doc comments, such as `reset.css` and `themes.css`, keep a hand-written `@context`.

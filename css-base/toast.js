@@ -2,15 +2,18 @@
  * @file toast.js
  * @description Shows and auto-hides .toast notifications.
  * @context
- *   showToast(selector, duration) (Adds .show to the matching .toast, removes it after duration ms, logs its text to the console. Defaults: ".toast", 5000)
- * @notes
- *   Needs the .toast markup from components.css.
+ *   showToast(selector, duration): Shows a toast, then hides it after a delay.
  */
 
 /**
- * Shows a toast notification
- * @param {string} selector - The CSS selector for the toast element
- * @param {number} duration - How long to show the toast in milliseconds
+ * @function showToast(selector, duration)
+ * @description Shows a toast, then hides it after a delay. Logs the toast text to the console for debugging.
+ * @param selector CSS selector for the toast element. Defaults to ".toast".
+ * @param duration Milliseconds to keep the toast visible. Defaults to 5000.
+ * @requires .toast styles from components.css
+ * @example
+ * <div class="toast success">Changes saved.</div>
+ * <button onclick="showToast('.toast', 5000)">Save</button>
  */
 function showToast(selector = ".toast", duration = 5000) {
   const toast = document.querySelector(selector);

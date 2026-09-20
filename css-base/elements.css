@@ -1,22 +1,36 @@
 /**
  * @file elements.css
  * @description Base styles for HTML tags.
+ * @catalog list
  * @context
- *   body (Global text defaults)
- *   h1-h6 (Typography)
- *   p, blockquote, pre, code (Content blocks. Variants: pre.wrap, code.multiline)
- *   strong, em, mark, del, ins, sub, sup, small (Inline formatting)
- *   a (Links. Variants: .visited. vars: --link-color, --link-hover-color)
- *   ul, ol, dl (Lists)
- *   table, th, td (Data tables)
- *   form, label, input, textarea, select (Form controls. Label variants: .left, .right, .ground. Checkbox variant: input.toggle renders a toggle switch)
- *   details, summary (Disclosure widget)
- *   dialog (Modal. Open with dialog.showModal())
- *   header (Page header. Put a .right child to push it to the far edge)
- *   nav (Navigation links. Mark the current page with a.active)
+ *   html, body: Page background, text color, font and line height, with a 20rem minimum width.
+ *   h1, h2, h3, h4, h5, h6: Six heading levels with decreasing size.
+ *   p, blockquote, pre, code: Paragraphs, quotations and code.
+ *   strong, em, mark, del, ins, sub, sup, small: Inline formatting.
+ *   hr: A thin divider line.
+ *   a: Links without an underline until hovered.
+ *   ul, ol, dl: Bulleted, numbered and description lists.
+ *   table, thead, th, td: Full-width tables with a shaded header row.
+ *   form: Padded, bordered form container.
+ *   label: Bold label that sits above its input.
+ *   input, textarea, select: Full-width form controls with a highlighted focus state.
+ *   input.toggle: Renders a checkbox as a toggle switch.
+ *   fieldset, legend: Bordered group of related controls with a bold legend.
+ *   img, figure, figcaption, audio, video: Responsive media that never overflows its container.
+ *   canvas: Bordered block-level canvas.
+ *   section: Padded, bordered content section.
+ *   header: Page header bar.
+ *   nav: Row of links that stacks on narrow screens.
+ *   footer: Page footer bar.
+ *   details, summary: Collapsible disclosure widget with a bold clickable summary.
+ *   dialog: Modal dialog with a blurred backdrop.
  */
 
-/* Base styles */
+/**
+ * @title Page
+ * @selector html, body
+ * @description Page background, text color, font and line height, with a 20rem minimum width.
+ */
 html {
   background-color: var(--background-color);
 }
@@ -34,6 +48,11 @@ body {
 /* There is no styling applied to div elements */
 /* div {} */
 
+/**
+ * @title Headings
+ * @selector h1, h2, h3, h4, h5, h6
+ * @description Six heading levels with decreasing size. Links inside headings keep the text color.
+ */
 h1 {
   margin: 1.5rem 0 1rem;
   font-weight: bold;
@@ -70,6 +89,16 @@ h6 {
   font-size: 1rem;
 }
 
+/**
+ * @title Text blocks
+ * @selector p, blockquote, pre, code
+ * @description Paragraphs, quotations and code.
+ * @variant pre.wrap Wrap long lines instead of scrolling
+ * @variant code.multiline Show as a wrapping block
+ * @example
+ * <blockquote>A quotation</blockquote>
+ * <p>Some <code>inline code</code></p>
+ */
 p {
   font-size: 1rem;
   margin: 1rem 0;
@@ -111,6 +140,11 @@ code.multiline {
   white-space: pre-wrap;
 }
 
+/**
+ * @title Inline text
+ * @selector strong, em, mark, del, ins, sub, sup, small
+ * @description Inline formatting.
+ */
 strong {
   font-weight: bold;
 }
@@ -146,14 +180,23 @@ small {
   font-size: smaller;
 }
 
-/* Horizontal Rule */
+/**
+ * @title Horizontal Rule
+ * @selector hr
+ * @description A thin divider line.
+ */
 hr {
   border: none;
   border-top: 1px solid var(--secondary-color);
   margin: 1rem 0;
 }
 
-/* Links */
+/**
+ * @title Links
+ * @selector a
+ * @description Links without an underline until hovered.
+ * @variant .visited Style a link as visited
+ */
 a {
   color: var(--link-color);
   text-decoration: none;
@@ -189,7 +232,11 @@ nav a:hover {
   color: var(--primary-color);
 }
 
-/* Lists */
+/**
+ * @title Lists
+ * @selector ul, ol, dl
+ * @description Bulleted, numbered and description lists.
+ */
 ul,
 ol {
   padding-left: 1rem;
@@ -218,7 +265,11 @@ dd {
   padding-left: 1rem;
 }
 
-/* Tables */
+/**
+ * @title Tables
+ * @selector table, thead, th, td
+ * @description Full-width tables with a shaded header row.
+ */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -260,7 +311,11 @@ td {
 /* There is no styling applied to tr elements */
 /* tr {} */
 
-/* Forms */
+/**
+ * @title Form
+ * @selector form
+ * @description Padded, bordered form container.
+ */
 form {
   background-color: var(--secondary-background-color);
   padding: 2rem;
@@ -269,6 +324,17 @@ form {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/**
+ * @title Label
+ * @selector label
+ * @description Bold label that sits above its input.
+ * @variant .left Sit to the left of the input
+ * @variant .right Sit to the right of the input
+ * @variant .ground Align to the bottom of the input
+ * @example
+ * <label for="name">Name</label>
+ * <input id="name" type="text" />
+ */
 label {
   display: block;
   font-weight: bold;
@@ -295,6 +361,11 @@ input[type="checkbox"].toggle + label {
   align-self: center;
 }
 
+/**
+ * @title Inputs
+ * @selector input, textarea, select
+ * @description Full-width form controls with a highlighted focus state.
+ */
 input,
 textarea,
 select {
@@ -327,7 +398,14 @@ input[type="checkbox"] {
   padding: 0;
 }
 
-/* Toggle Switch */
+/**
+ * @title Toggle Switch
+ * @selector input.toggle
+ * @description Renders a checkbox as a toggle switch.
+ * @example
+ * <input id="enabled" type="checkbox" class="toggle" />
+ * <label for="enabled">Enabled</label>
+ */
 input[type="checkbox"].toggle {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -381,6 +459,11 @@ select:focus {
   outline: none;
 }
 
+/**
+ * @title Fieldset
+ * @selector fieldset, legend
+ * @description Bordered group of related controls with a bold legend.
+ */
 fieldset {
   border: 1px solid var(--secondary-color);
   padding: 1.5rem;
@@ -393,7 +476,11 @@ legend {
   padding: 0 0.5rem;
 }
 
-/* Media */
+/**
+ * @title Media
+ * @selector img, figure, figcaption, audio, video
+ * @description Responsive media that never overflows its container.
+ */
 img {
   max-width: 100%;
   height: auto;
@@ -415,7 +502,11 @@ video {
   max-width: 100%;
 }
 
-/* Canvas */
+/**
+ * @title Canvas
+ * @selector canvas
+ * @description Bordered block-level canvas.
+ */
 canvas {
   display: block;
   margin: 2rem 0;
@@ -423,7 +514,11 @@ canvas {
   max-width: 100%;
 }
 
-/* Section styles */
+/**
+ * @title Section
+ * @selector section
+ * @description Padded, bordered content section. Its first h2 is underlined.
+ */
 section {
   padding: 2rem;
   background-color: var(--secondary-background-color);
@@ -436,7 +531,17 @@ section > h2:first-of-type {
   margin-top: 0;
 }
 
-/* Header styles */
+/**
+ * @title Header
+ * @selector header
+ * @description Page header bar.
+ * @part .right Pushes an element to the far edge of the header
+ * @example
+ * <header>
+ *   <h1>Site</h1>
+ *   <nav><a href="/">Home</a><span class="right">Account</span></nav>
+ * </header>
+ */
 header {
   background-color: var(--secondary-color);
   color: var(--text-color);
@@ -470,7 +575,17 @@ header a:visited {
   color: var(--text-color);
 }
 
-/* Navigation */
+/**
+ * @title Navigation
+ * @selector nav
+ * @description Row of links that stacks on narrow screens.
+ * @state a.active Underlines the link for the current page
+ * @example
+ * <nav>
+ *   <a href="/" class="active">Home</a>
+ *   <a href="/about">About</a>
+ * </nav>
+ */
 nav {
   display: flex;
   align-items: flex-end;
@@ -492,7 +607,11 @@ nav select {
   padding: 0.25rem 1rem;
 }
 
-/* Footer */
+/**
+ * @title Footer
+ * @selector footer
+ * @description Page footer bar.
+ */
 footer {
   background-color: var(--secondary-color);
   color: var(--text-color);
@@ -500,7 +619,16 @@ footer {
   border-top: 1px solid var(--primary-color);
 }
 
-/* Details */
+/**
+ * @title Details
+ * @selector details, summary
+ * @description Collapsible disclosure widget with a bold clickable summary.
+ * @example
+ * <details>
+ *   <summary>More</summary>
+ *   <p>Hidden until opened</p>
+ * </details>
+ */
 details {
   background-color: var(--secondary-background-color);
   border: 1px solid var(--secondary-color);
@@ -517,7 +645,17 @@ details > summary {
   user-select: none;
 }
 
-/* Dialog (Modal) */
+/**
+ * @title Dialog (Modal)
+ * @selector dialog
+ * @description Modal dialog with a blurred backdrop. Open it from script with showModal().
+ * @example
+ * <dialog id="confirm">
+ *   <p>Are you sure?</p>
+ *   <button onclick="this.closest('dialog').close()">Close</button>
+ * </dialog>
+ * <button onclick="document.getElementById('confirm').showModal()">Open</button>
+ */
 dialog {
   border: 1px solid var(--text-color);
   border-radius: 0.5rem;
