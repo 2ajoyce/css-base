@@ -6,7 +6,7 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 
-const EM_DASH = "—";
+const EM_DASH = String.fromCharCode(0x2014);
 const BINARY = /\.(png|jpe?g|gif|webp|ico|zip|woff2?)$/i;
 
 const files = execFileSync("git", ["ls-files", "-z"], { encoding: "utf8" })
