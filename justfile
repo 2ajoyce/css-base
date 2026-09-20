@@ -19,3 +19,13 @@ build-ci:
     done
     FILE_NAME="css-base_${DATE}_${I}.zip"
     zip -r "$FILE_NAME" css-base/
+
+catalog:
+    node tools/catalog.mjs write
+
+check:
+    node tools/catalog.mjs check
+    node tools/check-dashes.mjs
+
+test:
+    node --test

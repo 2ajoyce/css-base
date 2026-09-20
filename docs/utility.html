@@ -9,51 +9,85 @@
   <body class="container" style="--container-padding: 0">
     <header>
       <h1>Style Guide</h1>
-      <nav
-        class="columns"
-        style="background-color: var(--background-color); padding: 1em"
-      >
-        <a href="index.html">Home</a>
-        <a href="elements.html">Elements</a>
-        <a href="utility.html" class="active">Utility</a>
-        <a href="layout.html">Layout</a>
-        <a href="components.html">Components</a>
-        <div
-          class="stack horizontal"
-          style="--stack-space: 0; --stack-wrap: nowrap"
-        >
-          <label for="theme-select" class="left ground">Theme:</label>
-          <select id="theme-select">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="high-contrast">High Contrast</option>
-          </select>
-        </div>
-      </nav>
+      <include-html src="partials/nav.html" style="display: contents">
+<nav
+  class="columns"
+  style="background-color: var(--background-color); padding: 1em"
+>
+  <a href="index.html">Home</a>
+  <a href="elements.html">Elements</a>
+  <a href="utility.html">Utility</a>
+  <a href="layout.html">Layout</a>
+  <a href="components.html">Components</a>
+  <div class="stack horizontal" style="--stack-space: 0; --stack-wrap: nowrap">
+    <label for="theme-select" class="left ground">Theme:</label>
+    <select id="theme-select">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High Contrast</option>
+    </select>
+  </div>
+</nav>
+<script>
+  // Mark the link for the current page. Works with or without ".html".
+  (() => {
+    const bare = (name) => name.replace(/\.html$/, "");
+    const page = bare(location.pathname.split("/").pop() || "index");
+    document.querySelectorAll("header nav a").forEach((link) => {
+      if (bare(link.getAttribute("href")) === page) link.classList.add("active");
+    });
+  })();
+</script>
+</include-html>
     </header>
-    <div class="stack" style="--stack-space: 2rem">
-      <section id="interactive-elements">
-        <h2><a href="#interactive-elements">Interactive Elements</a></h2>
-        <div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
-          <p>
-            Sometimes elements which are not typically interactive need to have
-            a pointer cursor to indicate they can be clicked or focused.
-          </p>
-          <button class="fit-content">This is a standard button</button>
-          <p>This is a standard <code>&lt;p&gt;</code> element.</p>
-          <p role="button" tabindex="0">
-            This is a <code>&lt;p&gt;</code> with the
-            <code>role="button"</code>
-            attribute and <code>tabindex="0"</code> to make it focusable.
-          </p>
-        </div>
-      </section>
-    </div>
-    <footer>
-      <p>
-        Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a>
-      </p>
-    </footer>
+    <css-catalog
+      class="stack"
+      style="--stack-space: 2rem"
+      src="../css-base/utility.css"
+    >
+<section id="fit-content">
+  <h2><a href="#fit-content">Fit Content</a></h2>
+  <p>Sizes an element to its content width. On screens 768px wide or narrower the width returns to auto.</p>
+  <p><strong>Selector:</strong> <code>.fit-content</code></p>
+  <h3>Example</h3>
+  <div>
+<div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
+  <button class="fit-content">Only as wide as its content</button>
+  <button>Stretches to fill the stack</button>
+</div>
+  </div>
+</section>
+
+<section id="radius">
+  <h2><a href="#radius">Radius</a></h2>
+  <p>Applies a standard border radius.</p>
+  <p><strong>Selector:</strong> <code>.radius</code></p>
+  <h3>Variables</h3>
+  <ul>
+    <li><code>--radius</code> - Corner radius. Defaults to 0.5rem.</li>
+  </ul>
+  <h3>Example</h3>
+  <div>
+<div class="radius card">Rounded</div>
+  </div>
+</section>
+
+<section id="focusable-elements">
+  <h2><a href="#focusable-elements">Focusable elements</a></h2>
+  <p>Elements with a non-negative tabindex get a pointer cursor and a visible focus outline. Elements with role=button are handled in buttons.css.</p>
+  <p><strong>Selector:</strong> <code>[tabindex]</code></p>
+  <h3>Example</h3>
+  <div>
+<p>This is a standard paragraph.</p>
+<p tabindex="0">This paragraph has tabindex="0", so it is focusable and shows a pointer cursor.</p>
+  </div>
+</section>
+</css-catalog>
+    <include-html src="partials/footer.html" style="display: contents">
+<footer>
+  <p>Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a></p>
+</footer>
+</include-html>
   </body>
   <script src="../css-base/theme-switcher.js"></script>
 </html>

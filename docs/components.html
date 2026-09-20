@@ -5,398 +5,413 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Component Examples</title>
     <link rel="stylesheet" href="../css-base/index.css" />
+    <script src="../css-base/toast.js"></script>
+    <script src="../css-base/drop-zone.js"></script>
   </head>
   <body class="container" style="--container-padding: 0">
     <header>
       <h1>Style Guide</h1>
-      <nav
-        class="columns"
-        style="background-color: var(--background-color); padding: 1em"
-      >
-        <a href="index.html">Home</a>
-        <a href="elements.html">Elements</a>
-        <a href="utility.html">Utility</a>
-        <a href="layout.html">Layout</a>
-        <a href="components.html" class="active">Components</a>
-        <div
-          class="stack horizontal"
-          style="--stack-space: 0; --stack-wrap: nowrap"
-        >
-          <label for="theme-select" class="left ground">Theme:</label>
-          <select id="theme-select">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="high-contrast">High Contrast</option>
-          </select>
-        </div>
-      </nav>
+      <include-html src="partials/nav.html" style="display: contents">
+<nav
+  class="columns"
+  style="background-color: var(--background-color); padding: 1em"
+>
+  <a href="index.html">Home</a>
+  <a href="elements.html">Elements</a>
+  <a href="utility.html">Utility</a>
+  <a href="layout.html">Layout</a>
+  <a href="components.html">Components</a>
+  <div class="stack horizontal" style="--stack-space: 0; --stack-wrap: nowrap">
+    <label for="theme-select" class="left ground">Theme:</label>
+    <select id="theme-select">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High Contrast</option>
+    </select>
+  </div>
+</nav>
+<script>
+  // Mark the link for the current page. Works with or without ".html".
+  (() => {
+    const bare = (name) => name.replace(/\.html$/, "");
+    const page = bare(location.pathname.split("/").pop() || "index");
+    document.querySelectorAll("header nav a").forEach((link) => {
+      if (bare(link.getAttribute("href")) === page) link.classList.add("active");
+    });
+  })();
+</script>
+</include-html>
     </header>
-    <div class="stack" style="--stack-space: 2rem">
-      <!-- Alerts -->
-      <section id="alerts">
-        <h2><a href="#alerts">Alerts</a></h2>
-        <p>Provide contextual feedback messages for typical user actions.</p>
-        <div class="alert">
-          <strong>Default:</strong> This is a default alert message.
-        </div>
-        <div class="alert success">
-          <strong>Success:</strong> This is a success alert message.
-        </div>
-        <div class="alert warning">
-          <strong>Warning:</strong> This is a warning alert message.
-        </div>
-        <div class="alert danger">
-          <strong>Danger:</strong> This is a danger alert message.
-        </div>
-      </section>
+    <css-catalog
+      class="stack"
+      style="--stack-space: 2rem"
+      src="../css-base/components.css"
+    >
+<section id="alerts">
+  <h2><a href="#alerts">Alerts</a></h2>
+  <p>Contextual feedback messages for typical user actions. Without a variant, an alert uses the primary colors.</p>
+  <p><strong>Selector:</strong> <code>.alert</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.success</code> - Positive outcome</li>
+    <li><code>.warning</code> - Needs attention</li>
+    <li><code>.danger</code> - Error or destructive outcome</li>
+  </ul>
+  <h3>Example</h3>
+  <div>
+<div class="alert"><strong>Default:</strong> This is a default alert message.</div>
+<div class="alert success"><strong>Success:</strong> This is a success alert message.</div>
+<div class="alert warning"><strong>Warning:</strong> This is a warning alert message.</div>
+<div class="alert danger"><strong>Danger:</strong> This is a danger alert message.</div>
+  </div>
+</section>
 
-      <!-- Avatar -->
-      <section id="avatar">
-        <h2><a href="#avatar">Avatar</a></h2>
-        <p>Represent users or entities with a circular profile image.</p>
-        <p>
-          The classes <code>.small</code> and <code>.large</code> adjust the
-          size.
-        </p>
-        <p>
-          The <code>--avatar-size</code> CSS variable can also be used to set a
-          custom size. The default is <code>3rem</code>.
-        </p>
-        <div class="grid">
-          <div>
-            <div class="avatar small">
-              <img
-                src="public/images/placeholder_150.png"
-                alt="Small Avatar"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <p>Small Avatar</p>
-          </div>
-          <div>
-            <div class="avatar">
-              <img
-                src="public/images/placeholder_150.png"
-                alt="Default Avatar"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <p>Default Avatar</p>
-          </div>
-          <div>
-            <div class="avatar large">
-              <img
-                src="public/images/placeholder_150.png"
-                alt="Large Avatar"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <p>Large Avatar</p>
-          </div>
-        </div>
-      </section>
+<section id="avatar">
+  <h2><a href="#avatar">Avatar</a></h2>
+  <p>Circular profile image container.</p>
+  <p><strong>Selector:</strong> <code>.avatar</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.small</code> - 2rem</li>
+    <li><code>.large</code> - 4rem</li>
+  </ul>
+  <h3>Variables</h3>
+  <ul>
+    <li><code>--avatar-size</code> - Custom size. Defaults to 3rem.</li>
+  </ul>
+  <h3>Sizes</h3>
+  <div>
+<div class="grid">
+  <div>
+    <div class="avatar small"><img src="public/images/placeholder_150.png" alt="Small Avatar" /></div>
+    <p>Small Avatar</p>
+  </div>
+  <div>
+    <div class="avatar"><img src="public/images/placeholder_150.png" alt="Default Avatar" /></div>
+    <p>Default Avatar</p>
+  </div>
+  <div>
+    <div class="avatar large"><img src="public/images/placeholder_150.png" alt="Large Avatar" /></div>
+    <p>Large Avatar</p>
+  </div>
+</div>
+  </div>
+  <h3>Custom size</h3>
+  <div>
+<div class="avatar" style="--avatar-size: 5rem">
+  <img src="public/images/placeholder_150.png" alt="Custom size avatar" />
+</div>
+  </div>
+</section>
 
-      <!-- Badge / Tag -->
-      <section id="badge">
-        <h2><a href="#badge">Badge / Tag</a></h2>
-        <p>Small labels for status, categories, or counts.</p>
-        <div class="stack horizontal">
-          <span class="tag">Default</span>
-          <span class="tag secondary">Secondary</span>
-          <span class="tag success">Success</span>
-          <span class="tag warning">Warning</span>
-          <span class="tag danger">Danger</span>
-          <span class="tag outline">Outline</span>
-        </div>
-      </section>
+<section id="tag">
+  <h2><a href="#tag">Tag</a></h2>
+  <p>Small labels for status, categories, or counts.</p>
+  <p><strong>Selector:</strong> <code>.tag</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.secondary</code> - Muted color from the secondary token</li>
+    <li><code>.success</code></li>
+    <li><code>.warning</code></li>
+    <li><code>.danger</code></li>
+    <li><code>.outline</code> - Transparent with a primary-color border</li>
+  </ul>
+  <h3>Example</h3>
+  <div>
+<div class="stack horizontal">
+  <span class="tag">Default</span>
+  <span class="tag secondary">Secondary</span>
+  <span class="tag success">Success</span>
+  <span class="tag warning">Warning</span>
+  <span class="tag danger">Danger</span>
+  <span class="tag outline">Outline</span>
+</div>
+  </div>
+</section>
 
-      <!-- Breadcrumbs -->
-      <section id="breadcrumbs">
-        <h2><a href="#breadcrumbs">Breadcrumbs</a></h2>
-        <p>
-          Breadcrumbs indicate the current page's location within a navigational
-          hierarchy.
-        </p>
-        <p>
-          A breadcrumb trail is composed of a <code>&lt;nav&gt;</code> element
-          with an ordered list(<code>&lt;ol&gt;</code>) inside.
-        </p>
-        <p>
-          Each breadcrumb is a list item(<code>&lt;li&gt;</code>) that contains
-          a link(<code>&lt;a&gt;</code>).
-        </p>
-        <p>
-          The current page is indicated with the
-          <code>aria-current="page"</code> attribute.
-        </p>
-        <p>
-          This example assumes the user is at
-          <a href="components.html#breadcrumbs">components.html#breadcrumbs</a>.
-        </p>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="components.html">Components</a></li>
-            <li aria-current="page">Breadcrumbs</li>
-          </ol>
-        </nav>
-      </section>
+<section id="breadcrumbs">
+  <h2><a href="#breadcrumbs">Breadcrumbs</a></h2>
+  <p>Navigation trail showing the current page's place in a hierarchy. Put an ordered list of links inside a nav and mark the current page with aria-current.</p>
+  <p><strong>Selector:</strong> <code>.breadcrumbs</code></p>
+  <h3>Example</h3>
+  <div>
+<nav class="breadcrumbs">
+  <ol>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="components.html">Components</a></li>
+    <li aria-current="page">Breadcrumbs</li>
+  </ol>
+</nav>
+  </div>
+</section>
 
-      <!-- Card -->
-      <section id="card">
-        <h2><a href="#card">Card</a></h2>
-        <p>A flexible and extensible content container.</p>
-        <p>
-          This extends the base <code>.card</code> class with a header and
-          footer.
-        </p>
-        <p>
-          The header is indicated with the <code>.card-header</code> and the
-          footer with <code>.card-footer</code>.
-        </p>
-        <div class="grid" style="--grid-min-width: 300px">
-          <div
-            class="card stack"
-            style="--stack-padding: 1rem; --stack-space: 0"
-          >
-            <div class="card-header">
-              <div
-                class="stack horizontal split"
-                style="--stack-padding: 0 0 0.5rem 0"
-              >
-                Featured Content
-                <span class="tag">New</span>
-              </div>
-            </div>
-            <div class="stack" style="--stack-space: 0; --stack-padding: 0">
-              <h3>Card Title</h3>
-              This is a general purpose card component with a header, body, and
-              footer.
-            </div>
-            <div class="card-footer">
-              <div class="stack horizontal" style="--stack-padding: 0.5rem 0 0">
-                <small>Last updated: 3 mins ago</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Drop Zone -->
-      <section id="drop-zone">
-        <h2><a href="#drop-zone">Drop Zone</a></h2>
-        <p>
-          A bordered target area for drag-and-drop file uploads. Use the
-          <code>.drop-zone</code> class on a container; it highlights on drag
-          over and supports click-to-browse as a fallback.
-        </p>
-        <div class="drop-zone" id="demo-drop-zone">
-          <p>Drag and drop a file here, or click to browse</p>
-        </div>
-        <p id="demo-drop-zone-result"></p>
-      </section>
-
-      <!-- Dropdown -->
-      <section id="dropdown">
-        <h2><a href="#dropdown">Dropdown Menu</a></h2>
-        <p>A CSS-only dropdown menu that appears on hover or focus.</p>
-        <div class="dropdown">
-          <button class="dropdown-trigger">Sections</button>
-          <div class="dropdown-menu card">
-            <a href="#alerts">Alerts</a>
-            <a href="#avatar">Avatar</a>
-            <hr />
-            <a href="#dropdown">Dropdown</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Pagination -->
-      <section id="pagination">
-        <h2><a href="#pagination">Pagination</a></h2>
-        <p>Navigation for multi-page content.</p>
-        <nav class="pagination">
-          <a href="#dropdown" class="prev">&laquo; Previous</a>
-          <a href="#pagination">1</a>
-          <a href="#pagination" class="active">2</a>
-          <a href="#pagination">3</a>
-          <a href="#progress" class="next">Next &raquo;</a>
-        </nav>
-      </section>
-
-      <!-- Progress Bar -->
-      <section id="progress">
-        <h2><a href="#progress">Progress Bar</a></h2>
-        <p>A simple progress bar using a container and a filler element.</p>
-        <p>
-          The percent complete is controlled with the
-          <code>--pb-percent</code> CSS variable.
-        </p>
-        <div class="progress-container">
-          <div class="progress-bar" style="--pb-percent: 70">70%</div>
-        </div>
-        <p>Indeterminate state:</p>
-        <div class="progress-container">
-          <div class="progress-bar indeterminate"></div>
-        </div>
-      </section>
-
-      <!-- Skeleton Loader -->
-      <section id="skeleton">
-        <h2><a href="#skeleton">Skeleton Loader</a></h2>
-        <p>
-          Placeholder for content that is still loading. Added
-          <code>.circle</code> and <code>.text</code> modifiers.
-        </p>
-        <div class="grid" style="--grid-min-width: 300px">
-          <div>
-            <div class="card" aria-hidden="true">
-              <div class="stack" style="--stack-space: 0.75rem">
-                <div class="skeleton block"></div>
-                <div class="skeleton header"></div>
-                <div>
-                  <div class="skeleton text"></div>
-                  <div class="skeleton text"></div>
-                  <div class="skeleton text"></div>
-                </div>
-              </div>
-            </div>
-            <p>Card Loading State</p>
-          </div>
-
-          <div>
-            <div class="card" aria-hidden="true">
-              <div class="stack" style="--stack-space: 1rem">
-                <div class="stack horizontal" style="align-items: center">
-                  <div class="avatar skeleton"></div>
-                  <div style="flex: 1">
-                    <div
-                      class="skeleton header"
-                      style="margin-bottom: 0.5rem"
-                    ></div>
-                    <div class="skeleton text"></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="skeleton text"></div>
-                  <div class="skeleton text"></div>
-                  <div class="skeleton text"></div>
-                </div>
-              </div>
-            </div>
-            <p>Profile Loading State</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Tabs -->
-      <section id="tabs">
-        <h2><a href="#tabs">Tabs</a></h2>
-        <p>These tabs are created using only CSS with radio buttons.</p>
-        <div class="tabs">
-          <input type="radio" id="tab1" name="tabs" class="tab-radio" checked />
-          <label for="tab1" class="tab-label">Tab 1</label>
-          <div class="tab-content card">
-            <h3>Content for Tab 1</h3>
-            <p>This is the content for the first tab.</p>
-          </div>
-
-          <input type="radio" id="tab2" name="tabs" class="tab-radio" />
-          <label for="tab2" class="tab-label">Tab 2</label>
-          <div class="tab-content card">
-            <h3>Content for Tab 2</h3>
-            <p>This is the content for the second tab.</p>
-          </div>
-
-          <input type="radio" id="tab3" name="tabs" class="tab-radio" />
-          <label for="tab3" class="tab-label">Tab 3</label>
-          <div class="tab-content card">
-            <h3>Content for Tab 3</h3>
-            <p>This is the content for the third tab.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Toast -->
-      <section id="toast">
-        <h2><a href="#toast">Toast</a></h2>
-        <p>Floating notifications that appear at the corner of the screen.</p>
-        <p>
-          Toast notifications are ephemeral messages that disappear after a
-          short duration.
-        </p>
-        <p>
-          The text content of the toast is logged to the console for debugging
-          purposes.
-        </p>
-        <p>
-          Toast notifications are considered a subset of alerts and can be
-          styled using <code>.toast</code> + { <code>.success</code> |
-          <code>.warning</code> | <code>.danger</code> }.
-        </p>
-        <div class="stack">
-          <div class="group">
-            <button onclick="showToast('.toast', 5000)">Default Toast</button>
-            <button class="success" onclick="showToast('.toast.success', 5000)">
-              Success Toast
-            </button>
-            <button class="warning" onclick="showToast('.toast.warning', 5000)">
-              Warning Toast
-            </button>
-            <button class="danger" onclick="showToast('.toast.danger', 5000)">
-              Error Toast
-            </button>
-          </div>
-          <div class="group">
-            <div class="toast">
-              <span>This is a default toast message.</span>
-            </div>
-            <div class="toast success">
-              <span>This is a success toast message.</span>
-            </div>
-            <div class="toast warning">
-              <span>This is a warning toast message.</span>
-            </div>
-            <div class="toast danger">
-              <span>This is an error toast message.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Tooltip -->
-      <section id="tooltip">
-        <h2><a href="#tooltip">Tooltip</a></h2>
-        <p>
-          Use the <code>.tooltip</code> class on a container element to provide
-          additional information on hover or focus.
-        </p>
-        <p>
-          Hover over or focus on this
-          <span class="tooltip" tabindex="0">
-            word
-            <span class="tooltip-text">This is a tooltip!</span>
-          </span>
-          to see the tooltip.
-        </p>
-      </section>
+<section id="card-header-and-footer">
+  <h2><a href="#card-header-and-footer">Card header and footer</a></h2>
+  <p>Header and footer sections for a .card. The base .card styling is in layout.css.</p>
+  <p><strong>Selector:</strong> <code>.card-header, .card-footer</code></p>
+  <h3>Example</h3>
+  <div>
+<div class="card stack" style="--stack-padding: 1rem; --stack-space: 0">
+  <div class="card-header">
+    <div class="stack horizontal split" style="--stack-padding: 0 0 0.5rem 0">
+      Featured Content
+      <span class="tag">New</span>
     </div>
-    <footer>
-      <p>
-        Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a>
-      </p>
-    </footer>
+  </div>
+  <div class="stack" style="--stack-space: 0; --stack-padding: 0">
+    <h3>Card Title</h3>
+    This is a general purpose card component with a header, body, and footer.
+  </div>
+  <div class="card-footer">
+    <div class="stack horizontal" style="--stack-padding: 0.5rem 0 0">
+      <small>Last updated: 3 mins ago</small>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
+
+<section id="drop-zone">
+  <h2><a href="#drop-zone">Drop Zone</a></h2>
+  <p>Bordered target for drag-and-drop file uploads, with click-to-browse as a fallback.</p>
+  <p><strong>Selector:</strong> <code>.drop-zone</code></p>
+  <h3>States</h3>
+  <ul>
+    <li><code>.drag-over</code> - A file is being dragged over the zone</li>
+    <li><code>.invalid</code> - The dropped file type was not accepted</li>
+  </ul>
+  <p><strong>Requires:</strong> drop-zone.js initDropZone(selector, onFile, options)</p>
+  <h3>Example</h3>
+  <div>
+<div class="drop-zone" id="upload">
+  <p>Drag and drop a file here, or click to browse</p>
+</div>
+<p id="upload-result"></p>
+<script>
+  initDropZone("#upload", (file) => {
+    document.getElementById("upload-result").textContent = `Selected: ${file.name}`;
+  });
+</script>
+  </div>
+</section>
+
+<section id="dropdown-menu">
+  <h2><a href="#dropdown-menu">Dropdown Menu</a></h2>
+  <p>CSS-only menu that opens on hover or focus.</p>
+  <p><strong>Selector:</strong> <code>.dropdown</code></p>
+  <h3>Parts</h3>
+  <ul>
+    <li><code>.dropdown-menu</code> - The menu; put the links inside it</li>
+  </ul>
+  <h3>Variables</h3>
+  <ul>
+    <li><code>--background-color</code> - Menu background. A theme token, set in themes.css.</li>
+    <li><code>--text-color</code> - Menu link color. A theme token, set in themes.css.</li>
+  </ul>
+  <h3>Example</h3>
+  <div>
+<div class="dropdown">
+  <button>Sections</button>
+  <div class="dropdown-menu card">
+    <a href="#alerts">Alerts</a>
+    <a href="#avatar">Avatar</a>
+    <hr />
+    <a href="#dropdown-menu">Dropdown</a>
+  </div>
+</div>
+  </div>
+</section>
+
+<section id="pagination">
+  <h2><a href="#pagination">Pagination</a></h2>
+  <p>Page links for multi-page content.</p>
+  <p><strong>Selector:</strong> <code>.pagination</code></p>
+  <h3>States</h3>
+  <ul>
+    <li><code>.active</code> - Put on the link for the current page</li>
+  </ul>
+  <h3>Example</h3>
+  <div>
+<nav class="pagination">
+  <a href="#dropdown-menu">&laquo; Previous</a>
+  <a href="#pagination">1</a>
+  <a href="#pagination" class="active">2</a>
+  <a href="#pagination">3</a>
+  <a href="#progress-bar">Next &raquo;</a>
+</nav>
+  </div>
+</section>
+
+<section id="progress-bar">
+  <h2><a href="#progress-bar">Progress Bar</a></h2>
+  <p>A filler bar inside a container that draws the track.</p>
+  <p><strong>Selector:</strong> <code>.progress-bar</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.indeterminate</code> - Animated bar for work of unknown length</li>
+  </ul>
+  <h3>Parts</h3>
+  <ul>
+    <li><code>.progress-container</code> - Required wrapper around the bar</li>
+  </ul>
+  <h3>Variables</h3>
+  <ul>
+    <li><code>--pb-percent</code> - Percent complete, 0 to 100</li>
+  </ul>
+  <h3>Percent complete</h3>
+  <div>
+<div class="progress-container">
+  <div class="progress-bar" style="--pb-percent: 70">70%</div>
+</div>
+  </div>
+  <h3>Indeterminate</h3>
+  <div>
+<div class="progress-container">
+  <div class="progress-bar indeterminate"></div>
+</div>
+  </div>
+</section>
+
+<section id="skeleton-loader">
+  <h2><a href="#skeleton-loader">Skeleton Loader</a></h2>
+  <p>Placeholder for content that is still loading. Combine with .avatar for circular shapes.</p>
+  <p><strong>Selector:</strong> <code>.skeleton</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.block</code> - Image or card-image placeholder</li>
+    <li><code>.circle</code> - Circular placeholder</li>
+    <li><code>.text</code> - One line of text; stack several for a paragraph</li>
+    <li><code>.header</code> - Thicker, shorter heading line</li>
+  </ul>
+  <h3>Card loading state</h3>
+  <div>
+<div class="card" aria-hidden="true">
+  <div class="stack" style="--stack-space: 0.75rem">
+    <div class="skeleton block"></div>
+    <div class="skeleton header"></div>
+    <div>
+      <div class="skeleton text"></div>
+      <div class="skeleton text"></div>
+      <div class="skeleton text"></div>
+    </div>
+  </div>
+</div>
+  </div>
+  <h3>Profile loading state</h3>
+  <div>
+<div class="card" aria-hidden="true">
+  <div class="stack" style="--stack-space: 1rem">
+    <div class="stack horizontal" style="align-items: center">
+      <div class="avatar skeleton"></div>
+      <div style="flex: 1">
+        <div class="skeleton header" style="margin-bottom: 0.5rem"></div>
+        <div class="skeleton text"></div>
+      </div>
+    </div>
+    <div>
+      <div class="skeleton text"></div>
+      <div class="skeleton text"></div>
+      <div class="skeleton text"></div>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
+
+<section id="tabs">
+  <h2><a href="#tabs">Tabs</a></h2>
+  <p>CSS-only tabs built from radio buttons. Repeat the three parts as siblings, in this order, sharing one radio name.</p>
+  <p><strong>Selector:</strong> <code>.tabs</code></p>
+  <h3>Parts</h3>
+  <ul>
+    <li><code>.tab-radio</code> - Hidden radio input that holds which tab is selected</li>
+    <li><code>.tab-label</code> - The clickable tab title</li>
+    <li><code>.tab-content</code> - The panel shown while its radio is checked</li>
+  </ul>
+  <h3>Example</h3>
+  <div>
+<div class="tabs">
+  <input type="radio" id="tab1" name="tabs" class="tab-radio" checked />
+  <label for="tab1" class="tab-label">Tab 1</label>
+  <div class="tab-content card">
+    <h3>Content for Tab 1</h3>
+    <p>This is the content for the first tab.</p>
+  </div>
+
+  <input type="radio" id="tab2" name="tabs" class="tab-radio" />
+  <label for="tab2" class="tab-label">Tab 2</label>
+  <div class="tab-content card">
+    <h3>Content for Tab 2</h3>
+    <p>This is the content for the second tab.</p>
+  </div>
+
+  <input type="radio" id="tab3" name="tabs" class="tab-radio" />
+  <label for="tab3" class="tab-label">Tab 3</label>
+  <div class="tab-content card">
+    <h3>Content for Tab 3</h3>
+    <p>This is the content for the third tab.</p>
+  </div>
+</div>
+  </div>
+</section>
+
+<section id="toast">
+  <h2><a href="#toast">Toast</a></h2>
+  <p>Notification message that is hidden until shown with showToast(), which removes it after a delay and logs its text to the console for debugging. Styled like .alert. The CSS does not position it, so place it where you want it (for example with position: fixed).</p>
+  <p><strong>Selector:</strong> <code>.toast</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.success</code></li>
+    <li><code>.warning</code></li>
+    <li><code>.danger</code></li>
+  </ul>
+  <h3>States</h3>
+  <ul>
+    <li><code>.show</code> - Added while the toast is visible</li>
+  </ul>
+  <p><strong>Requires:</strong> toast.js showToast(selector, duration)</p>
+  <h3>Example</h3>
+  <div>
+<div class="stack">
+  <div class="group">
+    <button onclick="showToast('.toast', 5000)">Default Toast</button>
+    <button class="success" onclick="showToast('.toast.success', 5000)">Success Toast</button>
+    <button class="warning" onclick="showToast('.toast.warning', 5000)">Warning Toast</button>
+    <button class="danger" onclick="showToast('.toast.danger', 5000)">Error Toast</button>
+  </div>
+  <div class="group">
+    <div class="toast"><span>This is a default toast message.</span></div>
+    <div class="toast success"><span>This is a success toast message.</span></div>
+    <div class="toast warning"><span>This is a warning toast message.</span></div>
+    <div class="toast danger"><span>This is an error toast message.</span></div>
+  </div>
+</div>
+  </div>
+</section>
+
+<section id="tooltip">
+  <h2><a href="#tooltip">Tooltip</a></h2>
+  <p>Extra information on hover or focus. Put the tooltip text in a child element.</p>
+  <p><strong>Selector:</strong> <code>.tooltip</code></p>
+  <h3>Parts</h3>
+  <ul>
+    <li><code>.tooltip-text</code> - The text shown on hover or focus</li>
+  </ul>
+  <h3>Example</h3>
+  <div>
+<p>
+  Hover over or focus on this
+  <span class="tooltip" tabindex="0">word<span class="tooltip-text">This is a tooltip!</span></span>
+  to see the tooltip.
+</p>
+  </div>
+</section>
+</css-catalog>
+    <include-html src="partials/footer.html" style="display: contents">
+<footer>
+  <p>Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a></p>
+</footer>
+</include-html>
   </body>
   <script src="../css-base/theme-switcher.js"></script>
-  <script src="../css-base/toast.js"></script>
-  <script src="../css-base/drop-zone.js"></script>
-  <script>
-    initDropZone("#demo-drop-zone", (file) => {
-      document.getElementById("demo-drop-zone-result").textContent =
-        `Selected: ${file.name}`;
-    });
-  </script>
 </html>

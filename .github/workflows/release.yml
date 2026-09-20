@@ -44,6 +44,9 @@ jobs:
         run: |
           mkdir _site
           cp -r docs/* _site/
+          # The pages already contain the contents of docs/partials (filled in by
+          # `just catalog`), so the fragments themselves are not deployed
+          rm -rf _site/partials
           cp -r css-base _site/css-base
           # Replace relative parent links (../css-base) with local links (css-base)
           sed -i 's|\.\./css-base|css-base|g' _site/*.html

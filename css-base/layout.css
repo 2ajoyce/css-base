@@ -2,23 +2,56 @@
  * @file layout.css
  * @description Layout primitives for responsive design.
  * @context
- *   .aspect-ratio (vars: --aspect-ratio, --aspect-ratio-padding, --aspect-ratio-border, --aspect-ratio-bg)
- *   .card (vars: --card-padding, --card-border)
- *   .carousel (vars: --carousel-gap, --carousel-item-width)
- *   .center (Flex column center)
- *   .columns (Flex wrap with min-width logic. vars: --columns-gap, --columns-min-width)
- *   .container (Centered content. vars: --container-max-width, --container-padding)
- *   .grid (CSS Grid. vars: --grid-gap, --grid-min-width, --grid-align-items)
- *   .group (Flex wrap. vars: --group-gap)
- *   .icon (Fixed size flex center. vars: --icon-width, --icon-height)
- *   .overlay (Absolute center. vars: --overlay-top, --overlay-left)
- *   .sidebar (Sidebar layout. vars: --sidebar-gap, --sidebar-side-width, --sidebar-main-min-width)
- *   .stack (Flex column/row. vars: --stack-padding, --stack-space, --stack-wrap)
+ *   .aspect-ratio: Fixes a container to an aspect ratio and crops an image or video inside it to fill the space.
+ *   .card: Bordered, padded content container.
+ *   .carousel: Horizontally scrolling row that snaps to each item.
+ *   .center: Centers its content horizontally and vertically.
+ *   .columns: Side-by-side columns that stack into one column when narrower than the minimum width.
+ *   .container: Centered page-width wrapper with padding.
+ *   .grid: Responsive grid of equal columns that fills the available width, for example a grid of cards.
+ *   .group: Row of items that wraps onto new lines when it runs out of space.
+ *   .icon: Fixed-size box that centers its content, for icons.
+ *   .overlay: Places an element over the center of its positioned parent, kept within the parent's bounds.
+ *   .sidebar: Main content with a side column next to it.
+ *   .stack: Vertical list of items with even spacing.
  */
 
-/* /////////////////////////////////////////////////////
-// Aspect Ratio
-//////////////////////////////////////////////////////*/
+/**
+ * @title Aspect Ratio
+ * @selector .aspect-ratio
+ * @description Fixes a container to an aspect ratio and crops an image or video inside it to fill the space.
+ * @var --aspect-ratio Ratio such as 16 / 9. Defaults to 1 / 1.
+ * @var --aspect-ratio-padding Inner padding. Defaults to 0.
+ * @var --aspect-ratio-border Border. Defaults to 1px solid #000.
+ * @var --aspect-ratio-bg Background color. Defaults to transparent.
+ * @example Variants
+ * <div class="grid">
+ *   <div>
+ *     <h5>Default</h5>
+ *     <div class="aspect-ratio">
+ *       <img src="public/images/placeholder_150.png" alt="Placeholder image" />
+ *     </div>
+ *   </div>
+ *   <div>
+ *     <h5>Padded</h5>
+ *     <div class="aspect-ratio" style="--aspect-ratio-padding: 2rem; --aspect-ratio-bg: var(--secondary-color)">
+ *       <img src="public/images/placeholder_150.png" alt="Placeholder image" />
+ *     </div>
+ *   </div>
+ *   <div>
+ *     <h5>16:9 image</h5>
+ *     <div class="aspect-ratio" style="--aspect-ratio: 16 / 9">
+ *       <img src="public/images/placeholder_16x9.png" alt="Placeholder image" />
+ *     </div>
+ *   </div>
+ *   <div>
+ *     <h5>16:9 video</h5>
+ *     <div class="aspect-ratio" style="--aspect-ratio: 16 / 9">
+ *       <video src="public/videos/placeholder_16x9_480.mp4" controls></video>
+ *     </div>
+ *   </div>
+ * </div>
+ */
 .aspect-ratio {
   padding: var(--aspect-ratio-padding, 0);
   border: var(--aspect-ratio-border, 1px solid #000);
@@ -37,17 +70,42 @@
   object-fit: cover;
 }
 
-/* /////////////////////////////////////////////////////
-// Card 
-//////////////////////////////////////////////////////*/
+/**
+ * @title Card
+ * @selector .card
+ * @description Bordered, padded content container. Header and footer sections are in components.css.
+ * @var --card-padding Inner padding. Defaults to 1rem.
+ * @var --card-border Border. Defaults to 1px solid the text color.
+ * @example
+ * <div class="card"><p>This content is in a card.</p></div>
+ */
 .card {
   padding: var(--card-padding, 1rem);
   border: var(--card-border, 1px solid var(--text-color));
 }
 
-/* /////////////////////////////////////////////////////
-// Carousel
-//////////////////////////////////////////////////////*/
+/**
+ * @title Carousel
+ * @selector .carousel
+ * @description Horizontally scrolling row that snaps to each item.
+ * @var --carousel-gap Space between items. Defaults to 1rem.
+ * @var --carousel-item-width Maximum item width. Defaults to 80%.
+ * @example
+ * <div class="carousel">
+ *   <div class="card">
+ *     <h3>Item 1</h3>
+ *     <p>Items are as wide as their content, up to 80% of the carousel, so a few of them overflow and scroll.</p>
+ *   </div>
+ *   <div class="card">
+ *     <h3>Item 2</h3>
+ *     <p>Scroll snapping lines each item up with the start of the carousel when you stop scrolling.</p>
+ *   </div>
+ *   <div class="card">
+ *     <h3>Item 3</h3>
+ *     <p>The cards here only make the spacing between the items easier to see.</p>
+ *   </div>
+ * </div>
+ */
 .carousel {
   display: flex;
   overflow-x: auto;
@@ -65,9 +123,17 @@
   max-width: var(--carousel-item-width, 80%);
 }
 
-/* /////////////////////////////////////////////////////
-// Center
-//////////////////////////////////////////////////////*/
+/**
+ * @title Center
+ * @selector .center
+ * @description Centers its content horizontally and vertically. It fills the height of its parent, so the parent needs a height.
+ * @example
+ * <div style="height: 10rem">
+ *   <div class="center card">
+ *     <p>Centered</p>
+ *   </div>
+ * </div>
+ */
 .center {
   display: flex;
   flex-direction: column;
@@ -76,9 +142,19 @@
   height: 100%;
 }
 
-/* /////////////////////////////////////////////////////
-// Columns
-//////////////////////////////////////////////////////*/
+/**
+ * @title Columns
+ * @selector .columns
+ * @description Side-by-side columns that stack into one column when narrower than the minimum width.
+ * @var --columns-gap Space between columns. Defaults to 1rem.
+ * @var --columns-min-width Width below which columns stack. Defaults to 500px.
+ * @example
+ * <div class="columns">
+ *   <div class="card">Column 1</div>
+ *   <div class="card">Column 2</div>
+ *   <div class="card">Column 3</div>
+ * </div>
+ */
 .columns {
   display: flex;
   flex-wrap: wrap;
@@ -88,18 +164,40 @@
   flex: 1 1 calc((var(--columns-min-width, 500px) - 100%) * 999);
 }
 
-/* /////////////////////////////////////////////////////
-// Container
-//////////////////////////////////////////////////////*/
+/**
+ * @title Container
+ * @selector .container
+ * @description Centered page-width wrapper with padding.
+ * @var --container-max-width Maximum width. Defaults to 1200px.
+ * @var --container-padding Padding. Defaults to 1rem.
+ * @example
+ * <div class="container card" style="--container-max-width: 800px">
+ *   <p>This is a container with a max-width of 800px.</p>
+ * </div>
+ */
 .container {
   max-width: var(--container-max-width, 1200px);
   margin: 0 auto;
   padding: var(--container-padding, 1rem);
 }
 
-/* /////////////////////////////////////////////////////
-// Grid
-//////////////////////////////////////////////////////*/
+/**
+ * @title Grid
+ * @selector .grid
+ * @description Responsive grid of equal columns that fills the available width, for example a grid of cards.
+ * @var --grid-gap Space between cells. Defaults to 1rem.
+ * @var --grid-min-width Minimum column width. Defaults to 200px.
+ * @var --grid-align-items Vertical alignment of cells. Defaults to end.
+ * @example
+ * <div class="grid">
+ *   <div class="card">Grid item 1</div>
+ *   <div class="card">Grid item 2</div>
+ *   <div class="card">Grid item 3</div>
+ *   <div class="card">Grid item 4</div>
+ *   <div class="card">Grid item 5</div>
+ *   <div class="card">Grid item 6</div>
+ * </div>
+ */
 .grid {
   display: grid;
   gap: var(--grid-gap, 1rem);
@@ -110,18 +208,43 @@
   align-items: var(--grid-align-items, end);
 }
 
-/* /////////////////////////////////////////////////////
-// Group
-//////////////////////////////////////////////////////*/
+/**
+ * @title Group
+ * @selector .group
+ * @description Row of items that wraps onto new lines when it runs out of space.
+ * @var --group-gap Space between items. Defaults to 1rem.
+ * @example
+ * <div class="group">
+ *   <div class="card" style="width: 14ch">Group item 1</div>
+ *   <div class="card" style="width: 20ch">Group item 2</div>
+ *   <div class="card" style="width: 32ch">Group item 3</div>
+ *   <div class="card" style="width: 64ch">Group item 4</div>
+ *   <div class="card" style="width: 12ch">Group item 5</div>
+ *   <div class="card" style="width: 24ch">Group item 6</div>
+ * </div>
+ */
 .group {
   display: flex;
   flex-wrap: wrap;
   gap: var(--group-gap, 1rem);
 }
 
-/* /////////////////////////////////////////////////////
-// Icon
-//////////////////////////////////////////////////////*/
+/**
+ * @title Icon
+ * @selector .icon
+ * @description Fixed-size box that centers its content, for icons.
+ * @var --icon-width Width. Defaults to 2rem.
+ * @var --icon-height Height. Defaults to 2rem.
+ * @example
+ * <div class="group">
+ *   <div class="icon card">
+ *     <img src="public/images/placeholder_150.svg" alt="Icon 2rem" />
+ *   </div>
+ *   <div class="icon card" style="--icon-width: 4rem; --icon-height: 4rem">
+ *     <img src="public/images/placeholder_150.svg" alt="Icon 4rem" />
+ *   </div>
+ * </div>
+ */
 .icon {
   display: flex;
   justify-content: center;
@@ -130,9 +253,23 @@
   height: var(--icon-height, 2rem);
 }
 
-/* /////////////////////////////////////////////////////
-// Overlay
-//////////////////////////////////////////////////////*/
+/**
+ * @title Overlay
+ * @selector .overlay
+ * @description Places an element over the center of its positioned parent, kept within the parent's bounds. The parent needs position: relative and a defined height.
+ * @var --overlay-top Vertical position of the element's center. Defaults to 50%.
+ * @var --overlay-left Horizontal position of the element's center. Defaults to 50%.
+ * @example
+ * <div class="card" style="position: relative; height: 300px">
+ *   <div class="overlay card" style="background-color: var(--background-color)">Centered Overlay</div>
+ *   <div
+ *     class="overlay card"
+ *     style="--overlay-top: 20%; --overlay-left: 20%; background-color: var(--background-color)"
+ *   >
+ *     Top Left
+ *   </div>
+ * </div>
+ */
 .overlay {
   position: absolute;
   top: var(--overlay-top, 50%);
@@ -147,9 +284,31 @@
   overflow: auto;
 }
 
-/* /////////////////////////////////////////////////////
-// Sidebar
-//////////////////////////////////////////////////////*/
+/**
+ * @title Sidebar
+ * @selector .sidebar
+ * @description Main content with a side column next to it. When there is not room for both, the later column wraps below the earlier one, so put .main first to keep it on top.
+ * @part .side The side column
+ * @part .main The main content, which takes the remaining space
+ * @var --sidebar-gap Space between the columns. Defaults to 1rem.
+ * @var --sidebar-side-width Preferred side column width. Defaults to 20rem.
+ * @var --sidebar-main-min-width Width the main content needs before the sidebar wraps. Defaults to 50%.
+ * @example
+ * <div class="sidebar" style="--sidebar-side-width: 15rem">
+ *   <div class="main card">
+ *     <h2>Main content</h2>
+ *     <p>The main content takes the remaining space and wraps below the side column only when it cannot keep its minimum width.</p>
+ *   </div>
+ *   <div class="side card">
+ *     <h5>Side content</h5>
+ *     <ul>
+ *       <li>Item 1</li>
+ *       <li>Item 2</li>
+ *       <li>Item 3</li>
+ *     </ul>
+ *   </div>
+ * </div>
+ */
 .sidebar {
   display: flex;
   flex-wrap: wrap;
@@ -167,9 +326,42 @@
   min-width: var(--sidebar-main-min-width, 50%);
 }
 
-/* /////////////////////////////////////////////////////
-// Stack
-//////////////////////////////////////////////////////*/
+/**
+ * @title Stack
+ * @selector .stack
+ * @description Vertical list of items with even spacing.
+ * @variant .horizontal Lay the children out in a row
+ * @variant .split Push the last child to the far end
+ * @var --stack-padding Padding. Defaults to 0rem.
+ * @var --stack-space Space between children. Defaults to 1.5rem.
+ * @var --stack-wrap Whether a horizontal stack wraps. Defaults to wrap.
+ * @example Vertical
+ * <div class="stack">
+ *   <div class="card">Item 1</div>
+ *   <div class="card">Item 2</div>
+ *   <div class="card">Item 3</div>
+ * </div>
+ * @example Padded
+ * <div class="card">
+ *   <div class="stack" style="--stack-padding: 0 4rem">
+ *     <div class="card">Item 1</div>
+ *     <div class="card">Item 2</div>
+ *     <div class="card">Item 3</div>
+ *   </div>
+ * </div>
+ * @example Horizontal
+ * <div class="stack horizontal">
+ *   <div class="card">Item 1</div>
+ *   <div class="card">Item 2</div>
+ *   <div class="card">Item 3</div>
+ * </div>
+ * @example Split
+ * <div class="stack horizontal split">
+ *   <div class="card">Item 1</div>
+ *   <div class="card">Item 2</div>
+ *   <div class="card">Item 3</div>
+ * </div>
+ */
 .stack {
   display: flex;
   flex-direction: column;

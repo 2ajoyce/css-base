@@ -9,489 +9,563 @@
   <body class="container" style="--container-padding: 0">
     <header>
       <h1>Style Guide</h1>
-      <nav
-        class="columns"
-        style="background-color: var(--background-color); padding: 1em"
-      >
-        <a href="index.html">Home</a>
-        <a href="elements.html" class="active">Elements</a>
-        <a href="utility.html">Utility</a>
-        <a href="layout.html">Layout</a>
-        <a href="components.html">Components</a>
-        <div
-          class="stack horizontal"
-          style="--stack-space: 0; --stack-wrap: nowrap"
-        >
-          <label for="theme-select" class="left ground">Theme:</label>
-          <select id="theme-select">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="high-contrast">High Contrast</option>
-          </select>
-        </div>
-      </nav>
+      <include-html src="partials/nav.html" style="display: contents">
+<nav
+  class="columns"
+  style="background-color: var(--background-color); padding: 1em"
+>
+  <a href="index.html">Home</a>
+  <a href="elements.html">Elements</a>
+  <a href="utility.html">Utility</a>
+  <a href="layout.html">Layout</a>
+  <a href="components.html">Components</a>
+  <div class="stack horizontal" style="--stack-space: 0; --stack-wrap: nowrap">
+    <label for="theme-select" class="left ground">Theme:</label>
+    <select id="theme-select">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="high-contrast">High Contrast</option>
+    </select>
+  </div>
+</nav>
+<script>
+  // Mark the link for the current page. Works with or without ".html".
+  (() => {
+    const bare = (name) => name.replace(/\.html$/, "");
+    const page = bare(location.pathname.split("/").pop() || "index");
+    document.querySelectorAll("header nav a").forEach((link) => {
+      if (bare(link.getAttribute("href")) === page) link.classList.add("active");
+    });
+  })();
+</script>
+</include-html>
     </header>
-    <div class="stack" style="--stack-space: 2rem">
-      <section id="headings">
-        <h2><a href="#headings">Headings</a></h2>
-        <h1>Heading 1</h1>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</h3>
-        <h4>Heading 4</h4>
-        <h5>Heading 5</h5>
-        <h6>Heading 6</h6>
-      </section>
-      <section id="text-elements">
-        <h2><a href="#text-elements">Text Elements</a></h2>
-        <div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
-          <div><p>This is a paragraph.</p></div>
-          <div><strong>This is strong text.</strong></div>
-          <div><em>This is emphasized text.</em></div>
-          <div><mark>This is marked text.</mark></div>
-          <div><del>This is deleted text.</del></div>
-          <div><ins>This is inserted text.</ins></div>
-          <div>This is <sub>subscript</sub> text.</div>
-          <div>This is <sup>superscript</sup> text.</div>
-          <div>This is <small>small</small> text.</div>
-          <div>
-            <blockquote class="fit-content">
-              This is a blockquote with the class <code>.fit-content</code>.
-            </blockquote>
-          </div>
-          <div>
-            <pre class="fit-content">
+    <css-catalog
+      class="stack"
+      style="--stack-space: 2rem"
+      src="../css-base/elements.css"
+    >
+<section id="page">
+  <h2><a href="#page">Page</a></h2>
+  <p>Page background, text color, font and line height, with a 20rem minimum width.</p>
+  <p><strong>Selector:</strong> <code>html, body</code></p>
+</section>
+
+<section id="headings">
+  <h2><a href="#headings">Headings</a></h2>
+  <p>Six heading levels with decreasing size. Links inside headings keep the text color.</p>
+  <p><strong>Selector:</strong> <code>h1, h2, h3, h4, h5, h6</code></p>
+  <h3>Example</h3>
+  <div>
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>
+  </div>
+</section>
+
+<section id="text-blocks">
+  <h2><a href="#text-blocks">Text blocks</a></h2>
+  <p>Paragraphs, quotations and code.</p>
+  <p><strong>Selector:</strong> <code>p, blockquote, pre, code</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>pre.wrap</code> - Wrap long lines instead of scrolling</li>
+    <li><code>code.multiline</code> - Show as a wrapping block</li>
+  </ul>
+  <h3>Example</h3>
+  <div>
+<p>This is a paragraph with <code>inline code</code>.</p>
+<blockquote>This is a blockquote.</blockquote>
+<pre>
 This is preformatted text.
-  It preserves whitespace and line breaks.
-  Pre-formatted text does not wrap, and is typically not mobile friendly.
-  It also has the class <code>.fit-content</code>.</pre
-            >
-          </div>
-          <div>
-            <code># This is inline code.</code>
-          </div>
-          <div>
-            <pre class="fit-content wrap">
-# For multi line code snippets use <code>pre</code> with a <code>code</code> tag inside.
+  It preserves whitespace and line breaks.</pre>
+<pre class="wrap">With the wrap class, preformatted text wraps to the next line when it is too long instead of scrolling.</pre>
+<code class="multiline">def hello_world():
+    print("Hello, World!")</code>
+  </div>
+</section>
 
-# This example uses the utility classes
-  - <code>.fit-content</code> to fit the code to the content width
-  - <code>.wrap</code> to wrap the code to the next line if it is too long.
+<section id="inline-text">
+  <h2><a href="#inline-text">Inline text</a></h2>
+  <p>Inline formatting.</p>
+  <p><strong>Selector:</strong> <code>strong, em, mark, del, ins, sub, sup, small</code></p>
+  <h3>Example</h3>
+  <div>
+<div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
+  <div><strong>This is strong text.</strong></div>
+  <div><em>This is emphasized text.</em></div>
+  <div><mark>This is marked text.</mark></div>
+  <div><del>This is deleted text.</del></div>
+  <div><ins>This is inserted text.</ins></div>
+  <div>This is <sub>subscript</sub> text.</div>
+  <div>This is <sup>superscript</sup> text.</div>
+  <div>This is <small>small</small> text.</div>
+</div>
+  </div>
+</section>
 
-# It also uses the <code>code</code> specific class <code>.multiline</code> to indicate 
-# that the code is multiline.
+<section id="horizontal-rule">
+  <h2><a href="#horizontal-rule">Horizontal Rule</a></h2>
+  <p>A thin divider line.</p>
+  <p><strong>Selector:</strong> <code>hr</code></p>
+  <h3>Example</h3>
+  <div>
+<p>This is a horizontal rule.</p>
+<hr />
+<p>Horizontal rules are used to separate content.</p>
+  </div>
+</section>
 
-<code class="multiline fit-content">def hello_world():
-print("Hello, World!")
+<section id="links">
+  <h2><a href="#links">Links</a></h2>
+  <p>Links without an underline until hovered.</p>
+  <p><strong>Selector:</strong> <code>a</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.visited</code> - Style a link as visited</li>
+  </ul>
+  <h3>Variables</h3>
+  <ul>
+    <li><code>--link-color</code> - Link color. A theme token, set in themes.css.</li>
+    <li><code>--link-hover-color</code> - Link color on hover. A theme token, set in themes.css.</li>
+  </ul>
+  <h3>Example</h3>
+  <div>
+<div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
+  <div><a href="#links">This is an example link</a></div>
+  <div><a href="#links" class="visited">This is a visited link</a></div>
+</div>
+  </div>
+</section>
 
-# Call the function
-hello_world()</code></pre>
-          </div>
-        </div>
-      </section>
-      <section id="horizontal-rule">
-        <h2><a href="#horizontal-rule">Horizontal Rule</a></h2>
-        <p>This is a horizontal rule.</p>
-        <hr />
-        <p>Horizontal rules are used to separate content.</p>
-      </section>
-      <section id="links">
-        <h2><a href="#links">Links</a></h2>
-        <div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
-          <div>
-            <a href="#links">This is an example link</a>
-          </div>
-          <div>
-            <a href="#links" class="visited">This is a visited link</a>
-          </div>
-        </div>
-      </section>
-      <section id="lists">
-        <h2><a href="#lists">Lists</a></h2>
-        <div class="stack">
-          <div>
-            <h4>Unordered List</h4>
-            <ul>
-              <li>Unordered list item 1</li>
-              <li>Unordered list item 2</li>
-              <li>Unordered list item 3</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Ordered List</h4>
-            <ol>
-              <li>Ordered list item 1</li>
-              <li>Ordered list item 2</li>
-              <li>Ordered list item 3</li>
-            </ol>
-          </div>
-          <div>
-            <h4>Definition List</h4>
-            <dl>
-              <dt>Definition term 1</dt>
-              <dd>Definition description 1</dd>
-              <dt>Definition term 2</dt>
-              <dd>Definition description 2</dd>
-            </dl>
-          </div>
-        </div>
-      </section>
-      <section id="tables">
-        <h2><a href="#tables">Tables</a></h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Header 1</th>
-              <th>Header 2</th>
-              <th>Header 3</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Data 1</td>
-              <td>Data 2</td>
-              <td>Data 3</td>
-            </tr>
-            <tr>
-              <td>Data 4</td>
-              <td>Data 5</td>
-              <td>Data 6</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-      <section id="buttons">
-        <h2><a href="#buttons">Buttons</a></h2>
-        <div class="stack">
-          <div>
-            <h4>Active Buttons</h4>
-            <div class="group">
-              <button type="button" class="fit-content">Default Button</button>
-              <button type="button" class="primary fit-content">
-                Primary Button
-              </button>
-              <button type="button" class="secondary fit-content">
-                Secondary Button
-              </button>
-              <button type="button" class="success fit-content">
-                Success Button
-              </button>
-              <button type="button" class="danger fit-content">
-                Danger Button
-              </button>
-              <button type="button" class="warning fit-content">
-                Warning Button
-              </button>
-            </div>
-          </div>
-          <div>
-            <h4>Disabled Buttons</h4>
-            <div class="group">
-              <button disabled class="fit-content">Default Button</button>
-              <button disabled class="primary fit-content">
-                Primary Button
-              </button>
-              <button disabled class="secondary fit-content">
-                Secondary Button
-              </button>
-              <button disabled class="success fit-content">
-                Success Button
-              </button>
-              <button disabled class="danger fit-content">Danger Button</button>
-              <button disabled class="warning fit-content">
-                Warning Button
-              </button>
-            </div>
-          </div>
-          <div>
-            <h4>Buttons with Icons</h4>
-            <p>
-              Buttons automatically support icons using flexbox. Simply place an
-              icon element (SVG, emoji, or icon component) inside the button.
-            </p>
-            <div class="group">
-              <button type="button" class="primary fit-content">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-                Run Pipeline
-              </button>
-              <button type="button" class="success fit-content">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Save Changes
-              </button>
-              <button type="button" class="danger fit-content">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="3 6 5 6 21 6"></polyline>
-                  <path
-                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
-                  ></path>
-                </svg>
-                Delete
-              </button>
-              <button type="button" class="secondary fit-content">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-                  ></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                Download
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="details-summary">
-        <h2><a href="#details-summary">Details and Summary</a></h2>
-        <details>
-          <summary>Click to expand/collapse details</summary>
-          <p>
-            This is the detailed content that is revealed when the summary is
-            clicked.
-          </p>
-        </details>
-      </section>
-      <section id="forms">
-        <h2><a href="#forms">Forms</a></h2>
+<section id="lists">
+  <h2><a href="#lists">Lists</a></h2>
+  <p>Bulleted, numbered and description lists.</p>
+  <p><strong>Selector:</strong> <code>ul, ol, dl</code></p>
+  <h3>Example</h3>
+  <div>
+<div class="stack">
+  <div>
+    <h4>Unordered List</h4>
+    <ul>
+      <li>Unordered list item 1</li>
+      <li>Unordered list item 2</li>
+      <li>Unordered list item 3</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Ordered List</h4>
+    <ol>
+      <li>Ordered list item 1</li>
+      <li>Ordered list item 2</li>
+      <li>Ordered list item 3</li>
+    </ol>
+  </div>
+  <div>
+    <h4>Definition List</h4>
+    <dl>
+      <dt>Definition term 1</dt>
+      <dd>Definition description 1</dd>
+      <dt>Definition term 2</dt>
+      <dd>Definition description 2</dd>
+    </dl>
+  </div>
+</div>
+  </div>
+</section>
 
-        <form class="stack" style="--stack-padding: 2rem">
-          <div>
-            <label for="text">Text Input</label>
-            <input type="text" id="text" name="text" />
-          </div>
-          <div>
-            <label for="password">Password Input</label>
-            <input type="password" id="password" name="password" />
-          </div>
-          <div>
-            <label for="email">Email Input</label>
-            <input type="email" id="email" name="email" />
-          </div>
-          <div>
-            <label for="number">Number Input</label>
-            <input type="number" id="number" name="number" />
-          </div>
-          <div>
-            <label for="textarea">Textarea</label>
-            <textarea id="textarea" name="textarea"></textarea>
-          </div>
-          <div>
-            <label for="select">Select</label>
-            <select id="select" name="select">
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </select>
-          </div>
-          <div>
-            <h5>Radio Buttons</h5>
-            <div class="group">
-              <input type="radio" id="radio1" name="radio" value="1" />
-              <label for="radio1">Radio 1</label>
-            </div>
-            <div class="group">
-              <input type="radio" id="radio2" name="radio" value="2" />
-              <label for="radio2">Radio 2</label>
-            </div>
-          </div>
-          <div>
-            <h5>Checkboxes</h5>
-            <div class="group">
-              <input type="checkbox" id="checkbox1" name="checkbox1" />
-              <label for="checkbox1">Unchecked</label>
-            </div>
-            <div class="group">
-              <input type="checkbox" id="checkbox2" name="checkbox2" checked />
-              <label for="checkbox2">Checked</label>
-            </div>
-          </div>
-          <div>
-            <h5>Toggle Switches</h5>
-            <p>Toggles are styled checkboxes.</p>
-            <div class="group">
-              <input
-                type="checkbox"
-                id="toggle1"
-                name="toggle1"
-                class="toggle"
-              />
-              <label for="toggle1">Untoggled</label>
-            </div>
-            <div class="group">
-              <input
-                type="checkbox"
-                id="toggle2"
-                name="toggle2"
-                class="toggle"
-                checked
-              />
-              <label for="toggle2">Toggled</label>
-            </div>
-          </div>
-          <button type="submit" class="primary">Submit</button>
-        </form>
-      </section>
-      <section id="modal">
-        <h2><a href="#modal">Modal</a></h2>
-        <p>
-          The <code>&lt;dialog&gt;</code> element provides a native way to
-          create modal dialogs.
-        </p>
-        <button onclick="document.getElementById('demo-modal').showModal()">
-          Open Modal
-        </button>
-        <dialog id="demo-modal">
-          <h3>Modal Title</h3>
-          <p>
-            This is a native modal dialog using the
-            <code>&lt;dialog&gt;</code> element.
-          </p>
-          <button onclick="document.getElementById('demo-modal').close()">
-            Close
-          </button>
-        </dialog>
-      </section>
-      <section id="images">
-        <h2><a href="#images">Images</a></h2>
-        <h4>Image Types</h4>
-        <div class="group" style="--group-gap: 1rem">
-          <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
-            <img
-              src="public/images/placeholder_150.png"
-              alt="A placeholder image of a partially full wine glass sitting on a wooden table."
-              width="150"
-              loading="lazy"
-              decoding="async"
-            />
-            <p>PNG image</p>
-          </div>
-          <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
-            <img
-              src="public/images/placeholder_150.jpg"
-              alt="A placeholder image of a partially full wine glass sitting on a wooden table."
-              width="150"
-              loading="lazy"
-              decoding="async"
-            />
-            <p>JPEG image</p>
-          </div>
-          <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
-            <img
-              src="public/images/placeholder_150.svg"
-              alt="A placeholder image of a partially full wine glass sitting on a wooden table."
-              width="150"
-              loading="lazy"
-              decoding="async"
-            />
-            <p>SVG image</p>
-          </div>
-          <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
-            <img
-              src="public/images/placeholder.gif"
-              alt="A placeholder image of a partially full wine glass sitting on a wooden table."
-              width="150"
-              loading="lazy"
-              decoding="async"
-            />
-            <p>GIF image</p>
-          </div>
-        </div>
-        <div>
-          <h4>Figure</h4>
-          <figure>
-            <img
-              src="public/images/placeholder_150.png"
-              alt="A placeholder image of a partially full wine glass sitting on a wooden table."
-              width="150"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>Figcaption for the image.</figcaption>
-          </figure>
-        </div>
-      </section>
-      <section>
-        <h2><a href="#media">Audio and Video</a></h2>
-        <audio controls preload="metadata">
-          <source
-            src="public/audio/placeholder.mp3"
-            type="audio/mpeg"
-            alt="A short audio clip of background noise in a restaurant."
-          />
-          Your browser does not support the audio element.
-        </audio>
-        <video controls muted width="480" preload="metadata">
-          <source
-            src="public/videos/placeholder_16x9_480.mp4"
-            type="video/mp4"
-            alt="A short video of a partially full wine glass sitting on a wooden table."
-          />
-          Your browser does not support the video element.
-        </video>
-      </section>
-      <section id="canvas">
-        <h2><a href="#canvas">Canvas</a></h2>
-        <canvas id="exampleCanvas" width="600" height="200"></canvas>
-        <script>
-          (function () {
-            const canvas = document.getElementById("exampleCanvas");
-            const ctx = canvas.getContext("2d");
+<section id="tables">
+  <h2><a href="#tables">Tables</a></h2>
+  <p>Full-width tables with a shaded header row.</p>
+  <p><strong>Selector:</strong> <code>table, thead, th, td</code></p>
+  <h3>Example</h3>
+  <div>
+<table>
+  <thead>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+      <th>Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data 1</td>
+      <td>Data 2</td>
+      <td>Data 3</td>
+    </tr>
+    <tr>
+      <td>Data 4</td>
+      <td>Data 5</td>
+      <td>Data 6</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+</section>
 
-            // Draw a simple colorful pattern
-            for (let i = 0; i < 12; i++) {
-              for (let j = 0; j < 4; j++) {
-                ctx.fillStyle = `hsl(${i * 30}, 70%, ${50 + j * 10}%)`;
-                ctx.fillRect(i * 50, j * 50, 45, 45);
-              }
-            }
-          })();
-        </script>
-      </section>
+<section id="form">
+  <h2><a href="#form">Form</a></h2>
+  <p>Padded, bordered form container.</p>
+  <p><strong>Selector:</strong> <code>form</code></p>
+  <h3>Example</h3>
+  <div>
+<form class="stack" style="--stack-padding: 2rem">
+  <div>
+    <label for="text">Text Input</label>
+    <input type="text" id="text" name="text" />
+  </div>
+  <div>
+    <label for="password">Password Input</label>
+    <input type="password" id="password" name="password" />
+  </div>
+  <div>
+    <label for="email">Email Input</label>
+    <input type="email" id="email" name="email" />
+  </div>
+  <div>
+    <label for="number">Number Input</label>
+    <input type="number" id="number" name="number" />
+  </div>
+  <div>
+    <label for="textarea">Textarea</label>
+    <textarea id="textarea" name="textarea"></textarea>
+  </div>
+  <div>
+    <label for="select">Select</label>
+    <select id="select" name="select">
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+      <option value="option3">Option 3</option>
+    </select>
+  </div>
+  <div>
+    <h5>Radio Buttons</h5>
+    <div class="group">
+      <input type="radio" id="radio1" name="radio" value="1" />
+      <label for="radio1">Radio 1</label>
     </div>
-    <footer>
-      <p>
-        Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a>
-      </p>
-    </footer>
+    <div class="group">
+      <input type="radio" id="radio2" name="radio" value="2" />
+      <label for="radio2">Radio 2</label>
+    </div>
+  </div>
+  <div>
+    <h5>Checkboxes</h5>
+    <div class="group">
+      <input type="checkbox" id="checkbox1" name="checkbox1" />
+      <label for="checkbox1">Unchecked</label>
+    </div>
+    <div class="group">
+      <input type="checkbox" id="checkbox2" name="checkbox2" checked />
+      <label for="checkbox2">Checked</label>
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+  </div>
+</section>
+
+<section id="label">
+  <h2><a href="#label">Label</a></h2>
+  <p>Bold label that sits above its input.</p>
+  <p><strong>Selector:</strong> <code>label</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.left</code> - Sit to the left of the input</li>
+    <li><code>.right</code> - Sit to the right of the input</li>
+    <li><code>.ground</code> - Align to the bottom of the input</li>
+  </ul>
+  <h3>Above the input</h3>
+  <div>
+<label for="name">Name</label>
+<input id="name" type="text" />
+  </div>
+  <h3>Beside the input</h3>
+  <div>
+<div class="stack horizontal" style="--stack-space: 0">
+  <label for="theme" class="left ground">Theme:</label>
+  <select id="theme">
+    <option>Light</option>
+    <option>Dark</option>
+  </select>
+</div>
+  </div>
+</section>
+
+<section id="inputs">
+  <h2><a href="#inputs">Inputs</a></h2>
+  <p>Full-width form controls with a highlighted focus state.</p>
+  <p><strong>Selector:</strong> <code>input, textarea, select</code></p>
+</section>
+
+<section id="toggle-switch">
+  <h2><a href="#toggle-switch">Toggle Switch</a></h2>
+  <p>Renders a checkbox as a toggle switch.</p>
+  <p><strong>Selector:</strong> <code>input.toggle</code></p>
+  <h3>Example</h3>
+  <div>
+<div class="group">
+  <input type="checkbox" id="toggle1" class="toggle" />
+  <label for="toggle1">Untoggled</label>
+</div>
+<div class="group">
+  <input type="checkbox" id="toggle2" class="toggle" checked />
+  <label for="toggle2">Toggled</label>
+</div>
+  </div>
+</section>
+
+<section id="fieldset">
+  <h2><a href="#fieldset">Fieldset</a></h2>
+  <p>Bordered group of related controls with a bold legend.</p>
+  <p><strong>Selector:</strong> <code>fieldset, legend</code></p>
+  <h3>Example</h3>
+  <div>
+<fieldset>
+  <legend>Contact</legend>
+  <label for="contact-email">Email</label>
+  <input type="email" id="contact-email" name="contact-email" />
+</fieldset>
+  </div>
+</section>
+
+<section id="media">
+  <h2><a href="#media">Media</a></h2>
+  <p>Responsive media that never overflows its container.</p>
+  <p><strong>Selector:</strong> <code>img, figure, figcaption, audio, video</code></p>
+  <h3>Image types</h3>
+  <div>
+<div class="group" style="--group-gap: 1rem">
+  <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
+    <img src="public/images/placeholder_150.png" alt="Placeholder image" width="150" />
+    <p>PNG image</p>
+  </div>
+  <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
+    <img src="public/images/placeholder_150.jpg" alt="Placeholder image" width="150" />
+    <p>JPEG image</p>
+  </div>
+  <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
+    <img src="public/images/placeholder_150.svg" alt="Placeholder image" width="150" />
+    <p>SVG image</p>
+  </div>
+  <div class="stack" style="--stack-space: 0.25em; --stack-padding: 0">
+    <img src="public/images/placeholder.gif" alt="Placeholder image" width="150" />
+    <p>GIF image</p>
+  </div>
+</div>
+  </div>
+  <h3>Figure</h3>
+  <div>
+<figure>
+  <img src="public/images/placeholder_150.png" alt="Placeholder image" width="150" />
+  <figcaption>Figcaption for the image.</figcaption>
+</figure>
+  </div>
+</section>
+
+<section id="canvas">
+  <h2><a href="#canvas">Canvas</a></h2>
+  <p>Bordered block-level canvas.</p>
+  <p><strong>Selector:</strong> <code>canvas</code></p>
+  <h3>Example</h3>
+  <div>
+<canvas id="exampleCanvas" width="600" height="200"></canvas>
+<script>
+  (function () {
+    const canvas = document.getElementById("exampleCanvas");
+    const ctx = canvas.getContext("2d");
+    // Draw a simple colorful pattern
+    for (let i = 0; i < 12; i++) {
+      for (let j = 0; j < 4; j++) {
+        ctx.fillStyle = `hsl(${i * 30}, 70%, ${50 + j * 10}%)`;
+        ctx.fillRect(i * 50, j * 50, 45, 45);
+      }
+    }
+  })();
+</script>
+  </div>
+</section>
+
+<section id="section">
+  <h2><a href="#section">Section</a></h2>
+  <p>Padded, bordered content section. Its first h2 is underlined.</p>
+  <p><strong>Selector:</strong> <code>section</code></p>
+  <h3>Example</h3>
+  <div>
+<section>
+  <h2>Section title</h2>
+  <p>Content of the section.</p>
+</section>
+  </div>
+</section>
+
+<section id="header">
+  <h2><a href="#header">Header</a></h2>
+  <p>Page header bar.</p>
+  <p><strong>Selector:</strong> <code>header</code></p>
+  <h3>Parts</h3>
+  <ul>
+    <li><code>.right</code> - Pushes an element to the far edge of the header</li>
+  </ul>
+  <h3>Example</h3>
+  <div>
+<header>
+  <h1>Site</h1>
+  <nav style="gap: 1rem">
+    <a href="index.html">Home</a>
+    <a href="elements.html">Elements</a>
+    <a href="index.html" class="right">Account</a>
+  </nav>
+</header>
+  </div>
+</section>
+
+<section id="navigation">
+  <h2><a href="#navigation">Navigation</a></h2>
+  <p>Row of links that stacks on narrow screens.</p>
+  <p><strong>Selector:</strong> <code>nav</code></p>
+  <h3>States</h3>
+  <ul>
+    <li><code>a.active</code> - Underlines the link for the current page</li>
+  </ul>
+  <h3>Example</h3>
+  <div>
+<nav style="gap: 1rem">
+  <a href="index.html">Home</a>
+  <a href="elements.html" class="active">Elements</a>
+</nav>
+  </div>
+</section>
+
+<section id="footer">
+  <h2><a href="#footer">Footer</a></h2>
+  <p>Page footer bar.</p>
+  <p><strong>Selector:</strong> <code>footer</code></p>
+  <h3>Example</h3>
+  <div>
+<footer>
+  <p>Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a></p>
+</footer>
+  </div>
+</section>
+
+<section id="details">
+  <h2><a href="#details">Details</a></h2>
+  <p>Collapsible disclosure widget with a bold clickable summary.</p>
+  <p><strong>Selector:</strong> <code>details, summary</code></p>
+  <h3>Example</h3>
+  <div>
+<details>
+  <summary>Click to expand/collapse details</summary>
+  <p>This is the detailed content that is revealed when the summary is clicked.</p>
+</details>
+  </div>
+</section>
+
+<section id="dialog-modal">
+  <h2><a href="#dialog-modal">Dialog (Modal)</a></h2>
+  <p>Modal dialog with a blurred backdrop. Open it from script with showModal().</p>
+  <p><strong>Selector:</strong> <code>dialog</code></p>
+  <h3>Example</h3>
+  <div>
+<button onclick="document.getElementById('demo-modal').showModal()">Open Modal</button>
+<dialog id="demo-modal">
+  <h3>Modal Title</h3>
+  <p>This is a native modal dialog using the &lt;dialog&gt; element.</p>
+  <button onclick="document.getElementById('demo-modal').close()">Close</button>
+</dialog>
+  </div>
+</section>
+</css-catalog>
+    <css-catalog
+      class="stack"
+      style="--stack-space: 2rem"
+      src="../css-base/buttons.css"
+    >
+<section id="button">
+  <h2><a href="#button">Button</a></h2>
+  <p>Standard button with hover, active, focus and disabled states. Buttons support icons: put an svg, emoji or icon component before the label.</p>
+  <p><strong>Selector:</strong> <code>button</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.secondary</code> - Muted color</li>
+    <li><code>.success</code></li>
+    <li><code>.danger</code></li>
+    <li><code>.warning</code></li>
+  </ul>
+  <h3>Active</h3>
+  <div>
+<div class="group">
+  <button>Default</button>
+  <button class="secondary">Secondary</button>
+  <button class="success">Success</button>
+  <button class="danger">Danger</button>
+  <button class="warning">Warning</button>
+</div>
+  </div>
+  <h3>Disabled</h3>
+  <div>
+<div class="group">
+  <button disabled>Default</button>
+  <button disabled class="secondary">Secondary</button>
+  <button disabled class="success">Success</button>
+  <button disabled class="danger">Danger</button>
+  <button disabled class="warning">Warning</button>
+</div>
+  </div>
+  <h3>Icons</h3>
+  <div>
+<div class="group">
+  <button>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+    </svg>
+    Run Pipeline
+  </button>
+  <button class="success">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    Save Changes
+  </button>
+  <button class="danger">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="3 6 5 6 21 6"></polyline>
+      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+    </svg>
+    Delete
+  </button>
+  <button class="secondary">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+      <polyline points="7 10 12 15 17 10"></polyline>
+      <line x1="12" y1="15" x2="12" y2="3"></line>
+    </svg>
+    Download
+  </button>
+</div>
+  </div>
+</section>
+
+<section id="button-role">
+  <h2><a href="#button-role">Button role</a></h2>
+  <p>Makes a non-button element look and behave like a secondary button. It can conflict with libraries such as Leaflet that use role=button.</p>
+  <p><strong>Selector:</strong> <code>[role="button"]</code></p>
+  <h3>Example</h3>
+  <div>
+<p role="button" tabindex="0">This is a paragraph with role="button" and tabindex="0".</p>
+  </div>
+</section>
+</css-catalog>
+    <include-html src="partials/footer.html" style="display: contents">
+<footer>
+  <p>Created by <a href="https://github.com/2ajoyce/css-base">2ajoyce</a></p>
+</footer>
+</include-html>
   </body>
   <script src="../css-base/theme-switcher.js"></script>
 </html>

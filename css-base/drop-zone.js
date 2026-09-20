@@ -1,9 +1,22 @@
 /**
- * Wires up drag-and-drop and click-to-browse behavior for .drop-zone elements.
- * @param {string} selector - CSS selector for the drop zone container(s)
- * @param {(file: File) => void} onFile - Called with the accepted file
- * @param {object} [options]
- * @param {string[]} [options.accept] - Allowed MIME types/extensions (e.g. ["image/png", ".pdf"])
+ * @file drop-zone.js
+ * @description Drag-and-drop and click-to-browse behavior for .drop-zone elements.
+ * @context
+ *   initDropZone(selector, onFile, options): Wires up drag-and-drop and click-to-browse on the matching .drop-zone elements.
+ */
+
+/**
+ * @function initDropZone(selector, onFile, options)
+ * @description Wires up drag-and-drop and click-to-browse on the matching .drop-zone elements. Sets .drag-over while a file is dragged over a zone and .invalid when the file type is not accepted.
+ * @param selector CSS selector for the drop zone container or containers
+ * @param onFile Called with the accepted File
+ * @param options Optional. options.accept lists allowed MIME types or extensions, such as ["image/png", ".pdf"].
+ * @requires .drop-zone styles from components.css
+ * @example
+ * <div class="drop-zone" id="upload"><p>Drop a file here, or click to browse</p></div>
+ * <script>
+ *   initDropZone("#upload", (file) => console.log(file.name), { accept: [".png"] });
+ * </script>
  */
 function initDropZone(selector, onFile, options = {}) {
   const { accept } = options;

@@ -2,9 +2,9 @@
  * @file utility.css
  * @description Atomic functional classes and global behavior modifiers.
  * @context
- *   .fit-content (Responsive width adaptation)
- *   .radius (Standard border-radius. vars: --radius)
- *   [tabindex]:not(-1) (Global focus/cursor behavior)
+ *   .fit-content: Sizes an element to its content width.
+ *   .radius: Applies a standard border radius.
+ *   [tabindex]: Elements with a non-negative tabindex get a pointer cursor and a visible focus outline.
  */
 
 /*
@@ -12,8 +12,16 @@
  * to customize them for specific scenarios.
  */
 
-/* Add the .fit-content utility class to ensure elements adjust 
-to their content width, even on smaller screens */
+/**
+ * @title Fit Content
+ * @selector .fit-content
+ * @description Sizes an element to its content width. On screens 768px wide or narrower the width returns to auto.
+ * @example
+ * <div class="stack" style="--stack-space: 1rem; --stack-padding: 0">
+ *   <button class="fit-content">Only as wide as its content</button>
+ *   <button>Stretches to fill the stack</button>
+ * </div>
+ */
 .fit-content {
   width: fit-content;
 }
@@ -24,12 +32,26 @@ to their content width, even on smaller screens */
   }
 }
 
-/* Add the .radius utility class to apply a standard border-radius */
+/**
+ * @title Radius
+ * @selector .radius
+ * @description Applies a standard border radius.
+ * @var --radius Corner radius. Defaults to 0.5rem.
+ * @example
+ * <div class="radius card">Rounded</div>
+ */
 .radius {
   border-radius: var(--radius, 0.5rem);
 }
 
-/* Elements with a non-negative tabindex are focusable and provide visual feedback when focused */
+/**
+ * @title Focusable elements
+ * @selector [tabindex]
+ * @description Elements with a non-negative tabindex get a pointer cursor and a visible focus outline. Elements with role=button are handled in buttons.css.
+ * @example
+ * <p>This is a standard paragraph.</p>
+ * <p tabindex="0">This paragraph has tabindex="0", so it is focusable and shows a pointer cursor.</p>
+ */
 [tabindex]:not([tabindex="-1"]) {
   cursor: pointer;
 }
