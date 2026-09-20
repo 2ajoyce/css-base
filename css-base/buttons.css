@@ -2,12 +2,67 @@
  * @file buttons.css
  * @description Styles for button elements and roles.
  * @context
- *   button (Standard button. Variants: .secondary, .success, .danger, .warning)
- *   [role="button"] (Generic clickable elements, mimics secondary style)
+ *   button: Standard button with hover, active, focus and disabled states.
+ *   [role="button"]: Makes a non-button element look and behave like a secondary button.
  * @notes
  *   [role="button"] may conflict with map libraries like Leaflet.
  */
 
+/**
+ * @title Button
+ * @selector button
+ * @description Standard button with hover, active, focus and disabled states. Buttons support icons: put an svg, emoji or icon component before the label.
+ * @variant .secondary Muted color
+ * @variant .success
+ * @variant .danger
+ * @variant .warning
+ * @example Active
+ * <div class="group">
+ *   <button>Default</button>
+ *   <button class="secondary">Secondary</button>
+ *   <button class="success">Success</button>
+ *   <button class="danger">Danger</button>
+ *   <button class="warning">Warning</button>
+ * </div>
+ * @example Disabled
+ * <div class="group">
+ *   <button disabled>Default</button>
+ *   <button disabled class="secondary">Secondary</button>
+ *   <button disabled class="success">Success</button>
+ *   <button disabled class="danger">Danger</button>
+ *   <button disabled class="warning">Warning</button>
+ * </div>
+ * @example Icons
+ * <div class="group">
+ *   <button>
+ *     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ *       <polygon points="5 3 19 12 5 21 5 3"></polygon>
+ *     </svg>
+ *     Run Pipeline
+ *   </button>
+ *   <button class="success">
+ *     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ *       <polyline points="20 6 9 17 4 12"></polyline>
+ *     </svg>
+ *     Save Changes
+ *   </button>
+ *   <button class="danger">
+ *     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ *       <polyline points="3 6 5 6 21 6"></polyline>
+ *       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+ *     </svg>
+ *     Delete
+ *   </button>
+ *   <button class="secondary">
+ *     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ *       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+ *       <polyline points="7 10 12 15 17 10"></polyline>
+ *       <line x1="12" y1="15" x2="12" y2="3"></line>
+ *     </svg>
+ *     Download
+ *   </button>
+ * </div>
+ */
 button {
   padding: 0.75em 1em;
   background-color: var(--primary-color);
@@ -161,6 +216,13 @@ button.warning:disabled:active {
   color: var(--warning-text-color);
 }
 
+/**
+ * @title Button role
+ * @selector [role="button"]
+ * @description Makes a non-button element look and behave like a secondary button. It can conflict with libraries such as Leaflet that use role=button.
+ * @example
+ * <p role="button" tabindex="0">This is a paragraph with role="button" and tabindex="0".</p>
+ */
 /* 
 * Non-button elements styled as buttons
 * Non-button elements are most like secondary buttons so we will use secondary button styles
