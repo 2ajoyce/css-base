@@ -1,4 +1,13 @@
 /**
+ * @file toast.js
+ * @description Shows and auto-hides .toast notifications.
+ * @context
+ *   showToast(selector, duration) (Adds .show to the matching .toast, removes it after duration ms, logs its text to the console. Defaults: ".toast", 5000)
+ * @notes
+ *   Needs the .toast markup from components.css.
+ */
+
+/**
  * Shows a toast notification
  * @param {string} selector - The CSS selector for the toast element
  * @param {number} duration - How long to show the toast in milliseconds

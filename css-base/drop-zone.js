@@ -1,4 +1,13 @@
 /**
+ * @file drop-zone.js
+ * @description Drag-and-drop and click-to-browse behavior for .drop-zone elements.
+ * @context
+ *   initDropZone(selector, onFile, options) (Wires up matching .drop-zone elements and calls onFile with the accepted file. States: .drag-over, .invalid. options.accept limits MIME types or extensions)
+ * @notes
+ *   Needs the .drop-zone styles from components.css.
+ */
+
+/**
  * Wires up drag-and-drop and click-to-browse behavior for .drop-zone elements.
  * @param {string} selector - CSS selector for the drop zone container(s)
  * @param {(file: File) => void} onFile - Called with the accepted file

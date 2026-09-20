@@ -19,3 +19,9 @@ build-ci:
     done
     FILE_NAME="css-base_${DATE}_${I}.zip"
     zip -r "$FILE_NAME" css-base/
+
+catalog:
+    node css-base/catalog.mjs write
+
+check:
+    node css-base/catalog.mjs check

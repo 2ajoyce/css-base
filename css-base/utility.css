@@ -4,7 +4,7 @@
  * @context
  *   .fit-content (Responsive width adaptation)
  *   .radius (Standard border-radius. vars: --radius)
- *   [tabindex]:not(-1) (Global focus/cursor behavior)
+ *   [tabindex] (Global focus/cursor behavior for focusable non-form elements)
  */
 
 /*

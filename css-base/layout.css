@@ -12,8 +12,8 @@
  *   .group (Flex wrap. vars: --group-gap)
  *   .icon (Fixed size flex center. vars: --icon-width, --icon-height)
  *   .overlay (Absolute center. vars: --overlay-top, --overlay-left)
- *   .sidebar (Sidebar layout. vars: --sidebar-gap, --sidebar-side-width, --sidebar-main-min-width)
- *   .stack (Flex column/row. vars: --stack-padding, --stack-space, --stack-wrap)
+ *   .sidebar (Sidebar layout with .side and .main children. vars: --sidebar-gap, --sidebar-side-width, --sidebar-main-min-width)
+ *   .stack (Flex column/row. Variants: .horizontal, .split. vars: --stack-padding, --stack-space, --stack-wrap)
  */
 
 /* /////////////////////////////////////////////////////

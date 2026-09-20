@@ -2,18 +2,19 @@
  * @file components.css
  * @description Complex composite UI components.
  * @context
- *   .alert, .toast (Messaging blocks. Variants: .success, .warning, .danger)
- *   .avatar (Image container. Variants: .small, .large)
+ *   .alert, .toast (Messaging blocks. Variants: .success, .warning, .danger. Toasts start hidden and need toast.js showToast(), which adds .show)
+ *   .avatar (Image container. Variants: .small, .large. vars: --avatar-size)
  *   .tag (Label/Badge. Variants: .secondary, .success, .warning, .danger, .outline)
  *   .breadcrumbs (Navigation list)
  *   .card-header, .card-footer (Extensions for .card)
  *   .drop-zone (Drag-and-drop file target. States: .drag-over, .invalid)
- *   .dropdown (Hover/Focus menu. vars: --background-color, --text-color)
- *   .pagination (Page links)
- *   .progress-bar (Variable width bar. vars: --pb-percent)
+ *   .dropdown (Hover/Focus menu; put the links in a .dropdown-menu child. vars: --background-color, --text-color)
+ *   .pagination (Page links. Mark the current page with .active)
+ *   .progress-bar (Variable width bar inside a .progress-container. Variants: .indeterminate. vars: --pb-percent)
  *   .skeleton (Loading placeholders. Variants: .block, .circle, .text, .header)
- *   .tooltip (CSS-only hover text)
- *   .modal (Dialog overlay)
+ *   .tabs (CSS-only tabs. Repeat .tab-radio, .tab-label, .tab-content as siblings, in that order, sharing one radio name)
+ *   .tooltip (CSS-only hover text; put the text in a .tooltip-text child)
+ *   For modals use the dialog element from elements.css.
  */
 
 /* Styles for interactive components */

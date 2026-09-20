@@ -4,13 +4,16 @@
  * @context
  *   body (Global text defaults)
  *   h1-h6 (Typography)
- *   p, blockquote, pre, code (Content blocks)
+ *   p, blockquote, pre, code (Content blocks. Variants: pre.wrap, code.multiline)
  *   strong, em, mark, del, ins, sub, sup, small (Inline formatting)
- *   a (Links. vars: --link-color, --link-hover-color)
+ *   a (Links. Variants: .visited. vars: --link-color, --link-hover-color)
  *   ul, ol, dl (Lists)
  *   table, th, td (Data tables)
- *   form, label, input, textarea, select (Form controls)
+ *   form, label, input, textarea, select (Form controls. Label variants: .left, .right, .ground. Checkbox variant: input.toggle renders a toggle switch)
  *   details, summary (Disclosure widget)
+ *   dialog (Modal. Open with dialog.showModal())
+ *   header (Page header. Put a .right child to push it to the far edge)
+ *   nav (Navigation links. Mark the current page with a.active)
  */
 
 /* Base styles */

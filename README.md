@@ -21,6 +21,7 @@ If you are an AI agent initializing a project:
 css-base/
  AGENTS.md       # Context guide for you
  index.css       # Entry point (@imports others)
+ catalog.mjs     # Keeps AGENTS.md in sync with the file headers (Node, no dependencies)
  reset.css       # Browser normalization
  themes.css      # Design tokens (colors, fonts)
  layout.css      # Grid, flex, stack utilities
@@ -53,3 +54,5 @@ Add the stylesheet to your HTML:
 This project uses `just` for release management.
 
 - `just build`: Creates a zip of `css-base` for distribution.
+- `just catalog`: Regenerates the component catalog in `css-base/AGENTS.md` from the header comment (`@context`) at the top of each file. Run it after adding or changing a class or function.
+- `just check`: Verifies that each header matches its file and that `AGENTS.md` is up to date. CI runs the same checks on pull requests. The script lives in `css-base/` so copied projects can run `node catalog.mjs check` too.
