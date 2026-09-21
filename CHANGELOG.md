@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.4.0](https://github.com/2ajoyce/css-base/compare/v3.3.0...v3.4.0) (2026-09-21)
+
+
+### Features
+
+* add text size utilities and shared type scale tokens ([#43](https://github.com/2ajoyce/css-base/issues/43)) ([dc88b9d](https://github.com/2ajoyce/css-base/commit/dc88b9df125416833c6d9fe1266c66b2f0793b84))
+* generate catalog, headers and docs from doc comments ([#40](https://github.com/2ajoyce/css-base/issues/40)) ([ec50b24](https://github.com/2ajoyce/css-base/commit/ec50b24c58a686069acb69d23f326e0b38a7507f))
+
+
+### Bug Fixes
+
+* keep text cursor on contenteditable elements with tabindex ([#42](https://github.com/2ajoyce/css-base/issues/42)) ([2c5194d](https://github.com/2ajoyce/css-base/commit/2c5194dcb5ea11b3e8b9dfaf436fdf7537529c9a)), closes [#39](https://github.com/2ajoyce/css-base/issues/39)
+
 ## [3.3.0](https://github.com/2ajoyce/css-base/compare/v3.2.0...v3.3.0) (2026-09-13)
 
 
