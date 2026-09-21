@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.1](https://github.com/2ajoyce/css-base/compare/v3.4.0...v3.4.1) (2026-09-21)
+
+
+### Bug Fixes
+
+* let a forced data-theme win on html and set it there ([#45](https://github.com/2ajoyce/css-base/issues/45)) ([69c1628](https://github.com/2ajoyce/css-base/commit/69c16280d4691dfdb4b383219f3fa3dbaf8f476c))
+
 ## [3.4.0](https://github.com/2ajoyce/css-base/compare/v3.3.0...v3.4.0) (2026-09-21)
 
 
