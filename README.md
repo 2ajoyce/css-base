@@ -95,3 +95,10 @@ The pages in `docs/` are hand-written HTML with two custom tags that `just catal
 | `<css-catalog src="../css-base/components.css">` | One `<section>` per doc comment in that stylesheet: title, description, variants, examples shown live and as source. Other attributes such as `class` are kept. |
 
 Tags cannot be nested. To change the nav or footer, edit `docs/partials/` and run `just catalog`. Files with no doc comments, such as `reset.css` and `themes.css`, keep a hand-written `@context`.
+
+## Theming
+
+Without any JS, `themes.css` follows the system light/dark preference. To let users force a theme, set `data-theme` (`light`, `dark` or `high-contrast`) on `<html>`. Remove the attribute to go back to the system preference.
+
+- **Plain HTML:** add `<script src="css-base/theme-switcher.js"></script>` to `<head>`, plus a `select` with id `theme-select`.
+- **Your own JS (React, Vite and so on):** skip `theme-switcher.js`. Set the attribute yourself and add the small inline `<head>` script from `themes.css` to apply a saved theme before first paint, which avoids a flash of the wrong theme.

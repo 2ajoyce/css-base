@@ -60,11 +60,13 @@ Everything the library provides, in `index.css` import order. Each entry lists t
 ### `themes.css` - Design tokens and color themes.
 
 - :root (Defines primitives: --light-\*, --dark-\*)
+- :root:not([data-theme]) (Light default, dark under prefers-color-scheme)
 - [data-theme="light"] (Maps vars to primitives)
 - [data-theme="dark"]  (Maps vars to primitives)
 - [data-theme="high-contrast"] (Example manual theme override)
 
-- **Note:** Used by theme-switcher.js
+- **Note:** Used by theme-switcher.js, which sets data-theme on \<html>. \<body> also works.
+- **Note:** The [data-theme] blocks set color-scheme so native controls and scrollbars follow the theme.
 - **Note:** --primary-color and --secondary-color are the most critical tokens.
 
 ### `utility.css` - Atomic functional classes and global behavior modifiers.
@@ -375,12 +377,14 @@ Wires up drag-and-drop and click-to-browse on the matching .drop-zone elements. 
 
 #### `setTheme(theme)`
 
-Sets the data-theme attribute on the body and syncs the select. Runs on load, using the saved choice or else the system preference, and again whenever the select changes.
+Sets the data-theme attribute on the html element and syncs the select if it exists. Runs as soon as the script loads when a theme is saved, and again whenever the select changes.
 
 - **Parameters**
   - `theme` - A theme name matching a [data-theme] value in themes.css
-- **Requires:** a select element with id theme-select
 
+- **Note:** Load it with a plain script tag in the head, so a saved theme is applied before first paint and the page does not flash the wrong theme.
+- **Note:** With no saved choice it leaves data-theme unset, so themes.css follows the system preference on its own.
+- **Note:** Apps that bundle their own JS can skip this file and use the head snippet documented in themes.css.
 - **Note:** Requires a select element with id="theme-select" whose option values match the [data-theme] names in themes.css.
 - **Note:** Persists the user's choice to localStorage.
 - **Note:** Optional: copy it into the project only if dynamic theming is needed.
