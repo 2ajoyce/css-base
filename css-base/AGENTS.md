@@ -80,6 +80,20 @@ Applies a standard border radius.
 - **Variables**
   - `--radius` - Corner radius. Defaults to 0.5rem.
 
+#### Text size - `.text-xs, .text-sm, .text-base, .text-lg, .text-xl, .text-2xl, .text-3xl, .text-4xl`
+
+Sets font size in rem with a matching unitless line height. Sizes scale with the user's root font size. The values are the --text-\* tokens in themes.css.
+
+- **Variants**
+  - `.text-xs` - 0.75rem, line height 1.5
+  - `.text-sm` - 0.875rem, line height 1.45
+  - `.text-base` - 1rem, line height 1.6
+  - `.text-lg` - 1.25rem, line height 1.4
+  - `.text-xl` - 1.5rem, line height 1.3
+  - `.text-2xl` - 2rem, line height 1.2
+  - `.text-3xl` - 2.5rem, line height 1.15
+  - `.text-4xl` - 3rem, line height 1.1
+
 #### Focusable elements - `[tabindex]`
 
 Elements with a non-negative tabindex get a pointer cursor and a visible focus outline. Editable regions (contenteditable) keep the text cursor. Elements with role=button are handled in buttons.css.
