@@ -161,6 +161,23 @@
   To enable theme switching using the data-theme options, you will also need to include the javascript code
   from theme-switcher.js file in your HTML.
 
+  Using your own JS, such as a React or Vite app? Follow this contract instead:
+    1. Set data-theme on <html> to "light", "dark" or "high-contrast" to force a theme.
+    2. Remove the attribute to follow the system preference. themes.css needs no JS for that.
+    3. Store the choice in localStorage under the key "theme" if it should survive a reload.
+    4. To avoid a flash of the wrong theme, add this inline script to <head>, before your CSS or app bundle
+       (it must run before first paint, so it cannot live inside a bundled or deferred script):
+
+       <script>
+         try {
+           const theme = localStorage.getItem("theme");
+           if (theme) document.documentElement.setAttribute("data-theme", theme);
+         } catch {}
+       </script>
+
+    If your Content Security Policy blocks inline scripts, put the same code in a file and load it with a plain
+    <script src> in <head> (no defer, async or type="module"), or allow it with a hash or nonce.
+
   The constants defined above are used for the light and dark themes to avoid repetition.
   Any additional themes can be added here as well. A high contrast theme is included as an example.
 */

@@ -377,12 +377,14 @@ Wires up drag-and-drop and click-to-browse on the matching .drop-zone elements. 
 
 #### `setTheme(theme)`
 
-Sets the data-theme attribute on the html element and syncs the select. Runs on load, using the saved choice or else the system preference, and again whenever the select changes.
+Sets the data-theme attribute on the html element and syncs the select if it exists. Runs as soon as the script loads when a theme is saved, and again whenever the select changes.
 
 - **Parameters**
   - `theme` - A theme name matching a [data-theme] value in themes.css
-- **Requires:** a select element with id theme-select
 
+- **Note:** Load it with a plain script tag in the head, so a saved theme is applied before first paint and the page does not flash the wrong theme.
+- **Note:** With no saved choice it leaves data-theme unset, so themes.css follows the system preference on its own.
+- **Note:** Apps that bundle their own JS can skip this file and use the head snippet documented in themes.css.
 - **Note:** Requires a select element with id="theme-select" whose option values match the [data-theme] names in themes.css.
 - **Note:** Persists the user's choice to localStorage.
 - **Note:** Optional: copy it into the project only if dynamic theming is needed.
