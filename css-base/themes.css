@@ -3,11 +3,13 @@
  * @description Design tokens and color themes.
  * @context
  *   :root (Defines primitives: --light-*, --dark-*)
+ *   :root:not([data-theme]) (Light default, dark under prefers-color-scheme)
  *   [data-theme="light"] (Maps vars to primitives)
  *   [data-theme="dark"]  (Maps vars to primitives)
  *   [data-theme="high-contrast"] (Example manual theme override)
  * @notes
- *   - Used by theme-switcher.js
+ *   - Used by theme-switcher.js, which sets data-theme on <html>. <body> also works.
+ *   - The [data-theme] blocks set color-scheme so native controls and scrollbars follow the theme.
  *   - --primary-color and --secondary-color are the most critical tokens.
  */
 
@@ -165,6 +167,7 @@
 
 /* Light Theme */
 [data-theme="light"] {
+  color-scheme: light;
   --background-color: var(--light-background-color);
   --secondary-background-color: var(--light-secondary-background-color);
   --unset-background-color: var(--light-unset-background-color);
@@ -220,6 +223,7 @@
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
   --background-color: var(--dark-background-color);
   --secondary-background-color: var(--dark-secondary-background-color);
   --unset-background-color: var(--dark-unset-background-color);
@@ -276,6 +280,7 @@
 
 /* High Contrast Theme */
 [data-theme="high-contrast"] {
+  color-scheme: dark;
   --background-color: #000;
   --secondary-background-color: #111111;
   --unset-background-color: lime;
@@ -337,11 +342,15 @@
   This will force a light and dark theme when no javascript is available.
   This uses the constants defined above to avoid repetition.
 
+  These blocks only apply while no data-theme is set. That keeps a forced theme
+  winning over the system preference when data-theme is on <html> (the same
+  element as :root) as well as on <body>.
+
   NO CHANGES ARE NEEDED HERE UNLESS ADDING A NEW CONSTANT.
 */
 
 /* Light Theme */
-:root {
+:root:not([data-theme]) {
   --background-color: var(--light-background-color);
   --secondary-background-color: var(--light-secondary-background-color);
   --unset-background-color: var(--light-unset-background-color);
@@ -398,7 +407,7 @@
 
 /* CSS Only Dark Theme */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --background-color: var(--dark-background-color);
     --secondary-background-color: var(--dark-secondary-background-color);
     --unset-background-color: var(--dark-unset-background-color);
