@@ -98,7 +98,4 @@ Tags cannot be nested. To change the nav or footer, edit `docs/partials/` and ru
 
 ## Theming
 
-Without any JS, `themes.css` follows the system light/dark preference. To let users force a theme, set `data-theme` (`light`, `dark` or `high-contrast`) on `<html>`. Remove the attribute to go back to the system preference.
-
-- **Plain HTML:** add `<script src="css-base/theme-switcher.js"></script>` to `<head>`, plus a `select` with id `theme-select`.
-- **Your own JS (React, Vite and so on):** skip `theme-switcher.js`. Set the attribute yourself and add the small inline `<head>` script from `themes.css` to apply a saved theme before first paint, which avoids a flash of the wrong theme.
+`themes.css` follows the system light/dark preference automatically, with no JS required. There is no manual theme picker or `data-theme` override built in. If a project needs one, add a `data-theme` attribute and mirror the light/dark blocks in `themes.css` under `[data-theme="light"]` and `[data-theme="dark"]`.

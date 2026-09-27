@@ -30,7 +30,6 @@ Things agents commonly rebuild that already exist: modals (`dialog`), tabs, tool
 | Modal                       | the `dialog` element, opened with `showModal()`            |
 | Notification                | `.toast` plus `showToast()` from `toast.js`                |
 | File upload                 | `.drop-zone` plus `initDropZone()` from `drop-zone.js`     |
-| Light/dark switching        | `theme-switcher.js` plus a `select` with id `theme-select` |
 
 ## Usage Instructions
 
@@ -59,14 +58,10 @@ Everything the library provides, in `index.css` import order. Each entry lists t
 
 ### `themes.css` - Design tokens and color themes.
 
-- :root (Defines primitives: --light-\*, --dark-\*)
-- :root:not([data-theme]) (Light default, dark under prefers-color-scheme)
-- [data-theme="light"] (Maps vars to primitives)
-- [data-theme="dark"]  (Maps vars to primitives)
-- [data-theme="high-contrast"] (Example manual theme override)
+- :root (Defines primitives --light-\*, --dark-\*, and maps the light theme as the default)
+- :root (prefers-color-scheme: dark) (Maps the dark theme when the OS prefers it)
 
-- **Note:** Used by theme-switcher.js, which sets data-theme on \<html>. \<body> also works.
-- **Note:** The [data-theme] blocks set color-scheme so native controls and scrollbars follow the theme.
+- **Note:** Follows the OS light/dark preference automatically. There is no manual override.
 - **Note:** --primary-color and --secondary-color are the most critical tokens.
 
 ### `utility.css` - Atomic functional classes and global behavior modifiers.
@@ -372,22 +367,6 @@ Wires up drag-and-drop and click-to-browse on the matching .drop-zone elements. 
   - `onFile` - Called with the accepted File
   - `options` - Optional. options.accept lists allowed MIME types or extensions, such as ["image/png", ".pdf"].
 - **Requires:** .drop-zone styles from components.css
-
-### `theme-switcher.js` - Logic for toggling light/dark/custom themes.
-
-#### `setTheme(theme)`
-
-Sets the data-theme attribute on the html element and syncs the select if it exists. Runs as soon as the script loads when a theme is saved, and again whenever the select changes.
-
-- **Parameters**
-  - `theme` - A theme name matching a [data-theme] value in themes.css
-
-- **Note:** Load it with a plain script tag in the head, so a saved theme is applied before first paint and the page does not flash the wrong theme.
-- **Note:** With no saved choice it leaves data-theme unset, so themes.css follows the system preference on its own.
-- **Note:** Apps that bundle their own JS can skip this file and use the head snippet documented in themes.css.
-- **Note:** Requires a select element with id="theme-select" whose option values match the [data-theme] names in themes.css.
-- **Note:** Persists the user's choice to localStorage.
-- **Note:** Optional: copy it into the project only if dynamic theming is needed.
 
 ### `toast.js` - Shows and auto-hides .toast notifications.
 
