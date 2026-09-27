@@ -555,7 +555,7 @@ input[type="checkbox"] {
  * @title Toggle Switch
  * @selector input.toggle
  * @description Renders a checkbox as a toggle switch.
- * @variant .icons Widens the track and shows a fixed icon at each end, set with --toggle-icon-start and --toggle-icon-end
+ * @variant .icons Enlarges the track and shows a fixed icon at each end, set with --toggle-icon-start and --toggle-icon-end
  * @var --toggle-icon-start On the .icons variant, a CSS url() for the icon at the unchecked end
  * @var --toggle-icon-end On the .icons variant, a CSS url() for the icon at the checked end
  * @example
@@ -611,23 +611,34 @@ input[type="checkbox"].toggle:checked::before {
 
 input[type="checkbox"].toggle.icons {
   width: 4rem;
+  height: 2rem;
+  border-radius: 2rem;
+  vertical-align: -0.85rem;
   background-repeat: no-repeat;
   background-position:
-    0.4rem center,
-    calc(100% - 0.4rem) center;
-  background-size: 1rem 1rem;
+    0.45rem center,
+    calc(100% - 0.45rem) center;
+  background-size: 1.1rem 1.1rem;
   background-image: var(--toggle-icon-start, none), var(--toggle-icon-end, none);
 }
 
+input[type="checkbox"].toggle.icons:checked {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
 input[type="checkbox"].toggle.icons::before {
+  width: 1.7rem;
+  height: 1.7rem;
+  left: 0.15rem;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 0.85rem 0.85rem;
+  background-size: 1.15rem 1.15rem;
   background-image: var(--toggle-icon-start, none);
 }
 
 input[type="checkbox"].toggle.icons:checked::before {
-  transform: translateY(-50%) translateX(2.5rem);
+  transform: translateY(-50%) translateX(2rem);
   background-image: var(--toggle-icon-end, none);
 }
 

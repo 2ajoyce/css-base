@@ -391,7 +391,7 @@ Wires up an input.toggle checkbox that flips between light and dark, syncing its
 - **Note:** Sets data-theme on \<html>. Remove the attribute to follow the system preference (see themes.css).
 - **Note:** Persists the user's choice to localStorage under the key "theme".
 - **Note:** Applies the saved theme immediately (top-level, not on DOMContentLoaded) so it runs before first paint when loaded from \<head>.
-- **Note:** If the input has the .icons variant, sets its --toggle-icon-start and --toggle-icon-end to a sun and moon.
+- **Note:** If the input has the .icons variant, sets its --toggle-icon-start and --toggle-icon-end to a sun and moon, recolored for contrast whenever the theme changes.
 
 ### `toast.js` - Shows and auto-hides .toast notifications.
 
