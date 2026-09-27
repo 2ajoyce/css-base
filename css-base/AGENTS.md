@@ -360,9 +360,9 @@ Extra information on hover or focus. Put the tooltip text in a child element.
 - **Parts**
   - `.tooltip-text` - The text shown on hover or focus
 
-#### Theme Switcher - `#theme-toggle`
+#### Theme Switcher - `.theme-toggle`
 
-An input.toggle.icons switch, with a sun and moon baked into the track, that switches the page to the dark theme when checked and overrides the system preference until cleared.
+An input.toggle.icons switch, with a sun and moon baked into the track, that switches the page to the dark theme when checked and overrides the system preference until cleared. Any number of them on a page stay in sync.
 
 - **Requires:** theme-switcher.js initThemeToggle(selector)
 
@@ -382,11 +382,11 @@ Wires up drag-and-drop and click-to-browse on the matching .drop-zone elements. 
 
 #### `initThemeToggle(selector)`
 
-Wires up an input.toggle checkbox that flips between light and dark, syncing its checked state to the current theme and persisting the choice to localStorage.
+Wires up every input.toggle checkbox matching selector to flip between light and dark, syncing all of them (and their checked state) to the current theme and persisting the choice to localStorage.
 
 - **Parameters**
-  - `selector` - CSS selector for the toggle switch. Defaults to "#theme-toggle".
-- **Requires:** an input.toggle checkbox matching selector, from elements.css, such as \<input type="checkbox" id="theme-toggle" class="toggle icons">
+  - `selector` - CSS selector for the toggle switch(es). Defaults to ".theme-toggle".
+- **Requires:** one or more input.toggle checkboxes matching selector, from elements.css, such as \<input type="checkbox" class="theme-toggle toggle icons">
 
 - **Note:** Sets data-theme on \<html>. Remove the attribute to follow the system preference (see themes.css).
 - **Note:** Persists the user's choice to localStorage under the key "theme".

@@ -2,7 +2,7 @@
  * @file theme-switcher.js
  * @description Applies a saved theme before first paint and wires up a light/dark toggle switch.
  * @context
- *   initThemeToggle(selector): Wires up an input.toggle checkbox that flips between light and dark, syncing its checked state to the current theme and persisting the choice to localStorage.
+ *   initThemeToggle(selector): Wires up every input.toggle checkbox matching selector to flip between light and dark, syncing all of them (and their checked state) to the current theme and persisting the choice to localStorage.
  * @notes
  *   Sets data-theme on <html>. Remove the attribute to follow the system preference (see themes.css).
  *   Persists the user's choice to localStorage under the key "theme".
@@ -38,39 +38,48 @@ const THEME_TOGGLE_ICONS = {
 
 /**
  * @function initThemeToggle(selector)
- * @description Wires up an input.toggle checkbox that flips between light and dark, syncing its checked state to the current theme and persisting the choice to localStorage.
- * @param selector CSS selector for the toggle switch. Defaults to "#theme-toggle".
- * @requires an input.toggle checkbox matching selector, from elements.css, such as <input type="checkbox" id="theme-toggle" class="toggle icons">
+ * @description Wires up every input.toggle checkbox matching selector to flip between light and dark, syncing all of them (and their checked state) to the current theme and persisting the choice to localStorage.
+ * @param selector CSS selector for the toggle switch(es). Defaults to ".theme-toggle".
+ * @requires one or more input.toggle checkboxes matching selector, from elements.css, such as <input type="checkbox" class="theme-toggle toggle icons">
  * @example
- * <input type="checkbox" id="theme-toggle" class="toggle icons" aria-label="Toggle dark theme" />
+ * <input type="checkbox" class="theme-toggle toggle icons" aria-label="Toggle dark theme" />
  * <script>initThemeToggle();</script>
  */
-function initThemeToggle(selector = "#theme-toggle") {
-  const input = document.querySelector(selector);
-  if (!input) return;
+function initThemeToggle(selector = ".theme-toggle") {
+  const inputs = document.querySelectorAll(selector);
+  if (!inputs.length) return;
 
   const systemPrefersDark = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
   const currentTheme = () =>
     document.documentElement.getAttribute("data-theme") || (systemPrefersDark() ? "dark" : "light");
 
-  const paintIcons = () => {
+  const paintIcons = (input) => {
     if (!input.classList.contains("icons")) return;
     const icons = THEME_TOGGLE_ICONS[currentTheme()];
     input.style.setProperty("--toggle-icon-start", icons.sun);
     input.style.setProperty("--toggle-icon-end", icons.moon);
   };
 
-  input.checked = currentTheme() === "dark";
-  paintIcons();
+  const syncAll = () => {
+    const isDark = currentTheme() === "dark";
+    for (const input of inputs) {
+      input.checked = isDark;
+      paintIcons(input);
+    }
+  };
 
-  input.addEventListener("change", () => {
-    const next = input.checked ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", next);
-    paintIcons();
-    try {
-      localStorage.setItem("theme", next);
-    } catch {}
-  });
+  syncAll();
+
+  for (const input of inputs) {
+    input.addEventListener("change", () => {
+      const next = input.checked ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", next);
+      try {
+        localStorage.setItem("theme", next);
+      } catch {}
+      syncAll();
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => initThemeToggle());
