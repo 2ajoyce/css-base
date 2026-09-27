@@ -98,4 +98,6 @@ Tags cannot be nested. To change the nav or footer, edit `docs/partials/` and ru
 
 ## Theming
 
-`themes.css` follows the system light/dark preference automatically, with no JS required. There is no manual theme picker or `data-theme` override built in. If a project needs one, add a `data-theme` attribute and mirror the light/dark blocks in `themes.css` under `[data-theme="light"]` and `[data-theme="dark"]`.
+`themes.css` follows the system light/dark preference automatically when no theme is forced. To let a user override that preference, set `data-theme="light"` or `data-theme="dark"` on `<html>`; remove the attribute to go back to following the system preference.
+
+Include `theme-switcher.js` to get this for free: it applies a saved choice before first paint and wires up a plain button (see the Theme Switcher entry in the component catalog) that flips the theme and persists the choice to `localStorage`.

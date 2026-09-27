@@ -15,6 +15,7 @@
  *   .tabs: CSS-only tabs built from radio buttons.
  *   .toast: Notification message that is hidden until shown with showToast(), which removes it after a delay and logs its text to the console for debugging.
  *   .tooltip: Extra information on hover or focus.
+ *   #theme-toggle: A standard button, with an icon and label like any other, that flips the page between the light and dark theme and overrides the system preference until cleared.
  */
 
 /* Styles for interactive components */
@@ -699,3 +700,13 @@
   visibility: visible;
   opacity: 1;
 }
+
+/**
+ * @title Theme Switcher
+ * @selector #theme-toggle
+ * @description A standard button, with an icon and label like any other, that flips the page between the light and dark theme and overrides the system preference until cleared.
+ * @requires theme-switcher.js initThemeToggle(selector)
+ * @example
+ * <button id="theme-toggle-demo"></button>
+ * <script>initThemeToggle("#theme-toggle-demo");</script>
+ */

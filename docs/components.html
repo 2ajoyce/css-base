@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Component Examples</title>
     <link rel="stylesheet" href="../css-base/index.css" />
+    <script src="../css-base/theme-switcher.js"></script>
     <script src="../css-base/toast.js"></script>
     <script src="../css-base/drop-zone.js"></script>
   </head>
@@ -22,6 +23,7 @@
   <a href="utility.html">Utility</a>
   <a href="layout.html">Layout</a>
   <a href="components.html">Components</a>
+  <button id="theme-toggle"></button>
 </nav>
 <script>
   // Mark the link for the current page. Works with or without ".html".
@@ -397,6 +399,18 @@
   <span class="tooltip" tabindex="0">word<span class="tooltip-text">This is a tooltip!</span></span>
   to see the tooltip.
 </p>
+  </div>
+</section>
+
+<section id="theme-switcher">
+  <h2><a href="#theme-switcher">Theme Switcher</a></h2>
+  <p>A standard button, with an icon and label like any other, that flips the page between the light and dark theme and overrides the system preference until cleared.</p>
+  <p><strong>Selector:</strong> <code>#theme-toggle</code></p>
+  <p><strong>Requires:</strong> theme-switcher.js initThemeToggle(selector)</p>
+  <h3>Example</h3>
+  <div>
+<button id="theme-toggle-demo"></button>
+<script>initThemeToggle("#theme-toggle-demo");</script>
   </div>
 </section>
 </css-catalog>

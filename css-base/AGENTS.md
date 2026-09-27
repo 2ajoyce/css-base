@@ -58,10 +58,14 @@ Everything the library provides, in `index.css` import order. Each entry lists t
 
 ### `themes.css` - Design tokens and color themes.
 
-- :root (Defines primitives --light-\*, --dark-\*, and maps the light theme as the default)
-- :root (prefers-color-scheme: dark) (Maps the dark theme when the OS prefers it)
+- :root (Defines primitives --light-\*, --dark-\*)
+- :root:not([data-theme]) (Light default, dark under prefers-color-scheme)
+- [data-theme="light"] (Maps vars to primitives)
+- [data-theme="dark"]  (Maps vars to primitives)
 
-- **Note:** Follows the OS light/dark preference automatically. There is no manual override.
+- **Note:** Follows the OS light/dark preference automatically when no data-theme is set.
+- **Note:** Used by theme-switcher.js, which sets data-theme on \<html> to force a theme.
+- **Note:** The [data-theme] blocks set color-scheme so native controls and scrollbars follow the theme.
 - **Note:** --primary-color and --secondary-color are the most critical tokens.
 
 ### `utility.css` - Atomic functional classes and global behavior modifiers.
@@ -356,6 +360,12 @@ Extra information on hover or focus. Put the tooltip text in a child element.
 - **Parts**
   - `.tooltip-text` - The text shown on hover or focus
 
+#### Theme Switcher - `#theme-toggle`
+
+A standard button, with an icon and label like any other, that flips the page between the light and dark theme and overrides the system preference until cleared.
+
+- **Requires:** theme-switcher.js initThemeToggle(selector)
+
 ### `drop-zone.js` - Drag-and-drop and click-to-browse behavior for .drop-zone elements.
 
 #### `initDropZone(selector, onFile, options)`
@@ -367,6 +377,20 @@ Wires up drag-and-drop and click-to-browse on the matching .drop-zone elements. 
   - `onFile` - Called with the accepted File
   - `options` - Optional. options.accept lists allowed MIME types or extensions, such as ["image/png", ".pdf"].
 - **Requires:** .drop-zone styles from components.css
+
+### `theme-switcher.js` - Applies a saved theme before first paint and wires up a toggle button.
+
+#### `initThemeToggle(selector)`
+
+Wires up a button that flips between light and dark on click, syncing its icon/label and persisting the choice to localStorage.
+
+- **Parameters**
+  - `selector` - CSS selector for the toggle button. Defaults to "#theme-toggle".
+- **Requires:** a plain button element matching selector, such as \<button id="theme-toggle">
+
+- **Note:** Sets data-theme on \<html>. Remove the attribute to follow the system preference (see themes.css).
+- **Note:** Persists the user's choice to localStorage under the key "theme".
+- **Note:** Applies the saved theme immediately (top-level, not on DOMContentLoaded) so it runs before first paint when loaded from \<head>.
 
 ### `toast.js` - Shows and auto-hides .toast notifications.
 
