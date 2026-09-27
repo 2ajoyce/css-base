@@ -112,7 +112,7 @@ Elements with a non-negative tabindex get a pointer cursor and a visible focus o
 - `form`
 - `label` - variants `.left`, `.right`, `.ground`
 - `input, textarea, select`
-- `input.toggle`
+- `input.toggle` - variants `.icons`; variables `--toggle-icon-start`, `--toggle-icon-end`
 - `fieldset, legend`
 - `img, figure, figcaption, audio, video`
 - `canvas`
@@ -362,7 +362,7 @@ Extra information on hover or focus. Put the tooltip text in a child element.
 
 #### Theme Switcher - `#theme-toggle`
 
-An input.toggle switch, labeled with what it turns on, that switches the page to the dark theme when checked and overrides the system preference until cleared.
+An input.toggle.icons switch, with a sun and moon baked into the track, that switches the page to the dark theme when checked and overrides the system preference until cleared.
 
 - **Requires:** theme-switcher.js initThemeToggle(selector)
 
@@ -386,11 +386,12 @@ Wires up an input.toggle checkbox that flips between light and dark, syncing its
 
 - **Parameters**
   - `selector` - CSS selector for the toggle switch. Defaults to "#theme-toggle".
-- **Requires:** an input.toggle checkbox matching selector, from elements.css, such as \<input type="checkbox" id="theme-toggle" class="toggle">
+- **Requires:** an input.toggle checkbox matching selector, from elements.css, such as \<input type="checkbox" id="theme-toggle" class="toggle icons">
 
 - **Note:** Sets data-theme on \<html>. Remove the attribute to follow the system preference (see themes.css).
 - **Note:** Persists the user's choice to localStorage under the key "theme".
 - **Note:** Applies the saved theme immediately (top-level, not on DOMContentLoaded) so it runs before first paint when loaded from \<head>.
+- **Note:** If the input has the .icons variant, sets its --toggle-icon-start and --toggle-icon-end to a sun and moon.
 
 ### `toast.js` - Shows and auto-hides .toast notifications.
 

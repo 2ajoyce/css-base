@@ -23,13 +23,13 @@
   <a href="utility.html">Utility</a>
   <a href="layout.html">Layout</a>
   <a href="components.html">Components</a>
-  <div class="group" style="flex: 0 0 auto; align-items: center">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-    <input type="checkbox" id="theme-toggle" class="toggle" />
-    <label for="theme-toggle">Dark mode</label>
-  </div>
+  <input
+    type="checkbox"
+    id="theme-toggle"
+    class="toggle icons"
+    aria-label="Toggle dark theme"
+    style="flex: 0 0 auto; align-self: center"
+  />
 </nav>
 <script>
   // Mark the link for the current page. Works with or without ".html".
@@ -410,18 +410,12 @@
 
 <section id="theme-switcher">
   <h2><a href="#theme-switcher">Theme Switcher</a></h2>
-  <p>An input.toggle switch, labeled with what it turns on, that switches the page to the dark theme when checked and overrides the system preference until cleared.</p>
+  <p>An input.toggle.icons switch, with a sun and moon baked into the track, that switches the page to the dark theme when checked and overrides the system preference until cleared.</p>
   <p><strong>Selector:</strong> <code>#theme-toggle</code></p>
   <p><strong>Requires:</strong> theme-switcher.js initThemeToggle(selector)</p>
   <h3>Example</h3>
   <div>
-<div class="group" style="align-items: center">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-  </svg>
-  <input type="checkbox" id="theme-toggle-demo" class="toggle" />
-  <label for="theme-toggle-demo">Dark mode</label>
-</div>
+<input type="checkbox" id="theme-toggle-demo" class="toggle icons" aria-label="Toggle dark theme" />
 <script>initThemeToggle("#theme-toggle-demo");</script>
   </div>
 </section>

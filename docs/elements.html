@@ -21,13 +21,13 @@
   <a href="utility.html">Utility</a>
   <a href="layout.html">Layout</a>
   <a href="components.html">Components</a>
-  <div class="group" style="flex: 0 0 auto; align-items: center">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-    <input type="checkbox" id="theme-toggle" class="toggle" />
-    <label for="theme-toggle">Dark mode</label>
-  </div>
+  <input
+    type="checkbox"
+    id="theme-toggle"
+    class="toggle icons"
+    aria-label="Toggle dark theme"
+    style="flex: 0 0 auto; align-self: center"
+  />
 </nav>
 <script>
   // Mark the link for the current page. Works with or without ".html".
@@ -307,6 +307,15 @@ This is preformatted text.
   <h2><a href="#toggle-switch">Toggle Switch</a></h2>
   <p>Renders a checkbox as a toggle switch.</p>
   <p><strong>Selector:</strong> <code>input.toggle</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.icons</code> - Widens the track and shows a fixed icon at each end, set with --toggle-icon-start and --toggle-icon-end</li>
+  </ul>
+  <h3>Variables</h3>
+  <ul>
+    <li><code>--toggle-icon-start</code> - On the .icons variant, a CSS url() for the icon at the unchecked end</li>
+    <li><code>--toggle-icon-end</code> - On the .icons variant, a CSS url() for the icon at the checked end</li>
+  </ul>
   <h3>Example</h3>
   <div>
 <div class="group">

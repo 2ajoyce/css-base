@@ -15,7 +15,7 @@
  *   .tabs: CSS-only tabs built from radio buttons.
  *   .toast: Notification message that is hidden until shown with showToast(), which removes it after a delay and logs its text to the console for debugging.
  *   .tooltip: Extra information on hover or focus.
- *   #theme-toggle: An input.toggle switch, labeled with what it turns on, that switches the page to the dark theme when checked and overrides the system preference until cleared.
+ *   #theme-toggle: An input.toggle.icons switch, with a sun and moon baked into the track, that switches the page to the dark theme when checked and overrides the system preference until cleared.
  */
 
 /* Styles for interactive components */
@@ -704,15 +704,9 @@
 /**
  * @title Theme Switcher
  * @selector #theme-toggle
- * @description An input.toggle switch, labeled with what it turns on, that switches the page to the dark theme when checked and overrides the system preference until cleared.
+ * @description An input.toggle.icons switch, with a sun and moon baked into the track, that switches the page to the dark theme when checked and overrides the system preference until cleared.
  * @requires theme-switcher.js initThemeToggle(selector)
  * @example
- * <div class="group" style="align-items: center">
- *   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
- *     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
- *   </svg>
- *   <input type="checkbox" id="theme-toggle-demo" class="toggle" />
- *   <label for="theme-toggle-demo">Dark mode</label>
- * </div>
+ * <input type="checkbox" id="theme-toggle-demo" class="toggle icons" aria-label="Toggle dark theme" />
  * <script>initThemeToggle("#theme-toggle-demo");</script>
  */
