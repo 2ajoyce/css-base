@@ -362,7 +362,7 @@ Extra information on hover or focus. Put the tooltip text in a child element.
 
 #### Theme Switcher - `#theme-toggle`
 
-An input.toggle switch, flanked by sun and moon icons, that flips the page between the light and dark theme and overrides the system preference until cleared.
+An input.toggle switch, labeled with what it turns on, that switches the page to the dark theme when checked and overrides the system preference until cleared.
 
 - **Requires:** theme-switcher.js initThemeToggle(selector)
 
