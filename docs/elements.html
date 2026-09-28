@@ -9,7 +9,8 @@
   </head>
   <body class="container" style="--container-padding: 0">
     <header>
-      <h1>Style Guide</h1>
+      <h1>CSS Base</h1>
+      <p>A lightweight, agent-friendly CSS starter kit.</p>
       <include-html src="partials/nav.html" style="display: contents">
 <nav
   class="columns"
@@ -20,14 +21,11 @@
   <a href="utility.html">Utility</a>
   <a href="layout.html">Layout</a>
   <a href="components.html">Components</a>
-  <div class="stack horizontal" style="--stack-space: 0; --stack-wrap: nowrap">
-    <label for="theme-select" class="left ground">Theme:</label>
-    <select id="theme-select">
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-      <option value="high-contrast">High Contrast</option>
-    </select>
-  </div>
+  <input
+    type="checkbox"
+    class="theme-toggle toggle icons"
+    aria-label="Toggle dark theme"
+  />
 </nav>
 <script>
   // Mark the link for the current page. Works with or without ".html".
@@ -307,6 +305,15 @@ This is preformatted text.
   <h2><a href="#toggle-switch">Toggle Switch</a></h2>
   <p>Renders a checkbox as a toggle switch.</p>
   <p><strong>Selector:</strong> <code>input.toggle</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.icons</code> - Enlarges the track and shows a fixed icon at each end, set with --toggle-icon-start and --toggle-icon-end</li>
+  </ul>
+  <h3>Variables</h3>
+  <ul>
+    <li><code>--toggle-icon-start</code> - On the .icons variant, a CSS url() for the icon at the unchecked end</li>
+    <li><code>--toggle-icon-end</code> - On the .icons variant, a CSS url() for the icon at the checked end</li>
+  </ul>
   <h3>Example</h3>
   <div>
 <div class="group">

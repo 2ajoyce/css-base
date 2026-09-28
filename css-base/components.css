@@ -15,6 +15,7 @@
  *   .tabs: CSS-only tabs built from radio buttons.
  *   .toast: Notification message that is hidden until shown with showToast(), which removes it after a delay and logs its text to the console for debugging.
  *   .tooltip: Extra information on hover or focus.
+ *   .theme-toggle: An input.toggle.icons switch, with a sun and moon baked into the track, that switches the page to the dark theme when checked and overrides the system preference until cleared.
  */
 
 /* Styles for interactive components */
@@ -699,3 +700,13 @@
   visibility: visible;
   opacity: 1;
 }
+
+/**
+ * @title Theme Switcher
+ * @selector .theme-toggle
+ * @description An input.toggle.icons switch, with a sun and moon baked into the track, that switches the page to the dark theme when checked and overrides the system preference until cleared. Any number of them on a page stay in sync.
+ * @requires theme-switcher.js initThemeToggle(selector)
+ * @example
+ * <input type="checkbox" class="theme-toggle toggle icons" aria-label="Toggle dark theme" />
+ * <script>initThemeToggle();</script>
+ */

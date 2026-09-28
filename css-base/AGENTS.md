@@ -30,7 +30,6 @@ Things agents commonly rebuild that already exist: modals (`dialog`), tabs, tool
 | Modal                       | the `dialog` element, opened with `showModal()`            |
 | Notification                | `.toast` plus `showToast()` from `toast.js`                |
 | File upload                 | `.drop-zone` plus `initDropZone()` from `drop-zone.js`     |
-| Light/dark switching        | `theme-switcher.js` plus a `select` with id `theme-select` |
 
 ## Usage Instructions
 
@@ -59,13 +58,13 @@ Everything the library provides, in `index.css` import order. Each entry lists t
 
 ### `themes.css` - Design tokens and color themes.
 
-- :root (Defines primitives: --light-\*, --dark-\*)
+- :root (Defines primitives --light-\*, --dark-\*)
 - :root:not([data-theme]) (Light default, dark under prefers-color-scheme)
 - [data-theme="light"] (Maps vars to primitives)
 - [data-theme="dark"]  (Maps vars to primitives)
-- [data-theme="high-contrast"] (Example manual theme override)
 
-- **Note:** Used by theme-switcher.js, which sets data-theme on \<html>. \<body> also works.
+- **Note:** Follows the OS light/dark preference automatically when no data-theme is set.
+- **Note:** Used by theme-switcher.js, which sets data-theme on \<html> to force a theme.
 - **Note:** The [data-theme] blocks set color-scheme so native controls and scrollbars follow the theme.
 - **Note:** --primary-color and --secondary-color are the most critical tokens.
 
@@ -113,7 +112,7 @@ Elements with a non-negative tabindex get a pointer cursor and a visible focus o
 - `form`
 - `label` - variants `.left`, `.right`, `.ground`
 - `input, textarea, select`
-- `input.toggle`
+- `input.toggle` - variants `.icons`; variables `--toggle-icon-start`, `--toggle-icon-end`
 - `fieldset, legend`
 - `img, figure, figcaption, audio, video`
 - `canvas`
@@ -361,6 +360,12 @@ Extra information on hover or focus. Put the tooltip text in a child element.
 - **Parts**
   - `.tooltip-text` - The text shown on hover or focus
 
+#### Theme Switcher - `.theme-toggle`
+
+An input.toggle.icons switch, with a sun and moon baked into the track, that switches the page to the dark theme when checked and overrides the system preference until cleared. Any number of them on a page stay in sync.
+
+- **Requires:** theme-switcher.js initThemeToggle(selector)
+
 ### `drop-zone.js` - Drag-and-drop and click-to-browse behavior for .drop-zone elements.
 
 #### `initDropZone(selector, onFile, options)`
@@ -373,21 +378,20 @@ Wires up drag-and-drop and click-to-browse on the matching .drop-zone elements. 
   - `options` - Optional. options.accept lists allowed MIME types or extensions, such as ["image/png", ".pdf"].
 - **Requires:** .drop-zone styles from components.css
 
-### `theme-switcher.js` - Logic for toggling light/dark/custom themes.
+### `theme-switcher.js` - Applies a saved theme before first paint and wires up a light/dark toggle switch.
 
-#### `setTheme(theme)`
+#### `initThemeToggle(selector)`
 
-Sets the data-theme attribute on the html element and syncs the select if it exists. Runs as soon as the script loads when a theme is saved, and again whenever the select changes.
+Wires up every input.toggle checkbox matching selector to flip between light and dark, syncing all of them (and their checked state) to the current theme and persisting the choice to localStorage.
 
 - **Parameters**
-  - `theme` - A theme name matching a [data-theme] value in themes.css
+  - `selector` - CSS selector for the toggle switch(es). Defaults to ".theme-toggle".
+- **Requires:** one or more input.toggle checkboxes matching selector, from elements.css, such as \<input type="checkbox" class="theme-toggle toggle icons">
 
-- **Note:** Load it with a plain script tag in the head, so a saved theme is applied before first paint and the page does not flash the wrong theme.
-- **Note:** With no saved choice it leaves data-theme unset, so themes.css follows the system preference on its own.
-- **Note:** Apps that bundle their own JS can skip this file and use the head snippet documented in themes.css.
-- **Note:** Requires a select element with id="theme-select" whose option values match the [data-theme] names in themes.css.
-- **Note:** Persists the user's choice to localStorage.
-- **Note:** Optional: copy it into the project only if dynamic theming is needed.
+- **Note:** Sets data-theme on \<html>. Remove the attribute to follow the system preference (see themes.css).
+- **Note:** Persists the user's choice to localStorage under the key "theme".
+- **Note:** Applies the saved theme immediately (top-level, not on DOMContentLoaded) so it runs before first paint when loaded from \<head>.
+- **Note:** If the input has the .icons variant, sets its --toggle-icon-start and --toggle-icon-end to a sun and moon, recolored for contrast whenever the theme changes.
 
 ### `toast.js` - Shows and auto-hides .toast notifications.
 

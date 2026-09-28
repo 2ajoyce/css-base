@@ -11,7 +11,8 @@
   </head>
   <body class="container" style="--container-padding: 0">
     <header>
-      <h1>Style Guide</h1>
+      <h1>CSS Base</h1>
+      <p>A lightweight, agent-friendly CSS starter kit.</p>
       <include-html src="partials/nav.html" style="display: contents">
 <nav
   class="columns"
@@ -22,14 +23,11 @@
   <a href="utility.html">Utility</a>
   <a href="layout.html">Layout</a>
   <a href="components.html">Components</a>
-  <div class="stack horizontal" style="--stack-space: 0; --stack-wrap: nowrap">
-    <label for="theme-select" class="left ground">Theme:</label>
-    <select id="theme-select">
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-      <option value="high-contrast">High Contrast</option>
-    </select>
-  </div>
+  <input
+    type="checkbox"
+    class="theme-toggle toggle icons"
+    aria-label="Toggle dark theme"
+  />
 </nav>
 <script>
   // Mark the link for the current page. Works with or without ".html".
@@ -405,6 +403,18 @@
   <span class="tooltip" tabindex="0">word<span class="tooltip-text">This is a tooltip!</span></span>
   to see the tooltip.
 </p>
+  </div>
+</section>
+
+<section id="theme-switcher">
+  <h2><a href="#theme-switcher">Theme Switcher</a></h2>
+  <p>An input.toggle.icons switch, with a sun and moon baked into the track, that switches the page to the dark theme when checked and overrides the system preference until cleared. Any number of them on a page stay in sync.</p>
+  <p><strong>Selector:</strong> <code>.theme-toggle</code></p>
+  <p><strong>Requires:</strong> theme-switcher.js initThemeToggle(selector)</p>
+  <h3>Example</h3>
+  <div>
+<input type="checkbox" class="theme-toggle toggle icons" aria-label="Toggle dark theme" />
+<script>initThemeToggle();</script>
   </div>
 </section>
 </css-catalog>

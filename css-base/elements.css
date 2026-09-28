@@ -555,6 +555,9 @@ input[type="checkbox"] {
  * @title Toggle Switch
  * @selector input.toggle
  * @description Renders a checkbox as a toggle switch.
+ * @variant .icons Enlarges the track and shows a fixed icon at each end, set with --toggle-icon-start and --toggle-icon-end
+ * @var --toggle-icon-start On the .icons variant, a CSS url() for the icon at the unchecked end
+ * @var --toggle-icon-end On the .icons variant, a CSS url() for the icon at the checked end
  * @example
  * <div class="group">
  *   <input type="checkbox" id="toggle1" class="toggle" />
@@ -580,7 +583,10 @@ input[type="checkbox"].toggle {
   vertical-align: middle;
   margin-right: 0.5rem;
   border: 1px solid var(--secondary-color);
-  flex-shrink: 0;
+  /* Fully own all three flex properties: a flex-basis inherited from a
+     parent's own item-sizing rule (e.g. .columns > *) would override the
+     width above and let the parent grow or shrink this control. */
+  flex: 0 0 auto;
   box-sizing: border-box;
 }
 
@@ -604,6 +610,44 @@ input[type="checkbox"].toggle:checked {
 
 input[type="checkbox"].toggle:checked::before {
   transform: translateY(-50%) translateX(1.5rem);
+}
+
+input[type="checkbox"].toggle.icons {
+  width: 4rem;
+  height: 2rem;
+  border-radius: 2rem;
+  /* vertical-align does nothing on a flex item, so it can't fix this there;
+     the relative nudge is what actually lines the taller track up with
+     surrounding text's descenders in both flex and inline contexts. */
+  vertical-align: -0.85rem;
+  position: relative;
+  top: 0.2rem;
+  background-repeat: no-repeat;
+  background-position:
+    0.45rem center,
+    calc(100% - 0.45rem) center;
+  background-size: 1.1rem 1.1rem;
+  background-image: var(--toggle-icon-start, none), var(--toggle-icon-end, none);
+}
+
+input[type="checkbox"].toggle.icons:checked {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+input[type="checkbox"].toggle.icons::before {
+  width: 1.7rem;
+  height: 1.7rem;
+  left: 0.15rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.15rem 1.15rem;
+  background-image: var(--toggle-icon-start, none);
+}
+
+input[type="checkbox"].toggle.icons:checked::before {
+  transform: translateY(-50%) translateX(2rem);
+  background-image: var(--toggle-icon-end, none);
 }
 
 input[type="checkbox"].toggle:focus {
