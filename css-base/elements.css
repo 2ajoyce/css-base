@@ -583,7 +583,10 @@ input[type="checkbox"].toggle {
   vertical-align: middle;
   margin-right: 0.5rem;
   border: 1px solid var(--secondary-color);
-  flex-shrink: 0;
+  /* Fully own all three flex properties: a flex-basis inherited from a
+     parent's own item-sizing rule (e.g. .columns > *) would override the
+     width above and let the parent grow or shrink this control. */
+  flex: 0 0 auto;
   box-sizing: border-box;
 }
 
@@ -613,7 +616,12 @@ input[type="checkbox"].toggle.icons {
   width: 4rem;
   height: 2rem;
   border-radius: 2rem;
+  /* vertical-align does nothing on a flex item, so it can't fix this there;
+     the relative nudge is what actually lines the taller track up with
+     surrounding text's descenders in both flex and inline contexts. */
   vertical-align: -0.85rem;
+  position: relative;
+  top: 0.2rem;
   background-repeat: no-repeat;
   background-position:
     0.45rem center,
