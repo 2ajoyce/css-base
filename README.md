@@ -100,4 +100,4 @@ Tags cannot be nested. To change the nav or footer, edit `docs/partials/` and ru
 
 `themes.css` follows the system light/dark preference automatically when no theme is forced. To let a user override that preference, set `data-theme="light"` or `data-theme="dark"` on `<html>`; remove the attribute to go back to following the system preference.
 
-Include `theme-switcher.js` to get this for free: it applies a saved choice before first paint and wires up an `input.toggle` switch (see the Theme Switcher entry in the component catalog) that flips the theme and persists the choice to `localStorage`.
+Include `theme-switcher.js` to get this for free: it applies a saved choice before first paint and wires up an `input.toggle` switch (see the Theme Switcher entry in the component catalog) that flips the theme and persists the choice to `localStorage`. If your app mounts `.theme-toggle` inputs later (for example in a modal or settings panel), call `initThemeToggle()` again after adding them.

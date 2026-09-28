@@ -35,50 +35,56 @@ const THEME_TOGGLE_ICONS = {
   light: { sun: themeToggleIcon("sun", "#1f2937"), moon: themeToggleIcon("moon", "#1f2937") },
   dark: { sun: themeToggleIcon("sun", "#f8fafc"), moon: themeToggleIcon("moon", "#f8fafc") },
 };
+const THEME_TOGGLE_BOUND = "data-theme-toggle-bound";
+
+const systemPrefersDark = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+const currentTheme = () =>
+  document.documentElement.getAttribute("data-theme") || (systemPrefersDark() ? "dark" : "light");
+
+const paintIcons = (input) => {
+  if (!input.classList.contains("icons")) return;
+  const icons = THEME_TOGGLE_ICONS[currentTheme()];
+  input.style.setProperty("--toggle-icon-start", icons.sun);
+  input.style.setProperty("--toggle-icon-end", icons.moon);
+};
+
+const syncThemeToggles = (selector) => {
+  const isDark = currentTheme() === "dark";
+  for (const input of document.querySelectorAll(selector)) {
+    input.checked = isDark;
+    paintIcons(input);
+  }
+};
 
 /**
  * @function initThemeToggle(selector)
- * @description Wires up every input.toggle checkbox matching selector to flip between light and dark, syncing all of them (and their checked state) to the current theme and persisting the choice to localStorage.
+ * @description Wires up every input.toggle checkbox matching selector to flip between light and dark, syncing all of them (and their checked state) to the current theme and persisting the choice to localStorage. Safe to call again after mounting new toggles.
  * @param selector CSS selector for the toggle switch(es). Defaults to ".theme-toggle".
  * @requires one or more input.toggle checkboxes matching selector, from elements.css, such as <input type="checkbox" class="theme-toggle toggle icons">
  * @example
  * <input type="checkbox" class="theme-toggle toggle icons" aria-label="Toggle dark theme" />
  * <script>initThemeToggle();</script>
+ * <script>
+ *   openSettingsModal();
+ *   initThemeToggle();
+ * </script>
  */
 function initThemeToggle(selector = ".theme-toggle") {
   const inputs = document.querySelectorAll(selector);
   if (!inputs.length) return;
-
-  const systemPrefersDark = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const currentTheme = () =>
-    document.documentElement.getAttribute("data-theme") || (systemPrefersDark() ? "dark" : "light");
-
-  const paintIcons = (input) => {
-    if (!input.classList.contains("icons")) return;
-    const icons = THEME_TOGGLE_ICONS[currentTheme()];
-    input.style.setProperty("--toggle-icon-start", icons.sun);
-    input.style.setProperty("--toggle-icon-end", icons.moon);
-  };
-
-  const syncAll = () => {
-    const isDark = currentTheme() === "dark";
-    for (const input of inputs) {
-      input.checked = isDark;
-      paintIcons(input);
-    }
-  };
-
-  syncAll();
+  syncThemeToggles(selector);
 
   for (const input of inputs) {
+    if (input.hasAttribute(THEME_TOGGLE_BOUND)) continue;
     input.addEventListener("change", () => {
       const next = input.checked ? "dark" : "light";
       document.documentElement.setAttribute("data-theme", next);
       try {
         localStorage.setItem("theme", next);
       } catch {}
-      syncAll();
+      syncThemeToggles(selector);
     });
+    input.setAttribute(THEME_TOGGLE_BOUND, "");
   }
 }
 

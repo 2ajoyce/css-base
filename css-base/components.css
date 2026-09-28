@@ -704,7 +704,7 @@
 /**
  * @title Theme Switcher
  * @selector .theme-toggle
- * @description An input.toggle.icons switch, with a sun and moon baked into the track, that switches the page to the dark theme when checked and overrides the system preference until cleared. Any number of them on a page stay in sync.
+ * @description An input.toggle.icons switch, with a sun and moon baked into the track, that switches the page to the dark theme when checked and overrides the system preference until cleared. Any number of them on a page stay in sync. Call initThemeToggle() again after mounting new toggles.
  * @requires theme-switcher.js initThemeToggle(selector)
  * @example
  * <input type="checkbox" class="theme-toggle toggle icons" aria-label="Toggle dark theme" />
