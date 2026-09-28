@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.5.0](https://github.com/2ajoyce/css-base/compare/v3.4.1...v3.5.0) (2026-09-28)
+
+
+### Features
+
+* Make `initThemeToggle()` re-runnable for dynamically mounted toggles ([#50](https://github.com/2ajoyce/css-base/issues/50)) ([9ddf17b](https://github.com/2ajoyce/css-base/commit/9ddf17b0cf1aa494505ace01378128e4b25105c9))
+* rework theme switcher to a synced, class-based checkbox toggle ([#47](https://github.com/2ajoyce/css-base/issues/47)) ([c8cdb02](https://github.com/2ajoyce/css-base/commit/c8cdb02500ab803b5cf040d9148b7347a30cd78b))
+
 ## [3.4.1](https://github.com/2ajoyce/css-base/compare/v3.4.0...v3.4.1) (2026-09-21)
 
 
