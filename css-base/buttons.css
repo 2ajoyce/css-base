@@ -16,6 +16,9 @@
  * @variant .success
  * @variant .danger
  * @variant .warning
+ * @variant .icon Icon-only square button. Needs an icon class from icons.css, such as .icon-close, to set --icon-mask.
+ * @var --icon-width On the .icon variant, button width. Defaults to 2rem, shared with .icon in layout.css.
+ * @var --icon-height On the .icon variant, button height. Defaults to 2rem, shared with .icon in layout.css.
  * @example Active
  * <div class="group">
  *   <button>Default</button>
@@ -32,7 +35,8 @@
  *   <button disabled class="danger">Danger</button>
  *   <button disabled class="warning">Warning</button>
  * </div>
- * @example Icons
+ * @example With an icon
+ * <p>An svg (or emoji, or icon component) may be placed before the label.</p>
  * <div class="group">
  *   <button>
  *     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -61,6 +65,15 @@
  *     </svg>
  *     Download
  *   </button>
+ * </div>
+ * @example Icon only (.icon)
+ * <p>Add an icon class from icons.css, such as .icon-close.</p>
+ * <div class="group">
+ *   <button class="icon icon-close" aria-label="Close"></button>
+ *   <button class="icon icon-close radius" style="--radius: 50%" aria-label="Close"></button>
+ *   <button class="icon icon-expand-panel" aria-expanded="false" aria-controls="panel" aria-label="Widen panel"></button>
+ *   <button class="icon icon-expand-panel mirror" aria-expanded="true" aria-controls="panel" aria-label="Narrow panel"></button>
+ *   <button class="icon icon-expand-corners" aria-expanded="false" aria-controls="preview" aria-label="Expand preview"></button>
  * </div>
  */
 button {
@@ -214,6 +227,47 @@ button.warning:disabled:hover,
 button.warning:disabled:active {
   background-color: var(--warning-color);
   color: var(--warning-text-color);
+}
+
+/* Icon-only square button. Renders whatever icon is set in --icon-mask, from icons.css, recolored with currentColor. No svg markup needed in the page. */
+button.icon {
+  width: var(--icon-width, 2rem);
+  height: var(--icon-height, 2rem);
+  padding: 0;
+  border-color: transparent;
+  color: var(--primary-text-color);
+  position: relative;
+}
+
+button.icon::before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: auto;
+  background-color: currentColor;
+  -webkit-mask-image: var(--icon-mask);
+  mask-image: var(--icon-mask);
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+/* .mirror flips the whole element (utility.css), but a button also has a box-shadow that should not flip with it. Flip only the icon instead. */
+button.icon.mirror,
+button.icon.mirror.vertical {
+  transform: none;
+}
+
+button.icon.mirror::before {
+  transform: scaleX(-1);
+}
+
+button.icon.mirror.vertical::before {
+  transform: scaleY(-1);
 }
 
 /**

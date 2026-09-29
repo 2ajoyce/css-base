@@ -81,6 +81,13 @@ Applies a standard border radius.
 - **Variables**
   - `--radius` - Corner radius. Defaults to 0.5rem.
 
+#### Mirror - `.mirror`
+
+Flips an element horizontally.
+
+- **Variants**
+  - `.vertical` - Flips vertically instead of horizontally.
+
 #### Text size - `.text-xs, .text-sm, .text-base, .text-lg, .text-xl, .text-2xl, .text-3xl, .text-4xl`
 
 Sets font size in rem with a matching unitless line height. Sizes scale with the user's root font size. The values are the --text-\* tokens in themes.css.
@@ -98,6 +105,22 @@ Sets font size in rem with a matching unitless line height. Sizes scale with the
 #### Focusable elements - `[tabindex]`
 
 Elements with a non-negative tabindex get a pointer cursor and a visible focus outline. Editable regions (contenteditable) keep the text cursor. Elements with role=button are handled in buttons.css.
+
+### `icons.css` - Named icon masks, for icon-only buttons and other elements that read --icon-mask.
+
+#### Icons - `.icon-close, .icon-expand-panel, .icon-expand-corners`
+
+Single-color icons for icon-only buttons. Combine with button.icon (buttons.css), which reads --icon-mask and paints it with currentColor.
+
+- **Variants**
+  - `.icon-close` - An X, for a stateless dismiss or close action.
+  - `.icon-expand-panel` - A line and arrow, for a panel or drawer that grows sideways. Anchored to the right edge by default; add .mirror to anchor it to the left edge instead.
+  - `.icon-expand-corners` - Four arrows pointing out, for a region such as a card or preview that grows in both directions.
+- **States**
+  - `[aria-expanded="true"]` - Switches .icon-expand-panel and .icon-expand-corners to their collapsed icon.
+
+- **Note:** Each icon is a CSS url() data URI, written with only \<, > and # percent-encoded so the markup stays readable and directly editable, unlike a fully percent-encoded string.
+- **Note:** .icon-expand-panel and .icon-expand-corners swap to their collapsed icon automatically when the element also has aria-expanded="true". .icon-close has no state.
 
 ### `elements.css` - Base styles for HTML tags.
 
@@ -134,6 +157,10 @@ Standard button with hover, active, focus and disabled states. Buttons support i
   - `.success`
   - `.danger`
   - `.warning`
+  - `.icon` - Icon-only square button. Needs an icon class from icons.css, such as .icon-close, to set --icon-mask.
+- **Variables**
+  - `--icon-width` - On the .icon variant, button width. Defaults to 2rem, shared with .icon in layout.css.
+  - `--icon-height` - On the .icon variant, button height. Defaults to 2rem, shared with .icon in layout.css.
 
 #### Button role - `[role="button"]`
 

@@ -1,0 +1,54 @@
+/**
+ * @file icons.css
+ * @description Named icon masks, for icon-only buttons and other elements that read --icon-mask.
+ * @context
+ *   .icon-close, .icon-expand-panel, .icon-expand-corners: Single-color icons for icon-only buttons.
+ * @notes
+ *   Each icon is a CSS url() data URI, written with only <, > and # percent-encoded so the markup stays readable and directly editable, unlike a fully percent-encoded string.
+ *   .icon-expand-panel and .icon-expand-corners swap to their collapsed icon automatically when the element also has aria-expanded="true". .icon-close has no state.
+ */
+
+:root {
+  --icon-mask-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E");
+  --icon-mask-expand-panel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='20' y1='4' x2='20' y2='20'/%3E%3Cline x1='16' y1='12' x2='4' y2='12'/%3E%3Cpolyline points='9 7 4 12 9 17'/%3E%3C/svg%3E");
+  --icon-mask-collapse-panel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='20' y1='4' x2='20' y2='20'/%3E%3Cline x1='4' y1='12' x2='16' y2='12'/%3E%3Cpolyline points='11 7 16 12 11 17'/%3E%3C/svg%3E");
+  --icon-mask-expand-corners: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cpolyline points='9 21 3 21 3 15'/%3E%3Cline x1='21' y1='3' x2='14' y2='10'/%3E%3Cline x1='3' y1='21' x2='10' y2='14'/%3E%3C/svg%3E");
+  --icon-mask-collapse-corners: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='4 14 10 14 10 20'/%3E%3Cpolyline points='20 10 14 10 14 4'/%3E%3Cline x1='14' y1='10' x2='21' y2='3'/%3E%3Cline x1='3' y1='21' x2='10' y2='14'/%3E%3C/svg%3E");
+}
+
+/**
+ * @title Icons
+ * @selector .icon-close, .icon-expand-panel, .icon-expand-corners
+ * @description Single-color icons for icon-only buttons. Combine with button.icon (buttons.css), which reads --icon-mask and paints it with currentColor.
+ * @variant .icon-close An X, for a stateless dismiss or close action.
+ * @variant .icon-expand-panel A line and arrow, for a panel or drawer that grows sideways. Anchored to the right edge by default; add .mirror to anchor it to the left edge instead.
+ * @variant .icon-expand-corners Four arrows pointing out, for a region such as a card or preview that grows in both directions.
+ * @state [aria-expanded="true"] Switches .icon-expand-panel and .icon-expand-corners to their collapsed icon.
+ * @example
+ * <div class="group">
+ *   <button class="icon icon-close" aria-label="Close"></button>
+ *   <button class="icon icon-expand-panel" aria-expanded="false" aria-controls="panel" aria-label="Widen panel"></button>
+ *   <button class="icon icon-expand-panel" aria-expanded="true" aria-controls="panel" aria-label="Narrow panel"></button>
+ *   <button class="icon icon-expand-corners" aria-expanded="false" aria-controls="preview" aria-label="Expand preview"></button>
+ *   <button class="icon icon-expand-corners" aria-expanded="true" aria-controls="preview" aria-label="Collapse preview"></button>
+ * </div>
+ */
+.icon-close {
+  --icon-mask: var(--icon-mask-close);
+}
+
+.icon-expand-panel {
+  --icon-mask: var(--icon-mask-expand-panel);
+}
+
+.icon-expand-panel[aria-expanded="true"] {
+  --icon-mask: var(--icon-mask-collapse-panel);
+}
+
+.icon-expand-corners {
+  --icon-mask: var(--icon-mask-expand-corners);
+}
+
+.icon-expand-corners[aria-expanded="true"] {
+  --icon-mask: var(--icon-mask-collapse-corners);
+}

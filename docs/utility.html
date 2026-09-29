@@ -71,6 +71,30 @@
   </div>
 </section>
 
+<section id="mirror">
+  <h2><a href="#mirror">Mirror</a></h2>
+  <p>Flips an element horizontally.</p>
+  <p><strong>Selector:</strong> <code>.mirror</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.vertical</code> - Flips vertically instead of horizontally.</li>
+  </ul>
+  <h3>Horizontal</h3>
+  <div>
+<div class="group text-2xl">
+  <span style="display: inline-block">&#8599;</span>
+  <span class="mirror" style="display: inline-block">&#8599;</span>
+</div>
+  </div>
+  <h3>Vertical</h3>
+  <div>
+<div class="group text-2xl">
+  <span style="display: inline-block">&#8599;</span>
+  <span class="mirror vertical" style="display: inline-block">&#8599;</span>
+</div>
+  </div>
+</section>
+
 <section id="text-size">
   <h2><a href="#text-size">Text size</a></h2>
   <p>Sets font size in rem with a matching unitless line height. Sizes scale with the user's root font size. The values are the --text-* tokens in themes.css.</p>
@@ -109,6 +133,37 @@
   <div>
 <p>This is a standard paragraph.</p>
 <p tabindex="0">This paragraph has tabindex="0", so it is focusable and shows a pointer cursor.</p>
+  </div>
+</section>
+</css-catalog>
+    <css-catalog
+      class="stack"
+      style="--stack-space: 2rem"
+      src="../css-base/icons.css"
+    >
+<section id="icons">
+  <h2><a href="#icons">Icons</a></h2>
+  <p>Single-color icons for icon-only buttons. Combine with button.icon (buttons.css), which reads --icon-mask and paints it with currentColor.</p>
+  <p><strong>Selector:</strong> <code>.icon-close, .icon-expand-panel, .icon-expand-corners</code></p>
+  <h3>Variants</h3>
+  <ul>
+    <li><code>.icon-close</code> - An X, for a stateless dismiss or close action.</li>
+    <li><code>.icon-expand-panel</code> - A line and arrow, for a panel or drawer that grows sideways. Anchored to the right edge by default; add .mirror to anchor it to the left edge instead.</li>
+    <li><code>.icon-expand-corners</code> - Four arrows pointing out, for a region such as a card or preview that grows in both directions.</li>
+  </ul>
+  <h3>States</h3>
+  <ul>
+    <li><code>[aria-expanded="true"]</code> - Switches .icon-expand-panel and .icon-expand-corners to their collapsed icon.</li>
+  </ul>
+  <h3>Example</h3>
+  <div>
+<div class="group">
+  <button class="icon icon-close" aria-label="Close"></button>
+  <button class="icon icon-expand-panel" aria-expanded="false" aria-controls="panel" aria-label="Widen panel"></button>
+  <button class="icon icon-expand-panel" aria-expanded="true" aria-controls="panel" aria-label="Narrow panel"></button>
+  <button class="icon icon-expand-corners" aria-expanded="false" aria-controls="preview" aria-label="Expand preview"></button>
+  <button class="icon icon-expand-corners" aria-expanded="true" aria-controls="preview" aria-label="Collapse preview"></button>
+</div>
   </div>
 </section>
 </css-catalog>
