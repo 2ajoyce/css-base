@@ -504,6 +504,12 @@ This is preformatted text.
     <li><code>.success</code></li>
     <li><code>.danger</code></li>
     <li><code>.warning</code></li>
+    <li><code>.icon</code> - Icon-only square button. Needs an icon class from icons.css, such as .icon-close, to set --icon-mask.</li>
+  </ul>
+  <h3>Variables</h3>
+  <ul>
+    <li><code>--icon-width</code> - On the .icon variant, button width. Defaults to 2rem, shared with .icon in layout.css.</li>
+    <li><code>--icon-height</code> - On the .icon variant, button height. Defaults to 2rem, shared with .icon in layout.css.</li>
   </ul>
   <h3>Active</h3>
   <div>
@@ -525,8 +531,9 @@ This is preformatted text.
   <button disabled class="warning">Warning</button>
 </div>
   </div>
-  <h3>Icons</h3>
+  <h3>With an icon</h3>
   <div>
+<p>An svg (or emoji, or icon component) may be placed before the label.</p>
 <div class="group">
   <button>
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -555,6 +562,17 @@ This is preformatted text.
     </svg>
     Download
   </button>
+</div>
+  </div>
+  <h3>Icon only (.icon)</h3>
+  <div>
+<p>Add an icon class from icons.css, such as .icon-close.</p>
+<div class="group">
+  <button class="icon icon-close" aria-label="Close"></button>
+  <button class="icon icon-close radius" style="--radius: 50%" aria-label="Close"></button>
+  <button class="icon icon-expand-panel" aria-expanded="false" aria-controls="panel" aria-label="Widen panel"></button>
+  <button class="icon icon-expand-panel mirror" aria-expanded="true" aria-controls="panel" aria-label="Narrow panel"></button>
+  <button class="icon icon-expand-corners" aria-expanded="false" aria-controls="preview" aria-label="Expand preview"></button>
 </div>
   </div>
 </section>

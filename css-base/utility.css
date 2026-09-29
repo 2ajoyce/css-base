@@ -4,6 +4,7 @@
  * @context
  *   .fit-content: Sizes an element to its content width.
  *   .radius: Applies a standard border radius.
+ *   .mirror: Flips an element horizontally.
  *   .text-xs, .text-sm, .text-base, .text-lg, .text-xl, .text-2xl, .text-3xl, .text-4xl: Sets font size in rem with a matching unitless line height.
  *   [tabindex]: Elements with a non-negative tabindex get a pointer cursor and a visible focus outline.
  */
@@ -43,6 +44,30 @@
  */
 .radius {
   border-radius: var(--radius, 0.5rem);
+}
+
+/**
+ * @title Mirror
+ * @selector .mirror
+ * @description Flips an element horizontally.
+ * @variant .vertical Flips vertically instead of horizontally.
+ * @example Horizontal
+ * <div class="group text-2xl">
+ *   <span style="display: inline-block">&#8599;</span>
+ *   <span class="mirror" style="display: inline-block">&#8599;</span>
+ * </div>
+ * @example Vertical
+ * <div class="group text-2xl">
+ *   <span style="display: inline-block">&#8599;</span>
+ *   <span class="mirror vertical" style="display: inline-block">&#8599;</span>
+ * </div>
+ */
+.mirror {
+  transform: scaleX(-1);
+}
+
+.mirror.vertical {
+  transform: scaleY(-1);
 }
 
 /**

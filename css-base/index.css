@@ -7,15 +7,17 @@
  *     1. Reset (Normalize defaults)
  *     2. Themes (Variables/Tokens)
  *     3. Utility (Atomic classes)
- *     4. Elements (Tag-base styles)
- *     5. Buttons (Specific component)
- *     6. Layout (Grid/Flex primitives)
- *     7. Components (Composite widgets)
+ *     4. Icons (Named icon masks)
+ *     5. Elements (Tag-base styles)
+ *     6. Buttons (Specific component)
+ *     7. Layout (Grid/Flex primitives)
+ *     8. Components (Composite widgets)
  */
 
 @import url("reset.css");
 @import url("themes.css");
 @import url("utility.css");
+@import url("icons.css");
 @import url("elements.css");
 @import url("buttons.css");
 @import url("layout.css");
