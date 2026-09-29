@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.0](https://github.com/2ajoyce/css-base/compare/v3.5.0...v3.6.0) (2026-09-29)
+
+
+### Features
+
+* add icon-only buttons, named icon masks, and a mirror utility ([#52](https://github.com/2ajoyce/css-base/issues/52)) ([a30a4a1](https://github.com/2ajoyce/css-base/commit/a30a4a1733be901e6550027764cd3ed2d3ec5e68)), closes [#51](https://github.com/2ajoyce/css-base/issues/51)
+
 ## [3.5.0](https://github.com/2ajoyce/css-base/compare/v3.4.1...v3.5.0) (2026-09-28)
 
 
